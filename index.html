@@ -1,33 +1,1585 @@
-<!doctype html>
-<html lang="">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AQUEON - Monitores contra incendios y sistemas de extinción industrial en México. Soluciones certificadas FM y UL para industria petrolera, petroquímica y manufactura.">
+    <meta name="keywords" content="monitores contra incendios, cañones de agua, sistemas extinción, protección contra incendios, industrial, PEMEX, FM Approved, México">
+    <meta name="author" content="AQUEON">
+    <meta name="robots" content="index, follow">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
+    <!-- Open Graph -->
+    <meta property="og:title" content="AQUEON - Monitores Contra Incendios Industriales">
+    <meta property="og:description" content="Soluciones profesionales de extinción para industrias de alto riesgo. Certificaciones FM y UL.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aqueon.com.mx">
+    <meta property="og:image" content="images/og-image.jpg">
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
+    <title>AQUEON | Monitores Contra Incendios Industriales | México</title>
 
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="fire-icon">
+                <i class="fas fa-fire"></i>
+            </div>
+            <span>AQUEON</span>
+        </div>
+    </div>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/app.js"></script>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <a href="tel:+525512345678"><i class="fas fa-phone"></i> +52 55 1234 5678</a>
+                        <a href="mailto:contacto@aqueon.com.mx"><i class="fas fa-envelope"></i> contacto@aqueon.com.mx</a>
+                        <span><i class="fas fa-clock"></i> Lun - Vie: 8:00 - 18:00</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                            <path d="M25 10 L25 40 M15 25 L35 25 M18 15 L32 35 M32 15 L18 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="25" cy="25" r="8" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">AQUEON</span>
+                        <span class="logo-tagline">Protección Industrial</span>
+                    </div>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li class="has-dropdown">
+                        <a href="#productos" class="nav-link">Productos <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="#monitores-fijos">Monitores Fijos</a></li>
+                            <li><a href="#monitores-portatiles">Monitores Portátiles</a></li>
+                            <li><a href="#monitores-automaticos">Monitores Automáticos</a></li>
+                            <li><a href="#boquillas">Boquillas y Accesorios</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#soluciones" class="nav-link">Soluciones <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="#petroleo-gas">Petróleo y Gas</a></li>
+                            <li><a href="#petroquimica">Petroquímica</a></li>
+                            <li><a href="#manufactura">Manufactura</a></li>
+                            <li><a href="#bomberos">Bomberos y Gobierno</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="#recursos" class="nav-link">Recursos</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="#cotizar" class="btn btn-primary">
+                        <i class="fas fa-file-invoice"></i> Cotizar Ahora
+                    </a>
+                    <button class="mobile-toggle" aria-label="Menú">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg">
+            <div class="hero-placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Video/Imagen Hero Background</span>
+                    <small>1920x1080 - Instalación industrial con monitores contra incendios</small>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Certificados FM Approved & UL Listed</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Protección Industrial<br>
+                    <span class="gradient-text">de Clase Mundial</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Monitores contra incendios y sistemas de extinción para industrias de alto riesgo.
+                    Expertise técnico, servicio integral y respaldo que su operación necesita.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#cotizar" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calculator"></i> Solicitar Cotización
+                    </a>
+                    <a href="#productos" class="btn btn-outline btn-lg">
+                        <i class="fas fa-box-open"></i> Ver Productos
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">Instalaciones</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="15">0</span>
+                        <span class="stat-label">Años de Experiencia</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-suffix">%</span>
+                        <span class="stat-label">Satisfacción</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Soporte Técnico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <a href="#features">
+                <span>Descubra más</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <section id="features" class="features-bar">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="0">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Certificación FM & UL</h3>
+                        <p>Productos aprobados por las máximas autoridades internacionales</p>
+                    </div>
+                </div>
+
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Entrega Rápida</h3>
+                        <p>Stock disponible en México para despacho inmediato</p>
+                    </div>
+                </div>
+
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Soporte Técnico 24/7</h3>
+                        <p>Ingenieros especializados disponibles cuando nos necesite</p>
+                    </div>
+                </div>
+
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Instalación Profesional</h3>
+                        <p>Servicio integral de instalación y puesta en marcha</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros-intro" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <span class="section-tag">Sobre AQUEON</span>
+                    <h2 class="section-title">
+                        Expertise que Protege,<br>
+                        <span class="highlight">Servicio que Respalda</span>
+                    </h2>
+                    <p class="about-text">
+                        Somos especialistas en soluciones de protección contra incendios para industrias de alto riesgo.
+                        Combinamos el conocimiento técnico profundo con un compromiso inquebrantable de servicio para
+                        proteger lo que más importa: su operación, sus activos y su gente.
+                    </p>
+                    <p class="about-text">
+                        Desde refinerías petroleras hasta parques industriales, nuestros sistemas de monitores contra
+                        incendios cumplen con los estándares más exigentes del mercado: FM Approved, UL Listed y
+                        conformidad total con NFPA.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Distribuidores autorizados de marcas líderes</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Ingenieros certificados NFPA</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Cobertura nacional en México</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Programas de mantenimiento preventivo</span>
+                        </div>
+                    </div>
+
+                    <a href="#nosotros" class="btn btn-secondary">
+                        Conocer Más <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="about-image" data-aos="fade-left">
+                    <div class="image-placeholder main-image">
+                        <div class="placeholder-content">
+                            <i class="fas fa-image"></i>
+                            <span>Imagen Principal</span>
+                            <small>600x500 - Equipo AQUEON o instalación destacada</small>
+                        </div>
+                    </div>
+                    <div class="image-placeholder secondary-image">
+                        <div class="placeholder-content">
+                            <i class="fas fa-image"></i>
+                            <span>Imagen Secundaria</span>
+                            <small>300x250 - Certificación o detalle técnico</small>
+                        </div>
+                    </div>
+                    <div class="experience-badge">
+                        <span class="years">15+</span>
+                        <span class="text">Años de<br>Experiencia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="products-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Nuestros Productos</span>
+                <h2 class="section-title">Líneas de Producto</h2>
+                <p class="section-subtitle">
+                    Soluciones especializadas para cada necesidad industrial. Desde monitores
+                    portátiles hasta sistemas de automatización completos.
+                </p>
+            </div>
+
+            <div class="products-tabs" data-aos="fade-up">
+                <button class="tab-btn active" data-tab="industrial">
+                    <i class="fas fa-industry"></i>
+                    <span>Industrial</span>
+                </button>
+                <button class="tab-btn" data-tab="petroleo">
+                    <i class="fas fa-oil-well"></i>
+                    <span>Petróleo & Gas</span>
+                </button>
+                <button class="tab-btn" data-tab="municipal">
+                    <i class="fas fa-fire-extinguisher"></i>
+                    <span>Municipal</span>
+                </button>
+                <button class="tab-btn" data-tab="automatizacion">
+                    <i class="fas fa-robot"></i>
+                    <span>Automatización</span>
+                </button>
+            </div>
+
+            <div class="products-content">
+                <!-- Industrial Tab -->
+                <div class="tab-content active" id="tab-industrial">
+                    <div class="products-grid">
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="0">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor Fijo Industrial</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                                <div class="product-badge">Más Vendido</div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Monitores Fijos</span>
+                                <h3 class="product-name">Monitor Industrial MI-1500</h3>
+                                <p class="product-description">
+                                    Monitor fijo manual de bronce con capacidad de 500-1,500 GPM.
+                                    Ideal para manufactura y parques industriales.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 500-1,500 GPM</li>
+                                    <li><i class="fas fa-gauge-high"></i> Hasta 150 PSI</li>
+                                    <li><i class="fas fa-certificate"></i> FM Approved</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor Portátil</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Monitores Portátiles</span>
+                                <h3 class="product-name">Monitor Portátil MP-750</h3>
+                                <p class="product-description">
+                                    Monitor portátil ligero de aluminio con base plegable.
+                                    Despliegue rápido por un solo operador.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 250-750 GPM</li>
+                                    <li><i class="fas fa-weight-hanging"></i> Solo 18 kg</li>
+                                    <li><i class="fas fa-certificate"></i> NFPA Compliant</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Boquilla Ajustable</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Boquillas</span>
+                                <h3 class="product-name">Boquilla Multipatrón BM-200</h3>
+                                <p class="product-description">
+                                    Boquilla ajustable con patrón chorro sólido a niebla.
+                                    Compatible con monitores de 2.5" a 4".
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 200-1,000 GPM</li>
+                                    <li><i class="fas fa-sync"></i> Ajuste 0° a 120°</li>
+                                    <li><i class="fas fa-certificate"></i> UL Listed</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Petróleo Tab -->
+                <div class="tab-content" id="tab-petroleo">
+                    <div class="products-grid">
+                        <div class="product-card" data-aos="fade-up">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor Alto Caudal</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                                <div class="product-badge premium">Premium</div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Alto Caudal</span>
+                                <h3 class="product-name">Monitor Magnum MG-4000</h3>
+                                <p class="product-description">
+                                    Monitor de ultra-alto caudal para refinerías y terminales.
+                                    Certificación FM Approved obligatoria para PEMEX.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 2,000-4,000 GPM</li>
+                                    <li><i class="fas fa-gauge-high"></i> Hasta 175 PSI</li>
+                                    <li><i class="fas fa-certificate"></i> FM Approved + UL</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor ATEX</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                                <div class="product-badge">ATEX</div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Zonas Clasificadas</span>
+                                <h3 class="product-name">Monitor Remoto ATEX MR-3000</h3>
+                                <p class="product-description">
+                                    Monitor eléctrico remoto certificado para atmósferas explosivas.
+                                    Clase I División 2.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 1,500-3,000 GPM</li>
+                                    <li><i class="fas fa-broadcast-tower"></i> Control Remoto</li>
+                                    <li><i class="fas fa-certificate"></i> ATEX / IECEx</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor con Espuma</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Espuma</span>
+                                <h3 class="product-name">Monitor Foam MF-2500</h3>
+                                <p class="product-description">
+                                    Monitor con cámara de inyección de espuma integrada.
+                                    Para tanques de almacenamiento de hidrocarburos.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 1,000-2,500 GPM</li>
+                                    <li><i class="fas fa-flask"></i> Inyección 3%</li>
+                                    <li><i class="fas fa-certificate"></i> FM + NFPA 11</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Municipal Tab -->
+                <div class="tab-content" id="tab-municipal">
+                    <div class="products-grid">
+                        <div class="product-card" data-aos="fade-up">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor para Bomberos</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Bomberos</span>
+                                <h3 class="product-name">Deck Gun DG-1000</h3>
+                                <p class="product-description">
+                                    Monitor vehicular para camiones de bomberos.
+                                    Montaje rápido y operación intuitiva.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 500-1,000 GPM</li>
+                                    <li><i class="fas fa-truck"></i> Montaje Vehicular</li>
+                                    <li><i class="fas fa-certificate"></i> NFPA Compliant</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor Portátil Ligero</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                                <div class="product-badge">Ligero</div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Portátil</span>
+                                <h3 class="product-name">Monitor Táctico MT-500</h3>
+                                <p class="product-description">
+                                    El monitor más ligero del mercado. Ideal para
+                                    respuesta rápida y difícil acceso.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 200-500 GPM</li>
+                                    <li><i class="fas fa-weight-hanging"></i> Solo 12 kg</li>
+                                    <li><i class="fas fa-box"></i> Kit Completo</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Torre de Agua</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Torres</span>
+                                <h3 class="product-name">Torre Telescópica TT-2000</h3>
+                                <p class="product-description">
+                                    Torre telescópica con monitor integrado. Altura
+                                    extendida hasta 15 metros.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 1,000-2,000 GPM</li>
+                                    <li><i class="fas fa-arrows-alt-v"></i> Hasta 15m</li>
+                                    <li><i class="fas fa-gamepad"></i> Control Remoto</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automatización Tab -->
+                <div class="tab-content" id="tab-automatizacion">
+                    <div class="products-grid">
+                        <div class="product-card" data-aos="fade-up">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor Automático</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                                <div class="product-badge premium">Smart</div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Automatización</span>
+                                <h3 class="product-name">Monitor Inteligente AI-3000</h3>
+                                <p class="product-description">
+                                    Monitor con detección automática de incendios e IA
+                                    para posicionamiento óptimo.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 1,000-3,000 GPM</li>
+                                    <li><i class="fas fa-brain"></i> Detección IA</li>
+                                    <li><i class="fas fa-wifi"></i> IoT Enabled</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Monitor Oscilante</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Oscilación</span>
+                                <h3 class="product-name">Monitor Oscilante MO-2000</h3>
+                                <p class="product-description">
+                                    Oscilación programable con múltiples patrones.
+                                    Cobertura automática de grandes áreas.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-tint"></i> 750-2,000 GPM</li>
+                                    <li><i class="fas fa-sync"></i> 4 Modos Oscilación</li>
+                                    <li><i class="fas fa-sliders-h"></i> Programable</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-image"></i>
+                                        <span>Panel de Control</span>
+                                        <small>400x300</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Control</span>
+                                <h3 class="product-name">Panel de Control PC-500</h3>
+                                <p class="product-description">
+                                    Centro de control para múltiples monitores.
+                                    Integración con sistemas F&G y SCADA.
+                                </p>
+                                <ul class="product-specs">
+                                    <li><i class="fas fa-desktop"></i> Hasta 16 Monitores</li>
+                                    <li><i class="fas fa-plug"></i> Modbus / BACnet</li>
+                                    <li><i class="fas fa-certificate"></i> UL Listed</li>
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    <a href="#cotizar" class="btn btn-outline btn-sm">Cotizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-cta" data-aos="fade-up">
+                <a href="#catalogo" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-th-large"></i> Ver Catálogo Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industrias" class="industries-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Sectores que Atendemos</span>
+                <h2 class="section-title">Soluciones por Industria</h2>
+                <p class="section-subtitle">
+                    Cada industria tiene necesidades únicas. Nuestro enfoque especializado
+                    garantiza la solución óptima para su operación.
+                </p>
+            </div>
+
+            <div class="industries-grid">
+                <div class="industry-card large" data-aos="fade-up" data-aos-delay="0">
+                    <div class="industry-bg">
+                        <div class="image-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image"></i>
+                                <span>Petróleo y Gas</span>
+                                <small>600x400</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-icon">
+                            <i class="fas fa-oil-well"></i>
+                        </div>
+                        <h3>Petróleo y Gas</h3>
+                        <p>Refinerías, terminales de almacenamiento, plataformas offshore.
+                           Cumplimiento FM Approved para requisitos PEMEX.</p>
+                        <ul class="industry-features">
+                            <li>Monitores certificados FM/UL</li>
+                            <li>Sistemas ATEX para zonas clasificadas</li>
+                            <li>Experiencia en proyectos PEMEX</li>
+                        </ul>
+                        <a href="#petroleo-gas" class="btn btn-light">
+                            Ver Soluciones <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="industry-bg">
+                        <div class="image-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image"></i>
+                                <span>Petroquímica</span>
+                                <small>400x300</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Petroquímica</h3>
+                        <p>Plantas químicas y farmacéuticas con materiales
+                           anticorrosivos especializados.</p>
+                        <a href="#petroquimica" class="industry-link">
+                            Ver más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="industry-bg">
+                        <div class="image-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image"></i>
+                                <span>Manufactura</span>
+                                <small>400x300</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Manufactura</h3>
+                        <p>Parques industriales, plantas automotrices,
+                           almacenes y centros de distribución.</p>
+                        <a href="#manufactura" class="industry-link">
+                            Ver más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="industry-bg">
+                        <div class="image-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image"></i>
+                                <span>Bomberos</span>
+                                <small>400x300</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-icon">
+                            <i class="fas fa-fire-extinguisher"></i>
+                        </div>
+                        <h3>Bomberos y Gobierno</h3>
+                        <p>Equipos para cuerpos de bomberos y protección civil.
+                           Asesoría en licitaciones públicas.</p>
+                        <a href="#bomberos" class="industry-link">
+                            Ver más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="industry-bg">
+                        <div class="image-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image"></i>
+                                <span>Aviación</span>
+                                <small>400x300</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>Aviación</h3>
+                        <p>Aeropuertos, hangares y talleres MRO con
+                           sistemas ARFF certificados.</p>
+                        <a href="#aviacion" class="industry-link">
+                            Ver más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="industry-bg">
+                        <div class="image-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image"></i>
+                                <span>Minería</span>
+                                <small>400x300</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3>Minería</h3>
+                        <p>Equipos robustos para ambientes extremos
+                           y operación continua.</p>
+                        <a href="#mineria" class="industry-link">
+                            Ver más <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header light" data-aos="fade-up">
+                <span class="section-tag">Servicios Integrales</span>
+                <h2 class="section-title">Más que Productos, Soluciones Completas</h2>
+                <p class="section-subtitle">
+                    Desde la consultoría inicial hasta el mantenimiento de por vida.
+                    Estamos con usted en cada paso.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3>Diseño e Ingeniería</h3>
+                    <p>Diseño de sistemas contra incendio conforme a NFPA.
+                       Cálculos hidráulicos, layouts y especificaciones técnicas.</p>
+                    <ul class="service-features">
+                        <li>Diseño conforme NFPA 15, 11, 24</li>
+                        <li>Cálculos hidráulicos profesionales</li>
+                        <li>Planos y documentación técnica</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Instalación Profesional</h3>
+                    <p>Montaje e instalación por técnicos certificados.
+                       Integración con su red hidráulica y sistemas existentes.</p>
+                    <ul class="service-features">
+                        <li>Técnicos certificados</li>
+                        <li>Pruebas hidrostáticas incluidas</li>
+                        <li>Documentación de entrega</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Capacitación</h3>
+                    <p>Entrenamiento a brigadas y operadores en uso,
+                       mantenimiento básico y protocolos de emergencia.</p>
+                    <ul class="service-features">
+                        <li>Capacitación teórico-práctica</li>
+                        <li>Certificados de competencia</li>
+                        <li>Material didáctico incluido</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Mantenimiento Preventivo</h3>
+                    <p>Programas de mantenimiento conforme NFPA 25 para
+                       garantizar disponibilidad cuando más lo necesite.</p>
+                    <ul class="service-features">
+                        <li>Inspecciones programadas</li>
+                        <li>Reportes de condición</li>
+                        <li>Garantía de funcionamiento</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Mantenimiento Correctivo</h3>
+                    <p>Reparación de fallas con respuesta rápida.
+                       Técnicos disponibles 24/7 para emergencias.</p>
+                    <ul class="service-features">
+                        <li>Respuesta en menos de 24 horas</li>
+                        <li>Refacciones originales</li>
+                        <li>Servicio de emergencia 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Consultoría Normativa</h3>
+                    <p>Asesoría en cumplimiento de NOM-002-STPS, NFPA y
+                       requisitos de aseguradoras.</p>
+                    <ul class="service-features">
+                        <li>Auditorías de cumplimiento</li>
+                        <li>Preparación para inspecciones</li>
+                        <li>Actualización normativa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service Plans -->
+            <div class="service-plans" data-aos="fade-up">
+                <h3 class="plans-title">Planes de Servicio</h3>
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h4>AQUEON Basic</h4>
+                            <p>Para clientes con capacidad técnica interna</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Garantía estándar</li>
+                            <li><i class="fas fa-check"></i> Soporte telefónico horario oficina</li>
+                            <li><i class="fas fa-check"></i> Documentación técnica online</li>
+                            <li><i class="fas fa-check"></i> Capacitación básica (2 hrs)</li>
+                        </ul>
+                        <div class="plan-price">
+                            <span class="price">Incluido</span>
+                            <span class="period">con la compra</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-card featured">
+                        <div class="plan-badge">Recomendado</div>
+                        <div class="plan-header">
+                            <h4>AQUEON Plus</h4>
+                            <p>Para quienes valoran la prevención</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Todo de Basic</li>
+                            <li><i class="fas fa-check"></i> Mantenimiento preventivo anual</li>
+                            <li><i class="fas fa-check"></i> Garantía extendida 3 años</li>
+                            <li><i class="fas fa-check"></i> Respuesta prioritaria 24 hrs</li>
+                            <li><i class="fas fa-check"></i> Capacitación avanzada (8 hrs)</li>
+                            <li><i class="fas fa-check"></i> 10% descuento en refacciones</li>
+                        </ul>
+                        <div class="plan-price">
+                            <span class="price">8-12%</span>
+                            <span class="period">anual del valor del equipo</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-card premium">
+                        <div class="plan-header">
+                            <h4>AQUEON Premium</h4>
+                            <p>Para instalaciones críticas</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Todo de Plus</li>
+                            <li><i class="fas fa-check"></i> Mantenimiento semestral</li>
+                            <li><i class="fas fa-check"></i> Garantía 5 años</li>
+                            <li><i class="fas fa-check"></i> Emergencia 24/7 (4 hrs respuesta)</li>
+                            <li><i class="fas fa-check"></i> Técnico dedicado asignado</li>
+                            <li><i class="fas fa-check"></i> Refacciones en consignación</li>
+                            <li><i class="fas fa-check"></i> Auditorías de cumplimiento</li>
+                        </ul>
+                        <div class="plan-price">
+                            <span class="price">15-20%</span>
+                            <span class="period">anual del valor del equipo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="por-que-aqueon" class="why-section">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-content" data-aos="fade-right">
+                    <span class="section-tag">¿Por qué AQUEON?</span>
+                    <h2 class="section-title">
+                        La Diferencia que<br>
+                        <span class="highlight">Marca la Diferencia</span>
+                    </h2>
+
+                    <div class="why-items">
+                        <div class="why-item">
+                            <div class="why-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="why-text">
+                                <h4>Certificaciones de Primer Nivel</h4>
+                                <p>Productos FM Approved y UL Listed que cumplen con los requisitos
+                                   más exigentes de PEMEX, aseguradoras y corporativos multinacionales.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-item">
+                            <div class="why-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="why-text">
+                                <h4>Expertise Técnico Real</h4>
+                                <p>Ingenieros certificados NFPA que entienden su industria.
+                                   No solo vendemos productos, diseñamos soluciones.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-item">
+                            <div class="why-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="why-text">
+                                <h4>Respuesta Rápida Garantizada</h4>
+                                <p>Cotizaciones en menos de 24 horas. Stock en México para
+                                   despacho inmediato. Servicio de emergencia 24/7.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-item">
+                            <div class="why-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="why-text">
+                                <h4>Compromiso a Largo Plazo</h4>
+                                <p>No terminamos con la venta. Mantenimiento preventivo,
+                                   capacitación continua y soporte de por vida.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="why-image" data-aos="fade-left">
+                    <div class="image-placeholder large">
+                        <div class="placeholder-content">
+                            <i class="fas fa-image"></i>
+                            <span>Imagen Diferenciadores</span>
+                            <small>500x600 - Técnico AQUEON o instalación destacada</small>
+                        </div>
+                    </div>
+
+                    <!-- Floating Stats -->
+                    <div class="floating-stat top-right">
+                        <span class="stat-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="stat-value">100%</span>
+                        <span class="stat-text">Productos Certificados</span>
+                    </div>
+
+                    <div class="floating-stat bottom-left">
+                        <span class="stat-icon"><i class="fas fa-shipping-fast"></i></span>
+                        <span class="stat-value">&lt;24h</span>
+                        <span class="stat-text">Respuesta a Cotizaciones</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="marcas" class="brands-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Nuestros Aliados</span>
+                <h2 class="section-title">Marcas de Clase Mundial</h2>
+                <p class="section-subtitle">
+                    Distribuidores autorizados de los fabricantes líderes en la industria
+                </p>
+            </div>
+
+            <div class="brands-slider" data-aos="fade-up">
+                <div class="brands-track">
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Elkhart Brass</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Akron Brass</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Task Force Tips</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Potter Roemer</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Angus Fire</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Williams Fire</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Elkhart Brass</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-placeholder">
+                            <span>Akron Brass</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications" data-aos="fade-up">
+                <div class="cert-item">
+                    <div class="cert-placeholder">
+                        <i class="fas fa-certificate"></i>
+                        <span>FM Approved</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-placeholder">
+                        <i class="fas fa-certificate"></i>
+                        <span>UL Listed</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-placeholder">
+                        <i class="fas fa-certificate"></i>
+                        <span>NFPA</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-placeholder">
+                        <i class="fas fa-certificate"></i>
+                        <span>ISO 9001</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="testimonials-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
+            </div>
+
+            <div class="testimonials-slider" data-aos="fade-up">
+                <div class="testimonial-card active">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"AQUEON nos ayudó a cumplir con los requisitos de PEMEX en tiempo récord.
+                           Su conocimiento técnico y servicio post-venta son excepcionales."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="author-info">
+                            <h4>Ing. Roberto Martínez</h4>
+                            <span>Gerente de Seguridad Industrial</span>
+                            <span class="company">Refinería del Golfo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Buscábamos un proveedor que entendiera nuestras necesidades específicas.
+                           AQUEON no solo las entendió, las superó con creces."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="author-info">
+                            <h4>Lic. Andrea González</h4>
+                            <span>Directora de Operaciones</span>
+                            <span class="company">Parque Industrial Bajío</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"La asesoría en el proceso de licitación fue invaluable.
+                           Ganamos el contrato gracias a la documentación técnica que AQUEON nos proporcionó."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="author-info">
+                            <h4>Cmdte. Héctor Ramírez</h4>
+                            <span>Comandante</span>
+                            <span class="company">Bomberos Municipales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-nav">
+                <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="nav-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="cta-bg">
+            <div class="image-placeholder full">
+                <div class="placeholder-content">
+                    <i class="fas fa-image"></i>
+                    <span>Imagen CTA Background</span>
+                    <small>1920x600 - Instalación industrial impactante</small>
+                </div>
+            </div>
+            <div class="cta-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>¿Listo para Proteger su Operación?</h2>
+                <p>Solicite una cotización sin compromiso o agende una consulta técnica gratuita
+                   con nuestros especialistas.</p>
+                <div class="cta-buttons">
+                    <a href="#cotizar" class="btn btn-primary btn-lg">
+                        <i class="fas fa-file-invoice"></i> Solicitar Cotización
+                    </a>
+                    <a href="tel:+525512345678" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-phone"></i> Llamar Ahora
+                    </a>
+                </div>
+                <div class="cta-features">
+                    <span><i class="fas fa-check"></i> Respuesta en menos de 24 hrs</span>
+                    <span><i class="fas fa-check"></i> Sin costo ni compromiso</span>
+                    <span><i class="fas fa-check"></i> Asesoría técnica incluida</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <span class="section-tag">Contacto</span>
+                    <h2 class="section-title">Hablemos de su Proyecto</h2>
+                    <p>Estamos listos para ayudarle a proteger su operación.
+                       Contáctenos para una consulta sin compromiso.</p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Teléfono</h4>
+                                <a href="tel:+525512345678">+52 55 1234 5678</a>
+                                <span>Lun - Vie: 8:00 - 18:00</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/5215512345678">+52 55 1234 5678</a>
+                                <span>Respuesta inmediata</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Email</h4>
+                                <a href="mailto:contacto@aqueon.com.mx">contacto@aqueon.com.mx</a>
+                                <span>Respuesta en menos de 24 hrs</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Oficina Central</h4>
+                                <address>
+                                    Av. Paseo de la Reforma 505, Piso 15<br>
+                                    Col. Cuauhtémoc, CDMX 06500
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <h4>Síguenos</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper" data-aos="fade-left" id="cotizar">
+                    <div class="form-card">
+                        <h3>Solicitar Cotización</h3>
+                        <p>Complete el formulario y recibirá una propuesta personalizada
+                           en menos de 24 horas.</p>
+
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre Completo *</label>
+                                    <input type="text" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="empresa">Empresa *</label>
+                                    <input type="text" id="empresa" name="empresa" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono *</label>
+                                    <input type="tel" id="telefono" name="telefono" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industria">Industria *</label>
+                                <select id="industria" name="industria" required>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="petroleo-gas">Petróleo y Gas</option>
+                                    <option value="petroquimica">Petroquímica / Química</option>
+                                    <option value="manufactura">Manufactura</option>
+                                    <option value="parque-industrial">Parque Industrial</option>
+                                    <option value="bomberos">Bomberos / Gobierno</option>
+                                    <option value="aviacion">Aviación</option>
+                                    <option value="mineria">Minería</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tipo-proyecto">Tipo de Proyecto *</label>
+                                <select id="tipo-proyecto" name="tipo-proyecto" required>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="nuevo">Instalación Nueva</option>
+                                    <option value="reemplazo">Reemplazo de Equipos</option>
+                                    <option value="expansion">Expansión de Sistema</option>
+                                    <option value="mantenimiento">Servicio / Mantenimiento</option>
+                                    <option value="asesoria">Solo Asesoría</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mensaje">Comentarios Adicionales</label>
+                                <textarea id="mensaje" name="mensaje" rows="4"
+                                    placeholder="Describa brevemente su proyecto o necesidad..."></textarea>
+                            </div>
+
+                            <div class="form-group checkbox-single">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="privacidad" required>
+                                    <span>He leído y acepto el <a href="#" target="_blank">Aviso de Privacidad</a></span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                <i class="fas fa-paper-plane"></i> Enviar Solicitud
+                            </button>
+
+                            <p class="form-note">
+                                <i class="fas fa-shield-alt"></i>
+                                Su información está segura y no será compartida con terceros.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <div class="logo-icon">
+                                <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M25 10 L25 40 M15 25 L35 25 M18 15 L32 35 M32 15 L18 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="25" cy="25" r="8" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>AQUEON</span>
+                        </a>
+                        <p>Protección industrial de clase mundial. Monitores contra incendios
+                           y sistemas de extinción para industrias de alto riesgo.</p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>Productos</h4>
+                        <ul>
+                            <li><a href="#">Monitores Fijos</a></li>
+                            <li><a href="#">Monitores Portátiles</a></li>
+                            <li><a href="#">Monitores Automáticos</a></li>
+                            <li><a href="#">Boquillas</a></li>
+                            <li><a href="#">Accesorios</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>Soluciones</h4>
+                        <ul>
+                            <li><a href="#">Petróleo y Gas</a></li>
+                            <li><a href="#">Petroquímica</a></li>
+                            <li><a href="#">Manufactura</a></li>
+                            <li><a href="#">Bomberos</a></li>
+                            <li><a href="#">Aviación</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="#">Nosotros</a></li>
+                            <li><a href="#">Servicios</a></li>
+                            <li><a href="#">Recursos</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-newsletter">
+                        <h4>Manténgase Informado</h4>
+                        <p>Suscríbase para recibir actualizaciones técnicas,
+                           nuevos productos y cambios normativos.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Su email" required>
+                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 AQUEON. Todos los derechos reservados.</p>
+                    <div class="footer-legal">
+                        <a href="#">Aviso de Privacidad</a>
+                        <a href="#">Términos y Condiciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" id="backToTop" class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5215512345678" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>¿Necesita ayuda?</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>
