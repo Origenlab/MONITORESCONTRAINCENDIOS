@@ -648,9 +648,15 @@ address {
     z-index: 2;
 }
 
-/* Oculta el placeholder cuando la imagen carga correctamente */
-.feature-image img:not([src=""]):not([src="#"]) + .image-placeholder-box {
-    z-index: 1;
+/* Feature images - la imagen real se muestra sobre el placeholder */
+.feature-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
 }
 
 .image-placeholder-box {
@@ -664,6 +670,7 @@ address {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
     color: var(--gray-600);
     text-align: center;
     padding: var(--space-md);
@@ -965,6 +972,18 @@ address {
     z-index: 2;
 }
 
+/* Industry images - la imagen real se muestra sobre el placeholder */
+.industry-featured-image img,
+.industry-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
 .industry-image-placeholder {
     position: absolute;
     top: 0;
@@ -976,6 +995,7 @@ address {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
     color: var(--white);
     text-align: center;
     z-index: 1;
@@ -1235,6 +1255,17 @@ address {
     overflow: hidden;
 }
 
+.service-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* Service images - la imagen real se muestra sobre el placeholder */
 .service-card-image img {
     position: absolute;
     top: 0;
@@ -1547,6 +1578,17 @@ address {
     overflow: hidden;
 }
 
+.why-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* Why images - la imagen real se muestra sobre el placeholder */
 .why-card-image img {
     position: absolute;
     top: 0;
@@ -1956,6 +1998,7 @@ address {
     background-color: var(--gray-200);
 }
 
+/* Testimonial avatar images - la imagen real se muestra sobre el placeholder */
 .testimonial-avatar img {
     position: absolute;
     top: 0;
@@ -2484,6 +2527,7 @@ address {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 1;
 }
 
 .map-overlay {
@@ -2492,7 +2536,8 @@ address {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 86, 179, 0.9) 0%, rgba(0, 61, 130, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(0, 86, 179, 0.7) 0%, rgba(0, 61, 130, 0.7) 100%);
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
