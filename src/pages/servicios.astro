@@ -1,0 +1,398 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqWhatsapp from '../components/sections/FaqWhatsapp.astro';
+import { servicios, planes, proceso } from '../data/servicios';
+---
+<Base
+  title="Servicios Integrales Contra Incendios | Diseño, Instalación y Mantenimiento | AQUEON México"
+  description="Servicios profesionales de protección contra incendios: diseño e ingeniería NFPA, instalación certificada, capacitación, mantenimiento preventivo NFPA 25, correctivo 24/7 y consultoría normativa. Un solo proveedor para todo el ciclo de vida de su sistema."
+>
+  <!-- Hero de página -->
+  <section class="svc-hero">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Servicios Integrales</span>
+          <h1>Más que Productos, Soluciones Completas</h1>
+        </div>
+        <div class="section-header__body">
+          <p>Cubrimos todo el ciclo de vida de su sistema: <strong>diseño, instalación, capacitación y mantenimiento</strong>.</p>
+          <p>Un solo proveedor con <strong>ingenieros certificados NFPA</strong> y respaldo técnico de por vida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navegación rápida de servicios -->
+  <nav class="quick-nav" aria-label="Servicios">
+    <div class="quick-nav-inner">
+      {servicios.map((s) => (
+        <a href={`#${s.id}`} class="quick-nav-item">
+          <span class="quick-nav-icon" aria-hidden="true"><i class={s.icon}></i></span>
+          <span class="quick-nav-text">
+            <span class="quick-nav-label">{s.titulo}</span>
+            <span class="quick-nav-sub">{s.subtitulo}</span>
+          </span>
+          <i class="fas fa-chevron-right quick-nav-arrow" aria-hidden="true"></i>
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- Proceso -->
+  <section class="svc-proceso">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Nuestro Proceso</span>
+          <h2>De la Cotización a la Protección Completa</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Un proceso claro y sin sorpresas: del <strong>diagnóstico de riesgo</strong> al mantenimiento anual.</p>
+          <p>Cada etapa queda <strong>documentada</strong> para aprobar auditorías de Protección Civil y STPS sin contratiempos.</p>
+        </div>
+      </div>
+
+      <div class="svc-proceso-grid">
+        {proceso.map((p) => (
+          <div class="svc-step">
+            <span class="svc-step-num">{p.numero}</span>
+            <span class="svc-step-icon" aria-hidden="true"><i class={p.icon}></i></span>
+            <h3>{p.titulo}</h3>
+            <p>{p.descripcion}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloques por servicio -->
+  <section class="svc-blocks">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Catálogo de Servicios</span>
+          <h2>Soluciones de Principio a Fin</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Seis servicios especializados que cubren <strong>diseño, instalación, capacitación, mantenimiento y cumplimiento</strong>.</p>
+          <p>Ejecutados por <strong>ingenieros y técnicos certificados</strong>, con entregables documentados.</p>
+        </div>
+      </div>
+
+      {servicios.map((s, i) => (
+        <article id={s.id} class:list={['svc-block', i % 2 === 1 && 'svc-block--rev']}>
+          <div class="svc-block-media">
+            <img src={s.imagen} alt={s.alt} loading="lazy" />
+            <span class="svc-block-num">{s.numero}</span>
+            <span class="svc-block-icon" aria-hidden="true"><i class={s.icon}></i></span>
+          </div>
+          <div class="svc-block-content">
+            <span class="svc-block-kicker">{s.subtitulo}</span>
+            <h3>{s.titulo}</h3>
+            <p>{s.descripcion}</p>
+
+            <ul class="svc-features">
+              {s.features.map((f) => (
+                <li><i class="fas fa-check" aria-hidden="true"></i> {f}</li>
+              ))}
+            </ul>
+
+            <div class="svc-meta">
+              <div class="svc-meta-group">
+                <span class="svc-meta-label"><i class="fas fa-box-open" aria-hidden="true"></i> Entregables</span>
+                <div class="svc-chips">
+                  {s.entregables.map((e) => <span class="svc-chip">{e}</span>)}
+                </div>
+              </div>
+              <div class="svc-meta-group">
+                <span class="svc-meta-label"><i class="fas fa-certificate" aria-hidden="true"></i> Normativas</span>
+                <div class="svc-chips">
+                  {s.normativas.map((n) => <span class="svc-chip svc-chip--norm">{n}</span>)}
+                </div>
+              </div>
+            </div>
+
+            <a href="/#cotizar" class="btn btn-secondary svc-block-btn">
+              <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar este servicio
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Planes de servicio -->
+  <section class="svc-planes">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Planes de Servicio</span>
+          <h2>Niveles de Cobertura AQUEON</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Elija el nivel que mejor se adapte a su operación. Todos incluyen <strong>acceso prioritario</strong> a nuestro equipo técnico.</p>
+          <p>De la garantía estándar al <strong>mantenimiento semestral con técnico dedicado</strong> para instalaciones críticas.</p>
+        </div>
+      </div>
+
+      <div class="plans-grid">
+        {planes.map((plan) => (
+          <div class:list={['plan-card', plan.featured && 'featured', plan.premium && 'premium']}>
+            {plan.featured && <div class="plan-badge">Recomendado</div>}
+            <div class="plan-header">
+              <h4>{plan.nombre}</h4>
+              <p>{plan.subtitulo}</p>
+            </div>
+            <ul class="plan-features">
+              {plan.features.map((f) => (
+                <li><i class="fas fa-check" aria-hidden="true"></i> {f}</li>
+              ))}
+            </ul>
+            <div class="plan-price">
+              <span class="price">{plan.precio}</span>
+              <span class="period">{plan.periodo}</span>
+            </div>
+            <a href="/#cotizar" class="btn btn-primary plan-cta">Contratar plan</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FaqWhatsapp />
+</Base>
+
+<style>
+  /* Hero */
+  .svc-hero {
+    background: var(--bg-0);
+    padding: var(--section-pad) 0 calc(var(--section-pad) * 0.5);
+  }
+  .svc-hero .section-header { margin-bottom: 0; }
+  .svc-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-4xl);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+    margin: var(--space-md) 0 0;
+  }
+  .svc-hero .section-header__body p { font-size: var(--text-base); }
+
+  /* Proceso */
+  .svc-proceso {
+    background: var(--bg-1);
+    padding: var(--section-pad) 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .svc-proceso-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-lg);
+  }
+  .svc-step {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--red);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  }
+  .svc-step-num {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: var(--text-3xl);
+    color: var(--red-soft);
+    line-height: 1;
+    -webkit-text-stroke: 1px var(--border-red);
+  }
+  .svc-step-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: var(--red-soft);
+    border: 1px solid var(--border-red);
+    border-radius: var(--radius-md);
+    color: var(--red-hover);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+  }
+  .svc-step h3 {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-sm);
+  }
+  .svc-step p {
+    color: var(--text-body);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* Bloques por servicio */
+  .svc-blocks { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .svc-block {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4%, 3.5rem);
+    align-items: center;
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    scroll-margin-top: 110px;
+  }
+  .svc-block:last-child { border-bottom: none; }
+  .svc-block--rev .svc-block-media { order: 2; }
+
+  .svc-block-media {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+  .svc-block-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05) contrast(1.03) brightness(0.9);
+  }
+  .svc-block-num {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: var(--text-2xl);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    padding: 0.1rem 0.7rem;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  .svc-block-icon {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--grad-red);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  .svc-block-kicker {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--red-hover);
+    margin-bottom: var(--space-sm);
+  }
+  .svc-block-content h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+  }
+  .svc-block-content > p {
+    color: var(--text-body);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .svc-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 0.6rem 1.5rem;
+  }
+  .svc-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: var(--text-sm);
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+  .svc-features i {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--red-soft);
+    border: 1px solid var(--border-red);
+    border-radius: 50%;
+    color: var(--red-hover);
+    font-size: 0.6rem;
+  }
+
+  .svc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+  .svc-meta-group { flex: 1; min-width: min(100%, 14rem); }
+  .svc-meta-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .svc-meta-label i { color: var(--red); }
+  .svc-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .svc-chip {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-body);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-sm);
+  }
+  .svc-chip--norm {
+    color: #ffb4b4;
+    background: var(--red-soft);
+    border-color: var(--border-red);
+  }
+  .svc-block-btn { align-self: flex-start; }
+
+  /* Planes */
+  .svc-planes {
+    background: var(--bg-1);
+    padding: var(--section-pad) 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .plan-cta { width: 100%; margin-top: var(--space-md); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .svc-block { grid-template-columns: 1fr; }
+    .svc-block--rev .svc-block-media { order: 0; }
+    .svc-block-media img { min-height: 240px; }
+  }
+</style>

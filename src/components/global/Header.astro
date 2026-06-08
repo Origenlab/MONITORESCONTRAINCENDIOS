@@ -47,7 +47,18 @@ import TopBar from './TopBar.astro';
                         <li role="none"><a href="/industrias#bomberos" role="menuitem">Bomberos y Gobierno</a></li>
                     </ul>
                 </li>
-                <li role="none"><a href="/#servicios" class="nav-link" role="menuitem">Servicios</a></li>
+                <li class="has-dropdown" role="none">
+                    <a href="/servicios" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                        Servicios <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown" role="menu">
+                        <li role="none"><a href="/servicios" role="menuitem">Ver todos los servicios</a></li>
+                        <li role="none"><a href="/servicios#diseno-ingenieria" role="menuitem">Diseño e Ingeniería</a></li>
+                        <li role="none"><a href="/servicios#instalacion" role="menuitem">Instalación Profesional</a></li>
+                        <li role="none"><a href="/servicios#mantenimiento-preventivo" role="menuitem">Mantenimiento Preventivo</a></li>
+                        <li role="none"><a href="/servicios#consultoria-normativa" role="menuitem">Consultoría Normativa</a></li>
+                    </ul>
+                </li>
                 <li role="none"><a href="/#nosotros" class="nav-link" role="menuitem">Nosotros</a></li>
                 <li role="none"><a href="/#contacto" class="nav-link" role="menuitem">Contacto</a></li>
             </ul>
