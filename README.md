@@ -35,4 +35,4 @@ python3 -m http.server 8080
 - **Canonical y Open Graph** apuntan a `https://aqueon.com.mx/` (no a monitorescontraincendios.com) — revisar estrategia SEO de dominio.
 - Redes sociales del header/footer apuntan a `#` (placeholders).
 - Teléfono `+52 55 1234 5678` parece placeholder.
-- El sitio en producción es un Worker de Cloudflare (Astro SSR, script `lgacontraincendios`); esta copia es la versión renderizada estática.
+- El sitio en producción es estático (HTML/CSS/JS puro, probablemente Cloudflare Pages). No existe repo fuente en GitHub (Origenlab) ni localmente — **esta carpeta es ahora la única fuente del sitio**. El Worker `lgacontraincendios` es otro proyecto, no este dominio.
