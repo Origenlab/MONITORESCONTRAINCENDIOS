@@ -1,0 +1,247 @@
+---
+import Base from '../layouts/Base.astro';
+
+const certificaciones = [
+  {
+    icon: 'fas fa-certificate',
+    nombre: 'FM Approved',
+    detalle:
+      'Certificación de FM Approvals (FM Global), el estándar de oro de la protección contra incendios industrial. Implica pruebas hidrostáticas, de desempeño hidráulico, de corrosión y auditoría continua de fábrica. Es requisito en especificaciones de PEMEX y referencia de las aseguradoras internacionales.',
+  },
+  {
+    icon: 'fas fa-certificate',
+    nombre: 'UL Listed',
+    detalle:
+      'Listado de Underwriters Laboratories, laboratorio independiente fundado en 1894. Certifica desempeño y seguridad del producto con pruebas de laboratorio e inspecciones de seguimiento en fábrica. Verificable públicamente en el directorio UL Product iQ.',
+  },
+  {
+    icon: 'fas fa-bolt',
+    nombre: 'ATEX / IECEx',
+    detalle:
+      'Certificación para equipos con componentes eléctricos instalados en atmósferas potencialmente explosivas (áreas clasificadas Clase I División 1 y 2). Indispensable en refinerías, plantas químicas y terminales con vapores inflamables.',
+  },
+  {
+    icon: 'fas fa-shield-alt',
+    nombre: 'SIL2 (IEC 61508/61511)',
+    detalle:
+      'Nivel de Integridad de Seguridad para sistemas automáticos que forman parte de funciones instrumentadas de seguridad. Garantiza probabilidades de falla verificadas en sistemas de detección y supresión automática.',
+  },
+];
+
+const normas = [
+  {
+    nombre: 'NFPA 15',
+    titulo: 'Sistemas Fijos de Agua Pulverizada',
+    detalle:
+      'Norma de diseño para sistemas de enfriamiento y protección por agua, incluyendo monitores fijos: densidades de aplicación, cobertura, cálculos hidráulicos y posicionamiento de equipos.',
+  },
+  {
+    nombre: 'NFPA 11',
+    titulo: 'Espuma de Baja, Media y Alta Expansión',
+    detalle:
+      'Rige los sistemas de espuma indispensables para incendios de hidrocarburos: cámaras de espuma, proporcionadores, concentraciones (3% / 6%) y reservas de concentrado para el escenario de diseño.',
+  },
+  {
+    nombre: 'NFPA 24',
+    titulo: 'Redes Privadas de Servicio Contra Incendios',
+    detalle:
+      'Diseño de la red hidráulica que alimenta monitores e hidrantes: tuberías, válvulas, conexiones y capacidad para sostener el caudal y presión del escenario crítico.',
+  },
+  {
+    nombre: 'NFPA 25',
+    titulo: 'Inspección, Prueba y Mantenimiento',
+    detalle:
+      'Define qué, cómo y con qué frecuencia debe inspeccionarse, probarse y mantenerse cada componente de un sistema de protección a base de agua durante toda su vida útil.',
+  },
+  {
+    nombre: 'NOM-002-STPS',
+    titulo: 'Prevención y Protección contra Incendios en los Centros de Trabajo',
+    detalle:
+      'Norma Oficial Mexicana que obliga a los centros de trabajo a contar con equipos de supresión adecuados al grado de riesgo, brigadas capacitadas y registros de mantenimiento documentados.',
+  },
+];
+---
+<Base
+  title="Recursos Técnicos | Normas NFPA y Certificaciones | AQUEON México"
+  description="Recursos técnicos de protección contra incendios industrial: certificaciones FM Approved, UL Listed, ATEX y SIL2, y normas NFPA 15, NFPA 11, NFPA 24, NFPA 25 y NOM-002-STPS explicadas por los ingenieros de AQUEON México."
+>
+  <section class="resources-hero">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Recursos Técnicos</span>
+        <h1>Normas y Certificaciones de Protección Contra Incendios</h1>
+        <p>
+          Referencia rápida de las certificaciones internacionales y normas técnicas que rigen los sistemas
+          de monitores contra incendios en México. Nuestros ingenieros certificados NFPA le ayudan a aplicarlas
+          correctamente en su instalación.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="resources-section">
+    <div class="container">
+      <h2 class="resources-title"><i class="fas fa-award" aria-hidden="true"></i> Certificaciones Internacionales</h2>
+      <div class="resources-grid">
+        {certificaciones.map((cert) => (
+          <article class="resource-card">
+            <div class="resource-icon"><i class={cert.icon} aria-hidden="true"></i></div>
+            <h3>{cert.nombre}</h3>
+            <p>{cert.detalle}</p>
+          </article>
+        ))}
+      </div>
+
+      <h2 class="resources-title"><i class="fas fa-book" aria-hidden="true"></i> Normas Técnicas Aplicables</h2>
+      <div class="resources-grid">
+        {normas.map((norma) => (
+          <article class="resource-card">
+            <div class="resource-badge">{norma.nombre}</div>
+            <h3>{norma.titulo}</h3>
+            <p>{norma.detalle}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="resources-cta">
+        <h2>¿Su instalación cumple con la normativa?</h2>
+        <p>
+          Nuestro servicio de consultoría normativa audita su cumplimiento de NOM-002-STPS, normas NFPA
+          y requisitos de PEMEX y aseguradoras. Diagnóstico inicial sin costo.
+        </p>
+        <a href="/#cotizar" class="btn btn-primary btn-lg">
+          <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización Gratuita
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .resources-hero {
+    background: var(--bg-0);
+    padding: var(--section-pad) 0 calc(var(--section-pad) * 0.5);
+  }
+
+  .resources-hero .section-header {
+    margin-bottom: 0;
+  }
+
+  .resources-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-3xl);
+    color: var(--text-strong);
+    margin: var(--space-md) 0;
+  }
+
+  .resources-hero p {
+    color: var(--text-body);
+    font-size: var(--text-md);
+  }
+
+  .resources-section {
+    background: var(--bg-1);
+    padding: var(--section-pad) 0;
+  }
+
+  .resources-title {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-strong);
+    font-size: var(--text-xl);
+    margin: var(--space-2xl) 0 var(--space-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .resources-title:first-of-type {
+    margin-top: 0;
+  }
+
+  .resources-title i {
+    color: var(--red);
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: 2%;
+    row-gap: var(--space-xl);
+  }
+
+  .resource-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: var(--transition);
+  }
+
+  .resource-card:hover {
+    transform: translateY(-1px);
+    border-color: var(--border-red);
+    box-shadow: var(--glow-red);
+  }
+
+  .resource-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-md);
+    background: var(--red-soft);
+    border: 1px solid var(--border-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red-hover);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .resource-badge {
+    display: inline-block;
+    background: var(--grad-red);
+    color: #fff;
+    border-radius: var(--radius-full);
+    padding: 0.3rem 0.9rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .resource-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-strong);
+    font-size: var(--text-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .resource-card p {
+    color: var(--text-body);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .resources-cta {
+    margin-top: var(--space-3xl);
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border-red);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+  }
+
+  .resources-cta h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-strong);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .resources-cta p {
+    color: var(--text-body);
+    max-width: min(100%, 40rem);
+    margin: 0 auto var(--space-lg);
+  }
+</style>

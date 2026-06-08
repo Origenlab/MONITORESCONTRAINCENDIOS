@@ -1,0 +1,311 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const fecha = post.data.pubDate.toLocaleDateString('es-MX', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+<Base
+  title={`${post.data.title} | AQUEON México`}
+  description={post.data.description}
+  ogImage={post.data.image}
+>
+  <article class="post">
+    <header class="post-header">
+      <div class="container">
+        <nav class="post-breadcrumb" aria-label="Migas de pan">
+          <a href="/">Inicio</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <a href="/blog">Blog</a>
+        </nav>
+        <span class="section-tag">{post.data.category}</span>
+        <h1>{post.data.title}</h1>
+        <p class="post-meta">
+          <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+          <time datetime={post.data.pubDate.toISOString()}>{fecha}</time>
+          <span class="post-meta-sep">·</span>
+          <i class="fas fa-user-shield" aria-hidden="true"></i>
+          Equipo de ingeniería AQUEON
+        </p>
+      </div>
+    </header>
+
+    {post.data.image && (
+      <div class="container">
+        <div class="post-cover">
+          <img src={post.data.image} alt={post.data.title} loading="eager" />
+        </div>
+      </div>
+    )}
+
+    <div class="container">
+      <div class="post-body">
+        <Content />
+      </div>
+
+      <aside class="post-cta">
+        <h2>¿Necesita asesoría para su proyecto?</h2>
+        <p>Nuestros ingenieros certificados NFPA responden en menos de 24 horas. Cotización gratuita y sin compromiso.</p>
+        <a href="/#cotizar" class="btn btn-primary btn-lg">
+          <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización Gratuita
+        </a>
+      </aside>
+
+      <p class="post-back">
+        <a href="/blog"><i class="fas fa-arrow-left" aria-hidden="true"></i> Volver al blog</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .post {
+    background: var(--bg-0);
+    padding-bottom: var(--section-pad);
+  }
+
+  .post-header {
+    padding: calc(var(--section-pad) * 0.7) 0 var(--space-2xl);
+  }
+
+  .post-header .container,
+  .post-cover,
+  .post-body,
+  .post-cta,
+  .post-back {
+    max-width: min(100%, 52rem);
+    margin-inline: auto;
+  }
+
+  .post-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .post-breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+
+  .post-breadcrumb a:hover {
+    color: var(--red-hover);
+  }
+
+  .post-breadcrumb i {
+    font-size: 0.6rem;
+  }
+
+  .post-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-3xl);
+    line-height: 1.2;
+    color: var(--text-strong);
+    margin: var(--space-md) 0;
+  }
+
+  .post-meta {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .post-meta i {
+    color: var(--red);
+  }
+
+  .post-meta-sep {
+    color: var(--border-strong);
+  }
+
+  .post-cover {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .post-cover img {
+    width: 100%;
+    display: block;
+    filter: saturate(1.06) contrast(1.03) brightness(0.96);
+  }
+
+  /* ===== Prosa del artículo (contenido Markdown) ===== */
+  .post-body {
+    color: var(--text-body);
+    font-size: var(--text-base);
+    line-height: 1.8;
+  }
+
+  .post-body :global(h2) {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-strong);
+    font-size: var(--text-xl);
+    margin: var(--space-2xl) 0 var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .post-body :global(h3) {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-strong);
+    font-size: var(--text-lg);
+    margin: var(--space-xl) 0 var(--space-md);
+  }
+
+  .post-body :global(h4) {
+    color: var(--text-strong);
+    font-size: var(--text-md);
+    margin: var(--space-lg) 0 var(--space-sm);
+  }
+
+  .post-body :global(p) {
+    margin: var(--space-md) 0;
+  }
+
+  .post-body :global(strong) {
+    color: var(--text-strong);
+  }
+
+  .post-body :global(em) {
+    color: var(--text-body);
+  }
+
+  .post-body :global(a) {
+    color: var(--red-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: var(--transition-fast);
+  }
+
+  .post-body :global(a:hover) {
+    color: var(--red);
+  }
+
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    margin: var(--space-md) 0;
+    padding-left: 1.5rem;
+  }
+
+  .post-body :global(li) {
+    margin: var(--space-sm) 0;
+  }
+
+  .post-body :global(li::marker) {
+    color: var(--red);
+  }
+
+  .post-body :global(blockquote) {
+    background: var(--surface);
+    border-left: 4px solid var(--red);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg) var(--space-xl);
+    margin: var(--space-xl) 0;
+  }
+
+  .post-body :global(blockquote p) {
+    margin: 0;
+  }
+
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-xl) 0;
+    font-size: var(--text-sm);
+    display: block;
+    overflow-x: auto;
+  }
+
+  .post-body :global(th) {
+    background: var(--surface-2);
+    color: var(--text-strong);
+    text-align: left;
+    padding: var(--space-md);
+    border: 1px solid var(--border-subtle);
+    font-family: 'Space Grotesk', sans-serif;
+    white-space: nowrap;
+  }
+
+  .post-body :global(td) {
+    padding: var(--space-md);
+    border: 1px solid var(--border-subtle);
+    background: var(--surface);
+    vertical-align: top;
+  }
+
+  .post-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--border-strong);
+    margin: var(--space-2xl) 0;
+  }
+
+  .post-body :global(img) {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* ===== CTA final ===== */
+  .post-cta {
+    margin-top: var(--space-3xl);
+    background: var(--surface);
+    border: 1px solid var(--border-red);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    text-align: center;
+  }
+
+  .post-cta h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-strong);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .post-cta p {
+    color: var(--text-body);
+    margin-bottom: var(--space-lg);
+  }
+
+  .post-back {
+    margin-top: var(--space-2xl);
+  }
+
+  .post-back a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    transition: var(--transition-fast);
+  }
+
+  .post-back a:hover {
+    color: var(--red-hover);
+  }
+</style>

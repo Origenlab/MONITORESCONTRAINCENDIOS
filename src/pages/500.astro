@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Error del servidor (500) | AQUEON México"
+  description="Ocurrió un error temporal en el servidor. Intente de nuevo en unos momentos o contacte a AQUEON México por teléfono o WhatsApp."
+>
+  <section class="error-page">
+    <div class="container">
+      <div class="error-card">
+        <div class="error-code">500</div>
+        <h1>Error del servidor</h1>
+        <p>
+          Ocurrió un error temporal de nuestro lado. Intente recargar la página en unos momentos.
+          Si necesita atención inmediata, llámenos: estamos disponibles 24/7 para emergencias.
+        </p>
+        <div class="error-actions">
+          <a href="/" class="btn btn-primary btn-lg">
+            <i class="fas fa-home" aria-hidden="true"></i> Ir al Inicio
+          </a>
+          <a href="tel:+525512345678" class="btn btn-outline btn-lg">
+            <i class="fas fa-phone" aria-hidden="true"></i> +52 55 1234 5678
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .error-page {
+    background: var(--bg-0);
+    padding: var(--section-pad) 0;
+    display: flex;
+    align-items: center;
+    min-height: 55vh;
+  }
+
+  .error-card {
+    max-width: min(100%, 38rem);
+    margin: 0 auto;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3xl) var(--space-2xl);
+  }
+
+  .error-code {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    background: var(--grad-red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+    margin-bottom: var(--space-md);
+  }
+
+  .error-card h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-strong);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .error-card p {
+    color: var(--text-body);
+    margin-bottom: var(--space-xl);
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
