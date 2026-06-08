@@ -1,0 +1,62 @@
+---
+const features = [
+  {
+    imagen: '/images/certificaciones-fm-approved-ul-listed-monitores-contra-incendios.webp',
+    alt: 'Certificaciones FM Approved y UL Listed para monitores contra incendios',
+    icon: 'fas fa-certificate',
+    placeholder: 'Certificaciones FM / UL',
+    titulo: 'Certificación FM Approved y UL Listed',
+    texto:
+      'Todos nuestros productos cuentan con las certificaciones internacionales más reconocidas. Cumplimos con los requisitos de PEMEX, aseguradoras y corporativos multinacionales.',
+  },
+  {
+    imagen: '/images/almacen-monitores-contra-incendios-industriales-mexico.webp',
+    alt: 'Almacén de monitores contra incendios en México con stock disponible',
+    icon: 'fas fa-warehouse',
+    placeholder: 'Stock en México',
+    titulo: 'Stock en México para Entrega Inmediata',
+    texto:
+      'Mantenemos inventario permanente en territorio nacional. Esto significa tiempos de entrega reducidos y disponibilidad garantizada cuando su proyecto lo requiera.',
+  },
+  {
+    imagen: '/images/soporte-tecnico-monitores-contra-incendios-industrial.webp',
+    alt: 'Equipo de ingenieros especializados en soporte técnico 24/7',
+    icon: 'fas fa-headset',
+    placeholder: 'Soporte Técnico 24/7',
+    titulo: 'Soporte Técnico Especializado 24/7',
+    texto:
+      'Nuestro equipo de ingenieros certificados NFPA está disponible las 24 horas del día, los 7 días de la semana, para resolver cualquier emergencia o consulta técnica.',
+  },
+  {
+    imagen: '/images/instalacion-profesional-monitores-contra-incendios.webp',
+    alt: 'Instalación profesional de monitores contra incendios en planta industrial',
+    icon: 'fas fa-tools',
+    placeholder: 'Instalación Profesional',
+    titulo: 'Instalación y Mantenimiento Profesional',
+    texto:
+      'Ofrecemos servicio integral que incluye diseño, instalación, puesta en marcha, capacitación y programas de mantenimiento preventivo conforme a NFPA 25.',
+  },
+];
+---
+<section class="features-section">
+    <div class="container">
+        <div class="features-grid">
+            {features.map((f) => (
+                <article class="feature-card">
+                    <div class="feature-image">
+                        <img src={f.imagen} alt={f.alt} loading="lazy" />
+                        <div class="image-placeholder-box">
+                            <i class={f.icon} aria-hidden="true"></i>
+                            <span>{f.placeholder}</span>
+                            <small>800 x 600 px recomendado</small>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>{f.titulo}</h3>
+                        <p>{f.texto}</p>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,95 @@
+---
+import { testimonios } from '../../data/testimonios';
+
+// rating 5 → 5 estrellas llenas; rating 4.5 → 4 llenas + 1 media
+function estrellas(rating: number): string[] {
+  const llenas = Math.floor(rating);
+  const media = rating % 1 !== 0;
+  const iconos = Array(llenas).fill('fas fa-star');
+  if (media) iconos.push('fas fa-star-half-alt');
+  return iconos;
+}
+---
+<section class="testimonials-section">
+    <div class="container">
+        <!-- Header con estadísticas -->
+        <div class="testimonials-header">
+            <div class="testimonials-header-content">
+                <span class="section-tag">Testimonios</span>
+                <h2>Lo que Dicen Nuestros Clientes</h2>
+                <p>
+                    La satisfacción de nuestros clientes es nuestra mayor carta de presentación.
+                    Más de 500 empresas en México confían en AQUEON para proteger sus operaciones críticas.
+                </p>
+            </div>
+            <div class="testimonials-stats">
+                <div class="testimonial-stat">
+                    <span class="stat-value">4.9</span>
+                    <div class="stat-stars">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <span class="stat-label">Calificación Promedio</span>
+                </div>
+                <div class="testimonial-stat">
+                    <span class="stat-value">98%</span>
+                    <span class="stat-label">Clientes Satisfechos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Testimonios 3x3 -->
+        <div class="testimonials-grid">
+            {testimonios.map((t) => (
+                <article class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src={t.imagen} alt={t.alt} loading="lazy" />
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-meta">
+                            <h4>{t.nombre}</h4>
+                            <span class="testimonial-role">{t.rol}</span>
+                            <span class="testimonial-company">
+                                <i class="fas fa-building" aria-hidden="true"></i>
+                                {t.empresa}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        {estrellas(t.rating).map((icono) => (
+                            <i class={icono} aria-hidden="true"></i>
+                        ))}
+                    </div>
+                    <div class="testimonial-content">
+                        <p>{t.texto}</p>
+                    </div>
+                    <div class="testimonial-footer">
+                        <span class="testimonial-date">
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                            {t.fecha}
+                        </span>
+                        <span class="testimonial-verified">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
+                            Verificado
+                        </span>
+                    </div>
+                </article>
+            ))}
+        </div>
+
+        <!-- CTA de Testimonios -->
+        <div class="testimonials-cta">
+            <p>¿Ya es cliente de AQUEON? Comparta su experiencia con nosotros.</p>
+            <a href="/#contacto" class="btn btn-outline">
+                <i class="fas fa-comment-alt" aria-hidden="true"></i>
+                Dejar una Reseña
+            </a>
+        </div>
+    </div>
+</section>

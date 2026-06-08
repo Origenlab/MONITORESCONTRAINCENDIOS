@@ -1,0 +1,211 @@
+---
+const servicios = [
+  {
+    imagen: '/images/diseno-ingenieria-sistemas-monitores-contra-incendios.webp',
+    alt: 'Ingenieros diseñando sistemas contra incendios',
+    placeholderIcon: 'fas fa-drafting-compass',
+    numero: '01',
+    titulo: 'Diseño e Ingeniería',
+    descripcion:
+      'Diseño profesional de sistemas contra incendio conforme a NFPA 15, NFPA 11 y NFPA 24. Nuestros ingenieros certificados desarrollan soluciones a la medida de cada proyecto.',
+    features: [
+      'Cálculos hidráulicos profesionales',
+      'Planos y especificaciones técnicas',
+      'Análisis de riesgo y cobertura',
+      'Documentación para aseguradoras',
+    ],
+  },
+  {
+    imagen: '/images/instalacion-monitores-contra-incendios-industriales.webp',
+    alt: 'Técnicos instalando monitores contra incendios',
+    placeholderIcon: 'fas fa-tools',
+    numero: '02',
+    titulo: 'Instalación Profesional',
+    descripcion:
+      'Montaje e instalación por técnicos certificados con amplia experiencia en proyectos industriales. Integración completa con su red hidráulica y sistemas existentes.',
+    features: [
+      'Técnicos certificados NFPA',
+      'Pruebas hidrostáticas incluidas',
+      'Documentación completa de entrega',
+      'Garantía de instalación',
+    ],
+  },
+  {
+    imagen: '/images/capacitacion-uso-monitores-contra-incendios.webp',
+    alt: 'Capacitación de brigadas de emergencia',
+    placeholderIcon: 'fas fa-chalkboard-teacher',
+    numero: '03',
+    titulo: 'Capacitación Especializada',
+    descripcion:
+      'Entrenamiento completo a brigadas y operadores en uso correcto de equipos, mantenimiento básico y protocolos de emergencia. Certificados de competencia incluidos.',
+    features: [
+      'Capacitación teórico-práctica',
+      'Certificados de competencia',
+      'Material didáctico incluido',
+      'Simulacros de emergencia',
+    ],
+  },
+  {
+    imagen: '/images/mantenimiento-preventivo-monitores-contra-incendios.webp',
+    alt: 'Mantenimiento preventivo de monitores contra incendios',
+    placeholderIcon: 'fas fa-clipboard-check',
+    numero: '04',
+    titulo: 'Mantenimiento Preventivo',
+    descripcion:
+      'Programas de mantenimiento conforme NFPA 25 para garantizar la disponibilidad de sus equipos cuando más los necesite. Inspecciones programadas y reportes detallados.',
+    features: [
+      'Inspecciones programadas',
+      'Reportes de condición',
+      'Garantía de funcionamiento',
+      'Refacciones originales',
+    ],
+  },
+  {
+    imagen: '/images/mantenimiento-correctivo-monitores-contra-incendios.webp',
+    alt: 'Reparación de equipos contra incendios',
+    placeholderIcon: 'fas fa-wrench',
+    numero: '05',
+    titulo: 'Mantenimiento Correctivo',
+    descripcion:
+      'Reparación de fallas con respuesta rápida. Técnicos disponibles 24/7 para emergencias. Stock de refacciones originales para minimizar tiempos de paro.',
+    features: [
+      'Respuesta en menos de 24 horas',
+      'Refacciones 100% originales',
+      'Servicio de emergencia 24/7',
+      'Diagnóstico especializado',
+    ],
+  },
+  {
+    imagen: '/images/consultoria-normativa-nfpa-monitores-contra-incendios.webp',
+    alt: 'Consultoría normativa NFPA y NOM',
+    placeholderIcon: 'fas fa-file-contract',
+    numero: '06',
+    titulo: 'Consultoría Normativa',
+    descripcion:
+      'Asesoría especializada en cumplimiento de NOM-002-STPS, normas NFPA y requisitos de aseguradoras. Preparación para auditorías e inspecciones.',
+    features: [
+      'Auditorías de cumplimiento',
+      'Preparación para inspecciones',
+      'Actualización normativa',
+      'Gestión con aseguradoras',
+    ],
+  },
+];
+
+const planes = [
+  {
+    nombre: 'AQUEON Basic',
+    subtitulo: 'Para clientes con capacidad técnica interna',
+    featured: false,
+    premium: false,
+    features: [
+      'Garantía estándar de fábrica',
+      'Soporte telefónico en horario de oficina',
+      'Documentación técnica online',
+      'Capacitación básica (2 horas)',
+    ],
+    precio: 'Incluido',
+    periodo: 'con la compra',
+  },
+  {
+    nombre: 'AQUEON Plus',
+    subtitulo: 'Para quienes valoran la prevención',
+    featured: true,
+    premium: false,
+    features: [
+      'Todo lo incluido en Basic',
+      'Mantenimiento preventivo anual',
+      'Garantía extendida a 3 años',
+      'Respuesta prioritaria en 24 horas',
+      'Capacitación avanzada (8 horas)',
+      '10% de descuento en refacciones',
+    ],
+    precio: '8-12%',
+    periodo: 'anual del valor del equipo',
+  },
+  {
+    nombre: 'AQUEON Premium',
+    subtitulo: 'Para instalaciones críticas',
+    featured: false,
+    premium: true,
+    features: [
+      'Todo lo incluido en Plus',
+      'Mantenimiento semestral',
+      'Garantía extendida a 5 años',
+      'Emergencia 24/7 (4 horas de respuesta)',
+      'Técnico dedicado asignado',
+      'Refacciones en consignación',
+      'Auditorías de cumplimiento',
+    ],
+    precio: '15-20%',
+    periodo: 'anual del valor del equipo',
+  },
+];
+---
+<section id="servicios" class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Servicios Integrales</span>
+            <h2>Más que Productos, Soluciones Completas</h2>
+            <p>
+                Nuestro compromiso va más allá de la venta de equipos. Ofrecemos un servicio integral que cubre
+                todo el ciclo de vida de su sistema de protección contra incendios, desde la consultoría inicial
+                hasta el mantenimiento de por vida.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            {servicios.map((servicio) => (
+                <article class="service-card">
+                    <div class="service-card-image">
+                        <img src={servicio.imagen} alt={servicio.alt} loading="lazy" />
+                        <div class="service-image-placeholder">
+                            <i class={servicio.placeholderIcon} aria-hidden="true"></i>
+                        </div>
+                        <div class="service-number">{servicio.numero}</div>
+                    </div>
+                    <div class="service-card-content">
+                        <h3>{servicio.titulo}</h3>
+                        <p>{servicio.descripcion}</p>
+                        <ul class="service-features">
+                            {servicio.features.map((feature) => (
+                                <li><i class="fas fa-check" aria-hidden="true"></i> {feature}</li>
+                            ))}
+                        </ul>
+                        <a href="/#cotizar" class="btn btn-primary">Solicitar Servicio</a>
+                    </div>
+                </article>
+            ))}
+        </div>
+
+        <!-- Planes de Servicio -->
+        <div class="service-plans">
+            <h3>Planes de Servicio AQUEON</h3>
+            <p class="plans-intro">
+                Elija el nivel de servicio que mejor se adapte a las necesidades de su operación.
+                Todos nuestros planes incluyen acceso prioritario a nuestro equipo técnico.
+            </p>
+
+            <div class="plans-grid">
+                {planes.map((plan) => (
+                    <div class={`plan-card${plan.featured ? ' featured' : ''}${plan.premium ? ' premium' : ''}`}>
+                        {plan.featured && <div class="plan-badge">Recomendado</div>}
+                        <div class="plan-header">
+                            <h4>{plan.nombre}</h4>
+                            <p>{plan.subtitulo}</p>
+                        </div>
+                        <ul class="plan-features">
+                            {plan.features.map((feature) => (
+                                <li><i class="fas fa-check" aria-hidden="true"></i> {feature}</li>
+                            ))}
+                        </ul>
+                        <div class="plan-price">
+                            <span class="price">{plan.precio}</span>
+                            <span class="period">{plan.periodo}</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

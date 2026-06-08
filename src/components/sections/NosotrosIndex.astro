@@ -1,0 +1,65 @@
+---
+const aboutFeatures = [
+  'Distribuidores autorizados de marcas líderes mundiales',
+  'Equipo de ingenieros certificados NFPA',
+  'Cobertura nacional en toda la República Mexicana',
+  'Programas de mantenimiento preventivo certificados',
+  'Experiencia comprobada en proyectos PEMEX',
+  'Capacitación especializada para brigadas',
+];
+
+const stats = [
+  { numero: '15+', label: 'Años de Experiencia' },
+  { numero: '500+', label: 'Proyectos Completados' },
+  { numero: '50+', label: 'Ingenieros Especializados' },
+  { numero: '32', label: 'Estados con Cobertura' },
+];
+---
+<section id="nosotros" class="about-section">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <span class="section-tag">Sobre AQUEON</span>
+                <h2>Expertise Técnico que Protege, Servicio que Respalda</h2>
+
+                <p>
+                    En AQUEON somos especialistas en soluciones de protección contra incendios para industrias de alto riesgo.
+                    Fundada en 2009, nuestra empresa nació con la misión de proveer a la industria mexicana equipos de la más
+                    alta calidad, respaldados por un servicio técnico excepcional.
+                </p>
+
+                <p>
+                    Combinamos el conocimiento técnico profundo de nuestros ingenieros con un compromiso inquebrantable de
+                    servicio para proteger lo que más importa: su operación, sus activos y su gente. Entendemos que en la
+                    industria petrolera, petroquímica y manufacturera, la seguridad no es negociable.
+                </p>
+
+                <p>
+                    Somos distribuidores autorizados de las marcas más reconocidas a nivel mundial en equipos contra incendio:
+                    <strong>Elkhart Brass, Akron Brass, Task Force Tips, Williams Fire y Angus Fire</strong>. Esta alianza
+                    estratégica nos permite ofrecer productos de primera línea con garantía de fábrica y soporte técnico directo.
+                </p>
+
+                <div class="about-features">
+                    {aboutFeatures.map((feature) => (
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
+                            <span>{feature}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div class="about-stats">
+                <div class="stats-card">
+                    {stats.map((stat) => (
+                        <div class="stat-big">
+                            <span class="number">{stat.numero}</span>
+                            <span class="label">{stat.label}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

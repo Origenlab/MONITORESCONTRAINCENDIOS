@@ -1,0 +1,77 @@
+---
+import { industriaDestacada, industrias } from '../../data/industrias';
+---
+<section id="industrias" class="industries-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Sectores que Atendemos</span>
+            <h2>Soluciones Especializadas por Industria</h2>
+            <p>
+                Cada industria tiene necesidades únicas de protección contra incendios. Nuestro enfoque especializado
+                garantiza que proporcionamos la solución óptima para su operación específica, cumpliendo con todas las
+                normas y regulaciones aplicables.
+            </p>
+        </div>
+
+        <!-- Industria Destacada: Petróleo y Gas -->
+        <article class="industry-featured" id={industriaDestacada.id}>
+            <div class="industry-featured-image">
+                <img src={industriaDestacada.imagen} alt={industriaDestacada.alt} loading="lazy" />
+                <div class="industry-image-placeholder">
+                    <i class={industriaDestacada.placeholderIcon} aria-hidden="true"></i>
+                    <span>{industriaDestacada.placeholderLabel}</span>
+                    <small>1200 x 600 px recomendado</small>
+                </div>
+            </div>
+            <div class="industry-featured-content">
+                <span class="industry-badge">{industriaDestacada.badge}</span>
+                <h3>{industriaDestacada.titulo}</h3>
+                <p>{industriaDestacada.descripcion}</p>
+                <div class="industry-stats">
+                    {industriaDestacada.stats.map((stat) => (
+                        <div class="industry-stat">
+                            <span class="stat-number">{stat.numero}</span>
+                            <span class="stat-text">{stat.texto}</span>
+                        </div>
+                    ))}
+                </div>
+                <ul class="industry-features">
+                    {industriaDestacada.features.map((feature) => (
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> {feature}</li>
+                    ))}
+                </ul>
+                <a href="/#cotizar" class="btn btn-primary btn-lg">
+                    <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización
+                </a>
+            </div>
+        </article>
+
+        <!-- Grid de Industrias Secundarias -->
+        <div class="industries-grid">
+            {industrias.map((industria) => (
+                <article class="industry-card" id={industria.id}>
+                    <div class="industry-card-image">
+                        <img src={industria.imagen} alt={industria.alt} loading="lazy" />
+                        <div class="industry-image-placeholder">
+                            <i class={industria.placeholderIcon} aria-hidden="true"></i>
+                            <span>{industria.placeholderLabel}</span>
+                        </div>
+                        <div class="industry-card-overlay">
+                            <span class="overlay-icon"><i class={industria.placeholderIcon} aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    <div class="industry-card-content">
+                        <h3>{industria.titulo}</h3>
+                        <p>{industria.descripcion}</p>
+                        <ul class="industry-features">
+                            {industria.features.map((feature) => (
+                                <li><i class="fas fa-check" aria-hidden="true"></i> {feature}</li>
+                            ))}
+                        </ul>
+                        <a href="/#cotizar" class="btn btn-primary">Más Información</a>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>

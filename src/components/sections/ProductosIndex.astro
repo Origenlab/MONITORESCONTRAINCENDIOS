@@ -1,0 +1,61 @@
+---
+import { categorias } from '../../data/productos';
+---
+<section id="productos" class="products-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Catálogo de Productos</span>
+            <h2>Monitores Contra Incendios Certificados</h2>
+            <p>
+                Ofrecemos una línea completa de monitores contra incendios diseñados para satisfacer las necesidades
+                más exigentes de la industria. Todos nuestros productos cuentan con certificaciones FM Approved y UL Listed,
+                garantizando el máximo nivel de seguridad y cumplimiento normativo.
+            </p>
+        </div>
+
+        {categorias.map((categoria) => (
+            <div class="product-category">
+                <h3 id={categoria.id}>{categoria.titulo}</h3>
+                <p class="category-description">{categoria.descripcion}</p>
+
+                <div class="products-grid">
+                    {categoria.productos.map((producto) => (
+                        <article class="product-card">
+                            {producto.badge && (
+                                <div class={producto.badgePremium ? 'product-badge premium' : 'product-badge'}>{producto.badge}</div>
+                            )}
+                            <div class="product-image">
+                                <div class="image-placeholder">
+                                    <i class={producto.placeholderIcon} aria-hidden="true"></i>
+                                    <span>{producto.placeholderLabel}</span>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h4>{producto.nombre}</h4>
+                                <p>{producto.descripcion}</p>
+                                <ul class="product-specs">
+                                    {producto.specs.map((spec) => (
+                                        <li><i class={spec.icon} aria-hidden="true"></i> {spec.text}</li>
+                                    ))}
+                                </ul>
+                                <div class="product-actions">
+                                    <a href="/#cotizar" class="btn btn-primary btn-sm">Solicitar Cotización</a>
+                                    {producto.fichaTecnica && (
+                                        <a href="#" class="btn btn-outline btn-sm">Ficha Técnica</a>
+                                    )}
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        ))}
+
+        <div class="products-cta">
+            <p>¿No encuentra el producto que busca? Contamos con acceso a catálogos completos de todos nuestros fabricantes asociados.</p>
+            <a href="/#contacto" class="btn btn-secondary btn-lg">
+                <i class="fas fa-phone" aria-hidden="true"></i> Contactar a un Especialista
+            </a>
+        </div>
+    </div>
+</section>
