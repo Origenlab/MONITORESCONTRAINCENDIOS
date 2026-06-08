@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "astro build && wrangler pages deploy dist --project-name=monitorescontraincendios --branch=production"
+    "deploy": "astro build && npx wrangler pages deploy dist --project-name=monitorescontraincendios --branch=production"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",
