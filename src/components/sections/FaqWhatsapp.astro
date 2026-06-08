@@ -29,7 +29,8 @@ const faqs = [
   },
 ];
 ---
-<section id="preguntas" class="faq-section">
+<section id="contacto" class="faq-section">
+  <span id="preguntas" class="anchor-target" aria-hidden="true"></span>
   <div class="container">
     <div class="section-header split">
       <div class="section-header__head">
@@ -57,7 +58,7 @@ const faqs = [
       </div>
 
       <!-- Columna 2: Formulario a WhatsApp -->
-      <div class="faq-form-card">
+      <div class="faq-form-card" id="cotizar">
         <div class="faq-form-head">
           <div class="faq-form-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
           <div>
@@ -134,7 +135,15 @@ const faqs = [
     background: var(--bg-1);
     padding: var(--section-pad) 0;
     border-top: 1px solid var(--border-subtle);
+    scroll-margin-top: 110px;
   }
+
+  .anchor-target {
+    display: block;
+    scroll-margin-top: 110px;
+  }
+
+  .faq-form-card { scroll-margin-top: 110px; }
 
   .faq-grid {
     display: grid;
