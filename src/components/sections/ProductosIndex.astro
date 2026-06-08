@@ -3,14 +3,21 @@ import { categorias } from '../../data/productos';
 ---
 <section id="productos" class="products-section">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Catálogo de Productos</span>
-            <h2>Monitores Contra Incendios Certificados</h2>
-            <p>
-                Ofrecemos una línea completa de monitores contra incendios diseñados para satisfacer las necesidades
-                más exigentes de la industria. Todos nuestros productos cuentan con certificaciones FM Approved y UL Listed,
-                garantizando el máximo nivel de seguridad y cumplimiento normativo.
-            </p>
+        <div class="section-header split">
+            <div class="section-header__head">
+                <span class="section-tag">Catálogo de Productos</span>
+                <h2>Monitores Contra Incendios Certificados</h2>
+            </div>
+            <div class="section-header__body">
+                <p>
+                    Línea completa de monitores <strong>fijos, portátiles y automáticos</strong> diseñados
+                    para la protección de instalaciones industriales de alto riesgo.
+                </p>
+                <p>
+                    Cada equipo está certificado <strong>FM Approved y UL Listed</strong>, garantizando
+                    seguridad y cumplimiento normativo de clase mundial.
+                </p>
+            </div>
         </div>
 
         {categorias.map((categoria) => (

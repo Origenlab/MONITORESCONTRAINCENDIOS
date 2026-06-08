@@ -366,6 +366,68 @@ img[src$=".webp"] {
     font-size: var(--text-md);
 }
 
+/* --- Variante estándar a dos columnas (título | descripción) --- */
+.section-header.split {
+    max-width: 100%;
+    margin: 0 0 var(--space-3xl);
+    text-align: left;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 5%, 5rem);
+    align-items: center;
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-header.split .section-header__head {
+    margin: 0;
+}
+
+.section-header.split .section-tag {
+    margin-bottom: var(--space-md);
+}
+
+.section-header.split h2 {
+    font-size: var(--text-4xl);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 0;
+}
+
+.section-header.split .section-header__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-left: clamp(1.5rem, 2.5vw, 2.5rem);
+    border-left: 2px solid var(--border-red);
+}
+
+.section-header.split .section-header__body p {
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--text-body);
+}
+
+.section-header.split .section-header__body p strong {
+    color: var(--text-strong);
+    font-weight: 600;
+}
+
+@media (max-width: 860px) {
+    .section-header.split {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        align-items: start;
+    }
+    .section-header.split .section-header__body {
+        padding-left: 0;
+        padding-top: var(--space-md);
+        border-left: none;
+        border-top: 2px solid var(--border-red);
+    }
+}
+
 /* ==========================================================================
    04. BOTONES
    ========================================================================== */
