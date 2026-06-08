@@ -1,0 +1,65 @@
+---
+import TopBar from './TopBar.astro';
+---
+<header class="header">
+    <TopBar />
+
+    <!-- Navegación Principal -->
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="container">
+            <a href="/" class="logo" aria-label="AQUEON - Ir al inicio">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 25 L35 25 M18 15 L32 35 M32 15 L18 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="25" cy="25" r="8" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">AQUEON</span>
+                    <span class="logo-tagline">Protección Industrial</span>
+                </div>
+            </a>
+
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/#inicio" class="nav-link active" role="menuitem">Inicio</a></li>
+                <li class="has-dropdown" role="none">
+                    <a href="/#productos" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                        Productos <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown" role="menu">
+                        <li role="none"><a href="/#monitores-fijos" role="menuitem">Monitores Fijos</a></li>
+                        <li role="none"><a href="/#monitores-portatiles" role="menuitem">Monitores Portátiles</a></li>
+                        <li role="none"><a href="/#monitores-automaticos" role="menuitem">Monitores Automáticos</a></li>
+                        <li role="none"><a href="/#boquillas" role="menuitem">Boquillas y Accesorios</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown" role="none">
+                    <a href="/#industrias" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                        Industrias <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown" role="menu">
+                        <li role="none"><a href="/#petroleo-gas" role="menuitem">Petróleo y Gas</a></li>
+                        <li role="none"><a href="/#petroquimica" role="menuitem">Petroquímica</a></li>
+                        <li role="none"><a href="/#manufactura" role="menuitem">Manufactura</a></li>
+                        <li role="none"><a href="/#bomberos" role="menuitem">Bomberos y Gobierno</a></li>
+                    </ul>
+                </li>
+                <li role="none"><a href="/#servicios" class="nav-link" role="menuitem">Servicios</a></li>
+                <li role="none"><a href="/#nosotros" class="nav-link" role="menuitem">Nosotros</a></li>
+                <li role="none"><a href="/#contacto" class="nav-link" role="menuitem">Contacto</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="/#cotizar" class="btn btn-primary">
+                    <i class="fas fa-file-invoice" aria-hidden="true"></i> Cotizar
+                </a>
+                <button class="mobile-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>

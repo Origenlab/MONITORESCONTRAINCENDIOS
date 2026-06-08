@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+import Header from '../components/global/Header.astro';
+import Footer from '../components/global/Footer.astro';
+import WhatsAppButton from '../components/global/WhatsAppButton.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  keywords,
+  ogImage = '/images/monitores-contra-incendios-refineria-petroleo-gas.webp',
+} = Astro.props;
+
+const site = 'https://monitorescontraincendios.com';
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImageAbs = new URL(ogImage, site).href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AQUEON',
+  alternateName: 'AQUEON México',
+  url: site,
+  logo: `${site}/apple-touch-icon.png`,
+  description:
+    'Proveedor líder de monitores contra incendios industriales en México. Equipos certificados FM Approved y UL Listed.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Av. Paseo de la Reforma 505, Piso 15',
+    addressLocality: 'Ciudad de México',
+    addressRegion: 'CDMX',
+    postalCode: '06500',
+    addressCountry: 'MX',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+52-55-1234-5678',
+    contactType: 'sales',
+    availableLanguage: ['Spanish', 'English'],
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/aqueon-mexico',
+    'https://www.facebook.com/aqueonmexico',
+  ],
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'AQUEON México',
+  image: ogImageAbs,
+  priceRange: '$$$',
+  telephone: '+52-55-1234-5678',
+  email: 'contacto@aqueon.com.mx',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Av. Paseo de la Reforma 505, Piso 15',
+    addressLocality: 'Ciudad de México',
+    addressRegion: 'CDMX',
+    postalCode: '06500',
+    addressCountry: 'MX',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'México',
+  },
+};
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags Primarios -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content="AQUEON México" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Geo Tags para México -->
+    <meta name="geo.region" content="MX" />
+    <meta name="geo.placename" content="Ciudad de México" />
+    <meta name="geo.position" content="19.432608;-99.133209" />
+    <meta name="ICBM" content="19.432608, -99.133209" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="AQUEON México" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#e02424" />
+
+    <!-- Preload de fuentes críticas -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+</head>
+<body>
+    <!-- Skip Navigation para Accesibilidad -->
+    <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
+    <Header />
+
+    <main id="contenido-principal">
+        <slot />
+    </main>
+
+    <Footer />
+
+    <WhatsAppButton />
+
+    <script>
+        import '../scripts/menu.js';
+    </script>
+</body>
+</html>
