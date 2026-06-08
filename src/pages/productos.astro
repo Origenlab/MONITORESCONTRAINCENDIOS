@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { categorias } from '../data/productos';
+import FaqWhatsapp from '../components/sections/FaqWhatsapp.astro';
 
 const totalProductos = categorias.reduce((n, c) => n + c.productos.length, 0);
 
@@ -126,6 +127,8 @@ const navCategorias = [
       </div>
     </div>
   </section>
+
+  <FaqWhatsapp />
 </Base>
 
 <style>
