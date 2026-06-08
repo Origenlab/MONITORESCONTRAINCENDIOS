@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://monitorescontraincendios.com/sitemap-index.xml
