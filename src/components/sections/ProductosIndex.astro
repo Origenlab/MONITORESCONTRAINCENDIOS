@@ -22,8 +22,9 @@ import { categorias } from '../../data/productos';
 
         {categorias.map((categoria) => (
             <div class="product-category">
-                <h3 id={categoria.id}>{categoria.titulo}</h3>
+                <h3 id={categoria.id}><a href={`/productos#${categoria.id}`}>{categoria.titulo}</a></h3>
                 <p class="category-description">{categoria.descripcion}</p>
+                <a href={`/productos#${categoria.id}`} class="category-link">Ver toda la categoría <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
                 <div class="products-grid">
                     {categoria.productos.map((producto) => (
@@ -59,10 +60,15 @@ import { categorias } from '../../data/productos';
         ))}
 
         <div class="products-cta">
-            <p>¿No encuentra el producto que busca? Contamos con acceso a catálogos completos de todos nuestros fabricantes asociados.</p>
-            <a href="/#contacto" class="btn btn-secondary btn-lg">
-                <i class="fas fa-phone" aria-hidden="true"></i> Contactar a un Especialista
-            </a>
+            <p>Explore el catálogo completo con todas las especificaciones técnicas, o contáctenos para una recomendación personalizada según su instalación.</p>
+            <div class="products-cta-actions">
+                <a href="/productos" class="btn btn-primary btn-lg">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i> Ver Catálogo Completo
+                </a>
+                <a href="/#contacto" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-phone" aria-hidden="true"></i> Contactar a un Especialista
+                </a>
+            </div>
         </div>
     </div>
 </section>
