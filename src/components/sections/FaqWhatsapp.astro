@@ -1,0 +1,296 @@
+---
+// Módulo FAQ + formulario a WhatsApp (antes del footer)
+const whatsappNumber = '5215512345678';
+
+const faqs = [
+  {
+    q: '¿Qué caudal (GPM) necesito para mi instalación?',
+    a: 'Depende del tipo de riesgo, la superficie a proteger y la normativa aplicable (NFPA 15 para agua, NFPA 11 para espuma). Nuestros ingenieros realizan el cálculo hidráulico sin costo a partir de los datos de su planta y le recomiendan el modelo óptimo, desde 200 hasta 4,000 GPM.',
+  },
+  {
+    q: '¿Sus monitores están certificados FM Approved y UL Listed?',
+    a: 'Sí. Toda nuestra línea cuenta con certificación FM Approved y/o UL Listed, y entregamos la documentación oficial de cumplimiento para auditorías de Protección Civil, aseguradoras y especificaciones de PEMEX.',
+  },
+  {
+    q: '¿Manejan monitores para áreas clasificadas (ATEX)?',
+    a: 'Contamos con monitores remotos eléctricos certificados ATEX / IECEx para atmósferas explosivas Clase I División 1 y 2, ideales para refinerías, plantas petroquímicas y terminales con vapores inflamables.',
+  },
+  {
+    q: '¿Incluyen instalación, puesta en marcha y capacitación?',
+    a: 'Sí. Ofrecemos servicio integral: diseño e ingeniería conforme a NFPA, instalación con personal certificado, pruebas hidrostáticas, puesta en marcha y capacitación a su brigada, todo documentado para entrega.',
+  },
+  {
+    q: '¿Ofrecen sistemas de espuma para hidrocarburos?',
+    a: 'Sí. Complementamos los monitores con cámaras de espuma y proporcionadores al 3% o 6% bajo NFPA 11, indispensables para la protección de tanques de almacenamiento de hidrocarburos.',
+  },
+  {
+    q: '¿En cuánto tiempo entregan una cotización?',
+    a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Mantenemos stock en México para entrega ágil y atendemos proyectos en toda la República Mexicana.',
+  },
+];
+---
+<section id="preguntas" class="faq-section">
+  <div class="container">
+    <div class="section-header split">
+      <div class="section-header__head">
+        <span class="section-tag">Preguntas Frecuentes</span>
+        <h2>Resolvemos sus Dudas Técnicas</h2>
+      </div>
+      <div class="section-header__body">
+        <p>Respuestas claras a las dudas más comunes sobre la <strong>selección, certificación e instalación</strong> de monitores contra incendios.</p>
+        <p>¿No encuentra su pregunta? Escríbanos por <strong>WhatsApp</strong> y un especialista le responde en menos de 24 horas.</p>
+      </div>
+    </div>
+
+    <div class="faq-grid">
+      <!-- Columna 1: Preguntas y respuestas -->
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary>
+              <span>{faq.q}</span>
+              <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+            </summary>
+            <div class="faq-answer"><p>{faq.a}</p></div>
+          </details>
+        ))}
+      </div>
+
+      <!-- Columna 2: Formulario a WhatsApp -->
+      <div class="faq-form-card">
+        <div class="faq-form-head">
+          <div class="faq-form-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+          <div>
+            <h3>Hable con un Especialista</h3>
+            <p>Reciba asesoría técnica directa por WhatsApp.</p>
+          </div>
+        </div>
+
+        <form id="waForm" class="faq-form">
+          <div class="form-group">
+            <label for="wa-nombre">Nombre completo <span class="req">*</span></label>
+            <input type="text" id="wa-nombre" name="nombre" placeholder="Ej: Juan Pérez García" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="wa-empresa">Empresa</label>
+            <input type="text" id="wa-empresa" name="empresa" placeholder="Ej: Petrolera Nacional S.A." autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="wa-telefono">Teléfono <span class="req">*</span></label>
+            <input type="tel" id="wa-telefono" name="telefono" placeholder="Ej: 55 1234 5678" required autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="wa-interes">¿Qué necesita? <span class="req">*</span></label>
+            <select id="wa-interes" name="interes" required>
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option>Monitores Fijos Industriales</option>
+              <option>Monitores Portátiles</option>
+              <option>Monitores Automáticos e Inteligentes</option>
+              <option>Boquillas y Accesorios</option>
+              <option>Sistemas de Espuma</option>
+              <option>Proyecto completo / Asesoría</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="wa-mensaje">Detalle de su proyecto</label>
+            <textarea id="wa-mensaje" name="mensaje" rows="3" placeholder="Área a proteger, caudal estimado, tipo de riesgo…"></textarea>
+          </div>
+          <button type="submit" class="btn-whatsapp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp
+          </button>
+          <p class="faq-form-note"><i class="fas fa-shield-alt" aria-hidden="true"></i> Respuesta en menos de 24 h · Sin compromiso</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ whatsappNumber }}>
+  const form = document.getElementById('waForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = new FormData(form);
+      const nombre = (f.get('nombre') || '').toString().trim();
+      const empresa = (f.get('empresa') || '').toString().trim();
+      const telefono = (f.get('telefono') || '').toString().trim();
+      const interes = (f.get('interes') || '').toString().trim();
+      const mensaje = (f.get('mensaje') || '').toString().trim();
+
+      let texto = `Hola AQUEON, soy ${nombre}`;
+      if (empresa) texto += ` de ${empresa}`;
+      texto += `.\nMe interesa: ${interes}.`;
+      if (mensaje) texto += `\nDetalle: ${mensaje}`;
+      if (telefono) texto += `\nMi teléfono: ${telefono}`;
+
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+</script>
+
+<style>
+  .faq-section {
+    background: var(--bg-1);
+    padding: var(--section-pad) 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(1.5rem, 3%, 3rem);
+    align-items: start;
+  }
+
+  /* ── Columna FAQ ── */
+  .faq-item {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    overflow: hidden;
+  }
+
+  .faq-item[open] {
+    border-color: var(--border-red);
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: clamp(1rem, 2vw, 1.35rem) clamp(1.1rem, 2vw, 1.5rem);
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--text-strong);
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 1.9rem;
+    height: 1.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--red-soft);
+    border: 1px solid var(--border-red);
+    border-radius: 50%;
+    color: var(--red-hover);
+    font-size: 0.8rem;
+  }
+
+  .faq-item[open] .faq-icon {
+    background: var(--grad-red);
+    color: #fff;
+    border-color: transparent;
+  }
+  .faq-item[open] .faq-icon::before { content: "\f068"; } /* fa-minus */
+
+  .faq-answer {
+    padding: 0 clamp(1.1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.35rem);
+  }
+
+  .faq-answer p {
+    margin: 0;
+    color: var(--text-body);
+    font-size: var(--text-sm);
+    line-height: 1.75;
+  }
+
+  /* ── Columna formulario WhatsApp ── */
+  .faq-form-card {
+    position: sticky;
+    top: 120px;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--whatsapp);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .faq-form-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .faq-form-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--whatsapp);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .faq-form-head h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-md);
+    color: var(--text-strong);
+    margin: 0 0 0.15rem;
+  }
+
+  .faq-form-head p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .faq-form .form-group { margin-bottom: var(--space-md); }
+
+  .faq-form .req { color: var(--red-hover); }
+
+  .btn-whatsapp {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: #fff;
+    background: var(--whatsapp);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0.95rem 1.5rem;
+    min-height: 48px;
+    cursor: pointer;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .btn-whatsapp:hover {
+    background: #1ebe5b;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .faq-form-note {
+    margin: var(--space-md) 0 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+  }
+
+  .faq-form-note i { color: var(--whatsapp); }
+
+  @media (max-width: 860px) {
+    .faq-grid { grid-template-columns: 1fr; }
+    .faq-form-card { position: static; }
+  }
+</style>
