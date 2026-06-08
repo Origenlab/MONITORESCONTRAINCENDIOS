@@ -1,0 +1,32 @@
+---
+// Barra de navegación rápida antes del footer (presente en todas las páginas)
+const items = [
+  { href: '/productos', label: 'Catálogo de Productos', sub: '12 equipos certificados', icon: 'fas fa-layer-group' },
+  { href: '/#nosotros', label: 'Sobre AQUEON', sub: '15+ años de experiencia', icon: 'fas fa-building-shield' },
+  { href: '/recursos', label: 'Recursos Técnicos', sub: 'Normas NFPA · NOM', icon: 'fas fa-book' },
+  { href: '/blog', label: 'Guías Técnicas', sub: 'Blog especializado', icon: 'fas fa-newspaper' },
+  { href: '/#preguntas', label: 'Preguntas Frecuentes', sub: 'Dudas resueltas', icon: 'fas fa-circle-question' },
+];
+---
+<nav class="quick-nav quick-nav--prefooter" aria-label="Enlaces rápidos del sitio">
+  <div class="quick-nav-inner">
+    {items.map((item) => (
+      <a href={item.href} class="quick-nav-item">
+        <span class="quick-nav-icon" aria-hidden="true"><i class={item.icon}></i></span>
+        <span class="quick-nav-text">
+          <span class="quick-nav-label">{item.label}</span>
+          <span class="quick-nav-sub">{item.sub}</span>
+        </span>
+        <i class="fas fa-chevron-right quick-nav-arrow" aria-hidden="true"></i>
+      </a>
+    ))}
+    <a href="/#cotizar" class="quick-nav-item quick-nav-cta">
+      <span class="quick-nav-icon" aria-hidden="true"><i class="fas fa-file-invoice-dollar"></i></span>
+      <span class="quick-nav-text">
+        <span class="quick-nav-label">Solicitar Cotización</span>
+        <span class="quick-nav-sub">Respuesta en &lt;24h</span>
+      </span>
+      <i class="fas fa-chevron-right quick-nav-arrow" aria-hidden="true"></i>
+    </a>
+  </div>
+</nav>
