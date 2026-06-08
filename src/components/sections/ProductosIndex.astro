@@ -22,9 +22,17 @@ import { categorias } from '../../data/productos';
 
         {categorias.map((categoria) => (
             <div class="product-category">
-                <h3 id={categoria.id}><a href={`/productos#${categoria.id}`}>{categoria.titulo}</a></h3>
-                <p class="category-description">{categoria.descripcion}</p>
-                <a href={`/productos#${categoria.id}`} class="category-link">Ver toda la categoría <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <div class="section-header split">
+                    <div class="section-header__head">
+                        <h3 id={categoria.id}><a href={`/productos#${categoria.id}`}>{categoria.titulo}</a></h3>
+                        <a href={`/productos#${categoria.id}`} class="category-link">Ver toda la categoría <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="section-header__body">
+                        {categoria.parrafos.map((parrafo) => (
+                            <p set:html={parrafo} />
+                        ))}
+                    </div>
+                </div>
 
                 <div class="products-grid">
                     {categoria.productos.map((producto) => (

@@ -74,8 +74,16 @@ const navCategorias = [
 
       {categorias.map((categoria) => (
         <div class="product-category">
-          <h3 id={categoria.id}>{categoria.titulo}</h3>
-          <p class="category-description">{categoria.descripcion}</p>
+          <div class="section-header split">
+            <div class="section-header__head">
+              <h3 id={categoria.id}>{categoria.titulo}</h3>
+            </div>
+            <div class="section-header__body">
+              {categoria.parrafos.map((parrafo) => (
+                <p set:html={parrafo} />
+              ))}
+            </div>
+          </div>
 
           <div class="products-grid">
             {categoria.productos.map((producto) => (

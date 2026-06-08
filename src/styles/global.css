@@ -394,6 +394,24 @@ img[src$=".webp"] {
     margin-bottom: 0;
 }
 
+/* Encabezado split a nivel de sub-sección (categorías) con h3 */
+.section-header.split h3 {
+    font-size: var(--text-2xl);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0;
+    scroll-margin-top: 120px;
+}
+
+.product-category .section-header.split {
+    margin-bottom: var(--space-2xl);
+    align-items: center;
+}
+
+.product-category .section-header.split + .products-grid {
+    margin-top: 0;
+}
+
 .section-header.split .section-header__body {
     display: flex;
     flex-direction: column;
@@ -1266,6 +1284,11 @@ a.contact-item:hover { color: var(--red-hover); }
 .category-link i { font-size: 0.85em; }
 
 .category-link:hover { color: var(--text-strong); }
+
+.section-header__head .category-link {
+    margin-top: var(--space-md);
+    margin-bottom: 0;
+}
 
 .products-grid {
     display: grid;
