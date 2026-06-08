@@ -1,0 +1,295 @@
+---
+import Base from '../layouts/Base.astro';
+const whatsappNumber = '5215512345678';
+
+const metodos = [
+  { icon: 'fas fa-phone', titulo: 'Llámenos', valor: '+52 55 1234 5678', sub: 'Lun a Vie, 8:00 - 18:00', href: 'tel:+525512345678' },
+  { icon: 'fas fa-envelope', titulo: 'Escríbanos', valor: 'contacto@aqueon.com.mx', sub: 'Respuesta en menos de 24 h', href: 'mailto:contacto@aqueon.com.mx' },
+  { icon: 'fab fa-whatsapp', titulo: 'WhatsApp', valor: 'Chat directo', sub: 'Atención inmediata', href: 'https://wa.me/5215512345678?text=Hola%20AQUEON%2C%20necesito%20informaci%C3%B3n' },
+  { icon: 'fas fa-location-dot', titulo: 'Visítenos', valor: 'CDMX, México', sub: 'Torre Mayor, Reforma 505', href: 'https://www.google.com/maps/search/?api=1&query=Torre+Mayor+Reforma+505+CDMX' },
+];
+---
+<Base
+  title="Contacto | Cotización de Monitores Contra Incendios | AQUEON México"
+  description="Contacte a AQUEON para cotizar monitores contra incendios industriales. Asesoría técnica gratuita de ingenieros certificados NFPA. Respuesta en menos de 24 horas. Teléfono, correo y WhatsApp directo en CDMX y toda la República Mexicana."
+>
+  <!-- Hero -->
+  <section class="ct-hero">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Contacto</span>
+          <h1>Hablemos de su Proyecto</h1>
+        </div>
+        <div class="section-header__body">
+          <p>Estamos listos para ayudarle a proteger su operación. Contáctenos para una <strong>consulta sin compromiso</strong>.</p>
+          <p>Nuestro equipo de especialistas le responde en <strong>menos de 24 horas</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Métodos de contacto -->
+  <section class="ct-metodos">
+    <div class="container">
+      <div class="ct-metodos-grid">
+        {metodos.map((m) => (
+          <a href={m.href} class="ct-metodo" target={m.href.startsWith('http') ? '_blank' : undefined} rel={m.href.startsWith('http') ? 'noopener' : undefined}>
+            <span class="ct-metodo-icon" aria-hidden="true"><i class={m.icon}></i></span>
+            <span class="ct-metodo-titulo">{m.titulo}</span>
+            <span class="ct-metodo-valor">{m.valor}</span>
+            <span class="ct-metodo-sub">{m.sub}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario + Info -->
+  <section id="cotizar" class="ct-main">
+    <div class="container">
+      <div class="ct-grid">
+        <!-- Formulario -->
+        <div class="ct-form-card">
+          <div class="ct-form-head">
+            <div class="ct-form-icon"><i class="fas fa-file-invoice" aria-hidden="true"></i></div>
+            <div>
+              <h2>Solicitar Cotización Gratuita</h2>
+              <p>Complete el formulario y reciba una propuesta personalizada en menos de 24 horas.</p>
+            </div>
+          </div>
+
+          <form id="ctForm" class="ct-form">
+            <div class="ct-form-grid">
+              <div class="form-group">
+                <label for="ct-nombre">Nombre completo <span class="req">*</span></label>
+                <input type="text" id="ct-nombre" name="nombre" placeholder="Ej: Juan Pérez García" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="ct-empresa">Empresa <span class="req">*</span></label>
+                <input type="text" id="ct-empresa" name="empresa" placeholder="Ej: Petrolera Nacional S.A." required autocomplete="organization" />
+              </div>
+              <div class="form-group">
+                <label for="ct-email">Correo electrónico <span class="req">*</span></label>
+                <input type="email" id="ct-email" name="email" placeholder="Ej: juan.perez@empresa.com" required autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label for="ct-telefono">Teléfono <span class="req">*</span></label>
+                <input type="tel" id="ct-telefono" name="telefono" placeholder="Ej: 55 1234 5678" required autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="ct-industria">Industria <span class="req">*</span></label>
+                <select id="ct-industria" name="industria" required>
+                  <option value="" disabled selected>Seleccione su industria</option>
+                  <option>Petróleo y Gas</option>
+                  <option>Petroquímica / Química</option>
+                  <option>Manufactura</option>
+                  <option>Parque Industrial</option>
+                  <option>Bomberos / Gobierno</option>
+                  <option>Aviación</option>
+                  <option>Minería</option>
+                  <option>Generación de Energía</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ct-tipo">Tipo de proyecto <span class="req">*</span></label>
+                <select id="ct-tipo" name="tipo" required>
+                  <option value="" disabled selected>Seleccione el tipo</option>
+                  <option>Instalación nueva</option>
+                  <option>Reemplazo de equipos</option>
+                  <option>Expansión de sistema</option>
+                  <option>Servicio / Mantenimiento</option>
+                  <option>Asesoría técnica</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ct-mensaje">Descripción del proyecto</label>
+              <textarea id="ct-mensaje" name="mensaje" rows="4" placeholder="Área a proteger, tipo de riesgo, caudal estimado, requisitos específicos…"></textarea>
+            </div>
+            <button type="submit" class="btn-ct-submit">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar solicitud por WhatsApp
+            </button>
+            <p class="ct-form-note"><i class="fas fa-lock" aria-hidden="true"></i> Información 100% segura · Respuesta garantizada en 24 h</p>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <aside class="ct-info">
+          <div class="ct-info-card">
+            <h3><i class="fas fa-building" aria-hidden="true"></i> Oficina Central</h3>
+            <p><strong>AQUEON México</strong><br>Av. Paseo de la Reforma 505<br>Piso 15, Torre Mayor<br>Col. Cuauhtémoc, C.P. 06500<br>Ciudad de México, México</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Torre+Mayor+Reforma+505+CDMX" class="ct-info-link" target="_blank" rel="noopener">Ver en Google Maps <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ct-info-card">
+            <h3><i class="fas fa-clock" aria-hidden="true"></i> Horarios de Atención</h3>
+            <ul class="ct-horarios">
+              <li><span>Lunes - Viernes</span><strong>8:00 - 18:00</strong></li>
+              <li><span>Sábado</span><strong>9:00 - 14:00</strong></li>
+              <li><span>Emergencias</span><strong class="ct-247">24/7</strong></li>
+            </ul>
+          </div>
+
+          <div class="ct-info-card ct-info-garantias">
+            <p><i class="fas fa-circle-check" aria-hidden="true"></i> Cotización sin compromiso</p>
+            <p><i class="fas fa-circle-check" aria-hidden="true"></i> Respuesta en menos de 24 h</p>
+            <p><i class="fas fa-circle-check" aria-hidden="true"></i> Asesoría técnica gratuita</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script define:vars={{ whatsappNumber }}>
+  const form = document.getElementById('ctForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = new FormData(form);
+      const g = (k) => (f.get(k) || '').toString().trim();
+      let t = `Hola AQUEON, solicito una cotización.`;
+      t += `\nNombre: ${g('nombre')}`;
+      if (g('empresa')) t += `\nEmpresa: ${g('empresa')}`;
+      if (g('email')) t += `\nCorreo: ${g('email')}`;
+      if (g('telefono')) t += `\nTeléfono: ${g('telefono')}`;
+      if (g('industria')) t += `\nIndustria: ${g('industria')}`;
+      if (g('tipo')) t += `\nTipo de proyecto: ${g('tipo')}`;
+      if (g('mensaje')) t += `\nDetalle: ${g('mensaje')}`;
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t)}`, '_blank', 'noopener');
+    });
+  }
+</script>
+
+<style>
+  .ct-hero { background: var(--bg-0); padding: var(--section-pad) 0 calc(var(--section-pad) * 0.5); }
+  .ct-hero .section-header { margin-bottom: 0; }
+  .ct-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-4xl);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+    margin: var(--space-md) 0 0;
+  }
+  .ct-hero .section-header__body p { font-size: var(--text-base); }
+
+  /* Métodos */
+  .ct-metodos { background: var(--bg-0); padding: 0 0 var(--section-pad); }
+  .ct-metodos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: clamp(1rem, 2%, 1.5rem);
+  }
+  .ct-metodo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    text-decoration: none;
+  }
+  .ct-metodo:hover { border-color: var(--border-red); box-shadow: var(--glow-red); }
+  .ct-metodo-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.75rem; height: 2.75rem;
+    background: var(--red-soft); border: 1px solid var(--border-red);
+    border-radius: var(--radius-md); color: var(--red-hover);
+    font-size: 1.15rem; margin-bottom: var(--space-sm);
+  }
+  .ct-metodo-titulo { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 700; }
+  .ct-metodo-valor { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text-strong); font-size: var(--text-md); }
+  .ct-metodo-sub { font-size: var(--text-xs); color: var(--text-muted); }
+
+  /* Form + info */
+  .ct-main { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .ct-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+    gap: clamp(1.5rem, 3%, 3rem);
+    align-items: start;
+  }
+  .ct-form-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--red);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .ct-form-head { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border-subtle); }
+  .ct-form-icon {
+    flex-shrink: 0; width: 3rem; height: 3rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--grad-red); border-radius: var(--radius-md); color: #fff; font-size: 1.4rem;
+  }
+  .ct-form-head h2 { font-size: var(--text-lg); margin: 0 0 0.15rem; }
+  .ct-form-head p { margin: 0; color: var(--text-muted); font-size: var(--text-sm); }
+
+  .ct-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+  .ct-form .form-group { margin-bottom: var(--space-md); }
+  .ct-form .req { color: var(--red-hover); }
+
+  .btn-ct-submit {
+    width: 100%;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    font-family: var(--font-heading); font-weight: 600; font-size: var(--text-base);
+    color: #fff; background: var(--whatsapp); border: none; border-radius: var(--radius-md);
+    padding: 0.95rem 1.5rem; min-height: 48px; cursor: pointer;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  }
+  .btn-ct-submit:hover { background: #1ebe5b; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3); transform: translateY(-2px); }
+  .ct-form-note { margin: var(--space-md) 0 0; text-align: center; color: var(--text-muted); font-size: var(--text-xs); }
+  .ct-form-note i { color: var(--success); }
+
+  /* Info */
+  .ct-info { display: flex; flex-direction: column; gap: var(--space-md); }
+  .ct-info-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+  }
+  .ct-info-card h3 {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: var(--text-md); margin-bottom: var(--space-sm);
+  }
+  .ct-info-card h3 i { color: var(--red); }
+  .ct-info-card p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.7; margin: 0; }
+  .ct-info-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: var(--space-md); color: var(--red-hover);
+    font-weight: 600; font-size: var(--text-sm); text-decoration: none;
+  }
+  .ct-info-link:hover { color: var(--text-strong); }
+  .ct-info-link i { font-size: 0.7em; }
+
+  .ct-horarios { list-style: none; padding: 0; margin: 0; }
+  .ct-horarios li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--text-sm); color: var(--text-body);
+  }
+  .ct-horarios li:last-child { border-bottom: none; }
+  .ct-horarios strong { color: var(--text-strong); }
+  .ct-247 { color: var(--red-hover) !important; }
+
+  .ct-info-garantias p {
+    display: flex; align-items: center; gap: 0.5rem;
+    color: var(--text-body); font-size: var(--text-sm); margin-bottom: 0.5rem;
+  }
+  .ct-info-garantias p:last-child { margin-bottom: 0; }
+  .ct-info-garantias i { color: var(--success); }
+
+  @media (max-width: 860px) {
+    .ct-grid { grid-template-columns: 1fr; }
+  }
+</style>
