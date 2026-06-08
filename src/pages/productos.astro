@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+import { categorias } from '../data/productos';
+
+const totalProductos = categorias.reduce((n, c) => n + c.productos.length, 0);
+
+const navCategorias = [
+  { id: 'monitores-fijos', label: 'Monitores Fijos', sub: 'FM Approved · UL Listed', icon: 'fas fa-fire-extinguisher' },
+  { id: 'monitores-portatiles', label: 'Monitores Portátiles', sub: 'Despliegue rápido', icon: 'fas fa-truck-loading' },
+  { id: 'monitores-automaticos', label: 'Monitores Automáticos', sub: 'IA · Detección IR', icon: 'fas fa-robot' },
+  { id: 'boquillas', label: 'Boquillas y Accesorios', sub: 'UL Listed · NFPA 11', icon: 'fas fa-shower' },
+];
+---
+<Base
+  title="Catálogo de Monitores Contra Incendios Industriales | AQUEON México"
+  description="Catálogo completo de monitores contra incendios industriales AQUEON: monitores fijos, portátiles, automáticos, boquillas y accesorios. Certificados FM Approved y UL Listed para refinerías, petroquímica y manufactura en México."
+>
+  <!-- Hero de página -->
+  <section class="products-hero">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Catálogo de Productos</span>
+          <h1>Monitores Contra Incendios Industriales</h1>
+        </div>
+        <div class="section-header__body">
+          <p>
+            Línea completa de monitores <strong>fijos, portátiles y automáticos</strong>, boquillas
+            y accesorios para la protección de instalaciones de alto riesgo.
+          </p>
+          <p>
+            Equipos certificados <strong>FM Approved y UL Listed</strong>, con cumplimiento
+            de requisitos PEMEX y normativa NFPA de clase mundial.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navegación rápida de categorías -->
+  <nav class="quick-nav" aria-label="Categorías de productos">
+    <div class="quick-nav-inner">
+      {navCategorias.map((cat) => (
+        <a href={`#${cat.id}`} class="quick-nav-item">
+          <span class="quick-nav-icon" aria-hidden="true"><i class={cat.icon}></i></span>
+          <span class="quick-nav-text">
+            <span class="quick-nav-label">{cat.label}</span>
+            <span class="quick-nav-sub">{cat.sub}</span>
+          </span>
+          <i class="fas fa-chevron-right quick-nav-arrow" aria-hidden="true"></i>
+        </a>
+      ))}
+      <a href="/#cotizar" class="quick-nav-item quick-nav-cta">
+        <span class="quick-nav-icon" aria-hidden="true"><i class="fas fa-file-invoice-dollar"></i></span>
+        <span class="quick-nav-text">
+          <span class="quick-nav-label">Solicitar Cotización</span>
+          <span class="quick-nav-sub">Respuesta en &lt;24h</span>
+        </span>
+        <i class="fas fa-chevron-right quick-nav-arrow" aria-hidden="true"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Catálogo completo -->
+  <section class="products-section">
+    <div class="container">
+      <div class="catalog-intro">
+        <span class="catalog-count">{totalProductos} productos certificados</span>
+        <p>
+          Todos nuestros equipos cuentan con respaldo de fábrica, documentación técnica oficial
+          para auditorías y soporte de ingenieros certificados NFPA en toda la República Mexicana.
+        </p>
+      </div>
+
+      {categorias.map((categoria) => (
+        <div class="product-category">
+          <h3 id={categoria.id}>{categoria.titulo}</h3>
+          <p class="category-description">{categoria.descripcion}</p>
+
+          <div class="products-grid">
+            {categoria.productos.map((producto) => (
+              <article class="product-card">
+                {producto.badge && (
+                  <div class={producto.badgePremium ? 'product-badge premium' : 'product-badge'}>{producto.badge}</div>
+                )}
+                <div class="product-image">
+                  <div class="image-placeholder">
+                    <i class={producto.placeholderIcon} aria-hidden="true"></i>
+                    <span>{producto.placeholderLabel}</span>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <h4>{producto.nombre}</h4>
+                  <p>{producto.descripcion}</p>
+                  <ul class="product-specs">
+                    {producto.specs.map((spec) => (
+                      <li><i class={spec.icon} aria-hidden="true"></i> {spec.text}</li>
+                    ))}
+                  </ul>
+                  <div class="product-actions">
+                    <a href="/#cotizar" class="btn btn-primary btn-sm">Solicitar Cotización</a>
+                    {producto.fichaTecnica && (
+                      <a href="#" class="btn btn-outline btn-sm">Ficha Técnica</a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="products-cta">
+        <p>¿No encuentra el producto que busca? Contamos con acceso a catálogos completos de todos nuestros fabricantes asociados.</p>
+        <a href="/#contacto" class="btn btn-secondary btn-lg">
+          <i class="fas fa-phone" aria-hidden="true"></i> Contactar a un Especialista
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .products-hero {
+    background: var(--bg-0);
+    padding: var(--section-pad) 0 calc(var(--section-pad) * 0.5);
+  }
+
+  .products-hero .section-header {
+    margin-bottom: 0;
+  }
+
+  .products-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-4xl);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+    margin: var(--space-md) 0 0;
+  }
+
+  .products-hero .section-header__body p {
+    color: var(--text-body);
+    font-size: var(--text-base);
+  }
+
+  /* Intro del catálogo */
+  .catalog-intro {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .catalog-count {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: var(--text-md);
+    color: var(--red-hover);
+    background: var(--red-soft);
+    border: 1px solid var(--border-red);
+    border-radius: var(--radius-full);
+    padding: 0.5rem 1.2rem;
+  }
+
+  .catalog-intro p {
+    flex: 1;
+    min-width: min(100%, 18rem);
+    color: var(--text-body);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    margin: 0;
+  }
+</style>
