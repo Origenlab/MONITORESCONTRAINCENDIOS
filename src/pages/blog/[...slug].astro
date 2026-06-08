@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import BlogSidebar from '../../components/blog/BlogSidebar.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -32,6 +33,8 @@ const fecha = post.data.pubDate.toLocaleDateString('es-MX', {
           <a href="/">Inicio</a>
           <i class="fas fa-chevron-right" aria-hidden="true"></i>
           <a href="/blog">Blog</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <span>{post.data.category}</span>
         </nav>
         <span class="section-tag">{post.data.category}</span>
         <h1>{post.data.title}</h1>
@@ -45,30 +48,34 @@ const fecha = post.data.pubDate.toLocaleDateString('es-MX', {
       </div>
     </header>
 
-    {post.data.image && (
-      <div class="container">
-        <div class="post-cover">
-          <img src={post.data.image} alt={post.data.title} loading="eager" />
-        </div>
-      </div>
-    )}
-
     <div class="container">
-      <div class="post-body">
-        <Content />
+      <div class="post-layout">
+        <div class="post-main">
+          {post.data.image && (
+            <div class="post-cover">
+              <img src={post.data.image} alt={post.data.title} loading="eager" />
+            </div>
+          )}
+
+          <div class="post-body">
+            <Content />
+          </div>
+
+          <aside class="post-cta">
+            <h2>¿Necesita asesoría para su proyecto?</h2>
+            <p>Nuestros ingenieros certificados NFPA responden en menos de 24 horas. Cotización gratuita y sin compromiso.</p>
+            <a href="/contacto" class="btn btn-primary btn-lg">
+              <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización Gratuita
+            </a>
+          </aside>
+
+          <p class="post-back">
+            <a href="/blog"><i class="fas fa-arrow-left" aria-hidden="true"></i> Volver al blog</a>
+          </p>
+        </div>
+
+        <BlogSidebar currentId={post.id} />
       </div>
-
-      <aside class="post-cta">
-        <h2>¿Necesita asesoría para su proyecto?</h2>
-        <p>Nuestros ingenieros certificados NFPA responden en menos de 24 horas. Cotización gratuita y sin compromiso.</p>
-        <a href="/#cotizar" class="btn btn-primary btn-lg">
-          <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización Gratuita
-        </a>
-      </aside>
-
-      <p class="post-back">
-        <a href="/blog"><i class="fas fa-arrow-left" aria-hidden="true"></i> Volver al blog</a>
-      </p>
     </div>
   </article>
 </Base>
@@ -81,15 +88,21 @@ const fecha = post.data.pubDate.toLocaleDateString('es-MX', {
 
   .post-header {
     padding: calc(var(--section-pad) * 0.7) 0 var(--space-2xl);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--section-pad);
   }
 
-  .post-header .container,
-  .post-cover,
-  .post-body,
-  .post-cta,
-  .post-back {
-    max-width: min(100%, 52rem);
-    margin-inline: auto;
+  .post-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+    gap: clamp(1.5rem, 3%, 3rem);
+    align-items: start;
+  }
+  .post-main { min-width: 0; }
+
+  @media (max-width: 980px) {
+    .post-layout { grid-template-columns: 1fr; }
+    .post-layout .blog-sidebar { position: static !important; }
   }
 
   .post-breadcrumb {

@@ -1,0 +1,193 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentId?: string;
+}
+const { currentId } = Astro.props;
+
+const all = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Categorías con conteo
+const catMap = new Map<string, number>();
+for (const p of all) {
+  catMap.set(p.data.category, (catMap.get(p.data.category) || 0) + 1);
+}
+const categorias = [...catMap.entries()].sort((a, b) => b[1] - a[1]);
+
+// Artículos recientes (excluye el actual)
+const recientes = all.filter((p) => p.id !== currentId).slice(0, 4);
+
+function fechaCorta(d: Date): string {
+  return d.toLocaleDateString('es-MX', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
+---
+<aside class="blog-sidebar">
+  <!-- Categorías -->
+  <div class="bs-card">
+    <h3 class="bs-title"><i class="fas fa-folder-tree" aria-hidden="true"></i> Categorías</h3>
+    <ul class="bs-cats">
+      {categorias.map(([cat, n]) => (
+        <li>
+          <span class="bs-cat-name">{cat}</span>
+          <span class="bs-cat-count">{n}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Artículos recientes -->
+  <div class="bs-card">
+    <h3 class="bs-title"><i class="fas fa-clock-rotate-left" aria-hidden="true"></i> Artículos recientes</h3>
+    <ul class="bs-recent">
+      {recientes.map((p) => (
+        <li>
+          <a href={`/blog/${p.id}`} class="bs-recent-item">
+            {p.data.image && <img src={p.data.image} alt="" loading="lazy" />}
+            <span class="bs-recent-text">
+              <span class="bs-recent-cat">{p.data.category}</span>
+              <span class="bs-recent-title">{p.data.title}</span>
+              <span class="bs-recent-date">{fechaCorta(p.data.pubDate)}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Recursos -->
+  <div class="bs-card">
+    <h3 class="bs-title"><i class="fas fa-book" aria-hidden="true"></i> Recursos</h3>
+    <ul class="bs-links">
+      <li><a href="/recursos"><i class="fas fa-certificate" aria-hidden="true"></i> Normas y certificaciones</a></li>
+      <li><a href="/productos"><i class="fas fa-layer-group" aria-hidden="true"></i> Catálogo de productos</a></li>
+      <li><a href="/industrias"><i class="fas fa-industry" aria-hidden="true"></i> Industrias que atendemos</a></li>
+      <li><a href="/servicios"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Servicios integrales</a></li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="bs-cta">
+    <span class="bs-cta-icon" aria-hidden="true"><i class="fas fa-headset"></i></span>
+    <h3>¿Asesoría técnica?</h3>
+    <p>Nuestros ingenieros certificados NFPA responden en menos de 24 horas.</p>
+    <a href="/contacto" class="btn btn-primary bs-cta-btn">
+      <i class="fas fa-file-invoice" aria-hidden="true"></i> Cotización gratuita
+    </a>
+    <a href="https://wa.me/5215512345678?text=Hola%20AQUEON%2C%20tengo%20una%20consulta%20t%C3%A9cnica" class="bs-cta-wa" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i> Escribir por WhatsApp
+    </a>
+  </div>
+</aside>
+
+<style>
+  .blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    position: sticky;
+    top: 120px;
+  }
+
+  .bs-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+  }
+
+  .bs-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-md);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bs-title i { color: var(--red); }
+
+  /* Categorías */
+  .bs-cats { list-style: none; padding: 0; margin: 0; }
+  .bs-cats li {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--text-sm);
+    color: var(--text-body);
+  }
+  .bs-cats li:last-child { border-bottom: none; }
+  .bs-cat-count {
+    background: var(--red-soft);
+    border: 1px solid var(--border-red);
+    color: var(--red-hover);
+    border-radius: var(--radius-full);
+    padding: 0.05rem 0.6rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  /* Recientes */
+  .bs-recent { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-md); }
+  .bs-recent-item { display: flex; gap: 0.75rem; text-decoration: none; }
+  .bs-recent-item img {
+    flex-shrink: 0;
+    width: 4rem; height: 4rem;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+  .bs-recent-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+  .bs-recent-cat { font-size: var(--text-xs); color: var(--red-hover); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .bs-recent-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-body);
+    line-height: 1.3;
+  }
+  .bs-recent-item:hover .bs-recent-title { color: var(--text-strong); }
+  .bs-recent-date { font-size: var(--text-xs); color: var(--text-muted); }
+
+  /* Links */
+  .bs-links { list-style: none; padding: 0; margin: 0; }
+  .bs-links li { border-bottom: 1px solid var(--border-subtle); }
+  .bs-links li:last-child { border-bottom: none; }
+  .bs-links a {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.6rem 0;
+    color: var(--text-body);
+    text-decoration: none;
+    font-size: var(--text-sm);
+  }
+  .bs-links a i { color: var(--red); width: 1.1rem; text-align: center; }
+  .bs-links a:hover { color: var(--red-hover); }
+
+  /* CTA */
+  .bs-cta {
+    background: linear-gradient(170deg, #221517 0%, var(--surface) 60%);
+    border: 1px solid var(--border-red);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+  .bs-cta-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 3rem; height: 3rem;
+    background: var(--grad-red); border-radius: var(--radius-md);
+    color: #fff; font-size: 1.3rem; margin-bottom: var(--space-md);
+    box-shadow: 0 0 20px var(--red-glow);
+  }
+  .bs-cta h3 { font-size: var(--text-md); margin-bottom: var(--space-sm); }
+  .bs-cta p { color: var(--text-body); font-size: var(--text-sm); margin-bottom: var(--space-md); }
+  .bs-cta-btn { width: 100%; }
+  .bs-cta-wa {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    margin-top: var(--space-sm);
+    color: var(--whatsapp); font-weight: 600; font-size: var(--text-sm);
+    text-decoration: none;
+  }
+  .bs-cta-wa:hover { color: #1ebe5b; }
+</style>
