@@ -741,11 +741,7 @@ a.contact-item:hover { color: var(--red-hover); }
     letter-spacing: -0.02em;
     line-height: 1.08;
     margin-bottom: var(--space-lg);
-    color: var(--text-strong); /* fallback */
-    background: linear-gradient(120deg, #ffffff 30%, #ffb4b4 75%, var(--red-hover) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-strong);
 }
 
 .hero-slogan {
