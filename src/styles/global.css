@@ -232,7 +232,6 @@ p:last-child { margin-bottom: 0; }
 a {
     color: inherit;
     text-decoration: none;
-    transition: color var(--transition-fast);
 }
 
 ul, ol { list-style: none; }
@@ -306,7 +305,6 @@ img[src$=".webp"] {
     color: var(--white);
     font-weight: 600;
     border-radius: 0 0 var(--radius-md) var(--radius-md);
-    transition: top var(--transition-fast);
 }
 
 .skip-link:focus {
@@ -531,7 +529,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border-radius: var(--radius-sm);
     color: var(--text-muted);
     border: 1px solid transparent;
-    transition: all var(--transition-fast);
 }
 
 .social-links a:hover {
@@ -572,7 +569,6 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 44px;
     color: var(--red);
     filter: drop-shadow(0 0 10px rgba(224, 36, 36, 0.45));
-    transition: filter var(--transition), transform var(--transition);
 }
 
 .logo:hover .logo-icon {
@@ -621,7 +617,6 @@ a.contact-item:hover { color: var(--red-hover); }
     min-height: 44px;
     border-radius: var(--radius-sm);
     position: relative;
-    transition: color var(--transition-fast), background var(--transition-fast);
 }
 
 .nav-link::after {
@@ -635,7 +630,6 @@ a.contact-item:hover { color: var(--red-hover); }
     background: var(--grad-red);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform var(--transition);
 }
 
 .nav-link:hover,
@@ -654,7 +648,6 @@ a.contact-item:hover { color: var(--red-hover); }
 
 .nav-link i {
     font-size: 0.7em;
-    transition: transform var(--transition-fast);
     color: var(--red);
 }
 
@@ -675,8 +668,6 @@ a.contact-item:hover { color: var(--red-hover); }
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px);
-    transition: opacity var(--transition-fast), transform var(--transition-fast),
-                visibility var(--transition-fast);
     z-index: 1001;
 }
 
@@ -702,7 +693,6 @@ a.contact-item:hover { color: var(--red-hover); }
     color: var(--text-body);
     border-radius: var(--radius-sm);
     border-left: 2px solid transparent;
-    transition: all var(--transition-fast);
 }
 
 .dropdown a:hover,
@@ -733,7 +723,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-subtle);
     background: var(--surface);
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .mobile-toggle:hover {
@@ -747,7 +736,6 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 2px;
     border-radius: 2px;
     background: var(--text-strong);
-    transition: transform var(--transition), opacity var(--transition-fast), background var(--transition-fast);
 }
 
 .mobile-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -879,7 +867,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border: 1px solid var(--border-subtle);
     padding: 0.45rem 1rem;
     border-radius: var(--radius-sm);
-    transition: border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition);
 }
 
 .trust-item:hover {
@@ -964,11 +951,9 @@ a.contact-item:hover { color: var(--red-hover); }
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .feature-card:hover {
-    transform: translateY(-6px);
     border-color: var(--border-red);
     box-shadow: var(--shadow-lg), 0 0 30px rgba(224, 36, 36, 0.15);
 }
@@ -988,11 +973,9 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 100%;
     object-fit: cover;
     z-index: 2;
-    transition: transform 0.45s ease;
 }
 
 .feature-card:hover .feature-image img {
-    transform: scale(1.05);
 }
 
 /* Placeholder discreto detrás de la imagen real */
@@ -1213,11 +1196,9 @@ a.contact-item:hover { color: var(--red-hover); }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .product-card:hover {
-    transform: translateY(-6px);
     border-color: var(--border-red);
     box-shadow: var(--shadow-lg), 0 0 36px rgba(224, 36, 36, 0.16);
 }
@@ -1261,11 +1242,9 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 100%;
     object-fit: cover;
     z-index: 2;
-    transition: transform 0.45s ease;
 }
 
 .product-card:hover .product-image img {
-    transform: scale(1.05);
 }
 
 .image-placeholder {
@@ -1539,12 +1518,10 @@ a.contact-item:hover { color: var(--red-hover); }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     scroll-margin-top: 100px;
 }
 
 .industry-card:hover {
-    transform: translateY(-6px);
     border-color: var(--border-red);
     box-shadow: var(--shadow-lg), 0 0 32px rgba(224, 36, 36, 0.14);
 }
@@ -1564,11 +1541,9 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 100%;
     object-fit: cover;
     z-index: 2;
-    transition: transform 0.45s ease;
 }
 
 .industry-card:hover .industry-card-image img {
-    transform: scale(1.06);
 }
 
 .industry-card-image .industry-image-placeholder i { font-size: 2.4rem; }
@@ -1584,7 +1559,6 @@ a.contact-item:hover { color: var(--red-hover); }
     padding: var(--space-md);
     pointer-events: none;
     opacity: 0.9;
-    transition: opacity var(--transition);
 }
 
 .overlay-icon {
@@ -1598,11 +1572,9 @@ a.contact-item:hover { color: var(--red-hover); }
     color: var(--white);
     font-size: 1.25rem;
     box-shadow: 0 0 22px rgba(224, 36, 36, 0.5);
-    transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .industry-card:hover .overlay-icon {
-    transform: translateY(-4px) scale(1.06);
     box-shadow: 0 0 30px rgba(255, 59, 59, 0.6);
 }
 
@@ -1653,11 +1625,9 @@ a.contact-item:hover { color: var(--red-hover); }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .service-card:hover {
-    transform: translateY(-6px);
     border-color: var(--border-red);
     box-shadow: var(--shadow-lg), 0 0 32px rgba(224, 36, 36, 0.14);
 }
@@ -1677,11 +1647,9 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 100%;
     object-fit: cover;
     z-index: 2;
-    transition: transform 0.45s ease;
 }
 
 .service-card:hover .service-card-image img {
-    transform: scale(1.06);
 }
 
 .service-image-placeholder {
@@ -1796,11 +1764,9 @@ a.contact-item:hover { color: var(--red-hover); }
     padding: clamp(1.5rem, 2.5vw, 2.25rem);
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .plan-card:hover {
-    transform: translateY(-6px);
     border-color: var(--border-red);
     box-shadow: var(--shadow-lg), 0 0 30px rgba(224, 36, 36, 0.12);
 }
@@ -1814,7 +1780,6 @@ a.contact-item:hover { color: var(--red-hover); }
 }
 
 .plan-card.featured:hover {
-    transform: scale(1.02) translateY(-6px);
     box-shadow: var(--glow-red-strong);
 }
 
@@ -1945,7 +1910,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     padding: var(--space-md) var(--space-sm);
-    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .why-mini-stat:hover {
@@ -1984,11 +1948,9 @@ a.contact-item:hover { color: var(--red-hover); }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .why-card:hover {
-    transform: translateY(-6px);
     border-color: var(--border-red);
     box-shadow: var(--shadow-lg), 0 0 32px rgba(224, 36, 36, 0.14);
 }
@@ -2024,11 +1986,9 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 100%;
     object-fit: cover;
     z-index: 2;
-    transition: transform 0.45s ease;
 }
 
 .why-card:hover .why-card-image img {
-    transform: scale(1.05);
 }
 
 .why-image-placeholder {
@@ -2255,11 +2215,9 @@ a.contact-item:hover { color: var(--red-hover); }
     align-items: center;
     justify-content: center;
     padding: var(--space-md);
-    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .brand-item:hover {
-    transform: translateY(-4px);
     border-color: var(--border-red);
     box-shadow: 0 0 24px rgba(224, 36, 36, 0.15);
 }
@@ -2271,7 +2229,6 @@ a.contact-item:hover { color: var(--red-hover); }
     color: var(--text-muted);
     text-align: center;
     letter-spacing: 0.03em;
-    transition: color var(--transition-fast);
 }
 
 .brand-item:hover .brand-placeholder {
@@ -2301,11 +2258,9 @@ a.contact-item:hover { color: var(--red-hover); }
     border-radius: var(--radius-lg);
     padding: var(--space-xl) var(--space-lg);
     text-align: center;
-    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .cert-item:hover {
-    transform: translateY(-5px);
     border-color: var(--border-red);
     box-shadow: 0 0 26px rgba(224, 36, 36, 0.15);
 }
@@ -2380,7 +2335,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     padding: var(--space-lg) var(--space-md);
-    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .testimonial-stat:hover {
@@ -2428,7 +2382,6 @@ a.contact-item:hover { color: var(--red-hover); }
     flex-direction: column;
     gap: var(--space-md);
     position: relative;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .testimonial-card::before {
@@ -2444,7 +2397,6 @@ a.contact-item:hover { color: var(--red-hover); }
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px);
     border-color: var(--border-red);
     box-shadow: var(--shadow-lg), 0 0 28px rgba(224, 36, 36, 0.12);
 }
@@ -2784,7 +2736,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border-radius: var(--radius-md);
     padding: 0.8rem 1rem;
     min-height: 48px;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
     -webkit-appearance: none;
     appearance: none;
 }
@@ -2853,7 +2804,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border: 1.5px solid var(--border-strong);
     background: var(--surface-input);
     position: relative;
-    transition: all var(--transition-fast);
 }
 
 .checkbox-custom::after {
@@ -2866,7 +2816,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border: solid var(--white);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg) scale(0);
-    transition: transform var(--transition-fast);
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
@@ -2962,11 +2911,9 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 100%;
     object-fit: cover;
     z-index: 1;
-    transition: transform 0.45s ease, filter var(--transition);
 }
 
 .map-placeholder:hover img {
-    transform: scale(1.05);
     filter: saturate(1.15) brightness(1.02);
 }
 
@@ -2984,7 +2931,6 @@ a.contact-item:hover { color: var(--red-hover); }
     font-weight: 600;
     font-size: var(--text-sm);
     opacity: 0.95;
-    transition: opacity var(--transition), background var(--transition);
 }
 
 .map-overlay i {
@@ -3066,7 +3012,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border-radius: var(--radius-md);
     padding: 0.65rem 0.9rem;
     min-height: 44px;
-    transition: all var(--transition-fast);
 }
 
 .social-link i { color: var(--red); }
@@ -3077,7 +3022,6 @@ a.contact-item:hover { color: var(--red-hover); }
     border-color: var(--border-red);
     background: var(--red-soft);
     box-shadow: 0 0 14px rgba(224, 36, 36, 0.2);
-    transform: translateY(-2px);
 }
 
 .info-panel-trust {
@@ -3172,7 +3116,6 @@ a.contact-item:hover { color: var(--red-hover); }
     background: var(--surface);
     border: 1px solid var(--border-subtle);
     color: var(--text-muted);
-    transition: all var(--transition-fast);
 }
 
 .footer-social a:hover,
@@ -3181,7 +3124,6 @@ a.contact-item:hover { color: var(--red-hover); }
     background: var(--grad-red);
     border-color: var(--red);
     box-shadow: 0 0 18px rgba(224, 36, 36, 0.4);
-    transform: translateY(-3px);
 }
 
 .footer-links h4,
@@ -3216,13 +3158,11 @@ a.contact-item:hover { color: var(--red-hover); }
     color: var(--text-muted);
     display: inline-block;
     padding: 0.15rem 0;
-    transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .footer-links a:hover,
 .footer-links a:focus-visible {
     color: var(--red-hover);
-    transform: translateX(4px);
 }
 
 .footer-contact li {
@@ -3290,12 +3230,10 @@ a.contact-item:hover { color: var(--red-hover); }
     justify-content: center;
     font-size: 1.9rem;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 22px rgba(37, 211, 102, 0.35);
-    transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .whatsapp-float:hover,
 .whatsapp-float:focus-visible {
-    transform: translateY(-4px) scale(1.06);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 32px rgba(37, 211, 102, 0.55);
     color: var(--white);
 }
@@ -3335,14 +3273,12 @@ a.contact-item:hover { color: var(--red-hover); }
     justify-content: center;
     font-size: 1.1rem;
     box-shadow: var(--shadow-md);
-    transition: all var(--transition);
 }
 
 .back-to-top:hover {
     background: var(--grad-red);
     color: var(--white);
     box-shadow: var(--glow-red-strong);
-    transform: translateY(-3px);
 }
 
 /* ==========================================================================
@@ -3445,7 +3381,6 @@ a.contact-item:hover { color: var(--red-hover); }
         visibility: hidden;
         transform: translateY(-8px);
         pointer-events: none;
-        transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
     }
 
     .nav-menu.active {
@@ -3704,7 +3639,6 @@ a.contact-item:hover { color: var(--red-hover); }
     text-decoration: none;
     color: var(--text-muted);
     border-right: 1px solid var(--border-subtle);
-    transition: background var(--transition-fast, 0.2s), color var(--transition-fast, 0.2s);
 }
 .quick-nav-item:last-child { border-right: none; }
 
@@ -3718,7 +3652,6 @@ a.contact-item:hover { color: var(--red-hover); }
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--red), var(--red-hover), var(--red), transparent);
     transform: scaleX(0);
-    transition: transform 0.3s ease;
 }
 .quick-nav-item:hover { background: rgba(255, 255, 255, 0.035); }
 .quick-nav-item:hover::before { transform: scaleX(1); }
@@ -3735,13 +3668,11 @@ a.contact-item:hover { color: var(--red-hover); }
     border-radius: var(--radius-md, 8px);
     color: var(--red-hover, #ff3b3b);
     font-size: 1rem;
-    transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
 .quick-nav-item:hover .quick-nav-icon {
     background: rgba(224, 36, 36, 0.2);
     border-color: var(--red);
     box-shadow: 0 0 18px var(--red-glow, rgba(224, 36, 36, 0.35));
-    transform: translateY(-1px);
 }
 
 .quick-nav-text {
@@ -3758,7 +3689,6 @@ a.contact-item:hover { color: var(--red-hover); }
     font-weight: 600;
     line-height: 1.25;
     color: var(--text-body);
-    transition: color 0.2s;
 }
 .quick-nav-item:hover .quick-nav-label { color: var(--text-strong); }
 
@@ -3767,7 +3697,6 @@ a.contact-item:hover { color: var(--red-hover); }
     letter-spacing: 0.02em;
     color: var(--text-muted);
     opacity: 0.75;
-    transition: opacity 0.2s, color 0.2s;
 }
 .quick-nav-item:hover .quick-nav-sub { opacity: 1; }
 
@@ -3777,11 +3706,9 @@ a.contact-item:hover { color: var(--red-hover); }
     color: var(--red-hover);
     opacity: 0;
     transform: translateX(-5px);
-    transition: opacity 0.25s, transform 0.25s;
 }
 .quick-nav-item:hover .quick-nav-arrow {
     opacity: 1;
-    transform: translateX(0);
 }
 
 /* Variante CTA */
