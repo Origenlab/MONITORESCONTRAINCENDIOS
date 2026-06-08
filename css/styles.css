@@ -683,10 +683,7 @@ a.contact-item:hover { color: var(--red-hover); }
    ========================================================================== */
 .hero {
     position: relative;
-    background:
-        radial-gradient(ellipse 60% 50% at 15% 0%, rgba(224, 36, 36, 0.16), transparent 60%),
-        radial-gradient(ellipse 50% 60% at 90% 100%, rgba(185, 28, 28, 0.12), transparent 65%),
-        linear-gradient(160deg, #131012 0%, var(--bg-0) 45%, #0d0a0a 100%);
+    background: var(--bg-0);
     padding: clamp(4.5rem, 9vh, 8rem) 0 clamp(4rem, 7vh, 6.5rem);
     overflow: hidden;
     border-bottom: 1px solid var(--border-subtle);
@@ -703,20 +700,6 @@ a.contact-item:hover { color: var(--red-hover); }
     background: linear-gradient(90deg, transparent, var(--red) 30%, var(--red-hover) 50%, var(--red) 70%, transparent);
     opacity: 0.7;
     box-shadow: 0 0 20px var(--red-glow);
-}
-
-/* Patrón técnico sutil */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black, transparent);
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black, transparent);
-    pointer-events: none;
 }
 
 .hero .container { position: relative; z-index: 1; }
@@ -827,14 +810,11 @@ a.contact-item:hover { color: var(--red-hover); }
 .hero-content { min-width: 0; }
 
 .hero-content-box {
-    background: linear-gradient(180deg, rgba(26, 29, 33, 0.9), rgba(17, 19, 21, 0.92));
-    border: 1px solid var(--border-subtle);
-    border-top: 2px solid var(--red);
-    border-radius: var(--radius-lg);
-    padding: clamp(1.5rem, 2.5vw, 2.5rem);
-    box-shadow: var(--shadow-lg), 0 0 40px rgba(224, 36, 36, 0.06);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
 }
 
 .hero-paragraph {
@@ -3548,7 +3528,7 @@ a.contact-item:hover { color: var(--red-hover); }
 
     .hero-title { font-size: var(--text-4xl); }
 
-    .hero-content-box { padding: var(--space-lg); }
+    .hero-content-box { padding: 0; }
 
     .hero-stats {
         grid-template-columns: 1fr;
