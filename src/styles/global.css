@@ -3988,3 +3988,5 @@ a.contact-item:hover { color: var(--red-hover); }
         min-height: 44px;
     }
 }
+
+.about-cta { margin-top: var(--space-xl); }

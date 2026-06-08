@@ -1,0 +1,436 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqWhatsapp from '../components/sections/FaqWhatsapp.astro';
+
+const stats = [
+  { numero: '15+', label: 'Años de experiencia' },
+  { numero: '500+', label: 'Proyectos completados' },
+  { numero: '50+', label: 'Ingenieros especializados' },
+  { numero: '32', label: 'Estados con cobertura' },
+];
+
+const valores = [
+  { icon: 'fas fa-shield-halved', titulo: 'Seguridad ante todo', texto: 'La protección de vidas y activos guía cada decisión técnica que tomamos.' },
+  { icon: 'fas fa-medal', titulo: 'Excelencia técnica', texto: 'Ingeniería certificada NFPA y equipos FM/UL de clase mundial, sin concesiones.' },
+  { icon: 'fas fa-handshake-angle', titulo: 'Compromiso de servicio', texto: 'Acompañamos al cliente antes, durante y después de la venta, de por vida.' },
+  { icon: 'fas fa-scale-balanced', titulo: 'Cumplimiento normativo', texto: 'Documentación completa para auditorías de PEMEX, STPS y aseguradoras.' },
+  { icon: 'fas fa-bolt', titulo: 'Respuesta inmediata', texto: 'Cotización en menos de 24 horas y soporte de emergencia 24/7.' },
+  { icon: 'fas fa-handshake', titulo: 'Integridad', texto: 'Asesoría honesta basada en ingeniería, no en ventas. Recomendamos lo correcto.' },
+];
+
+const diferenciadores = [
+  'Distribuidores autorizados de marcas líderes mundiales',
+  'Equipo de ingenieros certificados NFPA',
+  'Cobertura nacional en toda la República Mexicana',
+  'Programas de mantenimiento preventivo certificados',
+  'Experiencia comprobada en proyectos PEMEX',
+  'Capacitación especializada para brigadas',
+];
+
+const marcas = [
+  { nombre: 'Elkhart Brass', desc: 'Monitores y boquillas de referencia mundial.' },
+  { nombre: 'Akron Brass', desc: 'Equipo de combate certificado FM/UL.' },
+  { nombre: 'Task Force Tips', desc: 'Boquillas y monitores de alto desempeño.' },
+  { nombre: 'Williams Fire', desc: 'Sistemas de gran caudal para hidrocarburos.' },
+  { nombre: 'Angus Fire', desc: 'Espumas y mangueras para alto riesgo.' },
+];
+
+const certificaciones = [
+  { nombre: 'FM Approved', detalle: 'Factory Mutual Research' },
+  { nombre: 'UL Listed', detalle: 'Underwriters Laboratories' },
+  { nombre: 'NFPA Compliant', detalle: 'National Fire Protection Association' },
+  { nombre: 'ISO 9001', detalle: 'Sistema de Gestión de Calidad' },
+];
+---
+<Base
+  title="Sobre AQUEON | Especialistas en Monitores Contra Incendios desde 2009 | México"
+  description="Conozca AQUEON: especialistas en monitores contra incendios industriales en México desde 2009. Ingenieros certificados NFPA, distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, con cobertura nacional y experiencia en proyectos PEMEX."
+>
+  <!-- Hero -->
+  <section class="ab-hero">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Sobre AQUEON</span>
+          <h1>Expertise Técnico que Protege, Servicio que Respalda</h1>
+        </div>
+        <div class="section-header__body">
+          <p>Especialistas en protección contra incendios para industrias de <strong>alto riesgo</strong> desde 2009.</p>
+          <p>Ingeniería certificada <strong>NFPA</strong> y equipos <strong>FM Approved / UL Listed</strong> con cobertura nacional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banda de cifras -->
+  <section class="ab-band">
+    <div class="container">
+      <div class="ab-band-grid">
+        {stats.map((s) => (
+          <div class="ab-band-item">
+            <span class="ab-band-num">{s.numero}</span>
+            <span class="ab-band-txt">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Historia / Quiénes somos -->
+  <section class="ab-historia">
+    <div class="container">
+      <div class="ab-historia-grid">
+        <div class="ab-historia-media">
+          <img src="/images/ingenieros-especialistas-monitores-contra-incendios-nfpa.webp" alt="Equipo de ingenieros especializados AQUEON certificados NFPA" loading="lazy" />
+          <div class="ab-historia-badge">
+            <span class="ab-historia-badge-num">2009</span>
+            <span class="ab-historia-badge-txt">Año de fundación</span>
+          </div>
+        </div>
+        <div class="ab-historia-text">
+          <span class="section-tag">Quiénes somos</span>
+          <h2>Ingeniería al Servicio de la Seguridad Industrial</h2>
+          <p>
+            En <strong>AQUEON</strong> somos especialistas en soluciones de protección contra incendios para industrias de
+            alto riesgo. Fundada en 2009, nuestra empresa nació con la misión de proveer a la industria mexicana equipos de
+            la más alta calidad, respaldados por un servicio técnico excepcional.
+          </p>
+          <p>
+            Combinamos el conocimiento técnico profundo de nuestros ingenieros con un compromiso inquebrantable de servicio
+            para proteger lo que más importa: su operación, sus activos y su gente. En la industria petrolera, petroquímica
+            y manufacturera, la seguridad no es negociable.
+          </p>
+          <p>
+            Somos distribuidores autorizados de las marcas más reconocidas del mundo en equipo contra incendio, lo que nos
+            permite ofrecer productos de primera línea con <strong>garantía de fábrica</strong> y soporte técnico directo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Misión y Visión -->
+  <section class="ab-mv">
+    <div class="container">
+      <div class="ab-mv-grid">
+        <div class="ab-mv-card">
+          <span class="ab-mv-icon" aria-hidden="true"><i class="fas fa-bullseye"></i></span>
+          <h3>Misión</h3>
+          <p>
+            Proveer a la industria mexicana equipos de protección contra incendios de la más alta calidad, respaldados por
+            ingeniería certificada y servicio técnico excepcional, para proteger vidas, activos y operaciones.
+          </p>
+        </div>
+        <div class="ab-mv-card">
+          <span class="ab-mv-icon" aria-hidden="true"><i class="fas fa-eye"></i></span>
+          <h3>Visión</h3>
+          <p>
+            Ser el proveedor de referencia en monitores contra incendios industriales en México, reconocido por la
+            excelencia técnica, el cumplimiento normativo y la confianza de los sectores de más alto riesgo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valores -->
+  <section class="ab-valores">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Nuestros Valores</span>
+          <h2>Los Principios que nos Guían</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Más que un proveedor, somos un <strong>socio estratégico</strong> en la protección de su operación.</p>
+          <p>Cada proyecto se rige por la misma exigencia técnica y <strong>compromiso de servicio</strong>.</p>
+        </div>
+      </div>
+      <div class="ab-valores-grid">
+        {valores.map((v) => (
+          <article class="ab-valor">
+            <span class="ab-valor-icon" aria-hidden="true"><i class={v.icon}></i></span>
+            <h3>{v.titulo}</h3>
+            <p>{v.texto}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciadores -->
+  <section class="ab-dif">
+    <div class="container">
+      <div class="ab-dif-grid">
+        <div class="ab-dif-text">
+          <span class="section-tag">¿Por qué AQUEON?</span>
+          <h2>La Diferencia que Marca la Diferencia</h2>
+          <p>No somos solo proveedores de equipos: somos socios estratégicos en la protección de su operación, con respaldo técnico real de ingenieros certificados.</p>
+          <a href="/#cotizar" class="btn btn-primary btn-lg">
+            <i class="fas fa-file-invoice" aria-hidden="true"></i> Hablar con un especialista
+          </a>
+        </div>
+        <ul class="ab-dif-list">
+          {diferenciadores.map((d) => (
+            <li><i class="fas fa-check" aria-hidden="true"></i> {d}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marcas distribuidas -->
+  <section class="ab-marcas">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Alianzas Estratégicas</span>
+          <h2>Distribuidores de Marcas Líderes</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Trabajamos exclusivamente con los <strong>fabricantes más reconocidos del mundo</strong> en equipo contra incendio.</p>
+          <p>Productos de primera línea con <strong>garantía de fábrica</strong> y soporte técnico directo.</p>
+        </div>
+      </div>
+      <div class="ab-marcas-grid">
+        {marcas.map((m) => (
+          <div class="ab-marca">
+            <span class="ab-marca-icon" aria-hidden="true"><i class="fas fa-fire-flame-curved"></i></span>
+            <h3>{m.nombre}</h3>
+            <p>{m.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="ab-cert">
+        <h3 class="ab-cert-title"><i class="fas fa-award" aria-hidden="true"></i> Certificaciones que respaldan nuestra calidad</h3>
+        <div class="ab-cert-grid">
+          {certificaciones.map((c) => (
+            <div class="ab-cert-item">
+              <span class="ab-cert-icon" aria-hidden="true"><i class="fas fa-certificate"></i></span>
+              <span class="ab-cert-name">{c.nombre}</span>
+              <span class="ab-cert-detail">{c.detalle}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cobertura -->
+  <section class="ab-cobertura">
+    <div class="container">
+      <div class="ab-cobertura-inner">
+        <div class="ab-cobertura-icon" aria-hidden="true"><i class="fas fa-map-location-dot"></i></div>
+        <div class="ab-cobertura-text">
+          <h2>Cobertura Nacional</h2>
+          <p>Atendemos proyectos en los <strong>32 estados de la República Mexicana</strong>, con stock permanente y equipo técnico para industria, infraestructura crítica y gobierno.</p>
+        </div>
+        <a href="/#cotizar" class="btn btn-outline-light btn-lg">
+          <i class="fas fa-phone" aria-hidden="true"></i> Solicitar atención
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FaqWhatsapp />
+</Base>
+
+<style>
+  /* Hero */
+  .ab-hero { background: var(--bg-0); padding: var(--section-pad) 0 calc(var(--section-pad) * 0.5); }
+  .ab-hero .section-header { margin-bottom: 0; }
+  .ab-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-4xl);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+    margin: var(--space-md) 0 0;
+  }
+  .ab-hero .section-header__body p { font-size: var(--text-base); }
+
+  /* Banda */
+  .ab-band { background: var(--grad-red); padding: clamp(2rem, 4vw, 3rem) 0; }
+  .ab-band-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: var(--space-lg);
+    text-align: center;
+  }
+  .ab-band-item { display: flex; flex-direction: column; gap: 0.25rem; position: relative; }
+  .ab-band-item:not(:last-child)::after {
+    content: ""; position: absolute; right: calc(var(--space-lg) / -2); top: 15%;
+    height: 70%; width: 1px; background: rgba(255, 255, 255, 0.25);
+  }
+  .ab-band-num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: var(--text-3xl); color: #fff; line-height: 1; }
+  .ab-band-txt { font-size: var(--text-sm); color: rgba(255, 255, 255, 0.9); }
+
+  /* Historia */
+  .ab-historia { background: var(--bg-1); padding: var(--section-pad) 0; border-bottom: 1px solid var(--border-subtle); }
+  .ab-historia-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 4%, 4rem);
+    align-items: center;
+  }
+  .ab-historia-media { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-subtle); }
+  .ab-historia-media img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; display: block; filter: saturate(1.05) contrast(1.03) brightness(0.92); }
+  .ab-historia-badge {
+    position: absolute; bottom: 1rem; left: 1rem;
+    display: flex; flex-direction: column;
+    background: var(--grad-red); color: #fff;
+    padding: 0.75rem 1.25rem; border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+  .ab-historia-badge-num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: var(--text-2xl); line-height: 1; }
+  .ab-historia-badge-txt { font-size: var(--text-xs); opacity: 0.9; }
+  .ab-historia-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .ab-historia-text p { color: var(--text-body); margin-bottom: var(--space-md); }
+
+  /* Misión / Visión */
+  .ab-mv { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .ab-mv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: clamp(1.5rem, 3%, 2.5rem);
+  }
+  .ab-mv-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--red);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .ab-mv-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 3.25rem; height: 3.25rem;
+    background: var(--red-soft); border: 1px solid var(--border-red);
+    border-radius: var(--radius-md); color: var(--red-hover);
+    font-size: 1.4rem; margin-bottom: var(--space-md);
+  }
+  .ab-mv-card h3 { font-size: var(--text-xl); margin-bottom: var(--space-sm); }
+  .ab-mv-card p { color: var(--text-body); margin: 0; line-height: 1.7; }
+
+  /* Valores */
+  .ab-valores { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .ab-valores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: clamp(1rem, 2%, 1.75rem);
+  }
+  .ab-valor {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+  .ab-valor-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.75rem; height: 2.75rem;
+    background: var(--red-soft); border: 1px solid var(--border-red);
+    border-radius: var(--radius-md); color: var(--red-hover);
+    font-size: 1.15rem; margin-bottom: var(--space-md);
+  }
+  .ab-valor h3 { font-size: var(--text-md); margin-bottom: var(--space-sm); }
+  .ab-valor p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.65; margin: 0; }
+
+  /* Diferenciadores */
+  .ab-dif { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .ab-dif-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4%, 4rem);
+    align-items: center;
+  }
+  .ab-dif-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .ab-dif-text p { color: var(--text-body); margin-bottom: var(--space-lg); }
+  .ab-dif-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .ab-dif-list li {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--surface); border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--red);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.1rem;
+    color: var(--text-body); font-size: var(--text-sm);
+  }
+  .ab-dif-list i {
+    flex-shrink: 0; width: 1.4rem; height: 1.4rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--grad-red); border-radius: 50%; color: #fff; font-size: 0.65rem;
+  }
+
+  /* Marcas */
+  .ab-marcas { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .ab-marcas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    gap: clamp(1rem, 2%, 1.5rem);
+    margin-bottom: var(--space-3xl);
+  }
+  .ab-marca {
+    background: var(--surface); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg); padding: var(--space-lg); text-align: center;
+  }
+  .ab-marca-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.75rem; height: 2.75rem;
+    background: var(--red-soft); border: 1px solid var(--border-red);
+    border-radius: 50%; color: var(--red-hover); font-size: 1.1rem; margin-bottom: var(--space-sm);
+  }
+  .ab-marca h3 { font-size: var(--text-md); margin-bottom: 0.35rem; }
+  .ab-marca p { color: var(--text-muted); font-size: var(--text-xs); margin: 0; line-height: 1.5; }
+
+  .ab-cert {
+    background: var(--bg-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .ab-cert-title {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: var(--text-lg); margin-bottom: var(--space-lg);
+  }
+  .ab-cert-title i { color: var(--red); }
+  .ab-cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: var(--space-md);
+  }
+  .ab-cert-item {
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.25rem;
+    background: var(--surface); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md); padding: var(--space-lg);
+  }
+  .ab-cert-icon { color: var(--red-hover); font-size: 1.5rem; margin-bottom: 0.35rem; }
+  .ab-cert-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--text-strong); font-size: var(--text-md); }
+  .ab-cert-detail { color: var(--text-muted); font-size: var(--text-xs); }
+
+  /* Cobertura */
+  .ab-cobertura {
+    background:
+      radial-gradient(ellipse 70% 120% at 50% -20%, rgba(255, 80, 80, 0.3), transparent 60%),
+      linear-gradient(135deg, var(--red-dark) 0%, var(--red-darker) 60%, #450a0a 100%);
+    padding: var(--section-pad) 0;
+  }
+  .ab-cobertura-inner {
+    display: flex; align-items: center; gap: var(--space-xl); flex-wrap: wrap;
+  }
+  .ab-cobertura-icon {
+    flex-shrink: 0;
+    width: 4rem; height: 4rem;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-lg); color: #fff; font-size: 1.75rem;
+  }
+  .ab-cobertura-text { flex: 1; min-width: min(100%, 18rem); }
+  .ab-cobertura-text h2 { color: #fff; font-size: var(--text-2xl); margin-bottom: 0.5rem; }
+  .ab-cobertura-text p { color: rgba(255, 255, 255, 0.9); margin: 0; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .ab-historia-grid,
+    .ab-dif-grid { grid-template-columns: 1fr; }
+    .ab-historia-media img { min-height: 260px; }
+  }
+</style>
