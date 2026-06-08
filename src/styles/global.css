@@ -1627,6 +1627,17 @@ a.contact-item:hover { color: var(--red-hover); }
     width: 100%;
 }
 
+.industry-featured-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.industries-cta {
+    margin-top: var(--space-2xl);
+    text-align: center;
+}
+
 .industry-card {
     background: var(--surface);
     border: 1px solid var(--border-subtle);

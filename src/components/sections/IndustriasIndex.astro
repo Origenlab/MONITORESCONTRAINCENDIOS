@@ -41,9 +41,14 @@ import { industriaDestacada, industrias } from '../../data/industrias';
                         <li><i class="fas fa-check-circle" aria-hidden="true"></i> {feature}</li>
                     ))}
                 </ul>
-                <a href="/#cotizar" class="btn btn-primary btn-lg">
-                    <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización
-                </a>
+                <div class="industry-featured-actions">
+                    <a href="/#cotizar" class="btn btn-primary btn-lg">
+                        <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización
+                    </a>
+                    <a href={`/industrias#${industriaDestacada.id}`} class="btn btn-outline btn-lg">
+                        Más Información
+                    </a>
+                </div>
             </div>
         </article>
 
@@ -73,6 +78,12 @@ import { industriaDestacada, industrias } from '../../data/industrias';
                     </div>
                 </article>
             ))}
+        </div>
+
+        <div class="industries-cta">
+            <a href="/industrias" class="btn btn-secondary btn-lg">
+                <i class="fas fa-industry" aria-hidden="true"></i> Ver todas las industrias
+            </a>
         </div>
     </div>
 </section>
