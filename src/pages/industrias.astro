@@ -1,0 +1,457 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqWhatsapp from '../components/sections/FaqWhatsapp.astro';
+import { industriaDestacada as dest, industrias } from '../data/industrias';
+
+const navItems = [
+  { id: dest.id, label: dest.titulo, icon: dest.icon },
+  ...industrias.map((i) => ({ id: i.id!, label: i.titulo, icon: i.icon })),
+];
+
+const bandStats = [
+  { numero: '500+', texto: 'Instalaciones realizadas' },
+  { numero: '7', texto: 'Sectores especializados' },
+  { numero: '32', texto: 'Estados con cobertura' },
+  { numero: '15+', texto: 'Años de experiencia' },
+];
+---
+<Base
+  title="Industrias que Protegemos | Monitores Contra Incendios por Sector | AQUEON México"
+  description="Soluciones de monitores contra incendios por industria: petróleo y gas, petroquímica, manufactura, bomberos, aviación, minería y generación de energía. Equipos certificados FM/UL con cumplimiento PEMEX, NFPA y CFE en México."
+>
+  <!-- Hero de página -->
+  <section class="ind-hero">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Sectores que Atendemos</span>
+          <h1>Soluciones Especializadas por Industria</h1>
+        </div>
+        <div class="section-header__body">
+          <p>Cada sector enfrenta riesgos y normativas propias. Diseñamos la <strong>solución óptima</strong> para cada operación de alto riesgo.</p>
+          <p>Equipos certificados <strong>FM Approved y UL Listed</strong> con cumplimiento de PEMEX, NFPA, CFE y aseguradoras internacionales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navegación rápida de industrias -->
+  <nav class="quick-nav" aria-label="Industrias">
+    <div class="quick-nav-inner">
+      {navItems.map((it) => (
+        <a href={`#${it.id}`} class="quick-nav-item">
+          <span class="quick-nav-icon" aria-hidden="true"><i class={it.icon}></i></span>
+          <span class="quick-nav-text">
+            <span class="quick-nav-label">{it.label}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- Banda de cifras -->
+  <section class="ind-band">
+    <div class="container">
+      <div class="ind-band-grid">
+        {bandStats.map((s) => (
+          <div class="ind-band-item">
+            <span class="ind-band-num">{s.numero}</span>
+            <span class="ind-band-txt">{s.texto}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industria destacada: Petróleo y Gas -->
+  <section id={dest.id} class="ind-featured">
+    <div class="container">
+      <div class="ind-featured-grid">
+        <div class="ind-featured-media">
+          <img src={dest.imagen} alt={dest.alt} loading="lazy" />
+          <span class="ind-featured-badge"><i class={dest.icon} aria-hidden="true"></i> {dest.badge}</span>
+        </div>
+        <div class="ind-featured-content">
+          <span class="section-tag">Sector estratégico</span>
+          <h2>{dest.titulo}</h2>
+          <p>{dest.descripcion}</p>
+
+          <div class="ind-stats-row">
+            {dest.stats.map((st) => (
+              <div class="ind-stat">
+                <span class="ind-stat-num">{st.numero}</span>
+                <span class="ind-stat-txt">{st.texto}</span>
+              </div>
+            ))}
+          </div>
+
+          <ul class="ind-features">
+            {dest.features.map((f) => (
+              <li><i class="fas fa-check" aria-hidden="true"></i> {f}</li>
+            ))}
+          </ul>
+
+          <div class="ind-chips">
+            {dest.normativas.map((n) => <span class="ind-chip ind-chip--norm">{n}</span>)}
+          </div>
+
+          <a href="/#cotizar" class="btn btn-primary btn-lg">
+            <i class="fas fa-file-invoice" aria-hidden="true"></i> Cotizar para Petróleo y Gas
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloques por industria -->
+  <section class="ind-blocks">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Más Sectores</span>
+          <h2>Protección para Cada Operación</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Atendemos <strong>industria, infraestructura crítica y gobierno</strong> con equipo y asesoría especializada por sector.</p>
+          <p>Diseño, instalación y documentación conforme a la <strong>normativa aplicable</strong> a cada giro.</p>
+        </div>
+      </div>
+
+      {industrias.map((ind, i) => (
+        <article id={ind.id} class:list={['ind-block', i % 2 === 1 && 'ind-block--rev']}>
+          <div class="ind-block-media">
+            <img src={ind.imagen} alt={ind.alt} loading="lazy" />
+            <span class="ind-block-icon" aria-hidden="true"><i class={ind.icon}></i></span>
+          </div>
+          <div class="ind-block-content">
+            <span class="ind-block-kicker">{ind.subtitulo}</span>
+            <h3>{ind.titulo}</h3>
+            <p>{ind.descripcion}</p>
+
+            <ul class="ind-features ind-features--grid">
+              {ind.features.map((f) => (
+                <li><i class="fas fa-check" aria-hidden="true"></i> {f}</li>
+              ))}
+            </ul>
+
+            <div class="ind-meta">
+              <div class="ind-meta-group">
+                <span class="ind-meta-label"><i class="fas fa-location-dot" aria-hidden="true"></i> Aplicaciones</span>
+                <div class="ind-chips">
+                  {ind.aplicaciones.map((a) => <span class="ind-chip">{a}</span>)}
+                </div>
+              </div>
+              <div class="ind-meta-group">
+                <span class="ind-meta-label"><i class="fas fa-certificate" aria-hidden="true"></i> Normativas</span>
+                <div class="ind-chips">
+                  {ind.normativas.map((n) => <span class="ind-chip ind-chip--norm">{n}</span>)}
+                </div>
+              </div>
+            </div>
+
+            <a href="/#cotizar" class="btn btn-secondary cta-ind-btn">
+              <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar cotización
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <FaqWhatsapp />
+</Base>
+
+<style>
+  /* Hero */
+  .ind-hero {
+    background: var(--bg-0);
+    padding: var(--section-pad) 0 calc(var(--section-pad) * 0.5);
+  }
+  .ind-hero .section-header { margin-bottom: 0; }
+  .ind-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-4xl);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+    margin: var(--space-md) 0 0;
+  }
+  .ind-hero .section-header__body p { font-size: var(--text-base); }
+
+  /* Banda de cifras */
+  .ind-band {
+    background: var(--grad-red);
+    padding: clamp(2rem, 4vw, 3rem) 0;
+  }
+  .ind-band-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: var(--space-lg);
+    text-align: center;
+  }
+  .ind-band-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+  }
+  .ind-band-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: calc(var(--space-lg) / -2);
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.25);
+  }
+  .ind-band-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: var(--text-3xl);
+    color: #fff;
+    line-height: 1;
+  }
+  .ind-band-txt {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Industria destacada */
+  .ind-featured {
+    background: var(--bg-1);
+    padding: var(--section-pad) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .ind-featured-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(2rem, 4%, 4rem);
+    align-items: center;
+  }
+  .ind-featured-media {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+  .ind-featured-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05) contrast(1.03) brightness(0.92);
+  }
+  .ind-featured-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--grad-red);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .ind-featured-content h2 {
+    font-size: var(--text-3xl);
+    margin: var(--space-sm) 0 var(--space-md);
+  }
+  .ind-featured-content > p {
+    color: var(--text-body);
+    margin-bottom: var(--space-lg);
+  }
+
+  .ind-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  .ind-stat {
+    flex: 1;
+    min-width: 7rem;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--red);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+  }
+  .ind-stat-num {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: var(--text-xl);
+    color: var(--red-hover);
+    line-height: 1;
+  }
+  .ind-stat-txt {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  /* Features list */
+  .ind-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .ind-features--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 0.6rem 1.5rem;
+  }
+  .ind-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: var(--text-sm);
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+  .ind-features i {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--red-soft);
+    border: 1px solid var(--border-red);
+    border-radius: 50%;
+    color: var(--red-hover);
+    font-size: 0.6rem;
+  }
+
+  /* Chips */
+  .ind-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-lg);
+  }
+  .ind-chip {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-body);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-sm);
+  }
+  .ind-chip--norm {
+    color: #ffb4b4;
+    background: var(--red-soft);
+    border-color: var(--border-red);
+  }
+
+  /* Bloques por industria */
+  .ind-blocks {
+    background: var(--bg-0);
+    padding: var(--section-pad) 0;
+  }
+  .ind-block {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4%, 3.5rem);
+    align-items: center;
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    border-bottom: 1px solid var(--border-subtle);
+    scroll-margin-top: 110px;
+  }
+  .ind-block:last-child { border-bottom: none; }
+  .ind-block--rev .ind-block-media { order: 2; }
+
+  .ind-block-media {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+  .ind-block-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05) contrast(1.03) brightness(0.9);
+  }
+  .ind-block-icon {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--grad-red);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  .ind-block-kicker {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--red-hover);
+    margin-bottom: var(--space-sm);
+  }
+  .ind-block-content h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+  }
+  .ind-block-content > p {
+    color: var(--text-body);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .ind-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+  .ind-meta-group { flex: 1; min-width: min(100%, 14rem); }
+  .ind-meta-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .ind-meta-label i { color: var(--red); }
+  .ind-meta .ind-chips { margin-bottom: 0; }
+
+  .cta-ind-btn { align-self: flex-start; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .ind-featured-grid,
+    .ind-block { grid-template-columns: 1fr; }
+    .ind-block--rev .ind-block-media { order: 0; }
+    .ind-featured-media img,
+    .ind-block-media img { min-height: 240px; }
+  }
+</style>
