@@ -6,7 +6,7 @@ category: "Bomberos y Brigadas"
 image: "/images/monitores-contra-incendios-brigadas-bomberos-industriales.webp"
 ---
 
-*Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Bomberos y Brigadas](/industrias#bomberos) · Lectura: 18 minutos*
+*Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Bomberos y Brigadas](/bomberos) · Lectura: 18 minutos*
 
 Hay una escena que resume mejor que cualquier argumento técnico por qué los monitores contra incendios son el equipo más importante del arsenal de una brigada industrial: dos brigadistas intentando sostener una línea de 2½" con 250 GPM frente a un patio de maniobras donde una unidad de transporte de carga está ardiendo. El calor los mantiene a veinte metros. La línea de manguera vibra. No llegan. No pueden llegar. La unidad arde entera, arrastra el contenido de la bodega contigua, y los brigadistas se retiran porque es lo único sensato que pueden hacer.
 

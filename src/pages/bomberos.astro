@@ -1,0 +1,623 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
+
+const stats = [
+  { numero: 'NFPA 1901', label: 'Aparatos de bomberos' },
+  { numero: 'NFPA 1964', label: 'Boquillas y lanzas' },
+  { numero: 'Licitación', label: 'Acompañamiento en compra pública' },
+  { numero: '32', label: 'Estados con cobertura y soporte' },
+];
+
+const beneficios = [
+  'Monitores vehiculares (deck guns) conforme a NFPA 1901',
+  'Equipos portátiles de despliegue rápido para brigadas',
+  'Boquillas y accesorios bajo NFPA 1964 / 1965',
+  'Asesoría técnica y documentación para licitaciones públicas',
+  'Fichas técnicas y certificaciones para el expediente',
+  'Capacitación a brigadas y soporte de por vida',
+];
+
+// DIFERENCIADOR 1 — Entidades que atendemos (pg-chain)
+const entidades = [
+  {
+    id: 'bomberos',
+    eslabon: 'Emergencia',
+    titulo: 'Cuerpos de Bomberos',
+    icon: 'fas fa-fire-extinguisher',
+    descripcion: 'Estaciones municipales y estatales que requieren equipo confiable, vehicular y portátil, con respaldo y refacciones a largo plazo.',
+    activos: ['Unidades de ataque', 'Deck guns vehiculares', 'Monitores portátiles', 'Boquillas y lanzas'],
+    riesgos: ['Confiabilidad en emergencia', 'Refacciones y soporte'],
+  },
+  {
+    id: 'proteccion-civil',
+    eslabon: 'Prevención',
+    titulo: 'Protección Civil',
+    icon: 'fas fa-shield-halved',
+    descripcion: 'Dependencias de prevención y respuesta que necesitan equipo normalizado y documentación para auditoría y operación.',
+    activos: ['Equipo de respuesta', 'Reservas estratégicas', 'Capacitación', 'Documentación'],
+    riesgos: ['Cumplimiento normativo', 'Trazabilidad documental'],
+  },
+  {
+    id: 'brigadas',
+    eslabon: 'Industria',
+    titulo: 'Brigadas Industriales',
+    icon: 'fas fa-people-group',
+    descripcion: 'Brigadas de planta que complementan la red fija con equipo portátil robusto para primera respuesta en sitio.',
+    activos: ['Monitores portátiles', 'Boquillas', 'Equipo de espuma', 'Mangueras'],
+    riesgos: ['Primera respuesta', 'Operación bajo presión'],
+  },
+  {
+    id: 'gobierno',
+    eslabon: 'Gobierno',
+    titulo: 'Dependencias y Gobierno',
+    icon: 'fas fa-landmark',
+    descripcion: 'Entidades federales, estatales y municipales que adquieren por licitación pública y exigen expediente técnico completo.',
+    activos: ['Partidas licitadas', 'Fichas técnicas', 'Certificaciones', 'Garantías'],
+    riesgos: ['Proceso de licitación', 'Cumplimiento de bases'],
+  },
+];
+
+// DIFERENCIADOR 2 — Equipo por aplicación (pg-scen)
+const equipos = [
+  {
+    icon: 'fas fa-truck-front',
+    nombre: 'Monitor vehicular (deck gun)',
+    descripcion: 'Cañón montado en la unidad de bomberos para ataque de alto caudal desde el vehículo.',
+    estrategia: 'Caudal y materiales conforme a NFPA 1901, con control manual o remoto.',
+    solucion: 'Monitor fijo / deck gun',
+  },
+  {
+    icon: 'fas fa-truck-droplet',
+    nombre: 'Monitor portátil de brigada',
+    descripcion: 'Equipo desplegable por una o dos personas para primera respuesta sin línea fija.',
+    estrategia: 'Despliegue rápido, estabilidad y caudal según el escenario de brigada.',
+    solucion: 'Monitores Portátiles',
+  },
+  {
+    icon: 'fas fa-shower',
+    nombre: 'Boquillas y lanzas',
+    descripcion: 'Boquillas de chorro/niebla y accesorios para ataque y enfriamiento.',
+    estrategia: 'Selección conforme a NFPA 1964 / 1965 según caudal y patrón requerido.',
+    solucion: 'Boquillas y Accesorios',
+  },
+  {
+    icon: 'fas fa-plane-departure',
+    nombre: 'Aplicación ARFF / aeropuerto',
+    descripcion: 'Respuesta a incendios de combustible en operaciones aeroportuarias.',
+    estrategia: 'Alto caudal con espuma para combustible de aviación (NFPA 403).',
+    solucion: 'Monitor de alto caudal + espuma',
+  },
+  {
+    icon: 'fas fa-fill-drip',
+    nombre: 'Sistemas de espuma',
+    descripcion: 'Ataque a incendios de hidrocarburo en respuesta municipal e industrial.',
+    estrategia: 'Cámaras y proporcionadores de espuma conforme a NFPA 11.',
+    solucion: 'Boquillas + cámara de espuma',
+  },
+];
+
+// DIFERENCIADOR 3 — Soluciones por necesidad (pg-sol, interlink)
+const soluciones = [
+  {
+    icon: 'fas fa-truck-droplet',
+    titulo: 'Equipo portátil para brigadas',
+    texto: 'Monitores portátiles robustos de despliegue rápido para cuerpos de bomberos y brigadas industriales.',
+    producto: 'Monitores Portátiles',
+    url: '/monitores-portatiles',
+  },
+  {
+    icon: 'fas fa-truck-front',
+    titulo: 'Monitores vehiculares y fijos',
+    texto: 'Deck guns y monitores de alto caudal para unidades de ataque y estaciones, conforme a NFPA 1901.',
+    producto: 'Monitores Fijos Industriales',
+    url: '/monitores-fijos',
+  },
+  {
+    icon: 'fas fa-shower',
+    titulo: 'Boquillas, lanzas y espuma',
+    texto: 'Boquillas, cámaras de espuma y accesorios bajo NFPA 1964 para ataque y enfriamiento.',
+    producto: 'Boquillas y Accesorios',
+    url: '/boquillas',
+  },
+  {
+    icon: 'fas fa-graduation-cap',
+    titulo: 'Capacitación y consultoría',
+    texto: 'Capacitación a brigadas, asesoría normativa y acompañamiento técnico en licitaciones.',
+    producto: 'Servicios de consultoría',
+    url: '/servicios#consultoria-normativa',
+  },
+  {
+    icon: 'fas fa-robot',
+    titulo: 'Monitores automáticos',
+    texto: 'Detección y respuesta autónoma para instalaciones gubernamentales e infraestructura crítica.',
+    producto: 'Monitores Automáticos',
+    url: '/monitores-automaticos',
+  },
+  {
+    icon: 'fas fa-screwdriver-wrench',
+    titulo: 'Servicio y refacciones',
+    texto: 'Instalación, mantenimiento NFPA 25 y disponibilidad de refacciones a largo plazo.',
+    producto: 'Servicios de ingeniería',
+    url: '/servicios',
+  },
+];
+
+// EXTRA — Acompañamiento en licitaciones (pg-dens)
+const licitacion = [
+  ['Fichas técnicas', 'Documento del equipo para integrar a las bases y la propuesta'],
+  ['Certificaciones', 'FM Approved / UL Listed y cumplimiento NFPA para el expediente'],
+  ['Cuadro de partidas', 'Desglose técnico por partida para cotización y evaluación'],
+  ['Cumplimiento normativo', 'Mapeo del equipo contra las bases y la normativa aplicable'],
+  ['Capacitación y garantías', 'Plan de capacitación, garantía y soporte post-venta'],
+];
+
+const normativas = [
+  { n: 'NFPA 1901', d: 'Aparatos automotores de bomberos' },
+  { n: 'NFPA 1964', d: 'Boquillas de chorro/niebla' },
+  { n: 'NFPA 1965', d: 'Accesorios para mangueras' },
+  { n: 'NFPA 1962', d: 'Cuidado y uso de mangueras' },
+  { n: 'NFPA 11', d: 'Sistemas de espuma' },
+  { n: 'Licitación pública', d: 'Ley de Adquisiciones y bases técnicas' },
+  { n: 'Protección Civil', d: 'Normatividad federal y estatal aplicable' },
+];
+
+const errores = [
+  'Redactar bases de licitación sin especificación técnica clara',
+  'Adquirir equipo sin certificación verificable (FM/UL)',
+  'No considerar la disponibilidad de refacciones a largo plazo',
+  'Omitir la capacitación de la brigada en la compra',
+  'Elegir por precio sin evaluar confiabilidad en emergencia',
+  'Dejar fuera el soporte y la garantía del expediente',
+];
+
+const recomendaciones = [
+  'Defina la especificación técnica con respaldo normativo',
+  'Exija certificación FM Approved o UL Listed verificable',
+  'Asegure refacciones y soporte de largo plazo en las bases',
+  'Incluya capacitación y garantía en la partida',
+  'Evalúe confiabilidad y respaldo, no solo el precio',
+  'Apóyese en asesoría técnica para el expediente de licitación',
+];
+
+const faqs = [
+  { q: '¿AQUEON apoya en procesos de licitación pública?', a: 'Sí. Acompañamos a dependencias y a participantes con la documentación técnica que requiere el proceso: fichas técnicas del equipo, certificaciones FM Approved / UL Listed, cuadro de partidas, mapeo de cumplimiento contra las bases y la normativa, y planes de capacitación y garantía. El objetivo es que el expediente sea técnicamente sólido y que el equipo adquirido sea el correcto para la operación.' },
+  { q: '¿Qué normativa aplica al equipo para cuerpos de bomberos?', a: 'Los aparatos automotores de bomberos se rigen por NFPA 1901, las boquillas de chorro y niebla por NFPA 1964, los accesorios de manguera por NFPA 1965 y el cuidado de mangueras por NFPA 1962; los sistemas de espuma por NFPA 11. A esto se suman los requisitos de Protección Civil y, en compra pública, la Ley de Adquisiciones y las bases técnicas de cada licitación.' },
+  { q: '¿Qué es un monitor vehicular o deck gun?', a: 'Es un monitor montado sobre la unidad de bomberos que permite atacar el incendio con un caudal muy superior al de una línea de manguera, operado desde el vehículo de forma manual o remota. Se especifica conforme a NFPA 1901 según el caudal, el material y el tipo de control, y es una pieza clave de la capacidad de ataque de una unidad.' },
+  { q: '¿Qué equipo recomiendan para una brigada industrial?', a: 'Una brigada de planta se beneficia de monitores portátiles robustos de despliegue rápido, boquillas y lanzas bajo NFPA 1964, y, donde haya riesgo de hidrocarburo, equipo de espuma. El objetivo es una primera respuesta efectiva que complemente la red fija de la instalación, con equipo confiable y capacitación adecuada.' },
+  { q: '¿Incluyen capacitación para la brigada o el cuerpo de bomberos?', a: 'Sí. La capacitación es parte de nuestra propuesta: enseñamos el uso correcto, seguro y eficiente del equipo, su mantenimiento básico y los protocolos de operación. Para dependencias y licitaciones, integramos el plan de capacitación y la garantía como parte del expediente.' },
+  { q: '¿Garantizan refacciones y soporte a largo plazo?', a: 'Sí. Como distribuidores autorizados de marcas líderes mundiales, aseguramos disponibilidad de refacciones y soporte técnico de largo plazo, un punto crítico para el sector público donde el equipo debe operar de forma confiable durante muchos años. Lo documentamos en la propuesta para que quede en el expediente.' },
+  { q: '¿Atienden a gobiernos municipales, estatales y federales?', a: 'Sí. Atendemos a cuerpos de bomberos y Protección Civil de los tres órdenes de gobierno, así como a brigadas industriales, con equipo FM Approved y UL Listed, documentación para licitación y auditoría, capacitación y soporte, con cobertura en los 32 estados de la República desde la Ciudad de México.' },
+];
+---
+<Base
+  title="Protección Contra Incendios para Bomberos y Gobierno | NFPA 1901 y Licitaciones | AQUEON México"
+  description="Monitores contra incendios para cuerpos de bomberos, Protección Civil, brigadas industriales y gobierno en México: deck guns vehiculares, equipo portátil y boquillas conforme a NFPA 1901/1964. Asesoría y documentación para licitaciones públicas. Ingeniería, capacitación y soporte con AQUEON."
+>
+  <!-- Hero -->
+  <section class="l3-hero">
+    <div class="container">
+      <nav class="l3-breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <a href="/industrias">Industrias</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <span>Bomberos y Gobierno</span>
+      </nav>
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Industrias · Bomberos y Gobierno</span>
+          <h1>Protección Contra Incendios para Bomberos y Gobierno</h1>
+        </div>
+        <div class="section-header__body">
+          <p>El sector donde la <strong>confiabilidad</strong> y el <strong>expediente</strong> pesan tanto como el equipo.</p>
+          <p>Equipo conforme a <strong>NFPA 1901/1964</strong> y acompañamiento en <strong>licitaciones públicas</strong>, con soporte de largo plazo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banda de cifras -->
+  <section class="l3-band">
+    <div class="container">
+      <div class="l3-band-grid">
+        {stats.map((s) => (
+          <div class="l3-band-item">
+            <span class="l3-band-num">{s.numero}</span>
+            <span class="l3-band-txt">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Introducción -->
+  <section class="l3-intro">
+    <div class="container">
+      <div class="l3-intro-grid">
+        <div class="l3-intro-text">
+          <span class="section-tag">El reto del sector</span>
+          <h2>Equipo Confiable y Expediente Impecable</h2>
+          <p>
+            El sector de <strong>bomberos y gobierno</strong> tiene dos exigencias que van de la mano: el equipo debe
+            <strong>responder sin falla</strong> en el momento de la emergencia, y su adquisición debe cumplir un
+            <strong>proceso de compra pública</strong> con documentación técnica impecable. Un buen monitor no sirve de
+            nada si el expediente de licitación no lo respalda, ni un buen expediente si el equipo falla en campo.
+          </p>
+          <p>
+            Por eso acompañamos a cuerpos de bomberos, Protección Civil, brigadas industriales y dependencias con equipo
+            certificado conforme a <strong>NFPA 1901, 1964 y 11</strong>, y con la <strong>asesoría técnica</strong> que el
+            proceso de licitación requiere: fichas técnicas, certificaciones, cuadro de partidas y cumplimiento normativo.
+            Y, sobre todo, con refacciones y soporte que duran tanto como el equipo.
+          </p>
+          <p>
+            En esta página verá las entidades que atendemos, el equipo por aplicación, las soluciones por necesidad y cómo
+            acompañamos el proceso de licitación pública de principio a fin.
+          </p>
+        </div>
+        <ul class="l3-benefits">
+          {beneficios.map((b) => (
+            <li><i class="fas fa-check" aria-hidden="true"></i> {b}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADOR 1: Entidades -->
+  <section class="pg-chain">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">A quién servimos</span>
+          <h2>Entidades que Atendemos</h2>
+        </div>
+        <div class="section-header__body">
+          <p>De los cuerpos de bomberos a las dependencias de gobierno, cada entidad tiene <strong>necesidades propias</strong>.</p>
+          <p>Adaptamos el equipo, la documentación y el soporte a cada una.</p>
+        </div>
+      </div>
+      <div class="pg-chain-grid">
+        {entidades.map((c) => (
+          <article id={c.id} class="pg-chain-card">
+            <div class="pg-chain-top">
+              <span class="pg-chain-icon" aria-hidden="true"><i class={c.icon}></i></span>
+              <div>
+                <span class="pg-chain-kicker">{c.eslabon}</span>
+                <h3>{c.titulo}</h3>
+              </div>
+            </div>
+            <p>{c.descripcion}</p>
+            <span class="pg-block-label"><i class="fas fa-cubes" aria-hidden="true"></i> Equipo y necesidades</span>
+            <div class="l3-chips">
+              {c.activos.map((a) => <span class="l3-chip">{a}</span>)}
+            </div>
+            <span class="pg-block-label"><i class="fas fa-flag" aria-hidden="true"></i> Prioridades</span>
+            <div class="l3-chips">
+              {c.riesgos.map((r) => <span class="l3-chip l3-chip--norm">{r}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADOR 2: Equipo por aplicación -->
+  <section class="pg-scen">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Equipo y normativa</span>
+          <h2>Equipo por Aplicación</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Del deck gun vehicular a la espuma, cada aplicación tiene su <strong>norma y su equipo</strong>.</p>
+          <p>Esta matriz resume cómo seleccionamos según la necesidad operativa.</p>
+        </div>
+      </div>
+      <div class="pg-scen-wrap">
+        <table class="pg-scen-table">
+          <thead>
+            <tr>
+              <th scope="col">Aplicación</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Criterio / norma</th>
+              <th scope="col">Solución AQUEON</th>
+            </tr>
+          </thead>
+          <tbody>
+            {equipos.map((e) => (
+              <tr>
+                <th scope="row"><span class="pg-scen-name"><i class={e.icon} aria-hidden="true"></i> {e.nombre}</span></th>
+                <td>{e.descripcion}</td>
+                <td>{e.estrategia}</td>
+                <td class="pg-scen-sol">{e.solucion}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> La selección final se ajusta a las bases de la licitación y al escenario operativo de cada cuerpo o brigada.</p>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADOR 3: Soluciones por necesidad -->
+  <section class="pg-sol">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Soluciones AQUEON</span>
+          <h2>El Equipo Correcto para Cada Necesidad</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Equipo, capacitación y soporte como un <strong>paquete integral</strong> para el sector público.</p>
+          <p>Cada recomendación enlaza con la <strong>ficha técnica</strong> del equipo correspondiente.</p>
+        </div>
+      </div>
+      <div class="pg-sol-grid">
+        {soluciones.map((s) => (
+          <article class="pg-sol-card">
+            <span class="pg-sol-icon" aria-hidden="true"><i class={s.icon}></i></span>
+            <h3>{s.titulo}</h3>
+            <p>{s.texto}</p>
+            <a href={s.url} class="pg-sol-link">{s.producto} <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRA: Acompañamiento en licitaciones -->
+  <section class="pg-dens">
+    <div class="container">
+      <div class="pg-dens-grid">
+        <div class="pg-dens-text">
+          <span class="section-tag">Compra pública</span>
+          <h2>Acompañamiento en Licitaciones Públicas</h2>
+          <p>
+            La compra de equipo contra incendios en el sector público vive o muere en el <strong>expediente técnico</strong>.
+            Acompañamos cada etapa con la documentación que el proceso exige, para que el equipo adquirido sea el correcto y
+            la licitación se sostenga ante cualquier revisión. Esto es lo que entregamos.
+          </p>
+          <a href="/contacto" class="btn btn-outline"><i class="fas fa-file-signature" aria-hidden="true"></i> Solicitar asesoría de licitación</a>
+        </div>
+        <div class="pg-dens-wrap">
+          <table class="pg-dens-table">
+            <thead>
+              <tr><th scope="col">Entregable</th><th scope="col">Propósito</th></tr>
+            </thead>
+            <tbody>
+              {licitacion.map(([d, p]) => (
+                <tr><th scope="row">{d}</th><td>{p}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Errores y recomendaciones -->
+  <section class="l3-guia">
+    <div class="container">
+      <div class="l3-guia-grid">
+        <div class="l3-guia-card l3-guia-errores">
+          <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Errores comunes en la compra</h3>
+          <ul>
+            {errores.map((e) => <li><i class="fas fa-xmark" aria-hidden="true"></i> {e}</li>)}
+          </ul>
+        </div>
+        <div class="l3-guia-card l3-guia-reco">
+          <h3><i class="fas fa-clipboard-check" aria-hidden="true"></i> Recomendaciones</h3>
+          <ul>
+            {recomendaciones.map((r) => <li><i class="fas fa-check" aria-hidden="true"></i> {r}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AQUEON + normativas -->
+  <section class="l3-aqueon">
+    <div class="container">
+      <div class="l3-aqueon-inner">
+        <div class="l3-aqueon-text">
+          <span class="section-tag">Por qué AQUEON</span>
+          <h2>Socio Técnico del Sector Público y las Brigadas</h2>
+          <p>
+            En <strong>AQUEON</strong> entendemos que el sector público necesita más que un proveedor: necesita un socio
+            técnico. Somos distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, y ofrecemos
+            <strong>equipo certificado, asesoría de licitación, capacitación y soporte de largo plazo</strong> conforme a
+            NFPA 1901, 1964 y 11. Entregamos la documentación que el expediente exige y respondemos con refacciones cuando
+            más importa.
+          </p>
+          <p>
+            Atendemos <strong>cuerpos de bomberos, Protección Civil, brigadas industriales y dependencias</strong> de los
+            tres órdenes de gobierno, con cobertura en los 32 estados de la República desde la Ciudad de México.
+          </p>
+          <div class="l3-aqueon-actions">
+            <a href="/nosotros" class="btn btn-outline-light"><i class="fas fa-building-shield" aria-hidden="true"></i> Conozca AQUEON</a>
+            <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Servicios y capacitación</a>
+          </div>
+        </div>
+        <div class="l3-normativas pg-norm">
+          <h3>Marco normativo aplicable</h3>
+          <ul class="pg-norm-list">
+            {normativas.map((nm) => (
+              <li><span class="pg-norm-tag">{nm.n}</span><span class="pg-norm-desc">{nm.d}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqContactSplit titulo="Dudas sobre Equipo para Bomberos y Gobierno" contexto="equipo contra incendios para bomberos, brigadas y dependencias de gobierno" faqs={faqs} />
+
+  <!-- Otras industrias -->
+  <section class="l3-otras">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Más Sectores</span>
+          <h2>Otras Industrias que Protegemos</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Diseñamos la solución óptima para cada <strong>operación de alto riesgo</strong>.</p>
+          <p>Conozca nuestra cobertura por sector en todo México.</p>
+        </div>
+      </div>
+      <div class="l3-otras-grid">
+        <a href="/petroleo-gas" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-oil-well" aria-hidden="true"></i></span><span class="l3-otra-name">Petróleo y Gas</span><span class="l3-otra-sub">Refinerías · terminales · offshore</span></a>
+        <a href="/aviacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-plane" aria-hidden="true"></i></span><span class="l3-otra-name">Aviación</span><span class="l3-otra-sub">ARFF · hangares · combustible</span></a>
+        <a href="/manufactura" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-industry" aria-hidden="true"></i></span><span class="l3-otra-name">Manufactura</span><span class="l3-otra-sub">Naves · almacenes · distribución</span></a>
+        <a href="/industrias" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todos los sectores</span><span class="l3-otra-sub">7 industrias especializadas</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="l3-cta">
+    <div class="container">
+      <div class="l3-cta-inner">
+        <div>
+          <h2>¿Listo para equipar a su cuerpo o brigada?</h2>
+          <p>Cotización técnica en menos de 24 horas. Asesoría de licitación, fichas técnicas, capacitación y soporte sin costo ni compromiso.</p>
+        </div>
+        <div class="l3-cta-actions">
+          <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
+          <a href="tel:+525512345678" class="btn btn-outline-light btn-lg"><i class="fas fa-phone" aria-hidden="true"></i> +52 55 1234 5678</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .l3-hero { background: var(--bg-0); padding: calc(var(--section-pad) * 0.7) 0 calc(var(--section-pad) * 0.5); }
+  .l3-breadcrumb { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted); flex-wrap: wrap; }
+  .l3-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .l3-breadcrumb a:hover { color: var(--red-hover); }
+  .l3-breadcrumb i { font-size: 0.6rem; }
+  .l3-hero .section-header { margin-bottom: 0; }
+  .l3-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: var(--text-4xl); line-height: 1.08; letter-spacing: -0.02em; color: var(--text-strong); margin: var(--space-md) 0 0; }
+  .l3-hero .section-header__body p { font-size: var(--text-base); }
+
+  /* Banda */
+  .l3-band { background: var(--grad-red); padding: clamp(1.75rem, 3.5vw, 2.75rem) 0; }
+  .l3-band-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-lg); text-align: center; }
+  .l3-band-item { display: flex; flex-direction: column; gap: 0.25rem; position: relative; }
+  .l3-band-item:not(:last-child)::after { content: ""; position: absolute; right: calc(var(--space-lg) / -2); top: 15%; height: 70%; width: 1px; background: rgba(255,255,255,.25); }
+  .l3-band-num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: var(--text-2xl); color: #fff; line-height: 1; }
+  .l3-band-txt { font-size: var(--text-sm); color: rgba(255,255,255,.9); }
+
+  /* Intro */
+  .l3-intro { background: var(--bg-1); padding: var(--section-pad) 0; border-bottom: 1px solid var(--border-subtle); }
+  .l3-intro-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: clamp(2rem, 4%, 4rem); align-items: start; }
+  .l3-intro-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .l3-intro-text p { color: var(--text-body); margin-bottom: var(--space-md); }
+  .l3-benefits { list-style: none; padding: var(--space-lg); margin: 0; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: var(--space-md); }
+  .l3-benefits li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
+  .l3-benefits i { flex-shrink: 0; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.6rem; }
+
+  /* DIF 1 — Entidades (pg-chain) */
+  .pg-chain { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .pg-chain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
+  .pg-chain-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-sm); scroll-margin-top: 110px; }
+  .pg-chain-top { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xs); }
+  .pg-chain-icon { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: var(--radius-md); color: var(--red-hover); font-size: 1.3rem; }
+  .pg-chain-kicker { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-hover); }
+  .pg-chain-card h3 { font-size: var(--text-lg); margin: 0.1rem 0 0; }
+  .pg-chain-card > p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.65; margin: 0 0 var(--space-xs); }
+  .pg-block-label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: var(--space-xs); }
+  .pg-block-label i { color: var(--red); }
+
+  /* DIF 2 — Equipo por aplicación (pg-scen) */
+  .pg-scen { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .pg-scen-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+  .pg-scen-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 48rem; }
+  .pg-scen-table th, .pg-scen-table td { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
+  .pg-scen-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
+  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 22%; }
+  .pg-scen-table tbody td { background: var(--surface-2); color: var(--text-body); }
+  .pg-scen-name { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .pg-scen-name i { color: var(--red-hover); }
+  .pg-scen-sol { color: var(--text-strong) !important; font-weight: 600; }
+  .pg-scen-table tr:last-child th, .pg-scen-table tr:last-child td { border-bottom: none; }
+  .pg-note { margin: var(--space-md) 0 0; font-size: var(--text-xs); color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+  .pg-note i { color: var(--red); }
+
+  /* DIF 3 — Soluciones (pg-sol) */
+  .pg-sol { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .pg-sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
+  .pg-sol-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; }
+  .pg-sol-card:hover { border-color: var(--border-red); box-shadow: var(--glow-red); }
+  .pg-sol-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: var(--radius-md); color: var(--red-hover); font-size: 1.15rem; margin-bottom: var(--space-md); }
+  .pg-sol-card h3 { font-size: var(--text-md); margin-bottom: var(--space-sm); }
+  .pg-sol-card p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.6; margin: 0 0 var(--space-md); flex: 1; }
+  .pg-sol-link { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: var(--text-sm); color: var(--red-hover); text-decoration: none; }
+  .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
+  .pg-sol-link:hover i { transform: translateX(3px); }
+
+  /* EXTRA — Licitaciones (pg-dens) */
+  .pg-dens { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .pg-dens-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 4%, 3.5rem); align-items: center; }
+  .pg-dens-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .pg-dens-text p { color: var(--text-body); margin-bottom: var(--space-lg); }
+  .pg-dens-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+  .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 30rem; }
+  .pg-dens-table th, .pg-dens-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
+  .pg-dens-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
+  .pg-dens-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 28%; }
+  .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-body); }
+  .pg-dens-table tr:last-child th, .pg-dens-table tr:last-child td { border-bottom: none; }
+
+  /* Guía errores/reco */
+  .l3-guia { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-guia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.5rem, 3%, 2.5rem); }
+  .l3-guia-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .l3-guia-card h3 { display: flex; align-items: center; gap: 0.6rem; font-size: var(--text-md); margin-bottom: var(--space-md); }
+  .l3-guia-errores h3 i { color: #ff9b9b; }
+  .l3-guia-reco h3 i { color: var(--success); }
+  .l3-guia-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .l3-guia-card li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
+  .l3-guia-errores li i { color: #ff7a7a; margin-top: 0.2rem; }
+  .l3-guia-reco li i { color: var(--success); margin-top: 0.2rem; }
+
+  /* AQUEON + normativas */
+  .l3-aqueon { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-aqueon-inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: clamp(2rem, 4%, 4rem); align-items: start; }
+  .l3-aqueon-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .l3-aqueon-text p { color: var(--text-body); margin-bottom: var(--space-md); }
+  .l3-aqueon-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-md); }
+  .l3-aqueon-actions .btn-outline-light { border-color: var(--border-strong); color: var(--text-strong); }
+  .l3-normativas { background: var(--surface); border: 1px solid var(--border-subtle); border-top: 3px solid var(--red); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .l3-normativas h3 { font-size: var(--text-md); margin-bottom: var(--space-md); }
+  .pg-norm-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .pg-norm-list li { display: flex; align-items: baseline; gap: 0.7rem; font-size: var(--text-sm); }
+  .pg-norm-tag { flex-shrink: 0; min-width: 6.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-xs); color: #ffb4b4; background: var(--red-soft); border: 1px solid var(--border-red); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); text-align: center; }
+  .pg-norm-desc { color: var(--text-body); line-height: 1.4; }
+
+  /* Otras industrias */
+  .l3-otras { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-otras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
+  .l3-otra { display: flex; flex-direction: column; gap: 0.2rem; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); text-decoration: none; }
+  .l3-otra:hover { border-color: var(--border-red); box-shadow: var(--glow-red); }
+  .l3-otra--all { background: linear-gradient(135deg, rgba(224,36,36,.12), rgba(185,28,28,.06)); border-color: var(--border-red); }
+  .l3-otra-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: var(--radius-md); color: var(--red-hover); font-size: 1.1rem; margin-bottom: var(--space-sm); }
+  .l3-otra-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text-strong); font-size: var(--text-md); }
+  .l3-otra-sub { font-size: var(--text-xs); color: var(--text-muted); }
+
+  /* CTA */
+  .l3-cta { background: radial-gradient(ellipse 70% 120% at 50% -20%, rgba(255,80,80,.3), transparent 60%), linear-gradient(135deg, var(--red-dark) 0%, var(--red-darker) 60%, #450a0a 100%); padding: var(--section-pad) 0; }
+  .l3-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-xl); flex-wrap: wrap; }
+  .l3-cta-inner h2 { color: #fff; font-size: var(--text-2xl); margin-bottom: 0.5rem; }
+  .l3-cta-inner > div:first-child p { color: rgba(255,255,255,.9); margin: 0; max-width: 52ch; }
+  .l3-cta-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .l3-intro-grid, .l3-aqueon-inner, .pg-dens-grid { grid-template-columns: 1fr; }
+  }
+</style>
