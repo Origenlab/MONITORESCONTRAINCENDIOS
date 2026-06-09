@@ -7,6 +7,7 @@ const l3Servicios: Record<string, string> = {
   'instalacion': '/instalacion',
   'mantenimiento-preventivo': '/mantenimiento-preventivo',
   'mantenimiento-correctivo': '/mantenimiento-correctivo',
+  'capacitacion': '/capacitacion',
 };
 const servicioUrl = (id: string) => l3Servicios[id] ?? `/servicios#${id}`;
 ---

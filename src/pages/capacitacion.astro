@@ -3,195 +3,198 @@ import Base from '../layouts/Base.astro';
 import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 
 const stats = [
-  { numero: 'NFPA 24', label: 'Instalación de redes contra incendio' },
-  { numero: '200 PSI', label: 'Prueba hidrostática de aceptación' },
-  { numero: 'Certificados', label: 'Técnicos con experiencia industrial' },
-  { numero: 'As-built', label: 'Planos y expediente de entrega' },
+  { numero: 'DC-3', label: 'Constancia oficial STPS' },
+  { numero: 'NOM-002', label: 'Brigadas y prevención de incendios' },
+  { numero: 'Teoría + Práctica', label: 'Formación con simulacros reales' },
+  { numero: 'En sitio', label: 'Capacitación en su instalación' },
 ];
 
 const beneficios = [
-  'Técnicos certificados con experiencia en proyectos industriales',
-  'Pruebas hidrostáticas y de flujo incluidas en el alcance',
-  'Integración con su red hidráulica y sistemas existentes',
-  'Documentación completa de entrega y planos as-built',
-  'Anclaje y alineación conforme a las cargas de reacción',
-  'Garantía de instalación por escrito',
+  'Capacitación teórico-práctica con simulacros reales',
+  'Certificados de competencia y constancia DC-3 (STPS)',
+  'Programa a la medida del equipo y el riesgo de su planta',
+  'Manual de operación y material didáctico incluidos',
+  'Cumplimiento de la NOM-002-STPS en materia de brigadas',
+  'Instructores con experiencia industrial de campo',
 ];
 
-// DIFERENCIADOR 1 — Fases de la instalación (pg-chain)
+// DIFERENCIADOR 1 — Fases del programa (pg-chain)
 const fases = [
   {
-    id: 'recepcion',
+    id: 'diagnostico',
     eslabon: 'Fase 01',
-    titulo: 'Recepción y Replanteo',
-    icon: 'fas fa-clipboard-list',
-    descripcion: 'Verificamos el equipo contra la especificación, revisamos el sitio y replanteamos la instalación sobre los planos de ingeniería.',
-    incluye: ['Verificación de equipo', 'Revisión de sitio', 'Replanteo en obra', 'Plan de seguridad'],
-    entrega: 'Acta de inicio',
+    titulo: 'Diagnóstico de Necesidades',
+    icon: 'fas fa-magnifying-glass-chart',
+    descripcion: 'Evaluamos el riesgo de su instalación, el equipo instalado y el perfil del personal para definir los objetivos de formación.',
+    incluye: ['Análisis de riesgo', 'Equipo a operar', 'Perfil del personal', 'Objetivos de formación'],
+    entrega: 'Plan de necesidades',
   },
   {
-    id: 'montaje',
+    id: 'plan',
     eslabon: 'Fase 02',
-    titulo: 'Montaje e Integración',
-    icon: 'fas fa-screwdriver-wrench',
-    descripcion: 'Montamos monitores, tubería y accesorios, e integramos el sistema con su red hidráulica y de control existente.',
-    incluye: ['Montaje de equipo', 'Anclaje y soporte', 'Integración hidráulica', 'Conexión a control'],
-    entrega: 'Sistema montado',
+    titulo: 'Plan de Formación',
+    icon: 'fas fa-list-check',
+    descripcion: 'Diseñamos el temario, la modalidad y la duración a la medida del nivel de competencia que su personal requiere.',
+    incluye: ['Temario a la medida', 'Modalidad y duración', 'Material didáctico', 'Calendario'],
+    entrega: 'Programa de curso',
   },
   {
-    id: 'pruebas',
+    id: 'ejecucion',
     eslabon: 'Fase 03',
-    titulo: 'Pruebas Hidrostáticas',
-    icon: 'fas fa-gauge-high',
-    descripcion: 'Sometemos la red a prueba hidrostática y de flujo para verificar la estanqueidad, la presión y el desempeño antes de operar.',
-    incluye: ['Prueba hidrostática', 'Lavado (flushing)', 'Verificación de presión', 'Prueba de flujo'],
-    entrega: 'Reporte de pruebas',
+    titulo: 'Ejecución Teórico-Práctica',
+    icon: 'fas fa-fire-extinguisher',
+    descripcion: 'Impartimos la teoría y la llevamos a la práctica con ejercicios y simulacros sobre el equipo real de su planta.',
+    incluye: ['Sesiones teóricas', 'Práctica con equipo', 'Simulacros', 'Protocolos de emergencia'],
+    entrega: 'Curso impartido',
   },
   {
-    id: 'puesta',
+    id: 'certificacion',
     eslabon: 'Fase 04',
-    titulo: 'Puesta en Marcha y Entrega',
-    icon: 'fas fa-circle-check',
-    descripcion: 'Arrancamos el sistema, capacitamos al personal de operación y entregamos el expediente técnico completo con planos as-built.',
-    incluye: ['Arranque del sistema', 'Capacitación de arranque', 'Planos as-built', 'Acta de entrega'],
-    entrega: 'Expediente de entrega',
+    titulo: 'Evaluación y Certificación',
+    icon: 'fas fa-certificate',
+    descripcion: 'Evaluamos la competencia adquirida y emitimos los certificados y la constancia DC-3 ante la STPS.',
+    incluye: ['Evaluación de competencia', 'Certificados', 'Constancia DC-3', 'Registro de asistencia'],
+    entrega: 'Expediente de formación',
   },
 ];
 
-// DIFERENCIADOR 2 — Protocolo de pruebas de aceptación (pg-scen)
-const pruebas = [
+// DIFERENCIADOR 2 — Temario del programa (pg-scen)
+const temario = [
   {
-    icon: 'fas fa-gauge-high',
-    nombre: 'Prueba hidrostática',
-    descripcion: 'Presurización de la red por encima de la presión de operación durante un tiempo definido.',
-    verifica: 'Estanqueidad y resistencia de juntas, bridas y tubería.',
-    norma: 'NFPA 24 (200 PSI / 2 h)',
+    icon: 'fas fa-fire',
+    nombre: 'Fundamentos del fuego',
+    descripcion: 'Tetraedro del fuego, clases de fuego y métodos de extinción aplicados a la industria.',
+    modulo: 'Teórico',
+    norma: 'Protocolos NFPA',
   },
   {
-    icon: 'fas fa-water',
-    nombre: 'Lavado (flushing)',
-    descripcion: 'Circulación de agua a alta velocidad para arrastrar residuos de obra de la tubería.',
-    verifica: 'Limpieza interna antes de la puesta en marcha.',
-    norma: 'NFPA 24',
+    icon: 'fas fa-fire-extinguisher',
+    nombre: 'Equipo y operación de monitores',
+    descripcion: 'Uso correcto, seguro y eficiente de monitores, boquillas y sistemas de espuma.',
+    modulo: 'Teórico-práctico',
+    norma: 'Manual del equipo',
   },
   {
-    icon: 'fas fa-anchor',
-    nombre: 'Anclaje y alineación',
-    descripcion: 'Verificación del soporte y la fijación frente a las cargas de reacción del chorro.',
-    verifica: 'Estabilidad del monitor en operación a plena presión.',
-    norma: 'Especificación del fabricante',
+    icon: 'fas fa-route',
+    nombre: 'Protocolos de emergencia',
+    descripcion: 'Activación, roles de brigada, comunicación y evacuación ante un evento.',
+    modulo: 'Teórico-práctico',
+    norma: 'NOM-002-STPS',
   },
   {
-    icon: 'fas fa-arrows-rotate',
-    nombre: 'Prueba funcional',
-    descripcion: 'Operación del monitor en todo su rango de giro, elevación y patrón de descarga.',
-    verifica: 'Funcionamiento mecánico y, en remotos, el control.',
-    norma: 'NFPA 25 (base operativa)',
+    icon: 'fas fa-screwdriver-wrench',
+    nombre: 'Mantenimiento básico',
+    descripcion: 'Inspección visual y cuidado del equipo que el operador puede realizar.',
+    modulo: 'Práctico',
+    norma: 'NFPA 25 (básico)',
   },
   {
-    icon: 'fas fa-arrow-up-9-1',
-    nombre: 'Verificación de presión y caudal',
-    descripcion: 'Medición de presión y caudal en el punto de descarga contra el diseño.',
-    verifica: 'Que el sistema entregue lo que dice la memoria de cálculo.',
-    norma: 'NFPA 15 / 24',
+    icon: 'fas fa-people-group',
+    nombre: 'Simulacros de emergencia',
+    descripcion: 'Ejercicio realista del escenario de incendio con el equipo de la planta.',
+    modulo: 'Práctico',
+    norma: 'NOM-002-STPS',
+  },
+  {
+    icon: 'fas fa-file-contract',
+    nombre: 'Marco normativo',
+    descripcion: 'Obligaciones de la NOM-002-STPS y responsabilidades de la brigada.',
+    modulo: 'Teórico',
+    norma: 'NOM-002-STPS',
   },
 ];
 
-// DIFERENCIADOR 3 — Qué incluye la instalación (pg-sol)
+// DIFERENCIADOR 3 — Qué incluye (pg-sol)
 const incluye = [
   {
-    icon: 'fas fa-file-signature',
-    titulo: 'Acta de entrega',
-    texto: 'Documento formal de recepción del sistema con el alcance ejecutado y las condiciones de operación.',
+    icon: 'fas fa-certificate',
+    titulo: 'Certificados de competencia',
+    texto: 'Documento que acredita la competencia adquirida por cada participante.',
     producto: 'Solicitar este servicio',
     url: '/contacto',
   },
   {
-    icon: 'fas fa-clipboard-check',
-    titulo: 'Reporte de pruebas',
-    texto: 'Registro de la prueba hidrostática, lavado y pruebas funcionales con sus resultados.',
+    icon: 'fas fa-stamp',
+    titulo: 'Constancia DC-3 (STPS)',
+    texto: 'Constancia oficial de competencias o habilidades laborales ante la STPS.',
     producto: 'Solicitar este servicio',
     url: '/contacto',
   },
   {
-    icon: 'fas fa-ruler-combined',
-    titulo: 'Planos as-built',
-    texto: 'Planos actualizados con la instalación tal como quedó construida, para operación y mantenimiento.',
-    producto: 'Ver diseño e ingeniería',
-    url: '/diseno-ingenieria',
-  },
-  {
-    icon: 'fas fa-shield-halved',
-    titulo: 'Garantía de instalación',
-    texto: 'Garantía por escrito del montaje, además de la garantía de fábrica del equipo.',
+    icon: 'fas fa-book-open',
+    titulo: 'Manual de operación',
+    texto: 'Material de consulta del equipo y los protocolos para el día a día de la brigada.',
     producto: 'Ver catálogo de equipo',
     url: '/productos',
   },
   {
-    icon: 'fas fa-chalkboard-user',
-    titulo: 'Capacitación de arranque',
-    texto: 'Inducción al personal de operación sobre el uso seguro y correcto del sistema instalado.',
-    producto: 'Ver capacitación',
-    url: '/capacitacion',
+    icon: 'fas fa-chalkboard',
+    titulo: 'Material didáctico',
+    texto: 'Recursos de apoyo para la formación, entregados a cada participante.',
+    producto: 'Solicitar este servicio',
+    url: '/contacto',
   },
   {
-    icon: 'fas fa-clipboard-list',
-    titulo: 'Base para mantenimiento',
-    texto: 'Condición inicial documentada que sirve de referencia para el programa NFPA 25.',
-    producto: 'Ver mantenimiento',
-    url: '/mantenimiento-preventivo',
+    icon: 'fas fa-people-roof',
+    titulo: 'Simulacros',
+    texto: 'Ejercicios prácticos sobre el equipo real para fijar el conocimiento.',
+    producto: 'Ver monitores portátiles',
+    url: '/monitores-portatiles',
+  },
+  {
+    icon: 'fas fa-clipboard-check',
+    titulo: 'Evaluación documentada',
+    texto: 'Registro de la evaluación de competencia para el expediente de la planta.',
+    producto: 'Ver consultoría normativa',
+    url: '/servicios#consultoria-normativa',
   },
 ];
 
-// pg-dens — Tipos de montaje e integración
-const montajes = [
-  ['Brida', 'Monitor fijo conectado a tubería bridada', 'Par de apriete y empaque correctos'],
-  ['Pedestal', 'Monitor elevado sobre columna o estructura', 'Anclaje a base de concreto / estructura'],
-  ['Skid / paquete', 'Sistema premontado en patín', 'Integración de bomba, válvulas y monitor'],
-  ['Vehicular (deck gun)', 'Monitor sobre unidad de bomberos', 'Refuerzo y conexión a la bomba del vehículo'],
-  ['Integración a red existente', 'Conexión a red contra incendio en operación', 'Trabajo en caliente y libranzas'],
+// pg-dens — Niveles de competencia
+const niveles = [
+  ['Operador', 'Personal que usa el equipo en su tarea diaria', 'Uso correcto y seguro del monitor'],
+  ['Brigadista', 'Integrantes de la brigada de emergencia', 'Respuesta coordinada ante un incendio'],
+  ['Líder de brigada', 'Responsables de coordinar la respuesta', 'Mando, comunicación y toma de decisiones'],
 ];
 
 const normativas = [
-  { n: 'NFPA 24', d: 'Instalación de redes privadas contra incendio' },
-  { n: 'NFPA 15', d: 'Sistemas fijos de agua pulverizada' },
-  { n: 'NFPA 13', d: 'Rociadores y criterios de instalación' },
-  { n: 'NFPA 25', d: 'Base de la inspección y prueba posterior' },
-  { n: 'Prueba hidrostática', d: 'Aceptación de estanqueidad y presión' },
-  { n: 'NOM-002-STPS', d: 'Condiciones de seguridad en obra' },
+  { n: 'NOM-002-STPS', d: 'Prevención de incendios y brigadas' },
+  { n: 'DC-3', d: 'Constancia de competencias (STPS)' },
+  { n: 'NFPA 600', d: 'Brigadas industriales contra incendio' },
+  { n: 'Protocolos NFPA', d: 'Métodos de extinción y respuesta' },
 ];
 
 const errores = [
-  'Instalar sin un diseño ni una memoria de cálculo previos',
-  'Omitir la prueba hidrostática y el lavado de la red',
-  'Anclar el monitor sin considerar la carga de reacción del chorro',
-  'No documentar planos as-built ni el reporte de pruebas',
-  'Dejar la puesta en marcha sin capacitación de operación',
-  'Integrar a una red existente sin libranza ni trabajo seguro',
+  'Comprar equipo sin capacitar a quien lo va a operar',
+  'Dar teoría sin práctica ni simulacros con el equipo real',
+  'Capacitar sin emitir constancia DC-3 ni evidencia',
+  'Olvidar la NOM-002-STPS en materia de brigadas',
+  'No diferenciar el nivel: operador, brigadista o líder',
+  'Capacitar una sola vez y no reforzar con el tiempo',
 ];
 
 const recomendaciones = [
-  'Parta del diseño y los planos de ingeniería aprobados',
-  'Exija prueba hidrostática y lavado documentados',
-  'Verifique anclaje y alineación contra la carga de reacción',
-  'Reciba planos as-built y el expediente de pruebas',
-  'Incluya la capacitación de arranque en el alcance',
-  'Establezca desde la entrega el programa NFPA 25',
+  'Capacite a todo el personal que opera o responde con el equipo',
+  'Combine teoría con práctica y simulacros sobre el equipo real',
+  'Emita certificados y constancia DC-3 para el expediente',
+  'Cumpla la NOM-002-STPS en materia de brigadas',
+  'Defina el nivel de competencia por perfil de personal',
+  'Refuerce la formación periódicamente y tras cambios de equipo',
 ];
 
 const faqs = [
-  { q: '¿Qué incluye el servicio de instalación profesional?', a: 'Incluye la recepción y verificación del equipo, el replanteo en sitio, el montaje e integración con su red hidráulica y de control, las pruebas hidrostáticas y de flujo, el lavado de la red, la puesta en marcha, la capacitación de arranque y la entrega del expediente técnico con planos as-built, reporte de pruebas y garantía por escrito. Es un servicio llave en mano, no solo "atornillar el equipo".' },
-  { q: '¿Por qué es indispensable la prueba hidrostática?', a: 'La prueba hidrostática presuriza la red por encima de la presión de operación —típicamente a 200 PSI durante 2 horas conforme a NFPA 24— para verificar que no haya fugas en juntas, bridas y tubería antes de poner el sistema en servicio. Detectar una fuga en la prueba es trivial; descubrirla durante una emergencia, catastrófico. Por eso ninguna instalación seria se entrega sin ella, documentada.' },
-  { q: '¿Sus técnicos están certificados?', a: 'Sí. Nuestro personal de instalación tiene experiencia comprobada en proyectos industriales y trabaja conforme a NFPA 24 y a las especificaciones del fabricante, con los protocolos de seguridad de la NOM-002-STPS. En instalaciones que lo requieren, coordinamos libranzas y trabajo seguro con el área de seguridad del cliente.' },
-  { q: '¿Pueden integrar el equipo a mi red contra incendio existente?', a: 'Sí. Una parte importante de nuestro trabajo es la integración: conectar el nuevo monitor o sistema a la red hidráulica y de control en operación, con la libranza y el trabajo en caliente necesarios, minimizando el tiempo fuera de servicio. La integración parte del diseño para garantizar que la red existente soporte la nueva demanda.' },
-  { q: '¿Qué documentación entregan al terminar?', a: 'Entregamos el acta de entrega, el reporte de pruebas hidrostáticas y funcionales, los planos as-built (la instalación tal como quedó construida), la garantía de instalación por escrito y la condición inicial que sirve de base para el mantenimiento NFPA 25. Es la documentación que su operación, su aseguradora y Protección Civil requieren.' },
-  { q: '¿La instalación incluye garantía?', a: 'Sí. Ofrecemos garantía por escrito del montaje, adicional a la garantía de fábrica del equipo que, como distribuidores autorizados, respaldamos. Además, al ser un solo proveedor de diseño, equipo, instalación y mantenimiento, la responsabilidad es única: no hay zonas grises entre proveedores.' },
-  { q: '¿Trabajan en toda la República?', a: 'Sí. Realizamos instalaciones en los 32 estados de la República desde la Ciudad de México, coordinando logística, personal y pruebas en sitio. Para cada proyecto definimos un cronograma de obra claro y un responsable técnico.' },
+  { q: '¿Qué es la constancia DC-3 y por qué importa?', a: 'La DC-3 es la Constancia de Competencias o de Habilidades Laborales que reconoce la Secretaría del Trabajo y Previsión Social (STPS). Acredita oficialmente que un trabajador recibió y aprobó una capacitación específica. En materia de protección contra incendios, contar con personal capacitado y con su DC-3 no solo cumple la NOM-002-STPS: es la evidencia que la autoridad y la aseguradora esperan ver. AQUEON emite la constancia DC-3 como parte de la capacitación.' },
+  { q: '¿La capacitación es teórica o práctica?', a: 'Ambas, y esa es la clave. La teoría —fundamentos del fuego, clases de fuego, protocolos— se lleva a la práctica con ejercicios y simulacros sobre el equipo real de su planta. Operar un monitor o desplegar un equipo portátil bajo presión no se aprende en una presentación: se aprende practicando. Por eso nuestra formación es teórico-práctica y culmina en simulacros realistas.' },
+  { q: '¿Capacitan según el nivel del personal?', a: 'Sí. Diferenciamos el nivel de competencia: el operador que usa el equipo en su tarea diaria, el brigadista que responde ante una emergencia y el líder de brigada que coordina la respuesta. Cada nivel tiene objetivos, contenido y profundidad distintos. El programa se diseña a partir del perfil del personal y del riesgo de la instalación.' },
+  { q: '¿La capacitación cumple con la NOM-002-STPS?', a: 'Sí. La NOM-002-STPS obliga a los centros de trabajo a contar con brigadas capacitadas en prevención y combate de incendios. Nuestro programa cubre los requisitos de la norma —protocolos, roles de brigada, simulacros— y entrega la evidencia documental (certificados, DC-3, registros de asistencia) que la autoridad solicita en una inspección.' },
+  { q: '¿Dónde se imparte la capacitación?', a: 'Preferentemente en sitio, en su instalación y con su equipo, para que la práctica sea sobre el escenario real. También podemos impartir la parte teórica en aula. La capacitación en sitio tiene la ventaja de que el personal se forma con el equipo que realmente va a operar, en el entorno donde tendría que responder.' },
+  { q: '¿Con qué frecuencia se debe capacitar a la brigada?', a: 'La capacitación no es un evento único. Recomendamos reforzarla periódicamente y, especialmente, cada vez que cambia el equipo, el personal o el riesgo de la instalación. Una brigada capacitada hace años y nunca reentrenada pierde competencia. Podemos integrar la capacitación recurrente a su programa anual junto con el mantenimiento.' },
+  { q: '¿Quién imparte los cursos?', a: 'Instructores con experiencia industrial de campo, que conocen el equipo y los escenarios reales de la industria, no solo la teoría. Esa experiencia es la que permite que la capacitación sea relevante y aplicable a la operación específica de cada cliente, con cobertura en los 32 estados de la República.' },
 ];
 ---
 <Base
-  title="Instalación Profesional de Sistemas Contra Incendio | Montaje y Pruebas NFPA 24 | AQUEON México"
-  description="Instalación profesional de monitores y sistemas contra incendio: montaje certificado, integración hidráulica, pruebas hidrostáticas NFPA 24, puesta en marcha y planos as-built. Técnicos con experiencia industrial y garantía por escrito con AQUEON México."
+  title="Capacitación Contra Incendios para Brigadas y Operadores | DC-3 y NOM-002-STPS | AQUEON México"
+  description="Capacitación especializada en protección contra incendios para brigadas y operadores: formación teórico-práctica, simulacros, certificados de competencia y constancia DC-3 conforme a la NOM-002-STPS. Instructores con experiencia industrial en AQUEON México."
 >
   <!-- Hero -->
   <section class="l3-hero">
@@ -201,16 +204,16 @@ const faqs = [
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
         <a href="/servicios">Servicios</a>
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        <span>Instalación Profesional</span>
+        <span>Capacitación Especializada</span>
       </nav>
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Servicios · Instalación</span>
-          <h1>Instalación Profesional de Sistemas Contra Incendio</h1>
+          <span class="section-tag">Servicios · Capacitación</span>
+          <h1>Capacitación Especializada Contra Incendios</h1>
         </div>
         <div class="section-header__body">
-          <p>El mejor diseño falla si el <strong>montaje y las pruebas</strong> no se hacen bien.</p>
-          <p>Técnicos con experiencia industrial, <strong>pruebas hidrostáticas NFPA 24</strong> y entrega documentada con planos as-built.</p>
+          <p>El mejor equipo es inútil si la brigada no sabe usarlo <strong>bajo presión</strong>.</p>
+          <p>Formación teórico-práctica con <strong>simulacros</strong>, certificados y constancia <strong>DC-3</strong> conforme a la NOM-002-STPS.</p>
         </div>
       </div>
     </div>
@@ -236,22 +239,22 @@ const faqs = [
       <div class="l3-intro-grid">
         <div class="l3-intro-text">
           <span class="section-tag">El servicio</span>
-          <h2>Una Instalación es Tan Buena como sus Pruebas</h2>
+          <h2>El Equipo no Apaga el Fuego: lo Apaga la Gente</h2>
           <p>
-            Un sistema contra incendio bien diseñado y con el mejor equipo puede fallar por una sola junta mal apretada o
-            una red que nunca se probó. La instalación no es la parte "fácil" del proyecto: es donde el diseño se vuelve
-            realidad o se pierde. La diferencia está en el <strong>rigor del montaje</strong> y, sobre todo, en las
-            <strong>pruebas de aceptación</strong> que verifican que todo funciona antes de que llegue la emergencia.
+            Se puede invertir en el mejor monitor, el mejor diseño y la mejor instalación, pero en el momento de la
+            emergencia quien actúa es una <strong>persona</strong>. Si esa persona no sabe operar el equipo con seguridad y
+            criterio, bajo el estrés de un incendio real, toda la inversión en protección queda en entredicho. La
+            capacitación no es un complemento: es lo que activa todo lo demás.
           </p>
           <p>
-            En AQUEON instalamos con <strong>técnicos de experiencia industrial</strong>, integramos el sistema con su red
-            hidráulica y de control, ejecutamos <strong>prueba hidrostática, lavado y pruebas funcionales</strong> conforme a
-            NFPA 24, y entregamos el sistema con planos as-built, reporte de pruebas y garantía por escrito. Un solo
-            proveedor del diseño a la puesta en marcha: responsabilidad única, sin zonas grises.
+            La capacitación de AQUEON es <strong>teórico-práctica</strong>: enseñamos los fundamentos y los llevamos a la
+            práctica con <strong>simulacros sobre el equipo real</strong> de su planta. Formamos por nivel de competencia
+            —operador, brigadista, líder de brigada—, evaluamos lo aprendido y emitimos <strong>certificados y la constancia
+            DC-3</strong> conforme a la NOM-002-STPS. Con instructores que conocen el campo, no solo la teoría.
           </p>
           <p>
-            En esta página verá las fases de la instalación, el protocolo de pruebas de aceptación, lo que incluye el
-            servicio y los tipos de montaje e integración que realizamos.
+            En esta página verá las fases del programa, el temario, lo que incluye la capacitación y los niveles de
+            competencia que formamos.
           </p>
         </div>
         <ul class="l3-benefits">
@@ -263,17 +266,17 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 1: Fases -->
+  <!-- DIFERENCIADOR 1: Fases del programa -->
   <section class="pg-chain">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Metodología</span>
-          <h2>Las Cuatro Fases de la Instalación</h2>
+          <h2>Las Fases del Programa</h2>
         </div>
         <div class="section-header__body">
-          <p>De la <strong>recepción del equipo</strong> a la <strong>puesta en marcha</strong>, cada fase con su entregable.</p>
-          <p>Un proceso controlado que termina en un sistema probado y documentado.</p>
+          <p>Del <strong>diagnóstico de necesidades</strong> a la <strong>certificación</strong>, formación con método.</p>
+          <p>Cada fase con su entregable, para que la capacitación sea trazable.</p>
         </div>
       </div>
       <div class="pg-chain-grid">
@@ -301,42 +304,42 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 2: Protocolo de pruebas -->
+  <!-- DIFERENCIADOR 2: Temario -->
   <section class="pg-scen">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Control de calidad</span>
-          <h2>Protocolo de Pruebas de Aceptación</h2>
+          <span class="section-tag">Contenido</span>
+          <h2>Temario del Programa</h2>
         </div>
         <div class="section-header__body">
-          <p>Ningún sistema se entrega sin <strong>probarse</strong>: esto es lo que verificamos antes de operar.</p>
-          <p>Cada prueba con su criterio y su norma, documentada en el reporte de entrega.</p>
+          <p>De los <strong>fundamentos del fuego</strong> a los <strong>simulacros</strong>: un temario completo.</p>
+          <p>Cada módulo con su contenido, modalidad y respaldo normativo.</p>
         </div>
       </div>
       <div class="pg-scen-wrap">
         <table class="pg-scen-table">
           <thead>
             <tr>
-              <th scope="col">Prueba</th>
-              <th scope="col">En qué consiste</th>
-              <th scope="col">Qué verifica</th>
-              <th scope="col">Norma / criterio</th>
+              <th scope="col">Módulo</th>
+              <th scope="col">Qué cubre</th>
+              <th scope="col">Modalidad</th>
+              <th scope="col">Respaldo</th>
             </tr>
           </thead>
           <tbody>
-            {pruebas.map((e) => (
+            {temario.map((e) => (
               <tr>
                 <th scope="row"><span class="pg-scen-name"><i class={e.icon} aria-hidden="true"></i> {e.nombre}</span></th>
                 <td>{e.descripcion}</td>
-                <td>{e.verifica}</td>
-                <td class="pg-scen-sol">{e.norma}</td>
+                <td class="pg-scen-sol">{e.modulo}</td>
+                <td>{e.norma}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> Los valores y tiempos de prueba se ajustan al diseño del proyecto y a la presión de operación de la red.</p>
+      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> El temario se ajusta al equipo instalado, al riesgo de la planta y al nivel de competencia del personal.</p>
     </div>
   </section>
 
@@ -345,12 +348,12 @@ const faqs = [
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Alcance</span>
-          <h2>Qué Incluye la Instalación</h2>
+          <span class="section-tag">Entregables</span>
+          <h2>Qué Incluye la Capacitación</h2>
         </div>
         <div class="section-header__body">
-          <p>Más que montaje: <strong>pruebas, documentación y garantía</strong> en un solo alcance.</p>
-          <p>Cada entregable enlaza con el servicio o equipo correspondiente.</p>
+          <p>Formación con <strong>evidencia documental</strong> para la operación y para la autoridad.</p>
+          <p>Cada elemento enlaza con el servicio o equipo correspondiente.</p>
         </div>
       </div>
       <div class="pg-sol-grid">
@@ -366,28 +369,28 @@ const faqs = [
     </div>
   </section>
 
-  <!-- pg-dens: Tipos de montaje -->
+  <!-- pg-dens: Niveles de competencia -->
   <section class="pg-dens">
     <div class="container">
       <div class="pg-dens-grid">
         <div class="pg-dens-text">
-          <span class="section-tag">Integración</span>
-          <h2>Tipos de Montaje e Integración</h2>
+          <span class="section-tag">Perfiles</span>
+          <h2>Niveles de Competencia</h2>
           <p>
-            Cada proyecto exige un <strong>tipo de montaje</strong> distinto, con sus propias consideraciones técnicas: del
-            monitor bridado a la integración de un patín completo o un sistema vehicular. Definimos el montaje a partir del
-            diseño y de la infraestructura existente, cuidando el anclaje frente a la carga de reacción del chorro.
+            No todos en la planta necesitan la misma formación. Distinguimos <strong>tres niveles de competencia</strong>
+            con objetivos y profundidad propios, para que cada persona reciba exactamente la capacitación que su rol exige.
+            El programa final se diseña según el perfil de su personal.
           </p>
-          <a href="/productos" class="btn btn-outline"><i class="fas fa-layer-group" aria-hidden="true"></i> Ver catálogo de equipo</a>
+          <a href="/contacto" class="btn btn-outline"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Solicitar este servicio</a>
         </div>
         <div class="pg-dens-wrap">
           <table class="pg-dens-table">
             <thead>
-              <tr><th scope="col">Tipo de montaje</th><th scope="col">Aplicación</th><th scope="col">Consideración clave</th></tr>
+              <tr><th scope="col">Nivel</th><th scope="col">Dirigido a</th><th scope="col">Resultado</th></tr>
             </thead>
             <tbody>
-              {montajes.map(([t, a, c]) => (
-                <tr><th scope="row">{t}</th><td>{a}</td><td>{c}</td></tr>
+              {niveles.map(([n, d, r]) => (
+                <tr><th scope="row">{n}</th><td>{d}</td><td class="pg-dens-ok">{r}</td></tr>
               ))}
             </tbody>
           </table>
@@ -422,20 +425,20 @@ const faqs = [
       <div class="l3-aqueon-inner">
         <div class="l3-aqueon-text">
           <span class="section-tag">Por qué AQUEON</span>
-          <h2>Del Diseño a la Puesta en Marcha, un Solo Responsable</h2>
+          <h2>Formación que se Aplica el Día de la Emergencia</h2>
           <p>
-            En <strong>AQUEON</strong> la instalación es la continuación natural de nuestra ingeniería. Instalamos con
-            <strong>técnicos de experiencia industrial</strong>, integramos con su red existente y probamos cada sistema
-            conforme a NFPA 24 antes de entregarlo. Al ser un solo proveedor de diseño, equipo certificado, instalación y
-            mantenimiento, la <strong>responsabilidad es única</strong>: no hay zonas grises entre proveedores.
+            En <strong>AQUEON</strong> capacitamos con la misma seriedad con la que diseñamos e instalamos. Nuestros
+            <strong>instructores con experiencia de campo</strong> forman a operadores, brigadistas y líderes con teoría,
+            práctica y <strong>simulacros sobre el equipo real</strong>, y entregan certificados y la constancia DC-3
+            conforme a la NOM-002-STPS. Porque conocemos su equipo: nosotros lo vendimos, lo instalamos y lo mantenemos.
           </p>
           <p>
-            Instalamos para <strong>refinerías, plantas, parques industriales, aeropuertos, minería y gobierno</strong>, con
-            documentación de entrega completa y cobertura en los 32 estados de la República desde la Ciudad de México.
+            Capacitamos brigadas de <strong>refinerías, plantas, parques industriales, aeropuertos, minería y gobierno</strong>,
+            con expediente de formación completo y cobertura en los 32 estados de la República desde la Ciudad de México.
           </p>
           <div class="l3-aqueon-actions">
-            <a href="/diseno-ingenieria" class="btn btn-outline-light"><i class="fas fa-compass-drafting" aria-hidden="true"></i> Ver diseño e ingeniería</a>
             <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Todos los servicios</a>
+            <a href="/monitores-portatiles" class="btn btn-outline-light"><i class="fas fa-fire-extinguisher" aria-hidden="true"></i> Equipo de brigada</a>
           </div>
         </div>
         <div class="l3-normativas pg-norm">
@@ -450,7 +453,7 @@ const faqs = [
     </div>
   </section>
 
-  <FaqContactSplit titulo="Dudas sobre Instalación Profesional" contexto="el servicio de instalación de sistemas contra incendio" faqs={faqs} />
+  <FaqContactSplit titulo="Dudas sobre Capacitación" contexto="el servicio de capacitación de brigadas y operadores" faqs={faqs} />
 
   <!-- Otros servicios -->
   <section class="l3-otras">
@@ -466,9 +469,9 @@ const faqs = [
         </div>
       </div>
       <div class="l3-otras-grid">
-        <a href="/diseno-ingenieria" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-compass-drafting" aria-hidden="true"></i></span><span class="l3-otra-name">Diseño e Ingeniería</span><span class="l3-otra-sub">Cálculo hidráulico · planos</span></a>
+        <a href="/instalacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Instalación Profesional</span><span class="l3-otra-sub">Montaje certificado · pruebas</span></a>
         <a href="/mantenimiento-preventivo" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span><span class="l3-otra-name">Mantenimiento Preventivo</span><span class="l3-otra-sub">NFPA 25 · disponibilidad</span></a>
-        <a href="/capacitacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-chalkboard-user" aria-hidden="true"></i></span><span class="l3-otra-name">Capacitación</span><span class="l3-otra-sub">Brigadas y operadores</span></a>
+        <a href="/servicios#consultoria-normativa" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></span><span class="l3-otra-name">Consultoría Normativa</span><span class="l3-otra-sub">Auditorías · aseguradoras</span></a>
         <a href="/servicios" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todos los servicios</span><span class="l3-otra-sub">Ciclo de vida completo</span></a>
       </div>
     </div>
@@ -479,8 +482,8 @@ const faqs = [
     <div class="container">
       <div class="l3-cta-inner">
         <div>
-          <h2>¿Listo para instalar su sistema con garantía?</h2>
-          <p>Cotización técnica del servicio en menos de 24 horas. Visita de obra y cronograma claro sin costo ni compromiso.</p>
+          <h2>¿Listo para preparar a su brigada?</h2>
+          <p>Cotización del programa en menos de 24 horas. Diagnóstico de necesidades y propuesta a la medida sin costo ni compromiso.</p>
         </div>
         <div class="l3-cta-actions">
           <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
@@ -531,13 +534,13 @@ const faqs = [
   .pg-block-label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: var(--space-xs); }
   .pg-block-label i { color: var(--red); }
 
-  /* DIF 2 — Pruebas (pg-scen) */
+  /* DIF 2 — Temario (pg-scen) */
   .pg-scen { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-scen-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
   .pg-scen-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 48rem; }
   .pg-scen-table th, .pg-scen-table td { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
   .pg-scen-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 22%; }
+  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 24%; }
   .pg-scen-table tbody td { background: var(--surface-2); color: var(--text-body); }
   .pg-scen-name { display: inline-flex; align-items: center; gap: 0.5rem; }
   .pg-scen-name i { color: var(--red-hover); }
@@ -558,7 +561,7 @@ const faqs = [
   .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
   .pg-sol-link:hover i { transform: translateX(3px); }
 
-  /* pg-dens — Montajes */
+  /* pg-dens — Niveles */
   .pg-dens { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-dens-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 4%, 3.5rem); align-items: center; }
   .pg-dens-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
@@ -567,8 +570,9 @@ const faqs = [
   .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 32rem; }
   .pg-dens-table th, .pg-dens-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
   .pg-dens-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-dens-table tbody th { background: var(--surface); color: var(--red-hover); font-weight: 700; width: 24%; }
+  .pg-dens-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 22%; }
   .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-body); }
+  .pg-dens-table .pg-dens-ok { color: var(--text-strong); font-weight: 600; }
   .pg-dens-table tr:last-child th, .pg-dens-table tr:last-child td { border-bottom: none; }
 
   /* Guía errores/reco */
