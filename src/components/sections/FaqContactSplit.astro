@@ -1,25 +1,38 @@
 ---
-// Módulo FAQ + formulario WhatsApp a dos columnas (para páginas L3 de producto)
+// Módulo ESTÁNDAR de FAQ + formulario WhatsApp a dos columnas.
+// Patrón único de FAQ para todo el sitio (Home, L2 y L3). Ver Obsidian nota 11.
 interface Faq { q: string; a: string; }
 interface Props {
-  titulo: string;
+  titulo?: string;
   parrafos?: string[];
-  faqs: Faq[];
+  faqs?: Faq[];
   contexto?: string; // p. ej. "monitores fijos industriales"
 }
+
+// FAQ genérico por defecto (Home y L2 que no pasan faqs propias)
+const faqsDefault: Faq[] = [
+  { q: '¿Qué caudal (GPM) necesito para mi instalación?', a: 'Depende del tipo de riesgo, la superficie a proteger y la normativa aplicable (NFPA 15 para agua, NFPA 11 para espuma). Nuestros ingenieros realizan el cálculo hidráulico sin costo a partir de los datos de su planta y le recomiendan el modelo óptimo, desde 200 hasta 4,000 GPM.' },
+  { q: '¿Sus monitores están certificados FM Approved y UL Listed?', a: 'Sí. Toda nuestra línea cuenta con certificación FM Approved y/o UL Listed, y entregamos la documentación oficial de cumplimiento para auditorías de Protección Civil, aseguradoras y especificaciones de PEMEX.' },
+  { q: '¿Manejan monitores para áreas clasificadas (ATEX)?', a: 'Contamos con monitores remotos eléctricos certificados ATEX / IECEx para atmósferas explosivas Clase I División 1 y 2, ideales para refinerías, plantas petroquímicas y terminales con vapores inflamables.' },
+  { q: '¿Incluyen instalación, puesta en marcha y capacitación?', a: 'Sí. Ofrecemos servicio integral: diseño e ingeniería conforme a NFPA, instalación con personal certificado, pruebas hidrostáticas, puesta en marcha y capacitación a su brigada, todo documentado para entrega.' },
+  { q: '¿Ofrecen sistemas de espuma para hidrocarburos?', a: 'Sí. Complementamos los monitores con cámaras de espuma y proporcionadores al 3% o 6% bajo NFPA 11, indispensables para la protección de tanques de almacenamiento de hidrocarburos.' },
+  { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Mantenemos stock en México para entrega ágil y atendemos proyectos en toda la República Mexicana.' },
+];
+
 const {
-  titulo,
+  titulo = 'Resolvemos sus Dudas Técnicas',
   parrafos = [
     'Respuestas técnicas a las consultas más comunes de <strong>gerentes de seguridad e ingenieros de proyecto</strong>.',
     '¿No encuentra su pregunta? Escríbanos y un especialista le responde en <strong>menos de 24 horas</strong>.',
   ],
-  faqs,
+  faqs = faqsDefault,
   contexto = 'monitores contra incendios',
 } = Astro.props;
 
 const whatsappNumber = '5215512345678';
 ---
-<section id="preguntas" class="fcs">
+<section id="contacto" class="fcs">
+  <span id="preguntas" class="fcs-anchor" aria-hidden="true"></span>
   <div class="container">
     <div class="section-header split">
       <div class="section-header__head">
@@ -43,7 +56,7 @@ const whatsappNumber = '5215512345678';
       </div>
 
       <!-- Columna 2: Formulario WhatsApp -->
-      <div class="fcs-form-card">
+      <div class="fcs-form-card" id="cotizar">
         <div class="fcs-form-head">
           <div class="fcs-form-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
           <div>
@@ -110,7 +123,9 @@ const whatsappNumber = '5215512345678';
 </script>
 
 <style>
-  .fcs { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .fcs { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); scroll-margin-top: 110px; }
+  .fcs-anchor { display: block; scroll-margin-top: 110px; }
+  .fcs-form-card { scroll-margin-top: 110px; }
   .fcs-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);

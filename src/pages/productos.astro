@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { categorias } from '../data/productos';
-import FaqWhatsapp from '../components/sections/FaqWhatsapp.astro';
+import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 
 const totalProductos = categorias.reduce((n, c) => n + c.productos.length, 0);
 
@@ -128,7 +128,7 @@ const navCategorias = [
     </div>
   </section>
 
-  <FaqWhatsapp />
+  <FaqContactSplit titulo="Dudas sobre Nuestro Catálogo" contexto="el catálogo de monitores contra incendios" />
 </Base>
 
 <style>
