@@ -195,7 +195,7 @@ La protección con monitores reescribe esa ecuación. Al enfriar los transformad
 
 ## Aplicaciones por tipo de central
 
-La protección con monitores se ajusta a cada tecnología de generación. Estas son las principales aplicaciones industriales que atendemos dentro del sector de [Generación de Energía](/industrias#energia):
+La protección con monitores se ajusta a cada tecnología de generación. Estas son las principales aplicaciones industriales que atendemos dentro del sector de [Generación de Energía](/generacion-de-energia):
 
 - **Centrales termoeléctricas convencionales:** protección de transformadores, casa de máquinas, patios de combustóleo y diésel, y sistemas de manejo de combustible.
 - **Centrales de ciclo combinado:** protección de turbinas de gas y de vapor, generadores, transformadores elevadores y áreas de tratamiento de aceite y combustible.

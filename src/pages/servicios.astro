@@ -80,8 +80,8 @@ import { servicios, planes, proceso } from '../data/servicios';
         </div>
       </div>
 
-      {servicios.map((s, i) => (
-        <article id={s.id} class:list={['svc-block', i % 2 === 1 && 'svc-block--rev']}>
+      {servicios.map((s) => (
+        <article id={s.id} class="svc-block">
           <div class="svc-block-media">
             <img src={s.imagen} alt={s.alt} loading="lazy" />
             <span class="svc-block-num">{s.numero}</span>
@@ -247,7 +247,6 @@ import { servicios, planes, proceso } from '../data/servicios';
     scroll-margin-top: 110px;
   }
   .svc-block:last-child { border-bottom: none; }
-  .svc-block--rev .svc-block-media { order: 2; }
 
   .svc-block-media {
     position: relative;
@@ -392,7 +391,6 @@ import { servicios, planes, proceso } from '../data/servicios';
   /* Responsive */
   @media (max-width: 900px) {
     .svc-block { grid-template-columns: 1fr; }
-    .svc-block--rev .svc-block-media { order: 0; }
     .svc-block-media img { min-height: 240px; }
   }
 </style>

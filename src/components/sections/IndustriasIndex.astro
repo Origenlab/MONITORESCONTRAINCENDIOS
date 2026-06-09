@@ -5,6 +5,7 @@ import { industriaDestacada, industrias } from '../../data/industrias';
 const l3Industrias: Record<string, string> = {
   'petroleo-gas': '/petroleo-gas',
   'petroquimica': '/petroquimica',
+  'energia': '/generacion-de-energia',
 };
 const industriaUrl = (id?: string) => (id && l3Industrias[id]) ? l3Industrias[id] : `/industrias#${id}`;
 ---
