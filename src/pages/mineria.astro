@@ -3,170 +3,202 @@ import Base from '../layouts/Base.astro';
 import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 
 const stats = [
-  { numero: '50+', label: 'Instalaciones del sector petrolero' },
-  { numero: '100%', label: 'Cumplimiento de especificación PEMEX' },
-  { numero: 'ATEX', label: 'Equipos para zonas clasificadas' },
-  { numero: '4,000', label: 'GPM de caudal disponible' },
+  { numero: 'NOM-023', label: 'STPS — seguridad en minas' },
+  { numero: 'NFPA 122', label: 'Protección en minería metálica' },
+  { numero: '24/7', label: 'Operación continua en ambiente extremo' },
+  { numero: 'Cielo · Subt.', label: 'Superficie y subterráneo' },
 ];
 
 const beneficios = [
-  'Cumplimiento verificable de especificaciones PEMEX y aseguradoras',
-  'Monitores remotos ATEX/IECEx para áreas clasificadas Clase I',
-  'Sistemas de espuma NFPA 11 para incendios de hidrocarburos',
-  'Cálculo hidráulico y densidades de aplicación por ingeniería',
-  'Materiales 316L y bronce marino para ambientes corrosivos',
-  'Documentación completa para auditorías de Protección Civil',
+  'Equipos robustos para polvo, abrasión y vibración severa',
+  'Protección de estaciones de combustible y reabastecimiento',
+  'Cobertura de bandas transportadoras y puntos de transferencia',
+  'Soluciones para talleres de equipo pesado y subestaciones',
+  'Diseño conforme a NOM-023-STPS y NFPA 122 / 121',
+  'Operación confiable 24/7 en minas a cielo abierto y subterráneas',
 ];
 
-// DIFERENCIADOR 1 — Cadena de valor del sector
-const cadena = [
+// DIFERENCIADOR 1 — Entornos mineros (pg-chain)
+const entornos = [
   {
-    id: 'upstream',
-    eslabon: 'Upstream',
-    titulo: 'Exploración y Producción',
-    icon: 'fas fa-oil-well',
-    descripcion: 'Cabezales de pozo, baterías de separación y plataformas costa afuera, donde la fuga presurizada de gas y crudo genera dardos de fuego e incendios de derrame.',
-    activos: ['Cabezales de pozo', 'Baterías de separación', 'Plataformas offshore', 'Quemadores y desfogues'],
-    riesgos: ['Dardo de fuego (jet fire)', 'Incendio de derrame'],
+    id: 'cielo-abierto',
+    eslabon: 'Superficie',
+    titulo: 'Mina a Cielo Abierto',
+    icon: 'fas fa-mountain-sun',
+    descripcion: 'Grandes distancias, equipo móvil de alto valor y estaciones de combustible expuestas, con agua y respuesta a menudo lejanas.',
+    activos: ['Camiones y palas', 'Estaciones de combustible', 'Subestaciones', 'Patios de servicio'],
+    riesgos: ['Incendio de equipo móvil', 'Derrame de combustible'],
   },
   {
-    id: 'midstream',
-    eslabon: 'Midstream',
-    titulo: 'Transporte y Almacenamiento',
+    id: 'subterranea',
+    eslabon: 'Subterráneo',
+    titulo: 'Mina Subterránea',
+    icon: 'fas fa-helmet-safety',
+    descripcion: 'Espacios confinados con ventilación limitada, equipo diésel y bandas; el humo y el calor son tan peligrosos como el fuego.',
+    activos: ['Equipo diésel', 'Bandas transportadoras', 'Estaciones de carga', 'Refugios'],
+    riesgos: ['Humo en confinamiento', 'Propagación por bandas'],
+  },
+  {
+    id: 'beneficio',
+    eslabon: 'Proceso',
+    titulo: 'Planta de Beneficio',
+    icon: 'fas fa-gears',
+    descripcion: 'Chancado, molienda y procesamiento del mineral, con motores, bandas y, en algunos minerales, riesgo de polvo combustible.',
+    activos: ['Chancadoras', 'Molinos', 'Bandas', 'Tableros eléctricos'],
+    riesgos: ['Polvo combustible', 'Aceite y bandas'],
+  },
+  {
+    id: 'talleres',
+    eslabon: 'Servicio',
+    titulo: 'Talleres y Patios',
+    icon: 'fas fa-screwdriver-wrench',
+    descripcion: 'Mantenimiento de equipo pesado, almacenes de combustible y lubricantes, y patios de maniobra de operación continua.',
+    activos: ['Talleres de equipo pesado', 'Almacén de lubricantes', 'Llanteras', 'Patios'],
+    riesgos: ['Líquidos inflamables', 'Llantas y residuos'],
+  },
+];
+
+// DIFERENCIADOR 2 — Activos críticos (pg-scen)
+const activos = [
+  {
+    icon: 'fas fa-gas-pump',
+    nombre: 'Estación de combustible',
+    descripcion: 'Reabastecimiento de diésel para flota pesada, con gran inventario y trasiego continuo.',
+    estrategia: 'Espuma sobre derrames y enfriamiento de exposiciones, con cobertura de área (NFPA 11 / 30).',
+    solucion: 'Monitor Magnum MG-4000 + espuma',
+  },
+  {
+    icon: 'fas fa-conveyor-belt-boxes',
+    nombre: 'Bandas transportadoras',
+    descripcion: 'Líneas largas que pueden propagar el fuego y, bajo tierra, generar humo en confinamiento.',
+    estrategia: 'Detección y descarga automática en puntos de transferencia y motrices.',
+    solucion: 'Monitores Automáticos dirigidos',
+  },
+  {
+    icon: 'fas fa-truck-monster',
+    nombre: 'Equipo móvil pesado',
+    descripcion: 'Camiones, palas y cargadores con motores, hidráulicos y combustible a presión.',
+    estrategia: 'Enfriamiento de exposiciones y respaldo a los sistemas de supresión a bordo.',
+    solucion: 'Monitores portátiles de brigada',
+  },
+  {
+    icon: 'fas fa-tower-cell',
+    nombre: 'Subestación eléctrica',
+    descripcion: 'Transformadores y tableros que alimentan la operación, con riesgo de incendio de aceite.',
+    estrategia: 'Agua pulverizada y enfriamiento operado a distancia en patios energizados.',
+    solucion: 'Monitor Remoto ATEX MR-3000',
+  },
+  {
     icon: 'fas fa-warehouse',
-    descripcion: 'Terminales, patios de tanques, estaciones de bombeo y compresión. El gran inventario de producto concentra el riesgo de incendio de tanque y de sello en techos flotantes.',
-    activos: ['Patios de tanques', 'Estaciones de bombeo', 'Estaciones de compresión', 'Ductos y racks'],
-    riesgos: ['Incendio de tanque', 'Incendio de sello (rim-seal)', 'Incendio de derrame'],
+    nombre: 'Taller de equipo pesado',
+    descripcion: 'Mantenimiento con lubricantes, soldadura y residuos combustibles bajo techo.',
+    estrategia: 'Protección de área con monitores fijos y respaldo portátil para la brigada.',
+    solucion: 'Monitores fijos / portátiles',
   },
   {
-    id: 'downstream',
-    eslabon: 'Downstream',
-    titulo: 'Refinación y Proceso',
-    icon: 'fas fa-industry',
-    descripcion: 'Refinerías, plantas de proceso de gas y unidades de fraccionamiento, con recipientes a presión cuya falla bajo fuego puede derivar en una BLEVE.',
-    activos: ['Unidades de proceso', 'Plantas de gas / LNG', 'Esferas y recipientes a presión', 'Racks de tubería'],
-    riesgos: ['BLEVE', 'Dardo de fuego', 'Nube de vapor inflamable'],
+    icon: 'fas fa-smog',
+    nombre: 'Chancado y procesamiento',
+    descripcion: 'Polvo combustible en ciertos minerales y carga de fuego por aceite y bandas.',
+    estrategia: 'Supresión dirigida y gestión de polvo combustible en puntos críticos.',
+    solucion: 'Monitores Automáticos + ingeniería',
   },
 ];
 
-// DIFERENCIADOR 2 — Matriz de escenarios de incendio
-const escenarios = [
-  {
-    icon: 'fas fa-fire',
-    nombre: 'Incendio de derrame (pool fire)',
-    descripcion: 'Charco de hidrocarburo encendido en dique de contención o área de proceso.',
-    estrategia: 'Extinción con espuma sobre la superficie y enfriamiento simultáneo de las exposiciones cercanas.',
-    solucion: 'Monitor de alto caudal + cámara de espuma (NFPA 11)',
-  },
-  {
-    icon: 'fas fa-ring',
-    nombre: 'Incendio de sello (rim-seal)',
-    descripcion: 'Fuego en el sello perimetral de un tanque de techo flotante.',
-    estrategia: 'Aplicación de espuma de barrido perimetral o inyección subsuperficial, según diseño del tanque.',
-    solucion: 'Sistema fijo de espuma asistido por monitor',
-  },
-  {
-    icon: 'fas fa-bolt',
-    nombre: 'Dardo de fuego (jet fire)',
-    descripcion: 'Llama presurizada por fuga de gas o líquido en equipo a presión.',
-    estrategia: 'Enfriamiento intensivo de la estructura expuesta; no se extingue hasta cortar el suministro de combustible.',
-    solucion: 'Monitor remoto de agua de alto caudal (NFPA 15)',
-  },
-  {
-    icon: 'fas fa-triangle-exclamation',
-    nombre: 'Riesgo de BLEVE',
-    descripcion: 'Recipiente a presión expuesto a fuego con riesgo de explosión por expansión de vapor.',
-    estrategia: 'Enfriamiento masivo y preventivo del recipiente desde una posición segura y operado a distancia.',
-    solucion: 'Monitor remoto ATEX MR-3000 / oscilante',
-  },
-];
-
-// DIFERENCIADOR 3 — Soluciones AQUEON por activo (interlinking a L3 de producto)
+// DIFERENCIADOR 3 — Soluciones por área (pg-sol, interlink)
 const soluciones = [
   {
-    icon: 'fas fa-database',
-    titulo: 'Tanques y patios de almacenamiento',
-    texto: 'Enfriamiento de exposiciones y aplicación de espuma sobre incendios de hidrocarburo con monitores de ultra-alto caudal.',
+    icon: 'fas fa-gas-pump',
+    titulo: 'Estaciones de combustible',
+    texto: 'Enfriamiento de exposiciones y espuma sobre derrames en estaciones de reabastecimiento de la flota.',
     producto: 'Monitor Magnum MG-4000',
     url: '/monitores-fijos#mg-4000',
   },
   {
-    icon: 'fas fa-tower-broadcast',
-    titulo: 'Áreas clasificadas y racks de proceso',
-    texto: 'Ataque y enfriamiento sin exponer personal en zonas con vapores inflamables, operado desde sala de control.',
+    icon: 'fas fa-conveyor-belt-boxes',
+    titulo: 'Bandas y puntos de transferencia',
+    texto: 'Detección y descarga automática dirigida en líneas de transporte de mineral.',
+    producto: 'Monitores Automáticos',
+    url: '/monitores-automaticos',
+  },
+  {
+    icon: 'fas fa-tower-cell',
+    titulo: 'Subestaciones',
+    texto: 'Enfriamiento de transformadores y patios energizados sin exponer personal, operado a distancia.',
     producto: 'Monitor Remoto ATEX MR-3000',
     url: '/monitores-fijos#mr-3000',
   },
   {
     icon: 'fas fa-truck-droplet',
-    titulo: 'Respuesta de brigada y puntos sin cobertura fija',
-    texto: 'Despliegue rápido para complementar la red fija en mantenimientos, paros y maniobras de emergencia.',
+    titulo: 'Respuesta de brigada',
+    texto: 'Equipos portátiles robustos para puntos remotos, equipo móvil y maniobras de emergencia.',
     producto: 'Monitores Portátiles',
     url: '/monitores-portatiles',
   },
   {
-    icon: 'fas fa-robot',
-    titulo: 'Detección y respuesta autónoma',
-    texto: 'Cuartos de bombas y casas de compresores con detección IR/IA y descarga automática dirigida al foco.',
-    producto: 'Monitores Automáticos',
-    url: '/monitores-automaticos',
+    icon: 'fas fa-screwdriver-wrench',
+    titulo: 'Talleres y almacenes',
+    texto: 'Protección de área en talleres de equipo pesado y almacenes de combustible y lubricantes.',
+    producto: 'Monitores Fijos Industriales',
+    url: '/monitores-fijos',
+  },
+  {
+    icon: 'fas fa-compass-drafting',
+    titulo: 'Diseño NOM-023 / NFPA 122',
+    texto: 'Ingeniería del sistema y documentación para cumplimiento minero y auditorías.',
+    producto: 'Servicios de ingeniería',
+    url: '/servicios#diseno-ingenieria',
   },
 ];
 
-// Densidades de aplicación de referencia
-const densidades = [
-  ['Enfriamiento de tanque expuesto (agua)', 'NFPA 15', '0.10 – 0.25 gpm/ft²'],
-  ['Espuma sobre derrame de hidrocarburo', 'NFPA 11', '0.10 gpm/ft² (mín.)'],
-  ['Espuma en tanque de techo flotante (sello)', 'NFPA 11', 'Según método de aplicación'],
-  ['Tiempo de descarga de espuma', 'NFPA 11', '30 – 65 min según riesgo'],
+// EXTRA — Cielo abierto vs subterránea (pg-dens, comparativa)
+const comparativa = [
+  ['Entorno', 'Grandes distancias al aire libre', 'Espacios confinados con ventilación'],
+  ['Riesgo dominante', 'Equipo móvil y combustible', 'Humo y propagación por bandas'],
+  ['Disponibilidad de agua', 'Frecuentemente limitada / recirculada', 'Limitada y por bombeo'],
+  ['Enfoque AQUEON', 'Cobertura de área y estaciones de combustible', 'Detección y supresión en puntos críticos'],
 ];
 
 const normativas = [
-  { n: 'PEMEX', d: 'Especificaciones técnicas de equipo y materiales' },
-  { n: 'NFPA 11', d: 'Sistemas de espuma de baja, media y alta expansión' },
+  { n: 'NOM-023-STPS', d: 'Seguridad en minas subterráneas' },
+  { n: 'NFPA 122', d: 'Prevención y control en minería metálica/no metálica' },
+  { n: 'NFPA 121', d: 'Equipo móvil de minería autopropulsado' },
+  { n: 'NFPA 120', d: 'Protección en minas de carbón' },
   { n: 'NFPA 15', d: 'Sistemas fijos de agua pulverizada' },
-  { n: 'NFPA 30', d: 'Almacenamiento de líquidos inflamables y combustibles' },
-  { n: 'NFPA 24', d: 'Redes privadas de servicio contra incendios' },
-  { n: 'NFPA 25', d: 'Inspección, prueba y mantenimiento (ITM)' },
-  { n: 'API 2021', d: 'Atención de incendios en tanques de almacenamiento' },
-  { n: 'API 2030', d: 'Sistemas fijos de aspersión de agua' },
-  { n: 'ATEX / IECEx', d: 'Equipo para atmósferas explosivas' },
+  { n: 'NFPA 11', d: 'Espuma para combustibles líquidos' },
   { n: 'NOM-002-STPS', d: 'Condiciones de seguridad — prevención de incendios' },
 ];
 
 const errores = [
-  'Diseñar el caudal sin un escenario de incendio definido por ingeniería',
-  'Confundir estrategia: extinguir un dardo de gas en vez de enfriar y cortar suministro',
-  'Omitir el sistema de espuma en riesgos de hidrocarburo (NFPA 11)',
-  'Ubicar monitores manuales en zonas de radiación térmica intolerable',
-  'Usar materiales no aptos para ambiente salino u offshore',
-  'No prever el respaldo de agua/espuma para el tiempo de descarga normativo',
+  'Diseñar igual una mina a cielo abierto que una subterránea',
+  'Subestimar el humo en confinamiento como riesgo principal bajo tierra',
+  'Ignorar las estaciones de combustible y el reabastecimiento de la flota',
+  'No proteger las bandas transportadoras, ruta de propagación clave',
+  'Especificar equipo no apto para polvo, abrasión y vibración',
+  'Olvidar la disponibilidad limitada de agua en el diseño',
 ];
 
 const recomendaciones = [
-  'Parta del escenario de incendio de diseño y del cálculo hidráulico',
-  'Combine enfriamiento (agua) y extinción (espuma) según el activo',
-  'Especifique control remoto ATEX en áreas clasificadas y riesgo de BLEVE',
-  'Verifique certificación FM/UL y cumplimiento de especificación PEMEX',
-  'Defina materiales 316L o bronce marino según corrosión del sitio',
-  'Integre el mantenimiento NFPA 25 desde la ingeniería de detalle',
+  'Diferencie la estrategia entre superficie y subterráneo',
+  'Priorice estaciones de combustible, bandas y subestaciones',
+  'Use equipo robusto para ambiente abrasivo y operación 24/7',
+  'Integre detección temprana donde el humo es crítico',
+  'Considere la disponibilidad de agua y la recirculación',
+  'Diseñe conforme a NOM-023-STPS y NFPA 122 / 121',
 ];
 
 const faqs = [
-  { q: '¿Qué normativa rige la protección contra incendios en petróleo y gas en México?', a: 'El diseño se rige principalmente por las especificaciones técnicas de PEMEX y por el cuerpo normativo NFPA: NFPA 11 (espuma), NFPA 15 (agua pulverizada), NFPA 30 (almacenamiento de líquidos inflamables), NFPA 24 (redes) y NFPA 25 (mantenimiento), complementadas con las prácticas recomendadas API 2021 y API 2030, la NOM-002-STPS y los requisitos de las aseguradoras. En AQUEON entregamos la documentación de cumplimiento para auditorías de Protección Civil.' },
-  { q: '¿Por qué se enfría un dardo de fuego (jet fire) en lugar de extinguirlo?', a: 'Un dardo de fuego es alimentado por una fuga presurizada de gas o líquido. Si se apaga la llama sin cortar el suministro, el gas sigue escapando y puede reacumularse y reignitar de forma explosiva. La estrategia correcta es enfriar intensamente la estructura y los recipientes expuestos para evitar una falla por radiación —y un posible BLEVE— mientras se aísla la fuente de combustible. Por eso priorizamos monitores de agua de alto caudal, idealmente remotos.' },
-  { q: '¿Qué es una BLEVE y cómo se previene con monitores?', a: 'Una BLEVE (explosión por expansión de vapor de líquido en ebullición) ocurre cuando un recipiente a presión expuesto al fuego se debilita y falla catastróficamente. La defensa es el enfriamiento masivo y preventivo de la superficie del recipiente desde el inicio del evento, mantenido de forma continua. Los monitores remotos ATEX, como el MR-3000, permiten aplicar ese enfriamiento sin exponer al personal en la zona de riesgo.' },
-  { q: '¿Necesito sistema de espuma además de los monitores de agua?', a: 'Sí, en la mayoría de los riesgos de hidrocarburo. El agua enfría exposiciones, pero un incendio de derrame o de tanque se extingue con una capa de espuma que sella la superficie del combustible bajo NFPA 11. El diseño define el concentrado (AFFF, AR-AFFF o espuma libre de flúor F3), la densidad de aplicación y el tiempo de descarga. AQUEON integra monitores, cámaras de espuma y proporcionadores como un solo sistema.' },
-  { q: '¿Sus equipos cumplen con la especificación de PEMEX?', a: 'Sí. Suministramos monitores y accesorios con certificación FM Approved y/o UL Listed que cumplen con los requisitos técnicos de PEMEX, e integramos la documentación oficial para el expediente del proyecto. Atendemos refinerías, terminales de almacenamiento, plantas de proceso de gas e instalaciones offshore.' },
-  { q: '¿Qué equipos recomiendan para una terminal de almacenamiento de hidrocarburos?', a: 'Un patio de tanques típicamente combina monitores de ultra-alto caudal (MG-4000) para enfriamiento de exposiciones y aplicación de espuma, monitores remotos ATEX (MR-3000) en áreas clasificadas, sistemas de espuma NFPA 11 por tanque y equipos portátiles para respuesta de brigada. La configuración final depende del diámetro de los tanques, el tipo de techo y el inventario de producto.' },
-  { q: '¿Trabajan en plataformas e instalaciones costa afuera (offshore)?', a: 'Sí. Para ambiente marino especificamos materiales de acero inoxidable 316L y bronce marino con recubrimientos resistentes a la corrosión salina, y monitores remotos para operar desde posiciones seguras. El diseño contempla la severidad del entorno offshore y la disponibilidad limitada de agua y personal.' },
-  { q: '¿AQUEON realiza el diseño e ingeniería del sistema?', a: 'Sí. Partimos del escenario de incendio de diseño, calculamos el caudal y la presión, definimos densidades de aplicación conforme a NFPA, seleccionamos los equipos y materiales, y entregamos planos y memoria de cálculo. Después instalamos con técnicos certificados, hacemos pruebas hidrostáticas, puesta en marcha y mantenimiento NFPA 25.' },
-  { q: '¿En cuánto tiempo entregan una cotización para el sector petrolero?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Para proyectos de mayor alcance agendamos una visita técnica sin costo para levantar el escenario de incendio, los activos a proteger y las condiciones del sitio, y proponer la configuración óptima.' },
+  { q: '¿La protección contra incendios es distinta en mina a cielo abierto y subterránea?', a: 'Sí, radicalmente. En cielo abierto el reto es la escala —grandes distancias, equipo móvil de alto valor y estaciones de combustible, con agua a menudo limitada—, por lo que predominan la cobertura de área y la protección de puntos fijos críticos. En subterráneo, el espacio confinado y la ventilación limitada hacen que el humo y el calor sean tan peligrosos como el fuego, y se prioriza la detección temprana y la supresión dirigida en bandas, estaciones de carga y equipo diésel, conforme a NOM-023-STPS.' },
+  { q: '¿Qué normativa aplica a la minería en México?', a: 'La referencia principal de seguridad es la NOM-023-STPS para minas subterráneas, complementada por las prácticas NFPA 122 (prevención y control de incendios en minería metálica y no metálica), NFPA 121 (equipo móvil autopropulsado) y, en carbón, NFPA 120, además de NFPA 15 y NFPA 11 para los sistemas fijos. AQUEON diseña conforme a este marco y entrega la documentación de cumplimiento.' },
+  { q: '¿Cómo se protege una estación de reabastecimiento de combustible?', a: 'Las estaciones de diésel de la flota concentran un gran inventario y trasiego continuo. Se protegen con monitores de alto caudal que aplican espuma sobre derrames y enfrían las exposiciones, dimensionados según el volumen y la disposición de la estación, conforme a NFPA 11 y NFPA 30. Es uno de los puntos fijos más críticos de una mina a cielo abierto.' },
+  { q: '¿Por qué son críticas las bandas transportadoras?', a: 'Las bandas recorren largas distancias y, además de propagar el fuego entre áreas, bajo tierra pueden llenar de humo galerías enteras. Se protegen con detección temprana y descarga automática dirigida en los puntos de transferencia y en las estaciones motrices, integrando monitores automáticos con la estrategia general de la mina.' },
+  { q: '¿Atienden el riesgo de polvo combustible en el procesamiento?', a: 'Sí. Algunos minerales y el carbón pueden generar polvo combustible con riesgo de deflagración en chancado, molienda y manejo. Lo abordamos con supresión dirigida en los puntos críticos y con asesoría de ingeniería para la gestión del polvo, integrada a la protección general de la planta de beneficio.' },
+  { q: '¿Los equipos resisten el ambiente extremo de una mina?', a: 'Especificamos equipo robusto para condiciones de polvo, abrasión, vibración y operación continua 24/7, con materiales y recubrimientos adecuados al entorno. La selección parte de las condiciones reales del sitio para garantizar confiabilidad donde el mantenimiento y la respuesta pueden estar lejos.' },
+  { q: '¿AQUEON diseña, instala y da mantenimiento en sitios remotos?', a: 'Sí. Partimos del análisis de riesgo por área (superficie, subterráneo, beneficio, talleres), diseñamos conforme a NOM-023-STPS y NFPA, calculamos caudales y entregamos planos y memoria de cálculo. Instalamos con técnicos certificados, probamos, capacitamos a la brigada y damos mantenimiento NFPA 25, con cobertura en los 32 estados de la República.' },
 ];
 ---
 <Base
-  title="Protección Contra Incendios para Petróleo y Gas | Monitores PEMEX, ATEX y Espuma | AQUEON México"
-  description="Soluciones de monitores contra incendios para la industria de petróleo y gas en México: refinerías, terminales de almacenamiento, plantas de gas y offshore. Equipos FM/UL con cumplimiento PEMEX, sistemas ATEX y espuma NFPA 11. Ingeniería, instalación y mantenimiento con AQUEON."
+  title="Protección Contra Incendios para Minería | NOM-023-STPS y NFPA 122 | AQUEON México"
+  description="Soluciones de monitores contra incendios para minería en México: minas a cielo abierto y subterráneas, estaciones de combustible, bandas transportadoras, subestaciones y plantas de beneficio. Equipos robustos conforme a NOM-023-STPS y NFPA 122/121. Ingeniería e instalación con AQUEON."
 >
   <!-- Hero -->
   <section class="l3-hero">
@@ -176,16 +208,16 @@ const faqs = [
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
         <a href="/industrias">Industrias</a>
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        <span>Petróleo y Gas</span>
+        <span>Minería</span>
       </nav>
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Industrias · Petróleo y Gas</span>
-          <h1>Protección Contra Incendios para Petróleo y Gas</h1>
+          <span class="section-tag">Industrias · Minería</span>
+          <h1>Protección Contra Incendios para Minería</h1>
         </div>
         <div class="section-header__body">
-          <p>El sector de <strong>mayor riesgo y mayor exigencia normativa</strong>: refinerías, terminales, plantas de gas e instalaciones costa afuera.</p>
-          <p>Equipos <strong>FM Approved y UL Listed</strong> con cumplimiento PEMEX, sistemas ATEX y espuma NFPA 11, diseñados por ingeniería.</p>
+          <p>El sector del <strong>ambiente extremo</strong>: equipo móvil de alto valor, bandas kilométricas y operación continua.</p>
+          <p>Equipos robustos conforme a <strong>NOM-023-STPS y NFPA 122/121</strong>, para mina a cielo abierto y subterránea.</p>
         </div>
       </div>
     </div>
@@ -211,23 +243,22 @@ const faqs = [
       <div class="l3-intro-grid">
         <div class="l3-intro-text">
           <span class="section-tag">El reto del sector</span>
-          <h2>Donde un Error de Diseño no es una Opción</h2>
+          <h2>Proteger Donde la Ayuda Está Lejos</h2>
           <p>
-            La industria de <strong>petróleo y gas</strong> concentra los riesgos de incendio más severos de toda la
-            actividad industrial: grandes inventarios de hidrocarburo, recipientes a presión, atmósferas con vapores
-            inflamables y procesos que operan en los límites de temperatura y presión. Un evento mal contenido no se mide
-            en daño material, sino en vidas, en impacto ambiental y en la continuidad de una operación crítica para el país.
+            La <strong>minería</strong> combina dos retos que ningún otro sector reúne: ambientes
+            <strong>extremos</strong> —polvo, abrasión, vibración y operación 24/7— y la <strong>lejanía</strong> de la
+            respuesta de emergencia y, muchas veces, del agua. Un incendio en un camión de acarreo, en una estación de
+            combustible o en una banda transportadora puede crecer mucho antes de que llegue ayuda.
           </p>
           <p>
-            Por eso la protección contra incendios en este sector no se resuelve con catálogo, sino con
-            <strong>ingeniería</strong>: definir el escenario de incendio de diseño, calcular el caudal y las densidades de
-            aplicación, decidir entre enfriar o extinguir según el activo, y especificar equipos certificados que cumplan la
-            especificación PEMEX y las prácticas API y NFPA. AQUEON acompaña ese proceso de principio a fin.
+            Además, una mina no es un solo escenario: la <strong>superficie</strong> y el <strong>subterráneo</strong> son
+            mundos distintos. A cielo abierto manda la escala y el equipo móvil; bajo tierra, el espacio confinado convierte
+            al <strong>humo</strong> en el enemigo principal. La protección debe diseñarse por separado para cada uno,
+            conforme a la NOM-023-STPS y a las prácticas NFPA 122 y 121.
           </p>
           <p>
-            En esta página encontrará cómo abordamos el riesgo a lo largo de la <strong>cadena de valor</strong>, la
-            estrategia para cada escenario de incendio, las soluciones AQUEON por tipo de activo y el marco normativo
-            aplicable en México.
+            En esta página verá la protección por entorno minero, los activos críticos y su estrategia, las soluciones
+            AQUEON por área y la diferencia clave entre operar a cielo abierto y bajo tierra.
           </p>
         </div>
         <ul class="l3-benefits">
@@ -239,21 +270,21 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 1: Cadena de valor -->
+  <!-- DIFERENCIADOR 1: Entornos mineros -->
   <section class="pg-chain">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Mapa de riesgo</span>
-          <h2>Protección a lo Largo de la Cadena de Valor</h2>
+          <h2>Protección por Entorno Minero</h2>
         </div>
         <div class="section-header__body">
-          <p>Cada eslabón —<strong>upstream, midstream y downstream</strong>— enfrenta riesgos de incendio distintos.</p>
-          <p>Identificarlos es el primer paso para una <strong>estrategia de protección correcta</strong>.</p>
+          <p>De la superficie al subterráneo y al beneficio, cada entorno plantea un <strong>reto distinto</strong>.</p>
+          <p>Identificarlo define la <strong>estrategia de protección</strong> correcta.</p>
         </div>
       </div>
       <div class="pg-chain-grid">
-        {cadena.map((c) => (
+        {entornos.map((c) => (
           <article id={c.id} class="pg-chain-card">
             <div class="pg-chain-top">
               <span class="pg-chain-icon" aria-hidden="true"><i class={c.icon}></i></span>
@@ -277,31 +308,31 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 2: Matriz de escenarios -->
+  <!-- DIFERENCIADOR 2: Activos críticos -->
   <section class="pg-scen">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Estrategia de respuesta</span>
-          <h2>Escenarios de Incendio y Cómo se Combaten</h2>
+          <h2>Activos Críticos y Cómo se Protegen</h2>
         </div>
         <div class="section-header__body">
-          <p>No todo fuego se apaga igual: la estrategia cambia según se trate de <strong>derrame, sello, dardo o BLEVE</strong>.</p>
-          <p>Esta matriz resume el enfoque de ingeniería que aplicamos a cada caso.</p>
+          <p>De la estación de combustible a la chancadora, cada activo exige una <strong>estrategia propia</strong>.</p>
+          <p>Esta matriz resume el enfoque de ingeniería que aplicamos a cada uno.</p>
         </div>
       </div>
       <div class="pg-scen-wrap">
         <table class="pg-scen-table">
           <thead>
             <tr>
-              <th scope="col">Escenario</th>
-              <th scope="col">Descripción</th>
+              <th scope="col">Activo</th>
+              <th scope="col">Riesgo</th>
               <th scope="col">Estrategia</th>
               <th scope="col">Solución AQUEON</th>
             </tr>
           </thead>
           <tbody>
-            {escenarios.map((e) => (
+            {activos.map((e) => (
               <tr>
                 <th scope="row"><span class="pg-scen-name"><i class={e.icon} aria-hidden="true"></i> {e.nombre}</span></th>
                 <td>{e.descripcion}</td>
@@ -312,20 +343,20 @@ const faqs = [
           </tbody>
         </table>
       </div>
-      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> La estrategia definitiva siempre se establece en el análisis de riesgo y la memoria de cálculo del proyecto.</p>
+      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> La estrategia definitiva se establece en el análisis de riesgo del sitio conforme a NOM-023-STPS y NFPA 122.</p>
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 3: Soluciones por activo -->
+  <!-- DIFERENCIADOR 3: Soluciones por área -->
   <section class="pg-sol">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Soluciones AQUEON</span>
-          <h2>El Equipo Correcto para Cada Activo</h2>
+          <h2>El Equipo Correcto para Cada Área</h2>
         </div>
         <div class="section-header__body">
-          <p>Combinamos monitores fijos, remotos, portátiles y automáticos en un <strong>sistema integral</strong>.</p>
+          <p>Combinamos monitores fijos, remotos, automáticos y portátiles en un <strong>sistema integral</strong>.</p>
           <p>Cada recomendación enlaza con la <strong>ficha técnica</strong> del equipo correspondiente.</p>
         </div>
       </div>
@@ -342,29 +373,28 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Densidades de aplicación -->
+  <!-- EXTRA: Cielo abierto vs subterránea -->
   <section class="pg-dens">
     <div class="container">
       <div class="pg-dens-grid">
         <div class="pg-dens-text">
-          <span class="section-tag">Criterios de diseño</span>
-          <h2>Densidades de Aplicación de Referencia</h2>
+          <span class="section-tag">Criterio de diseño</span>
+          <h2>Cielo Abierto vs Subterránea</h2>
           <p>
-            El dimensionamiento de un sistema de protección para hidrocarburos parte de la
-            <strong>densidad de aplicación</strong>: cuántos galones por minuto por pie cuadrado exige la norma para
-            enfriar o extinguir un riesgo dado. Estos son valores orientativos; el diseño final se determina por cálculo
-            hidráulico según el activo, el producto almacenado y las condiciones del sitio.
+            La diferencia entre proteger una mina a <strong>cielo abierto</strong> y una <strong>subterránea</strong> no es
+            de grado, sino de naturaleza: cambia el riesgo dominante, la disponibilidad de agua y la estrategia. Diseñar
+            ambas igual es el error más costoso del sector. Esta es la diferencia esencial que guía cada proyecto.
           </p>
-          <a href="/servicios#diseno-ingenieria" class="btn btn-outline"><i class="fas fa-compass-drafting" aria-hidden="true"></i> Ver servicio de ingeniería</a>
+          <a href="/servicios#consultoria-normativa" class="btn btn-outline"><i class="fas fa-clipboard-check" aria-hidden="true"></i> Ver consultoría normativa</a>
         </div>
         <div class="pg-dens-wrap">
           <table class="pg-dens-table">
             <thead>
-              <tr><th scope="col">Aplicación</th><th scope="col">Norma</th><th scope="col">Densidad de referencia</th></tr>
+              <tr><th scope="col">Aspecto</th><th scope="col">Cielo abierto</th><th scope="col">Subterránea</th></tr>
             </thead>
             <tbody>
-              {densidades.map(([a, n, d]) => (
-                <tr><th scope="row">{a}</th><td>{n}</td><td>{d}</td></tr>
+              {comparativa.map(([a, c, s]) => (
+                <tr><th scope="row">{a}</th><td>{c}</td><td>{s}</td></tr>
               ))}
             </tbody>
           </table>
@@ -399,17 +429,17 @@ const faqs = [
       <div class="l3-aqueon-inner">
         <div class="l3-aqueon-text">
           <span class="section-tag">Por qué AQUEON</span>
-          <h2>Especialistas en Protección para la Industria Petrolera</h2>
+          <h2>Protección Confiable para la Operación Minera</h2>
           <p>
-            En <strong>AQUEON</strong> somos distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, y
-            llevamos más de una década protegiendo <strong>refinerías, terminales de almacenamiento, plantas de proceso de
-            gas e instalaciones offshore</strong> en México. Entregamos ingeniería de diseño conforme a NFPA y API,
-            instalación con técnicos certificados, pruebas, puesta en marcha, capacitación y mantenimiento NFPA 25.
+            En <strong>AQUEON</strong> diseñamos la protección de minas partiendo del entorno y de la lejanía de la
+            respuesta. Somos distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, y especificamos
+            <strong>equipo robusto</strong> para polvo, abrasión y operación 24/7, conforme a NOM-023-STPS y NFPA 122 / 121.
+            Entregamos ingeniería, instalación certificada, capacitación a la brigada y mantenimiento NFPA 25.
           </p>
           <p>
-            Atendemos proyectos de <strong>PEMEX y de la iniciativa privada</strong> con documentación completa para
-            auditorías de Protección Civil y aseguradoras internacionales, con cobertura en los 32 estados de la República
-            desde la Ciudad de México.
+            Atendemos <strong>minas a cielo abierto, subterráneas, plantas de beneficio y patios de servicio</strong>, con
+            documentación para auditorías y aseguradoras, y cobertura en los 32 estados de la República desde la Ciudad de
+            México.
           </p>
           <div class="l3-aqueon-actions">
             <a href="/nosotros" class="btn btn-outline-light"><i class="fas fa-building-shield" aria-hidden="true"></i> Conozca AQUEON</a>
@@ -428,7 +458,7 @@ const faqs = [
     </div>
   </section>
 
-  <FaqContactSplit titulo="Dudas sobre Protección para Petróleo y Gas" contexto="protección contra incendios para petróleo y gas" faqs={faqs} />
+  <FaqContactSplit titulo="Dudas sobre Protección para Minería" contexto="protección contra incendios para minería a cielo abierto y subterránea" faqs={faqs} />
 
   <!-- Otras industrias -->
   <section class="l3-otras">
@@ -444,9 +474,9 @@ const faqs = [
         </div>
       </div>
       <div class="l3-otras-grid">
-        <a href="/petroquimica" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-flask" aria-hidden="true"></i></span><span class="l3-otra-name">Petroquímica</span><span class="l3-otra-sub">Ambientes corrosivos · áreas clasificadas</span></a>
+        <a href="/petroleo-gas" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-oil-well" aria-hidden="true"></i></span><span class="l3-otra-name">Petróleo y Gas</span><span class="l3-otra-sub">Refinerías · terminales · offshore</span></a>
         <a href="/generacion-de-energia" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-bolt" aria-hidden="true"></i></span><span class="l3-otra-name">Generación de Energía</span><span class="l3-otra-sub">Termoeléctricas · CFE · turbinas</span></a>
-        <a href="/mineria" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-helmet-safety" aria-hidden="true"></i></span><span class="l3-otra-name">Minería</span><span class="l3-otra-sub">Ambientes extremos · 24/7</span></a>
+        <a href="/manufactura" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-industry" aria-hidden="true"></i></span><span class="l3-otra-name">Manufactura</span><span class="l3-otra-sub">Naves · almacenes · distribución</span></a>
         <a href="/industrias" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todos los sectores</span><span class="l3-otra-sub">7 industrias especializadas</span></a>
       </div>
     </div>
@@ -457,8 +487,8 @@ const faqs = [
     <div class="container">
       <div class="l3-cta-inner">
         <div>
-          <h2>¿Listo para proteger su instalación petrolera?</h2>
-          <p>Cotización técnica en menos de 24 horas. Análisis de riesgo, cálculo hidráulico y asesoría de ingeniería sin costo ni compromiso.</p>
+          <h2>¿Listo para proteger su operación minera?</h2>
+          <p>Cotización técnica en menos de 24 horas. Análisis de riesgo por entorno, diseño NOM-023 / NFPA 122 y cálculo hidráulico sin costo ni compromiso.</p>
         </div>
         <div class="l3-cta-actions">
           <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
@@ -497,7 +527,7 @@ const faqs = [
   .l3-benefits li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
   .l3-benefits i { flex-shrink: 0; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.6rem; }
 
-  /* DIFERENCIADOR 1 — Cadena de valor */
+  /* DIF 1 — Entornos (pg-chain) */
   .pg-chain { background: var(--bg-0); padding: var(--section-pad) 0; }
   .pg-chain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
   .pg-chain-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-sm); scroll-margin-top: 110px; }
@@ -509,7 +539,7 @@ const faqs = [
   .pg-block-label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: var(--space-xs); }
   .pg-block-label i { color: var(--red); }
 
-  /* DIFERENCIADOR 2 — Escenarios */
+  /* DIF 2 — Activos (pg-scen) */
   .pg-scen { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-scen-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
   .pg-scen-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 48rem; }
@@ -524,7 +554,7 @@ const faqs = [
   .pg-note { margin: var(--space-md) 0 0; font-size: var(--text-xs); color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
   .pg-note i { color: var(--red); }
 
-  /* DIFERENCIADOR 3 — Soluciones por activo */
+  /* DIF 3 — Soluciones (pg-sol) */
   .pg-sol { background: var(--bg-0); padding: var(--section-pad) 0; }
   .pg-sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
   .pg-sol-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; }
@@ -536,7 +566,7 @@ const faqs = [
   .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
   .pg-sol-link:hover i { transform: translateX(3px); }
 
-  /* Densidades */
+  /* EXTRA — Comparativa (pg-dens) */
   .pg-dens { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-dens-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 4%, 3.5rem); align-items: center; }
   .pg-dens-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
@@ -545,9 +575,8 @@ const faqs = [
   .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 30rem; }
   .pg-dens-table th, .pg-dens-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
   .pg-dens-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-dens-table tbody th { background: var(--surface); color: var(--text-body); font-weight: 600; width: 50%; }
-  .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-strong); }
-  .pg-dens-table tbody td:last-child { color: var(--red-hover); font-weight: 600; }
+  .pg-dens-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 26%; }
+  .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-body); }
   .pg-dens-table tr:last-child th, .pg-dens-table tr:last-child td { border-bottom: none; }
 
   /* Guía errores/reco */

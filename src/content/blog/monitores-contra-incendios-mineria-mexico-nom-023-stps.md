@@ -6,7 +6,7 @@ category: "Minería"
 image: "/images/monitores-contra-incendios-mineria-mexico.webp"
 ---
 
-*Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Minería](/industrias#mineria) · Lectura: 19 minutos*
+*Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Minería](/mineria) · Lectura: 19 minutos*
 
 Hay algo que la minería comparte con el sector petrolero y que la mayoría de los sistemas de protección contra incendios genéricos ignora: la distancia. No la distancia entre el fuego y el extintor, sino la distancia entre el punto donde puede ocurrir un incendio y la fuente de agua disponible. En una planta manufacturera, tirar una manguera de 30 metros resuelve la mitad del problema. En una mina a tajo abierto en el desierto de Sonora, a kilómetros de cualquier red de agua municipal, el sistema de protección contra incendios tiene que ser autónomo, robusto, y capaz de entregar el caudal y la presión correctos en condiciones que van desde polvo a 45°C hasta granizo en las sierras de Chihuahua.
 
