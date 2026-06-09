@@ -1,0 +1,549 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
+
+const stats = [
+  { numero: '316L', label: 'Materiales anticorrosivos de serie' },
+  { numero: 'Zona 0·1·2', label: 'Áreas clasificadas ATEX / IECEx' },
+  { numero: 'AR-AFFF', label: 'Espuma para solventes polares' },
+  { numero: 'NFPA 30·652', label: 'Líquidos inflamables y polvo combustible' },
+];
+
+const beneficios = [
+  'Materiales 316L y recubrimientos para ambientes corrosivos',
+  'Equipos ATEX/IECEx para Zonas 0, 1 y 2 con vapores inflamables',
+  'Selección de agente espumante según la química del producto',
+  'Protección de reactores, columnas, racks y áreas de carga',
+  'Atención a polvo combustible (NFPA 652) en plásticos y polímeros',
+  'Documentación de cumplimiento para auditorías y aseguradoras',
+];
+
+// DIFERENCIADOR 1 — Clasificación de áreas peligrosas
+const zonasGas = [
+  { zona: 'Zona 0', presencia: 'Atmósfera explosiva presente de forma continua o por largos periodos', equipo: 'Instrumentación intrínsecamente segura; sin equipo eléctrico no certificado' },
+  { zona: 'Zona 1', presencia: 'Atmósfera explosiva probable en operación normal', equipo: 'Monitores remotos eléctricos ATEX/IECEx (Ex d / Ex e)' },
+  { zona: 'Zona 2', presencia: 'Atmósfera explosiva poco probable y de corta duración', equipo: 'Equipo ATEX o monitores manuales con protocolo de operación' },
+];
+const zonasPolvo = [
+  { zona: 'Zona 20', presencia: 'Nube de polvo combustible presente de forma continua', equipo: 'Equipo Ex tD certificado para polvo; control de ignición' },
+  { zona: 'Zona 21', presencia: 'Nube de polvo probable en operación normal', equipo: 'Monitores Ex tD + gestión de NFPA 652 / 654' },
+  { zona: 'Zona 22', presencia: 'Nube de polvo poco probable y de corta duración', equipo: 'Equipo Ex tD o protección con barreras de aislamiento' },
+];
+
+// DIFERENCIADOR 2 — Matriz de agente + material por química del producto
+const matriz = [
+  {
+    clase: 'Hidrocarburos no polares',
+    ejemplos: 'Gasolina, diésel, nafta, crudo',
+    agente: 'AFFF / espuma sintética',
+    material: 'Bronce marino o 316L',
+    riesgo: 'Incendio de derrame y de tanque',
+  },
+  {
+    clase: 'Solventes polares / alcoholes',
+    ejemplos: 'Etanol, metanol, acetona, MEK',
+    agente: 'AR-AFFF resistente al alcohol',
+    material: 'Acero inoxidable 316L',
+    riesgo: 'La espuma estándar se destruye: exige AR',
+  },
+  {
+    clase: 'Químicos corrosivos',
+    ejemplos: 'Ácidos, cáusticos, cloruros',
+    agente: 'Agua pulverizada / espuma según caso',
+    material: '316L + recubrimientos especiales',
+    riesgo: 'Corrosión acelerada del equipo',
+  },
+  {
+    clase: 'Reactivos al agua',
+    ejemplos: 'Metales alcalinos, ciertos organometálicos',
+    agente: 'NO agua — agente especial / aislamiento',
+    material: 'Diseño específico por ingeniería',
+    riesgo: 'El agua agrava el evento',
+  },
+];
+
+// DIFERENCIADOR 3 — Protección por unidad de proceso
+const unidades = [
+  {
+    icon: 'fas fa-flask-vial',
+    titulo: 'Reactores y columnas de destilación',
+    texto: 'Enfriamiento de recipientes a presión y estructuras altas expuestas a radiación térmica, operado a distancia.',
+    producto: 'Monitor Remoto ATEX MR-3000',
+    url: '/monitores-fijos#mr-3000',
+  },
+  {
+    icon: 'fas fa-grip-lines',
+    titulo: 'Racks de tubería (pipe racks)',
+    texto: 'Cobertura lineal de corredores de proceso con monitores oscilantes para proteger tuberías y soportería.',
+    producto: 'Monitores Automáticos',
+    url: '/monitores-automaticos',
+  },
+  {
+    icon: 'fas fa-truck-ramp-box',
+    titulo: 'Áreas de carga y descarga',
+    texto: 'Protección de islas de llenado de auto-tanques y carro-tanques, con espuma y enfriamiento de exposiciones.',
+    producto: 'Monitor Magnum MG-4000',
+    url: '/monitores-fijos#mg-4000',
+  },
+  {
+    icon: 'fas fa-drum-steelpan',
+    titulo: 'Almacenamiento de químicos',
+    texto: 'Tanques y almacenes de producto con el agente correcto según su química y materiales anticorrosivos.',
+    producto: 'Boquillas y Cámaras de Espuma',
+    url: '/boquillas',
+  },
+  {
+    icon: 'fas fa-truck-droplet',
+    titulo: 'Respuesta de brigada',
+    texto: 'Equipos de despliegue rápido para puntos sin cobertura fija, paros de planta y mantenimiento.',
+    producto: 'Monitores Portátiles',
+    url: '/monitores-portatiles',
+  },
+  {
+    icon: 'fas fa-wind',
+    titulo: 'Procesos con polvo combustible',
+    texto: 'Plásticos, polímeros y aditivos en polvo donde el riesgo de deflagración exige gestión NFPA 652.',
+    producto: 'Asesoría de ingeniería',
+    url: '/servicios#consultoria-normativa',
+  },
+];
+
+const normativas = [
+  { n: 'NFPA 30', d: 'Almacenamiento de líquidos inflamables y combustibles' },
+  { n: 'NFPA 11', d: 'Espuma — incluye criterios para solventes polares (AR)' },
+  { n: 'NFPA 15', d: 'Sistemas fijos de agua pulverizada' },
+  { n: 'NFPA 652', d: 'Fundamentos de polvo combustible' },
+  { n: 'NFPA 69', d: 'Sistemas de prevención de explosiones' },
+  { n: 'ATEX / IECEx', d: 'Equipo para atmósferas explosivas (gas y polvo)' },
+  { n: 'NOM-005-STPS', d: 'Manejo de sustancias químicas peligrosas' },
+  { n: 'NOM-010-STPS', d: 'Agentes contaminantes del ambiente laboral' },
+  { n: 'API 2021', d: 'Atención de incendios en tanques de almacenamiento' },
+];
+
+const errores = [
+  'Usar espuma AFFF estándar sobre solventes polares: se degrada y no extingue',
+  'Especificar materiales no aptos para el químico del proceso (corrosión)',
+  'Ignorar la clasificación de área al ubicar equipo eléctrico',
+  'Aplicar agua sobre químicos reactivos al agua',
+  'No contemplar el polvo combustible en procesos de polímeros',
+  'Diseñar sin hoja de datos de seguridad (SDS) del producto manejado',
+];
+
+const recomendaciones = [
+  'Seleccione el agente según la polaridad y reactividad del químico',
+  'Especifique 316L o recubrimientos según el agente corrosivo presente',
+  'Defina la clasificación de área antes de elegir el tipo de monitor',
+  'Use monitores remotos ATEX en reactores y zonas de alto riesgo',
+  'Integre la gestión de polvo combustible (NFPA 652) cuando aplique',
+  'Parta siempre de las SDS y del escenario de incendio de diseño',
+];
+
+const faqs = [
+  { q: '¿Por qué los solventes polares necesitan espuma AR-AFFF y no AFFF normal?', a: 'Los solventes polares o miscibles en agua —como etanol, metanol, acetona o MEK— absorben el agua de la manta de espuma estándar y la destruyen, dejando el combustible expuesto. La espuma resistente al alcohol (AR-AFFF) forma una membrana polimérica que resiste esa acción y mantiene el sellado. En plantas que manejan alcoholes o solventes polares, especificar AR-AFFF no es opcional: es la diferencia entre contener el incendio o no.' },
+  { q: '¿Qué es la clasificación de áreas peligrosas y cómo afecta al equipo?', a: 'Es la división de la planta en zonas según la probabilidad de tener una atmósfera explosiva por gases (Zonas 0, 1 y 2) o por polvos combustibles (Zonas 20, 21 y 22). Cada zona impone requisitos al equipo eléctrico: en Zona 1, por ejemplo, los monitores remotos deben contar con certificación ATEX/IECEx (Ex d / Ex e). Definir la clasificación antes de seleccionar el equipo evita instalar dispositivos que se conviertan en fuente de ignición.' },
+  { q: '¿Qué material de monitor conviene en una planta química?', a: 'Depende del agente corrosivo presente. El acero inoxidable 316L es el estándar para la mayoría de los ambientes petroquímicos por su resistencia a cloruros y químicos agresivos; en casos severos se añaden recubrimientos especiales. El bronce marino se reserva para hidrocarburos no polares en ambiente menos agresivo. La selección se hace a partir de las sustancias manejadas y de las condiciones del sitio.' },
+  { q: '¿Cómo se protege un reactor o una columna de destilación?', a: 'Son recipientes a presión y estructuras altas que, bajo fuego, pueden fallar por radiación térmica. La estrategia es el enfriamiento intensivo y sostenido de la superficie desde una posición segura, idealmente con monitores remotos ATEX como el MR-3000, operados desde sala de control. Se complementa con sistemas fijos de agua pulverizada (NFPA 15) según el análisis de riesgo.' },
+  { q: '¿Qué pasa con los químicos reactivos al agua?', a: 'Algunos materiales —metales alcalinos y ciertos compuestos organometálicos— reaccionan violentamente con el agua y empeoran el evento. En esos casos no se usa agua como agente: la protección se diseña con agentes especiales, aislamiento y control de la fuente, a partir de las hojas de datos de seguridad. Es un ejemplo de por qué el diseño debe partir de la química real del proceso.' },
+  { q: '¿Atienden el riesgo de polvo combustible en plantas de polímeros?', a: 'Sí. Los procesos que manejan plásticos, resinas y polímeros en polvo pueden generar atmósferas de polvo combustible con riesgo de deflagración, regulado por NFPA 652 y NFPA 654. Lo abordamos desde la clasificación de área (Zonas 20/21/22), la selección de equipo Ex tD y la integración con medidas de prevención de explosiones (NFPA 69), con asesoría de ingeniería específica.' },
+  { q: '¿Sus equipos cumplen con la normativa mexicana e internacional?', a: 'Sí. Suministramos monitores y accesorios FM Approved y/o UL Listed con certificación ATEX/IECEx donde aplique, conforme a NFPA 30, NFPA 11, NFPA 15 y NFPA 652, y a las normas oficiales mexicanas NOM-005-STPS y NOM-010-STPS para manejo de sustancias químicas peligrosas. Entregamos la documentación para auditorías de Protección Civil y aseguradoras.' },
+  { q: '¿AQUEON diseña el sistema completo para una planta petroquímica?', a: 'Sí. Partimos de las sustancias manejadas y del escenario de incendio de diseño, clasificamos las áreas, seleccionamos el agente y el material por unidad de proceso, calculamos caudales y densidades de aplicación, y entregamos planos y memoria de cálculo. Después instalamos con técnicos certificados, probamos, ponemos en marcha y damos mantenimiento NFPA 25, con cobertura nacional.' },
+];
+---
+<Base
+  title="Protección Contra Incendios para Petroquímica y Química | ATEX, 316L y Espuma AR-AFFF | AQUEON México"
+  description="Soluciones de monitores contra incendios para plantas petroquímicas y químicas en México: áreas clasificadas ATEX/IECEx, materiales 316L anticorrosivos y espuma AR-AFFF para solventes polares. Cumplimiento NFPA 30, NFPA 11, NFPA 652 y NOM-STPS. Ingeniería e instalación con AQUEON."
+>
+  <!-- Hero -->
+  <section class="l3-hero">
+    <div class="container">
+      <nav class="l3-breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <a href="/industrias">Industrias</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <span>Petroquímica y Química</span>
+      </nav>
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Industrias · Petroquímica</span>
+          <h1>Protección Contra Incendios para Petroquímica y Química</h1>
+        </div>
+        <div class="section-header__body">
+          <p>El sector donde el riesgo es <strong>múltiple</strong>: inflamable, corrosivo, tóxico y reactivo, todo a la vez.</p>
+          <p>Equipos <strong>ATEX/IECEx</strong>, materiales <strong>316L</strong> y el agente correcto para cada química, diseñados por ingeniería.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banda de cifras -->
+  <section class="l3-band">
+    <div class="container">
+      <div class="l3-band-grid">
+        {stats.map((s) => (
+          <div class="l3-band-item">
+            <span class="l3-band-num">{s.numero}</span>
+            <span class="l3-band-txt">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Introducción -->
+  <section class="l3-intro">
+    <div class="container">
+      <div class="l3-intro-grid">
+        <div class="l3-intro-text">
+          <span class="section-tag">El reto del sector</span>
+          <h2>Cuando el Riesgo no es Solo el Fuego</h2>
+          <p>
+            En una planta <strong>petroquímica o química</strong>, el incendio rara vez es el único peligro. El mismo
+            producto que arde puede ser <strong>corrosivo</strong> para el equipo de protección, <strong>tóxico</strong>
+            para la brigada, <strong>reactivo</strong> con el agua o capaz de generar una atmósfera explosiva por gas o por
+            polvo. Diseñar la protección sin entender la química del proceso es diseñar a ciegas.
+          </p>
+          <p>
+            La diferencia entre contener un evento y agravarlo está en los detalles técnicos: elegir
+            <strong>espuma resistente al alcohol</strong> para un solvente polar, especificar <strong>316L</strong> donde hay
+            cloruros, clasificar correctamente el área antes de instalar un monitor eléctrico, o reconocer cuándo el agua
+            es exactamente lo que no se debe aplicar. Ese criterio es el que AQUEON aporta a cada proyecto.
+          </p>
+          <p>
+            En esta página verá cómo abordamos la <strong>clasificación de áreas peligrosas</strong>, cómo seleccionamos el
+            agente y el material según la química del producto, y qué solución corresponde a cada unidad de proceso.
+          </p>
+        </div>
+        <ul class="l3-benefits">
+          {beneficios.map((b) => (
+            <li><i class="fas fa-check" aria-hidden="true"></i> {b}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADOR 1: Clasificación de áreas peligrosas -->
+  <section class="pq-zonas">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Áreas clasificadas</span>
+          <h2>Clasificación de Áreas Peligrosas (ATEX / IECEx)</h2>
+        </div>
+        <div class="section-header__body">
+          <p>El equipo eléctrico debe corresponder a la <strong>zona</strong> en que se instala, por gas o por polvo.</p>
+          <p>Clasificar el área es el paso previo a especificar cualquier monitor.</p>
+        </div>
+      </div>
+
+      <div class="pq-zonas-grid">
+        <div class="pq-zonas-col">
+          <h3 class="pq-zonas-title"><i class="fas fa-smog" aria-hidden="true"></i> Gases y vapores</h3>
+          <div class="pq-zona-cards">
+            {zonasGas.map((z) => (
+              <article class="pq-zona-card">
+                <span class="pq-zona-badge">{z.zona}</span>
+                <p class="pq-zona-pres">{z.presencia}</p>
+                <p class="pq-zona-eq"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> {z.equipo}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div class="pq-zonas-col">
+          <h3 class="pq-zonas-title"><i class="fas fa-wind" aria-hidden="true"></i> Polvos combustibles</h3>
+          <div class="pq-zona-cards">
+            {zonasPolvo.map((z) => (
+              <article class="pq-zona-card pq-zona-card--dust">
+                <span class="pq-zona-badge">{z.zona}</span>
+                <p class="pq-zona-pres">{z.presencia}</p>
+                <p class="pq-zona-eq"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> {z.equipo}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+      <p class="pq-note"><i class="fas fa-circle-info" aria-hidden="true"></i> La clasificación definitiva la establece el estudio de áreas peligrosas de la instalación conforme a IEC 60079 / NFPA 70.</p>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADOR 2: Matriz agente + material -->
+  <section class="pq-matriz">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Criterio de selección</span>
+          <h2>El Agente y el Material Correctos para Cada Química</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Un mismo monitor, mal combinado con el agente o el material, <strong>falla ante el químico equivocado</strong>.</p>
+          <p>Esta matriz resume cómo decidimos según la naturaleza del producto.</p>
+        </div>
+      </div>
+      <div class="pq-matriz-wrap">
+        <table class="pq-matriz-table">
+          <thead>
+            <tr>
+              <th scope="col">Clase de producto</th>
+              <th scope="col">Ejemplos</th>
+              <th scope="col">Agente recomendado</th>
+              <th scope="col">Material</th>
+              <th scope="col">Consideración crítica</th>
+            </tr>
+          </thead>
+          <tbody>
+            {matriz.map((m) => (
+              <tr>
+                <th scope="row">{m.clase}</th>
+                <td>{m.ejemplos}</td>
+                <td class="pq-matriz-ag">{m.agente}</td>
+                <td>{m.material}</td>
+                <td class="pq-matriz-risk">{m.riesgo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="pq-note"><i class="fas fa-circle-info" aria-hidden="true"></i> La selección final se realiza a partir de las hojas de datos de seguridad (SDS) y la memoria de cálculo del proyecto.</p>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADOR 3: Protección por unidad de proceso -->
+  <section class="pg-sol">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Soluciones AQUEON</span>
+          <h2>Protección por Unidad de Proceso</h2>
+        </div>
+        <div class="section-header__body">
+          <p>De los reactores a las áreas de carga, cada unidad exige una <strong>configuración distinta</strong>.</p>
+          <p>Cada recomendación enlaza con la <strong>ficha técnica</strong> del equipo correspondiente.</p>
+        </div>
+      </div>
+      <div class="pg-sol-grid">
+        {unidades.map((u) => (
+          <article class="pg-sol-card">
+            <span class="pg-sol-icon" aria-hidden="true"><i class={u.icon}></i></span>
+            <h3>{u.titulo}</h3>
+            <p>{u.texto}</p>
+            <a href={u.url} class="pg-sol-link">{u.producto} <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Errores y recomendaciones -->
+  <section class="l3-guia">
+    <div class="container">
+      <div class="l3-guia-grid">
+        <div class="l3-guia-card l3-guia-errores">
+          <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Errores comunes en el sector</h3>
+          <ul>
+            {errores.map((e) => <li><i class="fas fa-xmark" aria-hidden="true"></i> {e}</li>)}
+          </ul>
+        </div>
+        <div class="l3-guia-card l3-guia-reco">
+          <h3><i class="fas fa-clipboard-check" aria-hidden="true"></i> Recomendaciones de ingeniería</h3>
+          <ul>
+            {recomendaciones.map((r) => <li><i class="fas fa-check" aria-hidden="true"></i> {r}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AQUEON + normativas -->
+  <section class="l3-aqueon">
+    <div class="container">
+      <div class="l3-aqueon-inner">
+        <div class="l3-aqueon-text">
+          <span class="section-tag">Por qué AQUEON</span>
+          <h2>Ingeniería de Protección para la Industria Química</h2>
+          <p>
+            En <strong>AQUEON</strong> entendemos que en petroquímica el diseño parte de la química del producto. Somos
+            distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, y especificamos
+            <strong>materiales 316L, equipos ATEX/IECEx y el agente espumante correcto</strong> —incluida espuma resistente
+            al alcohol— para cada planta. Entregamos ingeniería conforme a NFPA y a las normas oficiales mexicanas,
+            instalación certificada y mantenimiento NFPA 25.
+          </p>
+          <p>
+            Atendemos <strong>plantas petroquímicas, químicas, de polímeros y de proceso</strong> con documentación completa
+            para auditorías de Protección Civil y aseguradoras, con cobertura en los 32 estados de la República desde la
+            Ciudad de México.
+          </p>
+          <div class="l3-aqueon-actions">
+            <a href="/nosotros" class="btn btn-outline-light"><i class="fas fa-building-shield" aria-hidden="true"></i> Conozca AQUEON</a>
+            <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Servicios de ingeniería</a>
+          </div>
+        </div>
+        <div class="l3-normativas pg-norm">
+          <h3>Marco normativo aplicable</h3>
+          <ul class="pg-norm-list">
+            {normativas.map((nm) => (
+              <li><span class="pg-norm-tag">{nm.n}</span><span class="pg-norm-desc">{nm.d}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqContactSplit titulo="Dudas sobre Protección para Petroquímica" contexto="protección contra incendios para plantas petroquímicas y químicas" faqs={faqs} />
+
+  <!-- Otras industrias -->
+  <section class="l3-otras">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Más Sectores</span>
+          <h2>Otras Industrias que Protegemos</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Diseñamos la solución óptima para cada <strong>operación de alto riesgo</strong>.</p>
+          <p>Conozca nuestra cobertura por sector en todo México.</p>
+        </div>
+      </div>
+      <div class="l3-otras-grid">
+        <a href="/petroleo-gas" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-oil-well" aria-hidden="true"></i></span><span class="l3-otra-name">Petróleo y Gas</span><span class="l3-otra-sub">Refinerías · terminales · offshore</span></a>
+        <a href="/industrias#energia" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-bolt" aria-hidden="true"></i></span><span class="l3-otra-name">Generación de Energía</span><span class="l3-otra-sub">Termoeléctricas · CFE · turbinas</span></a>
+        <a href="/industrias#manufactura" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-industry" aria-hidden="true"></i></span><span class="l3-otra-name">Manufactura</span><span class="l3-otra-sub">Naves · almacenes · distribución</span></a>
+        <a href="/industrias" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todos los sectores</span><span class="l3-otra-sub">7 industrias especializadas</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="l3-cta">
+    <div class="container">
+      <div class="l3-cta-inner">
+        <div>
+          <h2>¿Listo para proteger su planta química?</h2>
+          <p>Cotización técnica en menos de 24 horas. Clasificación de áreas, selección de agente y cálculo hidráulico por ingeniería, sin costo ni compromiso.</p>
+        </div>
+        <div class="l3-cta-actions">
+          <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
+          <a href="tel:+525512345678" class="btn btn-outline-light btn-lg"><i class="fas fa-phone" aria-hidden="true"></i> +52 55 1234 5678</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .l3-hero { background: var(--bg-0); padding: calc(var(--section-pad) * 0.7) 0 calc(var(--section-pad) * 0.5); }
+  .l3-breadcrumb { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted); flex-wrap: wrap; }
+  .l3-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .l3-breadcrumb a:hover { color: var(--red-hover); }
+  .l3-breadcrumb i { font-size: 0.6rem; }
+  .l3-hero .section-header { margin-bottom: 0; }
+  .l3-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: var(--text-4xl); line-height: 1.08; letter-spacing: -0.02em; color: var(--text-strong); margin: var(--space-md) 0 0; }
+  .l3-hero .section-header__body p { font-size: var(--text-base); }
+
+  /* Banda */
+  .l3-band { background: var(--grad-red); padding: clamp(1.75rem, 3.5vw, 2.75rem) 0; }
+  .l3-band-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-lg); text-align: center; }
+  .l3-band-item { display: flex; flex-direction: column; gap: 0.25rem; position: relative; }
+  .l3-band-item:not(:last-child)::after { content: ""; position: absolute; right: calc(var(--space-lg) / -2); top: 15%; height: 70%; width: 1px; background: rgba(255,255,255,.25); }
+  .l3-band-num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: var(--text-2xl); color: #fff; line-height: 1; }
+  .l3-band-txt { font-size: var(--text-sm); color: rgba(255,255,255,.9); }
+
+  /* Intro */
+  .l3-intro { background: var(--bg-1); padding: var(--section-pad) 0; border-bottom: 1px solid var(--border-subtle); }
+  .l3-intro-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: clamp(2rem, 4%, 4rem); align-items: start; }
+  .l3-intro-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .l3-intro-text p { color: var(--text-body); margin-bottom: var(--space-md); }
+  .l3-benefits { list-style: none; padding: var(--space-lg); margin: 0; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: var(--space-md); }
+  .l3-benefits li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
+  .l3-benefits i { flex-shrink: 0; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.6rem; }
+
+  /* DIFERENCIADOR 1 — Zonas */
+  .pq-zonas { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .pq-zonas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.5rem, 3%, 2.5rem); }
+  .pq-zonas-title { display: flex; align-items: center; gap: 0.6rem; font-size: var(--text-md); margin-bottom: var(--space-md); color: var(--text-strong); }
+  .pq-zonas-title i { color: var(--red-hover); }
+  .pq-zona-cards { display: flex; flex-direction: column; gap: var(--space-md); }
+  .pq-zona-card { background: var(--surface); border: 1px solid var(--border-subtle); border-left: 3px solid var(--red); border-radius: var(--radius-md); padding: var(--space-lg); }
+  .pq-zona-card--dust { border-left-color: var(--text-muted); }
+  .pq-zona-badge { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-sm); color: #ffb4b4; background: var(--red-soft); border: 1px solid var(--border-red); padding: 0.2rem 0.7rem; border-radius: var(--radius-sm); margin-bottom: var(--space-sm); }
+  .pq-zona-card--dust .pq-zona-badge { color: var(--text-strong); background: var(--surface-2); border-color: var(--border-strong); }
+  .pq-zona-pres { color: var(--text-body); font-size: var(--text-sm); line-height: 1.6; margin: 0 0 var(--space-sm); }
+  .pq-zona-eq { display: flex; align-items: flex-start; gap: 0.5rem; color: var(--text-strong); font-size: var(--text-sm); margin: 0; }
+  .pq-zona-eq i { color: var(--red); margin-top: 0.2rem; flex-shrink: 0; }
+  .pq-note { margin: var(--space-md) 0 0; font-size: var(--text-xs); color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+  .pq-note i { color: var(--red); }
+
+  /* DIFERENCIADOR 2 — Matriz */
+  .pq-matriz { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .pq-matriz-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+  .pq-matriz-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 52rem; }
+  .pq-matriz-table th, .pq-matriz-table td { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
+  .pq-matriz-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
+  .pq-matriz-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 18%; }
+  .pq-matriz-table tbody td { background: var(--surface-2); color: var(--text-body); }
+  .pq-matriz-ag { color: var(--red-hover) !important; font-weight: 600; }
+  .pq-matriz-risk { font-style: italic; }
+  .pq-matriz-table tr:last-child th, .pq-matriz-table tr:last-child td { border-bottom: none; }
+
+  /* DIFERENCIADOR 3 — Soluciones por unidad (reuso pg-sol) */
+  .pg-sol { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .pg-sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
+  .pg-sol-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; }
+  .pg-sol-card:hover { border-color: var(--border-red); box-shadow: var(--glow-red); }
+  .pg-sol-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: var(--radius-md); color: var(--red-hover); font-size: 1.15rem; margin-bottom: var(--space-md); }
+  .pg-sol-card h3 { font-size: var(--text-md); margin-bottom: var(--space-sm); }
+  .pg-sol-card p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.6; margin: 0 0 var(--space-md); flex: 1; }
+  .pg-sol-link { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: var(--text-sm); color: var(--red-hover); text-decoration: none; }
+  .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
+  .pg-sol-link:hover i { transform: translateX(3px); }
+
+  /* Guía errores/reco */
+  .l3-guia { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-guia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.5rem, 3%, 2.5rem); }
+  .l3-guia-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .l3-guia-card h3 { display: flex; align-items: center; gap: 0.6rem; font-size: var(--text-md); margin-bottom: var(--space-md); }
+  .l3-guia-errores h3 i { color: #ff9b9b; }
+  .l3-guia-reco h3 i { color: var(--success); }
+  .l3-guia-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .l3-guia-card li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
+  .l3-guia-errores li i { color: #ff7a7a; margin-top: 0.2rem; }
+  .l3-guia-reco li i { color: var(--success); margin-top: 0.2rem; }
+
+  /* AQUEON + normativas */
+  .l3-aqueon { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-aqueon-inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: clamp(2rem, 4%, 4rem); align-items: start; }
+  .l3-aqueon-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .l3-aqueon-text p { color: var(--text-body); margin-bottom: var(--space-md); }
+  .l3-aqueon-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-md); }
+  .l3-aqueon-actions .btn-outline-light { border-color: var(--border-strong); color: var(--text-strong); }
+  .l3-normativas { background: var(--surface); border: 1px solid var(--border-subtle); border-top: 3px solid var(--red); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .l3-normativas h3 { font-size: var(--text-md); margin-bottom: var(--space-md); }
+  .pg-norm-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .pg-norm-list li { display: flex; align-items: baseline; gap: 0.7rem; font-size: var(--text-sm); }
+  .pg-norm-tag { flex-shrink: 0; min-width: 6.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-xs); color: #ffb4b4; background: var(--red-soft); border: 1px solid var(--border-red); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); text-align: center; }
+  .pg-norm-desc { color: var(--text-body); line-height: 1.4; }
+
+  /* Otras industrias */
+  .l3-otras { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-otras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
+  .l3-otra { display: flex; flex-direction: column; gap: 0.2rem; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); text-decoration: none; }
+  .l3-otra:hover { border-color: var(--border-red); box-shadow: var(--glow-red); }
+  .l3-otra--all { background: linear-gradient(135deg, rgba(224,36,36,.12), rgba(185,28,28,.06)); border-color: var(--border-red); }
+  .l3-otra-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: var(--radius-md); color: var(--red-hover); font-size: 1.1rem; margin-bottom: var(--space-sm); }
+  .l3-otra-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text-strong); font-size: var(--text-md); }
+  .l3-otra-sub { font-size: var(--text-xs); color: var(--text-muted); }
+
+  /* CTA */
+  .l3-cta { background: radial-gradient(ellipse 70% 120% at 50% -20%, rgba(255,80,80,.3), transparent 60%), linear-gradient(135deg, var(--red-dark) 0%, var(--red-darker) 60%, #450a0a 100%); padding: var(--section-pad) 0; }
+  .l3-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-xl); flex-wrap: wrap; }
+  .l3-cta-inner h2 { color: #fff; font-size: var(--text-2xl); margin-bottom: 0.5rem; }
+  .l3-cta-inner > div:first-child p { color: rgba(255,255,255,.9); margin: 0; max-width: 52ch; }
+  .l3-cta-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .l3-intro-grid, .l3-aqueon-inner { grid-template-columns: 1fr; }
+  }
+</style>

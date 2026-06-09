@@ -248,7 +248,7 @@ El mantenimiento NFPA 25 es, además, un asunto de **cumplimiento**: sin registr
 - **Muelles y terminales marítimas:** monitores en torre con materiales resistentes al ambiente salino.
 - **Almacenes de líquidos inflamables y solventes:** protección de bodegas y zonas de trasiego.
 
-Para soluciones específicas del sector consulte nuestra sección de [Petroquímica](/industrias#petroquimica), donde detallamos configuraciones por tipo de instalación.
+Para soluciones específicas del sector consulte nuestra sección de [Petroquímica](/petroquimica), donde detallamos configuraciones por tipo de instalación.
 
 ### Ventajas competitivas de una solución bien diseñada
 

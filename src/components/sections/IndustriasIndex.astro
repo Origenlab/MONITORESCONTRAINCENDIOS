@@ -1,5 +1,12 @@
 ---
 import { industriaDestacada, industrias } from '../../data/industrias';
+
+// Industrias con página L3 dedicada
+const l3Industrias: Record<string, string> = {
+  'petroleo-gas': '/petroleo-gas',
+  'petroquimica': '/petroquimica',
+};
+const industriaUrl = (id?: string) => (id && l3Industrias[id]) ? l3Industrias[id] : `/industrias#${id}`;
 ---
 <section id="industrias" class="industries-section">
     <div class="container">
@@ -74,7 +81,7 @@ import { industriaDestacada, industrias } from '../../data/industrias';
                                 <li><i class="fas fa-check" aria-hidden="true"></i> {feature}</li>
                             ))}
                         </ul>
-                        <a href={`/industrias#${industria.id}`} class="btn btn-primary">Más Información</a>
+                        <a href={industriaUrl(industria.id)} class="btn btn-primary">Más Información</a>
                     </div>
                 </article>
             ))}

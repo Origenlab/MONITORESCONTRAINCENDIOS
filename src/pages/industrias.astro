@@ -14,6 +14,12 @@ const bandStats = [
   { numero: '32', texto: 'Estados con cobertura' },
   { numero: '15+', texto: 'Años de experiencia' },
 ];
+
+// Industrias con página L3 dedicada (interlinking)
+const l3Industrias: Record<string, string> = {
+  'petroleo-gas': '/petroleo-gas',
+  'petroquimica': '/petroquimica',
+};
 ---
 <Base
   title="Industrias que Protegemos | Monitores Contra Incendios por Sector | AQUEON México"
@@ -122,8 +128,8 @@ const bandStats = [
         </div>
       </div>
 
-      {industrias.map((ind, i) => (
-        <article id={ind.id} class:list={['ind-block', i % 2 === 1 && 'ind-block--rev']}>
+      {industrias.map((ind) => (
+        <article id={ind.id} class="ind-block">
           <div class="ind-block-media">
             <img src={ind.imagen} alt={ind.alt} loading="lazy" />
             <span class="ind-block-icon" aria-hidden="true"><i class={ind.icon}></i></span>
@@ -154,9 +160,16 @@ const bandStats = [
               </div>
             </div>
 
-            <a href="/#cotizar" class="btn btn-secondary cta-ind-btn">
-              <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar cotización
-            </a>
+            <div class="ind-block-actions">
+              {l3Industrias[ind.id!] && (
+                <a href={l3Industrias[ind.id!]} class="btn btn-primary cta-ind-btn">
+                  <i class="fas fa-arrow-right-long" aria-hidden="true"></i> Ver soluciones para {ind.titulo}
+                </a>
+              )}
+              <a href="/#cotizar" class:list={['btn', 'cta-ind-btn', l3Industrias[ind.id!] ? 'btn-outline' : 'btn-secondary']}>
+                <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar cotización
+              </a>
+            </div>
           </div>
         </article>
       ))}
@@ -184,6 +197,7 @@ const bandStats = [
   .ind-hero .section-header__body p { font-size: var(--text-base); }
 
   .ind-featured-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .ind-block-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
 
   /* Banda de cifras */
   .ind-band {
@@ -378,7 +392,6 @@ const bandStats = [
     scroll-margin-top: 110px;
   }
   .ind-block:last-child { border-bottom: none; }
-  .ind-block--rev .ind-block-media { order: 2; }
 
   .ind-block-media {
     position: relative;
@@ -457,7 +470,6 @@ const bandStats = [
   @media (max-width: 900px) {
     .ind-featured-grid,
     .ind-block { grid-template-columns: 1fr; }
-    .ind-block--rev .ind-block-media { order: 0; }
     .ind-featured-media img,
     .ind-block-media img { min-height: 240px; }
   }
