@@ -1,0 +1,573 @@
+---
+import Base from '../layouts/Base.astro';
+
+const modelos = [
+  {
+    id: 'mi-1500',
+    modelo: 'MI-1500',
+    nombre: 'Monitor Industrial MI-1500',
+    badge: 'FM Approved',
+    badgePremium: false,
+    icon: 'fas fa-fire-extinguisher',
+    imagen: '/images/monitores-contra-incendios-industria-manufactura.webp',
+    resumen: 'Monitor fijo manual de bronce marino, la opción de referencia para protección permanente de áreas de proceso, almacenamiento y manufactura de riesgo moderado.',
+    descripcion: 'El MI-1500 es un monitor fijo de operación manual construido en bronce marino, diseñado para décadas de servicio en intemperie. Su rango de 500 a 1,500 GPM cubre la mayoría de los escenarios de enfriamiento y ataque directo en planta, con un mecanismo de volantes suave y preciso que permite a un solo operador reorientar el chorro bajo presión.',
+    specs: [
+      ['Caudal nominal', '500 – 1,500 GPM'],
+      ['Presión máxima de operación', '150 PSI'],
+      ['Material de construcción', 'Bronce marino'],
+      ['Tipo de control', 'Manual (volantes de elevación y giro)'],
+      ['Rotación', '360° horizontal · +90° / −45° vertical'],
+      ['Conexión de entrada', 'Brida 2.5" a 4"'],
+      ['Certificación', 'FM Approved · UL Listed'],
+    ],
+    aplicaciones: ['Manufactura', 'Parques industriales', 'Áreas de almacenamiento', 'Muelles de carga'],
+  },
+  {
+    id: 'mg-4000',
+    modelo: 'MG-4000',
+    nombre: 'Monitor Magnum MG-4000',
+    badge: 'Alto Caudal',
+    badgePremium: true,
+    icon: 'fas fa-gauge-high',
+    imagen: '/images/monitores-contra-incendios-refineria-petroleo-gas.webp',
+    resumen: 'Monitor de ultra-alto caudal en acero inoxidable 316L para refinerías y terminales de almacenamiento que exigen cumplimiento PEMEX y alcance superior.',
+    descripcion: 'Cuando el escenario de diseño contempla tanques de gran diámetro o patios de almacenamiento de hidrocarburos, el MG-4000 entrega de 2,000 a 4,000 GPM con un alcance que permite enfriar exposiciones desde una posición segura. Su construcción en acero inoxidable 316L resiste ambientes salinos y corrosivos, y cumple con los requisitos técnicos de PEMEX y de las aseguradoras internacionales.',
+    specs: [
+      ['Caudal nominal', '2,000 – 4,000 GPM'],
+      ['Presión máxima de operación', '175 PSI'],
+      ['Material de construcción', 'Acero inoxidable 316L'],
+      ['Tipo de control', 'Manual con opción de actuación remota'],
+      ['Compatibilidad', 'Agua y espuma (cámara / tubo aspirante)'],
+      ['Conexión de entrada', 'Brida 4" a 6"'],
+      ['Certificación', 'FM Approved · UL Listed · Cumplimiento PEMEX'],
+    ],
+    aplicaciones: ['Refinerías', 'Terminales de almacenamiento', 'Patios de tanques', 'Petroquímica'],
+  },
+  {
+    id: 'mr-3000',
+    modelo: 'MR-3000',
+    nombre: 'Monitor Remoto ATEX MR-3000',
+    badge: 'ATEX',
+    badgePremium: false,
+    icon: 'fas fa-bolt',
+    imagen: '/images/monitores-contra-incendios-planta-petroquimica.webp',
+    resumen: 'Monitor fijo con control remoto eléctrico certificado para atmósferas explosivas, ideal para áreas clasificadas Clase I División 1 y 2.',
+    descripcion: 'El MR-3000 lleva la protección a las zonas donde ningún operador debería estar durante una emergencia. Con control remoto eléctrico por joystick o tablero, y certificación ATEX/IECEx para áreas clasificadas, permite atacar y enfriar el incendio sin exponer al personal. Es la solución para refinerías, plantas químicas y terminales con presencia de vapores inflamables.',
+    specs: [
+      ['Caudal nominal', '1,500 – 3,000 GPM'],
+      ['Tipo de control', 'Remoto eléctrico (joystick / tablero)'],
+      ['Clasificación de área', 'Clase I, División 1 y 2'],
+      ['Certificación', 'ATEX / IECEx · FM Approved'],
+      ['Posicionamiento', 'Posiciones programables y oscilación opcional'],
+      ['Material de construcción', 'Acero inoxidable / recubrimiento epóxico'],
+      ['Integración', 'Compatible con DCS / SCADA'],
+    ],
+    aplicaciones: ['Áreas clasificadas', 'Plantas químicas', 'Refinerías', 'Terminales con vapores'],
+  },
+];
+
+const stats = [
+  { numero: '500–4,000', label: 'GPM de caudal disponible' },
+  { numero: 'FM · UL', label: 'Certificaciones internacionales' },
+  { numero: '316L', label: 'Acero inoxidable marino' },
+  { numero: '360°', label: 'Cobertura de rotación' },
+];
+
+const beneficios = [
+  'Protección permanente 24/7 sin dependencia de personal en sitio',
+  'Cobertura constante de áreas críticas y exposiciones',
+  'Alcance y caudal muy superiores a una línea de manguera',
+  'Materiales resistentes a la corrosión para décadas de servicio',
+  'Compatibilidad con sistemas de espuma para hidrocarburos',
+  'Integración con la red hidráulica y sistemas de control existentes',
+];
+
+const aplicaciones = [
+  { icon: 'fas fa-oil-well', titulo: 'Refinerías y terminales', texto: 'Enfriamiento de tanques, patios de almacenamiento y áreas de proceso de hidrocarburos.' },
+  { icon: 'fas fa-flask', titulo: 'Petroquímica', texto: 'Protección de reactores, racks de tubería y zonas con vapores inflamables.' },
+  { icon: 'fas fa-industry', titulo: 'Manufactura', texto: 'Naves industriales, almacenes y líneas de producción de gran superficie.' },
+  { icon: 'fas fa-bolt', titulo: 'Generación de energía', texto: 'Enfriamiento de transformadores, turbinas y áreas de combustible.' },
+  { icon: 'fas fa-warehouse', titulo: 'Almacenamiento y logística', texto: 'Centros de distribución, muelles de carga y bodegas de alto riesgo.' },
+  { icon: 'fas fa-anchor', titulo: 'Puertos y muelles', texto: 'Protección de terminales marítimas y zonas de trasiego de combustible.' },
+];
+
+const errores = [
+  'Seleccionar el caudal por costo y no por el escenario de incendio de diseño',
+  'Ignorar la distancia de seguridad y la radiación térmica al ubicar el monitor',
+  'Elegir materiales no aptos para ambientes salinos o corrosivos',
+  'Omitir la verificación de certificación FM/UL independiente',
+  'No considerar la compatibilidad con espuma en riesgos de hidrocarburos',
+  'Subdimensionar la red hidráulica que alimenta el monitor',
+];
+
+const recomendaciones = [
+  'Parta siempre de un cálculo hidráulico conforme a NFPA 15',
+  'Exija documentación de certificación FM Approved o UL Listed',
+  'Defina material según el ambiente: bronce marino o acero 316L',
+  'Evalúe control remoto ATEX en áreas clasificadas',
+  'Considere el mantenimiento NFPA 25 desde el diseño',
+  'Solicite asesoría de ingeniería antes de especificar el equipo',
+];
+
+const faqs = [
+  { q: '¿Qué es un monitor fijo industrial contra incendios?', a: 'Es un cañón de agua o espuma montado de forma permanente sobre una base, brida o pedestal, conectado a la red privada de protección contra incendios. A diferencia de un equipo portátil, el monitor fijo ofrece cobertura constante de un área crítica sin necesidad de despliegue, lo que lo convierte en la columna vertebral de la protección de tanques, áreas de proceso y muelles de carga.' },
+  { q: '¿Qué caudal (GPM) necesito en un monitor fijo?', a: 'Depende del escenario de incendio de diseño: superficie a proteger, tipo de riesgo y densidad de aplicación que exige la norma (NFPA 15 para agua, NFPA 11 para espuma). Nuestros modelos cubren de 500 a 4,000 GPM. El dimensionamiento correcto requiere un cálculo hidráulico; en AQUEON lo realizamos sin costo a partir de los datos de su instalación.' },
+  { q: '¿Cuál es la diferencia entre el MI-1500, el MG-4000 y el MR-3000?', a: 'El MI-1500 es manual de bronce para riesgo moderado (500–1,500 GPM); el MG-4000 es de ultra-alto caudal en acero 316L con cumplimiento PEMEX para refinerías (2,000–4,000 GPM); y el MR-3000 es de control remoto eléctrico certificado ATEX para áreas clasificadas. La selección depende del riesgo, el caudal y la clasificación del área.' },
+  { q: '¿Los monitores fijos AQUEON son compatibles con espuma?', a: 'Sí. El MG-4000 y el MR-3000 admiten descarga de solución espumante mediante tubo aspirante o cámara de espuma, indispensable para incendios de hidrocarburos bajo NFPA 11. La selección del concentrado (AFFF, AR-AFFF o F3) y del proporcionador forma parte del diseño integral del sistema.' },
+  { q: '¿Por qué es importante la certificación FM Approved o UL Listed?', a: 'Porque garantiza, mediante pruebas de laboratorio independiente y auditoría de fábrica, que el monitor cumple con el desempeño hidráulico, la resistencia a la corrosión y los requisitos de seguridad declarados. Es condición en especificaciones de PEMEX y referencia obligada de las aseguradoras internacionales.' },
+  { q: '¿Se pueden controlar a distancia los monitores fijos?', a: 'Sí. El MR-3000 ofrece control remoto eléctrico por joystick o tablero, con posiciones programables y compatibilidad con sistemas DCS/SCADA. Esto permite operar el monitor desde una sala de control, sin exponer al personal en áreas de alto riesgo.' },
+  { q: '¿Qué material conviene: bronce o acero inoxidable?', a: 'El bronce marino ofrece excelente durabilidad y resistencia a la corrosión a un costo competitivo, ideal para manufactura e industria general. El acero inoxidable 316L es preferible en ambientes salinos, costeros o con químicos agresivos, como refinerías y terminales marítimas.' },
+  { q: '¿Qué normativa aplica al diseño e instalación?', a: 'Principalmente NFPA 15 (sistemas fijos de agua pulverizada), NFPA 11 (espuma), NFPA 24 (redes privadas de servicio contra incendios) y NFPA 25 (inspección, prueba y mantenimiento), además de la NOM-002-STPS en materia de seguridad laboral y los requisitos específicos de PEMEX y aseguradoras.' },
+  { q: '¿AQUEON instala y da mantenimiento a los monitores fijos?', a: 'Sí. Ofrecemos el ciclo completo: diseño e ingeniería conforme a NFPA, instalación con técnicos certificados, pruebas hidrostáticas, puesta en marcha, capacitación y mantenimiento preventivo NFPA 25, con cobertura en toda la República Mexicana desde la Ciudad de México.' },
+  { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Para proyectos que lo requieran agendamos una visita técnica sin costo para levantar el escenario de incendio y proponer el modelo y la configuración óptimos.' },
+];
+---
+<Base
+  title="Monitores Fijos Industriales Contra Incendios | FM Approved y UL Listed | AQUEON México"
+  description="Monitores fijos industriales contra incendios certificados FM Approved y UL Listed: MI-1500 de bronce, MG-4000 de alto caudal para refinerías y MR-3000 remoto ATEX. Caudales de 500 a 4,000 GPM. Venta, ingeniería e instalación en México con AQUEON."
+>
+  <!-- Hero -->
+  <section class="l3-hero">
+    <div class="container">
+      <nav class="l3-breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <a href="/productos">Productos</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <span>Monitores Fijos Industriales</span>
+      </nav>
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Catálogo · Monitores Fijos</span>
+          <h1>Monitores Fijos Industriales Contra Incendios</h1>
+        </div>
+        <div class="section-header__body">
+          <p>La <strong>columna vertebral</strong> de la protección industrial: cobertura permanente de tanques, áreas de proceso y muelles de carga.</p>
+          <p>Equipos certificados <strong>FM Approved y UL Listed</strong>, de 500 a 4,000 GPM, con ingeniería e instalación de AQUEON.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banda de cifras -->
+  <section class="l3-band">
+    <div class="container">
+      <div class="l3-band-grid">
+        {stats.map((s) => (
+          <div class="l3-band-item">
+            <span class="l3-band-num">{s.numero}</span>
+            <span class="l3-band-txt">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Introducción -->
+  <section class="l3-intro">
+    <div class="container">
+      <div class="l3-intro-grid">
+        <div class="l3-intro-text">
+          <span class="section-tag">¿Qué es un monitor fijo?</span>
+          <h2>Protección Permanente que No Depende de Nadie</h2>
+          <p>
+            Un <strong>monitor fijo industrial contra incendios</strong> —también llamado cañón de agua o
+            <em>deck gun</em>— es un dispositivo de descarga de gran caudal montado de forma permanente y conectado a la
+            red privada de protección contra incendios. Mientras una línea de manguera operada por dos personas entrega
+            entre 250 y 300 GPM, un monitor fijo descarga desde 500 hasta más de 4,000 galones por minuto, con un alcance
+            que permite enfriar exposiciones y atacar el fuego desde una posición segura.
+          </p>
+          <p>
+            En la industria petrolera, petroquímica y manufacturera, el monitor fijo es la primera línea de defensa: está
+            siempre listo, cubre el área crítica de manera constante y no depende de que una brigada llegue a tiempo. Por
+            eso las normas <strong>NFPA 15, NFPA 11 y NFPA 24</strong>, así como los requisitos de PEMEX y de las
+            aseguradoras, exigen monitores en prácticamente todas las instalaciones de alto riesgo.
+          </p>
+          <p>
+            Seleccionar el monitor correcto no es una decisión de catálogo. Implica calcular el caudal en GPM y la presión
+            en PSI, definir el material según el ambiente, verificar la certificación independiente y, en áreas
+            clasificadas, evaluar el control remoto. En esta página encontrará los tres modelos fijos de AQUEON, sus
+            especificaciones técnicas y la guía para elegir con criterio de ingeniería.
+          </p>
+        </div>
+        <ul class="l3-benefits">
+          {beneficios.map((b) => (
+            <li><i class="fas fa-check" aria-hidden="true"></i> {b}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modelos -->
+  <section class="l3-modelos">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Nuestros Modelos</span>
+          <h2>Tres Soluciones para Cada Nivel de Riesgo</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Del riesgo moderado al sector petrolero y las áreas clasificadas, cada modelo responde a un <strong>escenario de diseño</strong> distinto.</p>
+          <p>Todos con <strong>certificación internacional</strong>, garantía de fábrica y respaldo de ingeniería.</p>
+        </div>
+      </div>
+
+      {modelos.map((m, i) => (
+        <article id={m.id} class:list={['l3-model', i % 2 === 1 && 'l3-model--rev']}>
+          <div class="l3-model-media">
+            <img src={m.imagen} alt={`${m.nombre} — monitor fijo contra incendios AQUEON`} loading="lazy" />
+            <span class:list={['l3-model-badge', m.badgePremium && 'is-premium']}><i class={m.icon} aria-hidden="true"></i> {m.badge}</span>
+          </div>
+          <div class="l3-model-content">
+            <span class="l3-model-kicker">{m.modelo}</span>
+            <h3>{m.nombre}</h3>
+            <p class="l3-model-resumen">{m.resumen}</p>
+            <p>{m.descripcion}</p>
+
+            <table class="l3-spec-table">
+              <tbody>
+                {m.specs.map(([k, v]) => (
+                  <tr><th scope="row">{k}</th><td>{v}</td></tr>
+                ))}
+              </tbody>
+            </table>
+
+            <div class="l3-model-apps">
+              <span class="l3-apps-label"><i class="fas fa-location-dot" aria-hidden="true"></i> Aplicaciones</span>
+              <div class="l3-chips">
+                {m.aplicaciones.map((a) => <span class="l3-chip">{a}</span>)}
+              </div>
+            </div>
+
+            <div class="l3-model-actions">
+              <a href="/contacto" class="btn btn-primary"><i class="fas fa-file-invoice" aria-hidden="true"></i> Cotizar el {m.modelo}</a>
+              <a href={`https://wa.me/5215512345678?text=Hola%20AQUEON%2C%20me%20interesa%20el%20monitor%20fijo%20${m.modelo}`} class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Tabla comparativa -->
+  <section class="l3-compare">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Comparativa</span>
+          <h2>MI-1500 vs MG-4000 vs MR-3000</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Una vista rápida para <strong>decidir con criterio técnico</strong> según su escenario de riesgo.</p>
+          <p>¿Dudas sobre cuál especificar? Nuestros ingenieros lo orientan <strong>sin costo</strong>.</p>
+        </div>
+      </div>
+      <div class="l3-compare-wrap">
+        <table class="l3-compare-table">
+          <thead>
+            <tr>
+              <th scope="col">Característica</th>
+              <th scope="col">MI-1500</th>
+              <th scope="col">MG-4000</th>
+              <th scope="col">MR-3000</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Caudal (GPM)</th><td>500 – 1,500</td><td>2,000 – 4,000</td><td>1,500 – 3,000</td></tr>
+            <tr><th scope="row">Presión máx. (PSI)</th><td>150</td><td>175</td><td>160</td></tr>
+            <tr><th scope="row">Material</th><td>Bronce marino</td><td>Acero inox. 316L</td><td>Inox. / epóxico</td></tr>
+            <tr><th scope="row">Control</th><td>Manual</td><td>Manual / remoto</td><td>Remoto eléctrico</td></tr>
+            <tr><th scope="row">Áreas clasificadas</th><td>—</td><td>Opcional</td><td>ATEX / IECEx</td></tr>
+            <tr><th scope="row">Espuma</th><td>Opcional</td><td>Sí</td><td>Sí</td></tr>
+            <tr><th scope="row">Certificación</th><td>FM · UL</td><td>FM · UL · PEMEX</td><td>ATEX · FM</td></tr>
+            <tr><th scope="row">Ideal para</th><td>Manufactura</td><td>Refinerías</td><td>Áreas de riesgo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aplicaciones -->
+  <section class="l3-apps-section">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Aplicaciones</span>
+          <h2>Dónde Protegen los Monitores Fijos</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Equipos especificados para los <strong>entornos industriales más exigentes</strong> de México.</p>
+          <p>Cada sector con su normativa y su material idóneo, definidos por ingeniería.</p>
+        </div>
+      </div>
+      <div class="l3-apps-grid">
+        {aplicaciones.map((a) => (
+          <article class="l3-app-card">
+            <span class="l3-app-icon" aria-hidden="true"><i class={a.icon}></i></span>
+            <h3>{a.titulo}</h3>
+            <p>{a.texto}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Errores y recomendaciones -->
+  <section class="l3-guia">
+    <div class="container">
+      <div class="l3-guia-grid">
+        <div class="l3-guia-card l3-guia-errores">
+          <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Errores comunes al seleccionar</h3>
+          <ul>
+            {errores.map((e) => <li><i class="fas fa-xmark" aria-hidden="true"></i> {e}</li>)}
+          </ul>
+        </div>
+        <div class="l3-guia-card l3-guia-reco">
+          <h3><i class="fas fa-clipboard-check" aria-hidden="true"></i> Recomendaciones para empresas</h3>
+          <ul>
+            {recomendaciones.map((r) => <li><i class="fas fa-check" aria-hidden="true"></i> {r}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AQUEON -->
+  <section class="l3-aqueon">
+    <div class="container">
+      <div class="l3-aqueon-inner">
+        <div class="l3-aqueon-text">
+          <span class="section-tag">Por qué AQUEON</span>
+          <h2>Distribuidor Especialista en Monitores Fijos en México</h2>
+          <p>
+            En <strong>AQUEON</strong> somos distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, las
+            marcas líderes mundiales en monitores contra incendios. No solo vendemos equipo: entregamos ingeniería de diseño
+            conforme a NFPA, instalación con técnicos certificados, mantenimiento preventivo NFPA 25, capacitación a su
+            brigada y soporte técnico de por vida, con cobertura en los 32 estados de la República desde la Ciudad de México.
+          </p>
+          <p>
+            Atendemos proyectos de <strong>PEMEX, CFE, refinerías, terminales de almacenamiento, parques industriales y
+            grandes corporativos</strong>, con documentación completa para auditorías de Protección Civil y aseguradoras.
+            Somos uno de los principales especialistas en monitores contra incendios industriales en México.
+          </p>
+          <div class="l3-aqueon-actions">
+            <a href="/nosotros" class="btn btn-outline-light"><i class="fas fa-building-shield" aria-hidden="true"></i> Conozca AQUEON</a>
+            <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Servicios de ingeniería</a>
+          </div>
+        </div>
+        <div class="l3-normativas">
+          <h3>Normativas aplicables</h3>
+          <div class="l3-chips">
+            <span class="l3-chip l3-chip--norm">NFPA 15</span>
+            <span class="l3-chip l3-chip--norm">NFPA 11</span>
+            <span class="l3-chip l3-chip--norm">NFPA 24</span>
+            <span class="l3-chip l3-chip--norm">NFPA 25</span>
+            <span class="l3-chip l3-chip--norm">NOM-002-STPS</span>
+            <span class="l3-chip l3-chip--norm">FM Approved</span>
+            <span class="l3-chip l3-chip--norm">UL Listed</span>
+            <span class="l3-chip l3-chip--norm">ATEX / IECEx</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="l3-faq">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Preguntas Frecuentes</span>
+          <h2>Dudas sobre Monitores Fijos Industriales</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Respuestas técnicas a las consultas más comunes de <strong>gerentes de seguridad e ingenieros de proyecto</strong>.</p>
+          <p>¿No encuentra su pregunta? Escríbanos y un especialista le responde en <strong>menos de 24 horas</strong>.</p>
+        </div>
+      </div>
+      <div class="l3-faq-list">
+        {faqs.map((f, i) => (
+          <details class="l3-faq-item" open={i === 0}>
+            <summary><span>{f.q}</span><i class="fas fa-plus l3-faq-icon" aria-hidden="true"></i></summary>
+            <div class="l3-faq-answer"><p>{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Otras categorías -->
+  <section class="l3-otras">
+    <div class="container">
+      <div class="section-header split">
+        <div class="section-header__head">
+          <span class="section-tag">Catálogo Completo</span>
+          <h2>Otras Categorías de Producto</h2>
+        </div>
+        <div class="section-header__body">
+          <p>Complemente su sistema con la <strong>línea completa</strong> de monitores y accesorios AQUEON.</p>
+          <p>Una sola fuente para todo su sistema de protección contra incendios.</p>
+        </div>
+      </div>
+      <div class="l3-otras-grid">
+        <a href="/productos#monitores-portatiles" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-truck-loading" aria-hidden="true"></i></span><span class="l3-otra-name">Monitores Portátiles</span><span class="l3-otra-sub">Despliegue rápido para brigadas</span></a>
+        <a href="/productos#monitores-automaticos" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-robot" aria-hidden="true"></i></span><span class="l3-otra-name">Monitores Automáticos</span><span class="l3-otra-sub">Detección IA · IR · oscilantes</span></a>
+        <a href="/productos#boquillas" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-shower" aria-hidden="true"></i></span><span class="l3-otra-name">Boquillas y Accesorios</span><span class="l3-otra-sub">Cámaras de espuma · kits</span></a>
+        <a href="/productos" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todo el catálogo</span><span class="l3-otra-sub">12 equipos certificados</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="l3-cta">
+    <div class="container">
+      <div class="l3-cta-inner">
+        <div>
+          <h2>¿Listo para especificar su monitor fijo?</h2>
+          <p>Cotización técnica en menos de 24 horas. Cálculo hidráulico y asesoría de ingeniería sin costo ni compromiso.</p>
+        </div>
+        <div class="l3-cta-actions">
+          <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
+          <a href="tel:+525512345678" class="btn btn-outline-light btn-lg"><i class="fas fa-phone" aria-hidden="true"></i> +52 55 1234 5678</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .l3-hero { background: var(--bg-0); padding: calc(var(--section-pad) * 0.7) 0 calc(var(--section-pad) * 0.5); }
+  .l3-breadcrumb { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted); flex-wrap: wrap; }
+  .l3-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .l3-breadcrumb a:hover { color: var(--red-hover); }
+  .l3-breadcrumb i { font-size: 0.6rem; }
+  .l3-hero .section-header { margin-bottom: 0; }
+  .l3-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: var(--text-4xl); line-height: 1.08; letter-spacing: -0.02em; color: var(--text-strong); margin: var(--space-md) 0 0; }
+  .l3-hero .section-header__body p { font-size: var(--text-base); }
+
+  /* Banda */
+  .l3-band { background: var(--grad-red); padding: clamp(1.75rem, 3.5vw, 2.75rem) 0; }
+  .l3-band-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-lg); text-align: center; }
+  .l3-band-item { display: flex; flex-direction: column; gap: 0.25rem; position: relative; }
+  .l3-band-item:not(:last-child)::after { content: ""; position: absolute; right: calc(var(--space-lg) / -2); top: 15%; height: 70%; width: 1px; background: rgba(255,255,255,.25); }
+  .l3-band-num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: var(--text-2xl); color: #fff; line-height: 1; }
+  .l3-band-txt { font-size: var(--text-sm); color: rgba(255,255,255,.9); }
+
+  /* Intro */
+  .l3-intro { background: var(--bg-1); padding: var(--section-pad) 0; border-bottom: 1px solid var(--border-subtle); }
+  .l3-intro-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: clamp(2rem, 4%, 4rem); align-items: start; }
+  .l3-intro-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .l3-intro-text p { color: var(--text-body); margin-bottom: var(--space-md); }
+  .l3-benefits { list-style: none; padding: var(--space-lg); margin: 0; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: var(--space-md); }
+  .l3-benefits li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
+  .l3-benefits i { flex-shrink: 0; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.6rem; }
+
+  /* Modelos */
+  .l3-modelos { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-model { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4%, 3.5rem); align-items: center; padding: clamp(2rem, 4vw, 3.5rem) 0; border-bottom: 1px solid var(--border-subtle); scroll-margin-top: 110px; }
+  .l3-model:last-of-type { border-bottom: none; }
+  .l3-model--rev .l3-model-media { order: 2; }
+  .l3-model-media { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-subtle); }
+  .l3-model-media img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; display: block; filter: saturate(1.05) contrast(1.03) brightness(0.9); }
+  .l3-model-badge { position: absolute; top: 1rem; left: 1rem; display: inline-flex; align-items: center; gap: 0.45rem; background: rgba(0,0,0,.55); border: 1px solid var(--border-red); color: #ffb4b4; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; padding: 0.4rem 0.9rem; border-radius: var(--radius-full); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .l3-model-badge.is-premium { background: var(--grad-red); color: #fff; border-color: transparent; }
+  .l3-model-kicker { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-sm); color: var(--red-hover); letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+  .l3-model-content h3 { font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+  .l3-model-resumen { color: var(--text-strong); font-size: var(--text-md); margin-bottom: var(--space-sm); }
+  .l3-model-content > p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.7; margin-bottom: var(--space-md); }
+
+  .l3-spec-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-md); font-size: var(--text-sm); }
+  .l3-spec-table th, .l3-spec-table td { padding: 0.6rem 0.9rem; border: 1px solid var(--border-subtle); text-align: left; }
+  .l3-spec-table th { background: var(--surface); color: var(--text-muted); font-weight: 600; width: 45%; }
+  .l3-spec-table td { background: var(--surface-2); color: var(--text-strong); }
+
+  .l3-apps-label, .l3-aqueon .section-tag { display: inline-flex; }
+  .l3-apps-label { align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .l3-apps-label i { color: var(--red); }
+  .l3-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .l3-chip { font-size: var(--text-xs); font-weight: 600; color: var(--text-body); background: var(--surface); border: 1px solid var(--border-subtle); padding: 0.35rem 0.8rem; border-radius: var(--radius-sm); }
+  .l3-chip--norm { color: #ffb4b4; background: var(--red-soft); border-color: var(--border-red); }
+  .l3-model-apps { margin-bottom: var(--space-lg); }
+  .l3-model-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+  /* Comparativa */
+  .l3-compare { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-compare-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+  .l3-compare-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 40rem; }
+  .l3-compare-table th, .l3-compare-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
+  .l3-compare-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
+  .l3-compare-table thead th:not(:first-child) { color: var(--red-hover); }
+  .l3-compare-table tbody th { background: var(--surface); color: var(--text-body); font-weight: 600; }
+  .l3-compare-table tbody td { background: var(--surface-2); color: var(--text-strong); }
+  .l3-compare-table tr:last-child th, .l3-compare-table tr:last-child td { border-bottom: none; }
+
+  /* Aplicaciones */
+  .l3-apps-section { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
+  .l3-app-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .l3-app-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: var(--radius-md); color: var(--red-hover); font-size: 1.15rem; margin-bottom: var(--space-md); }
+  .l3-app-card h3 { font-size: var(--text-md); margin-bottom: var(--space-sm); }
+  .l3-app-card p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.6; margin: 0; }
+
+  /* Guía errores/reco */
+  .l3-guia { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-guia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.5rem, 3%, 2.5rem); }
+  .l3-guia-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .l3-guia-card h3 { display: flex; align-items: center; gap: 0.6rem; font-size: var(--text-md); margin-bottom: var(--space-md); }
+  .l3-guia-errores h3 i { color: #ff9b9b; }
+  .l3-guia-reco h3 i { color: var(--success); }
+  .l3-guia-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+  .l3-guia-card li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
+  .l3-guia-errores li i { color: #ff7a7a; margin-top: 0.2rem; }
+  .l3-guia-reco li i { color: var(--success); margin-top: 0.2rem; }
+
+  /* AQUEON */
+  .l3-aqueon { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-aqueon-inner { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr); gap: clamp(2rem, 4%, 4rem); align-items: center; }
+  .l3-aqueon-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .l3-aqueon-text p { color: var(--text-body); margin-bottom: var(--space-md); }
+  .l3-aqueon-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-md); }
+  .l3-aqueon-actions .btn-outline-light { border-color: var(--border-strong); color: var(--text-strong); }
+  .l3-normativas { background: var(--surface); border: 1px solid var(--border-subtle); border-top: 3px solid var(--red); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .l3-normativas h3 { font-size: var(--text-md); margin-bottom: var(--space-md); }
+
+  /* FAQ */
+  .l3-faq { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-faq-list { max-width: min(100%, 52rem); }
+  .l3-faq-item { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); margin-bottom: var(--space-md); overflow: hidden; }
+  .l3-faq-item[open] { border-color: var(--border-red); }
+  .l3-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding: clamp(1rem, 2vw, 1.35rem); cursor: pointer; list-style: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: var(--text-base); color: var(--text-strong); }
+  .l3-faq-item summary::-webkit-details-marker { display: none; }
+  .l3-faq-icon { flex-shrink: 0; width: 1.9rem; height: 1.9rem; display: flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.8rem; }
+  .l3-faq-item[open] .l3-faq-icon { background: var(--grad-red); color: #fff; border-color: transparent; }
+  .l3-faq-item[open] .l3-faq-icon::before { content: "\f068"; }
+  .l3-faq-answer { padding: 0 clamp(1rem, 2vw, 1.35rem) clamp(1rem, 2vw, 1.35rem); }
+  .l3-faq-answer p { margin: 0; color: var(--text-body); font-size: var(--text-sm); line-height: 1.75; }
+
+  /* Otras categorías */
+  .l3-otras { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-otras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
+  .l3-otra { display: flex; flex-direction: column; gap: 0.2rem; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); text-decoration: none; }
+  .l3-otra:hover { border-color: var(--border-red); box-shadow: var(--glow-red); }
+  .l3-otra--all { background: linear-gradient(135deg, rgba(224,36,36,.12), rgba(185,28,28,.06)); border-color: var(--border-red); }
+  .l3-otra-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: var(--radius-md); color: var(--red-hover); font-size: 1.1rem; margin-bottom: var(--space-sm); }
+  .l3-otra-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text-strong); font-size: var(--text-md); }
+  .l3-otra-sub { font-size: var(--text-xs); color: var(--text-muted); }
+
+  /* CTA */
+  .l3-cta { background: radial-gradient(ellipse 70% 120% at 50% -20%, rgba(255,80,80,.3), transparent 60%), linear-gradient(135deg, var(--red-dark) 0%, var(--red-darker) 60%, #450a0a 100%); padding: var(--section-pad) 0; }
+  .l3-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-xl); flex-wrap: wrap; }
+  .l3-cta-inner h2 { color: #fff; font-size: var(--text-2xl); margin-bottom: 0.5rem; }
+  .l3-cta-inner > div:first-child p { color: rgba(255,255,255,.9); margin: 0; max-width: 46ch; }
+  .l3-cta-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .l3-intro-grid, .l3-model, .l3-aqueon-inner { grid-template-columns: 1fr; }
+    .l3-model--rev .l3-model-media { order: 0; }
+    .l3-model-media img { min-height: 240px; }
+  }
+</style>

@@ -1,5 +1,11 @@
 ---
 import { categorias } from '../../data/productos';
+
+// Páginas L3 dedicadas por categoría (las demás usan ancla en /productos)
+const l3: Record<string, string> = {
+  'monitores-fijos': '/monitores-fijos',
+};
+const catUrl = (id: string) => l3[id] ?? `/productos#${id}`;
 ---
 <section id="productos" class="products-section">
     <div class="container">
@@ -24,8 +30,8 @@ import { categorias } from '../../data/productos';
             <div class="product-category">
                 <div class="section-header split">
                     <div class="section-header__head">
-                        <h3 id={categoria.id}><a href={`/productos#${categoria.id}`}>{categoria.titulo}</a></h3>
-                        <a href={`/productos#${categoria.id}`} class="category-link">Ver toda la categoría <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        <h3 id={categoria.id}><a href={catUrl(categoria.id)}>{categoria.titulo}</a></h3>
+                        <a href={catUrl(categoria.id)} class="category-link">Ver toda la categoría <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="section-header__body">
                         {categoria.parrafos.map((parrafo) => (
