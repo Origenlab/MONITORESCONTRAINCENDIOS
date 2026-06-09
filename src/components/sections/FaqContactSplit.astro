@@ -30,7 +30,20 @@ const {
 } = Astro.props;
 
 const whatsappNumber = '5215512345678';
+
+// FAQPage structured data (rich snippets de Google). Se limpia el HTML de las respuestas.
+const stripHtml = (s: string) => s.replace(/<[^>]*>/g, '');
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: stripHtml(f.q),
+    acceptedAnswer: { '@type': 'Answer', text: stripHtml(f.a) },
+  })),
+};
 ---
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <section id="contacto" class="fcs">
   <span id="preguntas" class="fcs-anchor" aria-hidden="true"></span>
   <div class="container">

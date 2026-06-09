@@ -23,6 +23,38 @@ const site = 'https://monitorescontraincendios.com';
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogImageAbs = new URL(ogImage, site).href;
 
+// BreadcrumbList automático por ruta (L3): mapa slug → { padre, nombre }
+const l3Breadcrumbs: Record<string, { parentName: string; parentUrl: string; name: string }> = {
+  'monitores-fijos': { parentName: 'Productos', parentUrl: '/productos', name: 'Monitores Fijos Industriales' },
+  'monitores-portatiles': { parentName: 'Productos', parentUrl: '/productos', name: 'Monitores Portátiles' },
+  'monitores-automaticos': { parentName: 'Productos', parentUrl: '/productos', name: 'Monitores Automáticos' },
+  'boquillas': { parentName: 'Productos', parentUrl: '/productos', name: 'Boquillas y Accesorios' },
+  'petroleo-gas': { parentName: 'Industrias', parentUrl: '/industrias', name: 'Petróleo y Gas' },
+  'petroquimica': { parentName: 'Industrias', parentUrl: '/industrias', name: 'Petroquímica y Química' },
+  'generacion-de-energia': { parentName: 'Industrias', parentUrl: '/industrias', name: 'Generación de Energía' },
+  'manufactura': { parentName: 'Industrias', parentUrl: '/industrias', name: 'Manufactura e Industrial' },
+  'mineria': { parentName: 'Industrias', parentUrl: '/industrias', name: 'Minería' },
+  'aviacion': { parentName: 'Industrias', parentUrl: '/industrias', name: 'Aviación' },
+  'bomberos': { parentName: 'Industrias', parentUrl: '/industrias', name: 'Bomberos y Gobierno' },
+  'diseno-ingenieria': { parentName: 'Servicios', parentUrl: '/servicios', name: 'Diseño e Ingeniería' },
+  'instalacion': { parentName: 'Servicios', parentUrl: '/servicios', name: 'Instalación Profesional' },
+  'mantenimiento-preventivo': { parentName: 'Servicios', parentUrl: '/servicios', name: 'Mantenimiento Preventivo' },
+  'mantenimiento-correctivo': { parentName: 'Servicios', parentUrl: '/servicios', name: 'Mantenimiento Correctivo' },
+  'capacitacion': { parentName: 'Servicios', parentUrl: '/servicios', name: 'Capacitación Especializada' },
+  'consultoria-normativa': { parentName: 'Servicios', parentUrl: '/servicios', name: 'Consultoría Normativa' },
+};
+const slug = Astro.url.pathname.replace(/^\/|\/$/g, '');
+const bc = l3Breadcrumbs[slug];
+const breadcrumbSchema = bc && {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: site + '/' },
+    { '@type': 'ListItem', position: 2, name: bc.parentName, item: new URL(bc.parentUrl, site).href },
+    { '@type': 'ListItem', position: 3, name: bc.name, item: canonical },
+  ],
+};
+
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -137,6 +169,7 @@ const localBusinessSchema = {
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 </head>
 <body>
     <!-- Skip Navigation para Accesibilidad -->
