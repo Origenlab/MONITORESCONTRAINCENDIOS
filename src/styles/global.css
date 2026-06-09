@@ -731,38 +731,91 @@ a.contact-item:hover { color: var(--red-hover); }
     color: var(--red);
 }
 
-/* Dropdown */
+.nav-chevron {
+    transition: transform 0.25s ease;
+}
+
+/* ---- Dropdown (desktop) ---- */
 .has-dropdown { position: relative; }
+
+/* Fila link + botón (en desktop se comporta como un solo item) */
+.nav-item-row {
+    display: flex;
+    align-items: center;
+}
+
+/* Botón toggle sólo visible en móvil */
+.submenu-toggle {
+    display: none;
+}
 
 .dropdown {
     position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    min-width: 240px;
+    top: 100%;
+    left: 50%;
+    min-width: 250px;
     background: var(--surface);
     border: 1px solid var(--border-subtle);
     border-top: 2px solid var(--red);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg), 0 0 30px rgba(224, 36, 36, 0.08);
-    padding: 0.5rem;
+    padding: 0.4rem;
+    margin-top: 12px;
+    list-style: none;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(8px);
+    transform: translateX(-50%) translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
     z-index: 1001;
 }
 
-.has-dropdown:hover .dropdown,
-.has-dropdown:focus-within .dropdown,
-.has-dropdown.open .dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+/* Puente invisible que conecta el link con el dropdown
+   para que el hover no se corte en el hueco de 12px */
+.has-dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 14px;
+    display: none;
 }
 
-.has-dropdown:hover .nav-link i,
-.has-dropdown.open .nav-link i {
+.has-dropdown:hover::after,
+.has-dropdown:focus-within::after {
+    display: block;
+}
+
+/* Flecha decorativa del dropdown */
+.dropdown::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: var(--surface);
+    border-left: 1px solid var(--border-subtle);
+    border-top: 1px solid var(--border-subtle);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.has-dropdown:hover > .dropdown,
+.has-dropdown:focus-within > .dropdown,
+.has-dropdown.open > .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+}
+
+.has-dropdown:hover .nav-chevron,
+.has-dropdown:focus-within .nav-chevron,
+.has-dropdown.open .nav-chevron {
     transform: rotate(180deg);
 }
+
+.dropdown li { list-style: none; }
 
 .dropdown a {
     padding: 0.65rem 1rem;
@@ -773,6 +826,7 @@ a.contact-item:hover { color: var(--red-hover); }
     color: var(--text-body);
     border-radius: var(--radius-sm);
     border-left: 2px solid transparent;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, padding-left 0.18s ease;
 }
 
 .dropdown a:hover,
@@ -831,6 +885,10 @@ a.contact-item:hover { color: var(--red-hover); }
     transform: translateY(-7px) rotate(-45deg);
     background: var(--red-hover);
 }
+
+/* Overlay oculto en desktop; bloqueo de scroll con menú abierto */
+.nav-overlay { display: none; }
+body.nav-open { overflow: hidden; }
 
 /* ==========================================================================
    06. HERO
@@ -3592,6 +3650,26 @@ a.contact-item:hover { color: var(--red-hover); }
     /* Menú móvil */
     .mobile-toggle { display: flex; }
 
+    /* Overlay de fondo */
+    .nav-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+        z-index: 999;
+    }
+
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.25s ease;
+    }
+
     .nav-menu {
         position: absolute;
         top: 100%;
@@ -3606,13 +3684,16 @@ a.contact-item:hover { color: var(--red-hover); }
         border-bottom: 1px solid var(--border-red);
         box-shadow: var(--shadow-lg), 0 20px 40px rgba(224, 36, 36, 0.08);
         padding: var(--space-sm) var(--container-pad) var(--space-lg);
-        max-height: calc(100vh - 72px);
+        max-height: calc(100vh - 64px);
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 1000;
 
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-8px);
+        transform: translateY(-10px);
         pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
     }
 
     .nav-menu.active {
@@ -3620,6 +3701,7 @@ a.contact-item:hover { color: var(--red-hover); }
         visibility: visible;
         transform: translateY(0);
         pointer-events: auto;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s;
     }
 
     .nav-menu > li {
@@ -3628,11 +3710,19 @@ a.contact-item:hover { color: var(--red-hover); }
 
     .nav-menu > li:last-child { border-bottom: none; }
 
-    .nav-link {
+    /* Fila: enlace + botón toggle */
+    .nav-item-row {
+        display: flex;
+        align-items: stretch;
         width: 100%;
-        justify-content: space-between;
-        padding: 0.9rem 0.5rem;
-        min-height: 48px;
+    }
+
+    .nav-link {
+        flex: 1 1 auto;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0.95rem 0.5rem;
+        min-height: 52px;
         font-size: var(--text-base);
         border-radius: 0;
     }
@@ -3641,7 +3731,42 @@ a.contact-item:hover { color: var(--red-hover); }
 
     .nav-link.active { color: var(--red-hover); }
 
-    /* Dropdown acordeón en móvil */
+    /* En móvil el chevron inline se oculta; usamos el botón */
+    .nav-chevron { display: none; }
+
+    .submenu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 56px;
+        min-height: 52px;
+        background: transparent;
+        border: none;
+        border-left: 1px solid var(--border-subtle);
+        color: var(--red);
+        cursor: pointer;
+    }
+
+    .submenu-toggle i {
+        font-size: 0.85rem;
+        transition: transform 0.28s ease;
+    }
+
+    .submenu-toggle:hover {
+        background: var(--red-soft);
+        color: var(--red-hover);
+    }
+
+    .has-dropdown.open .submenu-toggle i {
+        transform: rotate(180deg);
+    }
+
+    /* Ocultar puente y flecha de desktop */
+    .has-dropdown::after { display: none; }
+    .dropdown::before { display: none; }
+
+    /* Dropdown acordeón animado en móvil */
     .dropdown {
         position: static;
         min-width: 0;
@@ -3653,16 +3778,22 @@ a.contact-item:hover { color: var(--red-hover); }
         border-left: 2px solid var(--border-red);
         border-radius: 0;
         box-shadow: none;
-        margin: 0 0 var(--space-sm) var(--space-md);
+        margin: 0 0 0 var(--space-md);
         padding: 0;
-        display: none;
+
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
     }
 
-    .has-dropdown.open .dropdown { display: block; }
+    .has-dropdown.open .dropdown {
+        max-height: 420px;
+    }
 
     .dropdown a {
-        padding: 0.7rem 1rem;
-        min-height: 44px;
+        padding: 0.75rem 1rem;
+        min-height: 46px;
+        font-size: var(--text-sm);
     }
 
     /* Hero */

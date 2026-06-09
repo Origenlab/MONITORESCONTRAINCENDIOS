@@ -4,6 +4,7 @@ import { categorias } from '../../data/productos';
 // Páginas L3 dedicadas por categoría (las demás usan ancla en /productos)
 const l3: Record<string, string> = {
   'monitores-fijos': '/monitores-fijos',
+  'monitores-portatiles': '/monitores-portatiles',
 };
 const catUrl = (id: string) => l3[id] ?? `/productos#${id}`;
 ---

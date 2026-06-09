@@ -8,32 +8,110 @@
     'use strict';
 
     // ============================================
-    // Mobile Navigation Toggle
+    // Navegación: menú móvil + submenús (acordeón)
     // ============================================
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const dropdownItems = Array.from(document.querySelectorAll('.has-dropdown'));
+    const MOBILE_BP = 768;
 
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', function () {
-            const isOpen = navMenu.classList.contains('active');
-            navMenu.classList.toggle('active');
-            this.setAttribute('aria-expanded', !isOpen);
+    const isMobile = function () {
+        return window.innerWidth <= MOBILE_BP;
+    };
+
+    // -- Cerrar todos los submenús --
+    function closeAllSubmenus() {
+        dropdownItems.forEach(function (item) {
+            item.classList.remove('open');
+            const toggle = item.querySelector('.submenu-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
         });
     }
 
-    // ============================================
-    // Dropdown Toggle for Mobile
-    // ============================================
-    const dropdownItems = document.querySelectorAll('.has-dropdown');
+    // -- Abrir / cerrar panel móvil --
+    function openMobileMenu() {
+        if (!navMenu) return;
+        navMenu.classList.add('active');
+        if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+        if (navOverlay) navOverlay.classList.add('active');
+        document.body.classList.add('nav-open');
+    }
 
+    function closeMobileMenu() {
+        if (!navMenu) return;
+        navMenu.classList.remove('active');
+        if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+        if (navOverlay) navOverlay.classList.remove('active');
+        document.body.classList.remove('nav-open');
+        closeAllSubmenus();
+    }
+
+    // -- Hamburguesa --
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', function () {
+            if (navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+    }
+
+    // -- Overlay: cerrar al tocar fuera --
+    if (navOverlay) {
+        navOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    // -- Toggles de submenú (acordeón en móvil) --
     dropdownItems.forEach(function (item) {
-        const link = item.querySelector('.nav-link');
+        const toggle = item.querySelector('.submenu-toggle');
+        if (!toggle) return;
 
-        if (link && window.innerWidth <= 768) {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                item.classList.toggle('open');
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const willOpen = !item.classList.contains('open');
+            // Acordeón: cerrar los demás al abrir uno
+            if (willOpen) {
+                dropdownItems.forEach(function (other) {
+                    if (other !== item) {
+                        other.classList.remove('open');
+                        const t = other.querySelector('.submenu-toggle');
+                        if (t) t.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            item.classList.toggle('open', willOpen);
+            toggle.setAttribute('aria-expanded', String(willOpen));
+        });
+    });
+
+    // -- Cerrar el panel al navegar a un enlace real --
+    if (navMenu) {
+        navMenu.querySelectorAll('a[href]').forEach(function (a) {
+            a.addEventListener('click', function () {
+                if (isMobile()) closeMobileMenu();
             });
+        });
+    }
+
+    // -- Tecla Escape cierra todo --
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            if (navMenu && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+                if (mobileToggle) mobileToggle.focus();
+            } else {
+                closeAllSubmenus();
+            }
+        }
+    });
+
+    // -- Click fuera del nav cierra submenús en desktop --
+    document.addEventListener('click', function (e) {
+        if (!isMobile() && !e.target.closest('.has-dropdown')) {
+            closeAllSubmenus();
         }
     });
 
@@ -100,12 +178,9 @@
             if (targetElement) {
                 e.preventDefault();
 
-                // Close mobile menu if open
+                // Cerrar el menú móvil si está abierto
                 if (navMenu && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    if (mobileToggle) {
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                    }
+                    closeMobileMenu();
                 }
 
                 // Scroll to target
@@ -142,17 +217,16 @@
     }
 
     // ============================================
-    // Close Mobile Menu on Window Resize
+    // Cerrar el menú al pasar a desktop (resize)
     // ============================================
+    let resizeTimer;
     window.addEventListener('resize', function () {
-        if (window.innerWidth > 768) {
-            if (navMenu && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+            if (window.innerWidth > MOBILE_BP) {
+                closeMobileMenu();
             }
-            if (mobileToggle) {
-                mobileToggle.setAttribute('aria-expanded', 'false');
-            }
-        }
+        }, 150);
     });
 
     // ============================================

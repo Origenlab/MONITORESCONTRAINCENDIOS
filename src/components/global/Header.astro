@@ -24,22 +24,32 @@ import TopBar from './TopBar.astro';
             <ul class="nav-menu" role="menubar">
                 <li role="none"><a href="/#inicio" class="nav-link active" role="menuitem">Inicio</a></li>
                 <li class="has-dropdown" role="none">
-                    <a href="/productos" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                        Productos <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown" role="menu">
+                    <div class="nav-item-row">
+                        <a href="/productos" class="nav-link" role="menuitem">
+                            Productos <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                        </a>
+                        <button type="button" class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="submenu-productos" aria-label="Mostrar submenú de Productos">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <ul class="dropdown" id="submenu-productos" role="menu">
                         <li role="none"><a href="/productos" role="menuitem">Ver todo el catálogo</a></li>
                         <li role="none"><a href="/monitores-fijos" role="menuitem">Monitores Fijos</a></li>
-                        <li role="none"><a href="/productos#monitores-portatiles" role="menuitem">Monitores Portátiles</a></li>
+                        <li role="none"><a href="/monitores-portatiles" role="menuitem">Monitores Portátiles</a></li>
                         <li role="none"><a href="/productos#monitores-automaticos" role="menuitem">Monitores Automáticos</a></li>
                         <li role="none"><a href="/productos#boquillas" role="menuitem">Boquillas y Accesorios</a></li>
                     </ul>
                 </li>
                 <li class="has-dropdown" role="none">
-                    <a href="/industrias" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                        Industrias <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown" role="menu">
+                    <div class="nav-item-row">
+                        <a href="/industrias" class="nav-link" role="menuitem">
+                            Industrias <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                        </a>
+                        <button type="button" class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="submenu-industrias" aria-label="Mostrar submenú de Industrias">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <ul class="dropdown" id="submenu-industrias" role="menu">
                         <li role="none"><a href="/industrias" role="menuitem">Ver todos los sectores</a></li>
                         <li role="none"><a href="/industrias#petroleo-gas" role="menuitem">Petróleo y Gas</a></li>
                         <li role="none"><a href="/industrias#petroquimica" role="menuitem">Petroquímica</a></li>
@@ -48,10 +58,15 @@ import TopBar from './TopBar.astro';
                     </ul>
                 </li>
                 <li class="has-dropdown" role="none">
-                    <a href="/servicios" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                        Servicios <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown" role="menu">
+                    <div class="nav-item-row">
+                        <a href="/servicios" class="nav-link" role="menuitem">
+                            Servicios <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                        </a>
+                        <button type="button" class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="submenu-servicios" aria-label="Mostrar submenú de Servicios">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <ul class="dropdown" id="submenu-servicios" role="menu">
                         <li role="none"><a href="/servicios" role="menuitem">Ver todos los servicios</a></li>
                         <li role="none"><a href="/servicios#diseno-ingenieria" role="menuitem">Diseño e Ingeniería</a></li>
                         <li role="none"><a href="/servicios#instalacion" role="menuitem">Instalación Profesional</a></li>
@@ -76,4 +91,5 @@ import TopBar from './TopBar.astro';
             </div>
         </div>
     </nav>
+    <div class="nav-overlay" aria-hidden="true"></div>
 </header>
