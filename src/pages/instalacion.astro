@@ -3,205 +3,195 @@ import Base from '../layouts/Base.astro';
 import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 
 const stats = [
-  { numero: 'NFPA 15·11·24', label: 'Normas base de diseño' },
-  { numero: 'Hazen-Williams', label: 'Método de cálculo hidráulico' },
-  { numero: 'FM · UL', label: 'Equipo certificado especificado' },
-  { numero: 'Llave en mano', label: 'Del análisis a la entrega' },
+  { numero: 'NFPA 24', label: 'Instalación de redes contra incendio' },
+  { numero: '200 PSI', label: 'Prueba hidrostática de aceptación' },
+  { numero: 'Certificados', label: 'Técnicos con experiencia industrial' },
+  { numero: 'As-built', label: 'Planos y expediente de entrega' },
 ];
 
 const beneficios = [
-  'Cálculos hidráulicos profesionales con memoria de cálculo',
-  'Planos isométricos y especificaciones técnicas',
-  'Análisis de riesgo y de cobertura por área',
-  'Documentación lista para aseguradoras y Protección Civil',
-  'Selección de equipo certificado FM Approved / UL Listed',
-  'Diseño a la medida, sin sobredimensionar ni quedarse corto',
+  'Técnicos certificados con experiencia en proyectos industriales',
+  'Pruebas hidrostáticas y de flujo incluidas en el alcance',
+  'Integración con su red hidráulica y sistemas existentes',
+  'Documentación completa de entrega y planos as-built',
+  'Anclaje y alineación conforme a las cargas de reacción',
+  'Garantía de instalación por escrito',
 ];
 
-// DIFERENCIADOR 1 — Fases de la ingeniería (pg-chain)
+// DIFERENCIADOR 1 — Fases de la instalación (pg-chain)
 const fases = [
   {
-    id: 'analisis',
+    id: 'recepcion',
     eslabon: 'Fase 01',
-    titulo: 'Análisis de Riesgo',
-    icon: 'fas fa-magnifying-glass-chart',
-    descripcion: 'Levantamos la instalación, definimos el escenario de incendio de diseño y la normativa aplicable a su actividad.',
-    incluye: ['Levantamiento en sitio', 'Escenario de diseño', 'Marco normativo', 'Densidad de aplicación'],
-    entrega: 'Informe de riesgo',
+    titulo: 'Recepción y Replanteo',
+    icon: 'fas fa-clipboard-list',
+    descripcion: 'Verificamos el equipo contra la especificación, revisamos el sitio y replanteamos la instalación sobre los planos de ingeniería.',
+    incluye: ['Verificación de equipo', 'Revisión de sitio', 'Replanteo en obra', 'Plan de seguridad'],
+    entrega: 'Acta de inicio',
   },
   {
-    id: 'calculo',
+    id: 'montaje',
     eslabon: 'Fase 02',
-    titulo: 'Cálculo Hidráulico',
-    icon: 'fas fa-calculator',
-    descripcion: 'Calculamos caudal, presión y pérdidas por fricción para dimensionar tubería, equipo y demanda de bomba.',
-    incluye: ['Caudal y presión', 'Pérdidas Hazen-Williams', 'Balanceo de nodos', 'Demanda de bomba'],
-    entrega: 'Memoria de cálculo',
+    titulo: 'Montaje e Integración',
+    icon: 'fas fa-screwdriver-wrench',
+    descripcion: 'Montamos monitores, tubería y accesorios, e integramos el sistema con su red hidráulica y de control existente.',
+    incluye: ['Montaje de equipo', 'Anclaje y soporte', 'Integración hidráulica', 'Conexión a control'],
+    entrega: 'Sistema montado',
   },
   {
-    id: 'especificacion',
+    id: 'pruebas',
     eslabon: 'Fase 03',
-    titulo: 'Especificación y Planos',
-    icon: 'fas fa-compass-drafting',
-    descripcion: 'Seleccionamos el equipo certificado y plasmamos el sistema en planos isométricos y especificaciones técnicas.',
-    incluye: ['Selección de equipo', 'Planos isométricos', 'Especificaciones', 'Lista de materiales'],
-    entrega: 'Paquete de ingeniería',
+    titulo: 'Pruebas Hidrostáticas',
+    icon: 'fas fa-gauge-high',
+    descripcion: 'Sometemos la red a prueba hidrostática y de flujo para verificar la estanqueidad, la presión y el desempeño antes de operar.',
+    incluye: ['Prueba hidrostática', 'Lavado (flushing)', 'Verificación de presión', 'Prueba de flujo'],
+    entrega: 'Reporte de pruebas',
   },
   {
-    id: 'documentacion',
+    id: 'puesta',
     eslabon: 'Fase 04',
-    titulo: 'Documentación y Entrega',
-    icon: 'fas fa-folder-open',
-    descripcion: 'Integramos el expediente técnico para aseguradoras, Protección Civil y auditorías, listo para construcción.',
-    incluye: ['Expediente técnico', 'Doc. para aseguradora', 'Cumplimiento normativo', 'Soporte a obra'],
-    entrega: 'Expediente completo',
+    titulo: 'Puesta en Marcha y Entrega',
+    icon: 'fas fa-circle-check',
+    descripcion: 'Arrancamos el sistema, capacitamos al personal de operación y entregamos el expediente técnico completo con planos as-built.',
+    incluye: ['Arranque del sistema', 'Capacitación de arranque', 'Planos as-built', 'Acta de entrega'],
+    entrega: 'Expediente de entrega',
   },
 ];
 
-// DIFERENCIADOR 2 — Anatomía del cálculo hidráulico (pg-scen)
-const calculo = [
+// DIFERENCIADOR 2 — Protocolo de pruebas de aceptación (pg-scen)
+const pruebas = [
   {
     icon: 'fas fa-gauge-high',
-    nombre: 'Caudal de diseño (GPM)',
-    descripcion: 'El flujo total que el sistema debe entregar sobre el área de operación.',
-    define: 'Densidad de aplicación × área de diseño, según el riesgo.',
-    norma: 'NFPA 15 / NFPA 11',
+    nombre: 'Prueba hidrostática',
+    descripcion: 'Presurización de la red por encima de la presión de operación durante un tiempo definido.',
+    verifica: 'Estanqueidad y resistencia de juntas, bridas y tubería.',
+    norma: 'NFPA 24 (200 PSI / 2 h)',
   },
   {
-    icon: 'fas fa-droplet',
-    nombre: 'Densidad de aplicación',
-    descripcion: 'Galones por minuto por pie cuadrado que exige la norma para el riesgo.',
-    define: 'El tipo de riesgo y el producto a proteger.',
-    norma: 'NFPA 15 / NFPA 11',
+    icon: 'fas fa-water',
+    nombre: 'Lavado (flushing)',
+    descripcion: 'Circulación de agua a alta velocidad para arrastrar residuos de obra de la tubería.',
+    verifica: 'Limpieza interna antes de la puesta en marcha.',
+    norma: 'NFPA 24',
   },
   {
-    icon: 'fas fa-wave-square',
-    nombre: 'Pérdidas por fricción',
-    descripcion: 'Caída de presión a lo largo de la tubería y los accesorios.',
-    define: 'Diámetro, longitud y factor C (Hazen-Williams).',
-    norma: 'NFPA 13 / 15',
+    icon: 'fas fa-anchor',
+    nombre: 'Anclaje y alineación',
+    descripcion: 'Verificación del soporte y la fijación frente a las cargas de reacción del chorro.',
+    verifica: 'Estabilidad del monitor en operación a plena presión.',
+    norma: 'Especificación del fabricante',
+  },
+  {
+    icon: 'fas fa-arrows-rotate',
+    nombre: 'Prueba funcional',
+    descripcion: 'Operación del monitor en todo su rango de giro, elevación y patrón de descarga.',
+    verifica: 'Funcionamiento mecánico y, en remotos, el control.',
+    norma: 'NFPA 25 (base operativa)',
   },
   {
     icon: 'fas fa-arrow-up-9-1',
-    nombre: 'Presión residual requerida',
-    descripcion: 'La presión mínima necesaria en el punto hidráulicamente más desfavorable.',
-    define: 'El equipo terminal y las pérdidas acumuladas.',
+    nombre: 'Verificación de presión y caudal',
+    descripcion: 'Medición de presión y caudal en el punto de descarga contra el diseño.',
+    verifica: 'Que el sistema entregue lo que dice la memoria de cálculo.',
     norma: 'NFPA 15 / 24',
-  },
-  {
-    icon: 'fas fa-pump-medical',
-    nombre: 'Demanda de bomba',
-    descripcion: 'El punto de operación (caudal y presión) que debe cubrir la bomba contra incendio.',
-    define: 'La curva del sistema y la reserva de agua.',
-    norma: 'NFPA 20',
-  },
-  {
-    icon: 'fas fa-database',
-    nombre: 'Reserva de agua',
-    descripcion: 'El volumen de agua para sostener la demanda durante el tiempo normativo.',
-    define: 'Caudal de diseño × duración requerida.',
-    norma: 'NFPA 22 / 24',
   },
 ];
 
-// DIFERENCIADOR 3 — Entregables (pg-sol)
-const entregables = [
+// DIFERENCIADOR 3 — Qué incluye la instalación (pg-sol)
+const incluye = [
   {
-    icon: 'fas fa-file-lines',
-    titulo: 'Memoria de cálculo',
-    texto: 'Documento de ingeniería con el cálculo hidráulico completo, hipótesis y resultados verificables.',
-    producto: 'Solicitar ejemplo',
-    url: '/contacto',
-  },
-  {
-    icon: 'fas fa-ruler-combined',
-    titulo: 'Planos isométricos',
-    texto: 'Representación del sistema con diámetros, longitudes, equipo y nodos para construcción.',
+    icon: 'fas fa-file-signature',
+    titulo: 'Acta de entrega',
+    texto: 'Documento formal de recepción del sistema con el alcance ejecutado y las condiciones de operación.',
     producto: 'Solicitar este servicio',
     url: '/contacto',
   },
   {
-    icon: 'fas fa-list-check',
-    titulo: 'Especificaciones técnicas',
-    texto: 'Especificación de cada componente con su norma, material y certificación exigida.',
+    icon: 'fas fa-clipboard-check',
+    titulo: 'Reporte de pruebas',
+    texto: 'Registro de la prueba hidrostática, lavado y pruebas funcionales con sus resultados.',
+    producto: 'Solicitar este servicio',
+    url: '/contacto',
+  },
+  {
+    icon: 'fas fa-ruler-combined',
+    titulo: 'Planos as-built',
+    texto: 'Planos actualizados con la instalación tal como quedó construida, para operación y mantenimiento.',
+    producto: 'Ver diseño e ingeniería',
+    url: '/diseno-ingenieria',
+  },
+  {
+    icon: 'fas fa-shield-halved',
+    titulo: 'Garantía de instalación',
+    texto: 'Garantía por escrito del montaje, además de la garantía de fábrica del equipo.',
     producto: 'Ver catálogo de equipo',
     url: '/productos',
   },
   {
+    icon: 'fas fa-chalkboard-user',
+    titulo: 'Capacitación de arranque',
+    texto: 'Inducción al personal de operación sobre el uso seguro y correcto del sistema instalado.',
+    producto: 'Ver capacitación',
+    url: '/servicios#capacitacion',
+  },
+  {
     icon: 'fas fa-clipboard-list',
-    titulo: 'Lista de materiales',
-    texto: 'Cuantificación detallada de equipo, tubería y accesorios para cotización y obra.',
-    producto: 'Ver catálogo',
-    url: '/productos',
-  },
-  {
-    icon: 'fas fa-shield-halved',
-    titulo: 'Análisis de riesgo y cobertura',
-    texto: 'Escenario de incendio de diseño y verificación de cobertura por área protegida.',
-    producto: 'Ver industrias',
-    url: '/industrias',
-  },
-  {
-    icon: 'fas fa-file-shield',
-    titulo: 'Documentación para aseguradoras',
-    texto: 'Expediente con certificaciones y cumplimiento normativo para auditoría y póliza.',
-    producto: 'Consultoría normativa',
-    url: '/servicios#consultoria-normativa',
+    titulo: 'Base para mantenimiento',
+    texto: 'Condición inicial documentada que sirve de referencia para el programa NFPA 25.',
+    producto: 'Ver mantenimiento',
+    url: '/servicios#mantenimiento-preventivo',
   },
 ];
 
-// pg-dens — Normativas aplicadas
-const normativasTabla = [
-  ['NFPA 15', 'Sistemas fijos de agua pulverizada', 'Enfriamiento y protección de equipos'],
-  ['NFPA 11', 'Sistemas de espuma', 'Riesgos de hidrocarburo y solventes'],
-  ['NFPA 24', 'Redes privadas de servicio contra incendios', 'Tubería de alimentación y tomas'],
-  ['NFPA 13', 'Rociadores y criterios de fricción', 'Naves, almacenes y edificación'],
-  ['NFPA 20', 'Bombas contra incendio', 'Dimensionamiento de la bomba'],
-  ['NFPA 25', 'Inspección, prueba y mantenimiento', 'Previsto desde el diseño'],
+// pg-dens — Tipos de montaje e integración
+const montajes = [
+  ['Brida', 'Monitor fijo conectado a tubería bridada', 'Par de apriete y empaque correctos'],
+  ['Pedestal', 'Monitor elevado sobre columna o estructura', 'Anclaje a base de concreto / estructura'],
+  ['Skid / paquete', 'Sistema premontado en patín', 'Integración de bomba, válvulas y monitor'],
+  ['Vehicular (deck gun)', 'Monitor sobre unidad de bomberos', 'Refuerzo y conexión a la bomba del vehículo'],
+  ['Integración a red existente', 'Conexión a red contra incendio en operación', 'Trabajo en caliente y libranzas'],
 ];
 
 const normativas = [
-  { n: 'NFPA 15', d: 'Agua pulverizada' },
-  { n: 'NFPA 11', d: 'Espuma' },
-  { n: 'NFPA 24', d: 'Redes privadas contra incendio' },
-  { n: 'NFPA 13', d: 'Rociadores y almacenamiento' },
-  { n: 'NFPA 20', d: 'Bombas contra incendio' },
-  { n: 'NFPA 22', d: 'Tanques de almacenamiento de agua' },
-  { n: 'NFPA 25', d: 'Inspección, prueba y mantenimiento' },
-  { n: 'NOM-002-STPS', d: 'Condiciones de seguridad' },
+  { n: 'NFPA 24', d: 'Instalación de redes privadas contra incendio' },
+  { n: 'NFPA 15', d: 'Sistemas fijos de agua pulverizada' },
+  { n: 'NFPA 13', d: 'Rociadores y criterios de instalación' },
+  { n: 'NFPA 25', d: 'Base de la inspección y prueba posterior' },
+  { n: 'Prueba hidrostática', d: 'Aceptación de estanqueidad y presión' },
+  { n: 'NOM-002-STPS', d: 'Condiciones de seguridad en obra' },
 ];
 
 const errores = [
-  'Comprar equipo antes de tener el cálculo hidráulico',
-  'Dimensionar por catálogo y no por escenario de incendio',
-  'Ignorar las pérdidas por fricción en redes largas',
-  'No verificar la presión en el punto más desfavorable',
-  'Omitir la demanda de bomba y la reserva de agua',
-  'Diseñar sin pensar en el mantenimiento NFPA 25 futuro',
+  'Instalar sin un diseño ni una memoria de cálculo previos',
+  'Omitir la prueba hidrostática y el lavado de la red',
+  'Anclar el monitor sin considerar la carga de reacción del chorro',
+  'No documentar planos as-built ni el reporte de pruebas',
+  'Dejar la puesta en marcha sin capacitación de operación',
+  'Integrar a una red existente sin libranza ni trabajo seguro',
 ];
 
 const recomendaciones = [
-  'Empiece por el análisis de riesgo y el escenario de diseño',
-  'Exija memoria de cálculo verificable, no solo una cotización',
-  'Especifique equipo con certificación FM Approved / UL Listed',
-  'Valide presión y caudal en el punto hidráulicamente crítico',
-  'Integre bomba, reserva de agua y red como un solo sistema',
-  'Prevea el mantenimiento y la documentación desde el diseño',
+  'Parta del diseño y los planos de ingeniería aprobados',
+  'Exija prueba hidrostática y lavado documentados',
+  'Verifique anclaje y alineación contra la carga de reacción',
+  'Reciba planos as-built y el expediente de pruebas',
+  'Incluya la capacitación de arranque en el alcance',
+  'Establezca desde la entrega el programa NFPA 25',
 ];
 
 const faqs = [
-  { q: '¿Qué es un cálculo hidráulico y por qué es indispensable?', a: 'Es el análisis de ingeniería que determina si la red de protección entregará el caudal y la presión necesarios en el punto más desfavorable. Parte de la densidad de aplicación que exige la norma para el riesgo, calcula las pérdidas por fricción a lo largo de la tubería (método Hazen-Williams) y verifica la presión residual y la demanda de bomba. Sin él, un sistema puede verse correcto en planos y fallar en una emergencia por falta de presión o caudal. Es la base de todo diseño serio.' },
-  { q: '¿Qué normativa siguen para el diseño?', a: 'Diseñamos conforme a NFPA 15 (agua pulverizada), NFPA 11 (espuma) y NFPA 24 (redes privadas) como base, complementadas según el proyecto con NFPA 13 (rociadores y criterios de fricción), NFPA 20 (bombas), NFPA 22 (reserva de agua) y NFPA 25 (mantenimiento), además de la NOM-002-STPS y los requisitos de aseguradoras. La norma aplicable se define en el análisis de riesgo inicial.' },
-  { q: '¿Qué entregables incluye el servicio de diseño?', a: 'Entregamos un paquete de ingeniería completo: informe de análisis de riesgo, memoria de cálculo hidráulico, planos isométricos, especificaciones técnicas por componente, lista de materiales cuantificada y la documentación de cumplimiento para aseguradoras y Protección Civil. Todo verificable y listo para construcción y auditoría.' },
-  { q: '¿Diseñan para cualquier industria?', a: 'Sí. Adaptamos el diseño al riesgo de cada sector —petróleo y gas, petroquímica, energía, manufactura, minería, aviación y gobierno— porque cada uno impone densidades de aplicación, agentes y normativas distintas. El mismo rigor de cálculo se aplica, pero el escenario de incendio de diseño cambia con la actividad.' },
-  { q: '¿Puedo contratar solo el diseño o debe incluir la instalación?', a: 'Puede contratar solo la ingeniería de diseño si su empresa ejecutará la obra o licitará la construcción. También ofrecemos el ciclo completo —diseño, instalación, puesta en marcha y mantenimiento— como solución llave en mano. En ambos casos, el paquete de ingeniería es suyo y queda documentado.' },
-  { q: '¿El diseño me sirve para mi aseguradora?', a: 'Sí. La memoria de cálculo, los planos y la especificación de equipo certificado son precisamente lo que las aseguradoras y FM Global requieren para evaluar el riesgo y otorgar o mantener la cobertura. Integramos el expediente para que su área de seguros y la autoridad cuenten con la documentación que exigen.' },
-  { q: '¿En cuánto tiempo entregan un diseño?', a: 'Depende del alcance, pero entregamos cotización técnica del servicio en menos de 24 horas y un cronograma claro de ingeniería según la complejidad. Para proyectos que lo requieran agendamos una visita técnica sin costo para el levantamiento y el escenario de incendio.' },
+  { q: '¿Qué incluye el servicio de instalación profesional?', a: 'Incluye la recepción y verificación del equipo, el replanteo en sitio, el montaje e integración con su red hidráulica y de control, las pruebas hidrostáticas y de flujo, el lavado de la red, la puesta en marcha, la capacitación de arranque y la entrega del expediente técnico con planos as-built, reporte de pruebas y garantía por escrito. Es un servicio llave en mano, no solo "atornillar el equipo".' },
+  { q: '¿Por qué es indispensable la prueba hidrostática?', a: 'La prueba hidrostática presuriza la red por encima de la presión de operación —típicamente a 200 PSI durante 2 horas conforme a NFPA 24— para verificar que no haya fugas en juntas, bridas y tubería antes de poner el sistema en servicio. Detectar una fuga en la prueba es trivial; descubrirla durante una emergencia, catastrófico. Por eso ninguna instalación seria se entrega sin ella, documentada.' },
+  { q: '¿Sus técnicos están certificados?', a: 'Sí. Nuestro personal de instalación tiene experiencia comprobada en proyectos industriales y trabaja conforme a NFPA 24 y a las especificaciones del fabricante, con los protocolos de seguridad de la NOM-002-STPS. En instalaciones que lo requieren, coordinamos libranzas y trabajo seguro con el área de seguridad del cliente.' },
+  { q: '¿Pueden integrar el equipo a mi red contra incendio existente?', a: 'Sí. Una parte importante de nuestro trabajo es la integración: conectar el nuevo monitor o sistema a la red hidráulica y de control en operación, con la libranza y el trabajo en caliente necesarios, minimizando el tiempo fuera de servicio. La integración parte del diseño para garantizar que la red existente soporte la nueva demanda.' },
+  { q: '¿Qué documentación entregan al terminar?', a: 'Entregamos el acta de entrega, el reporte de pruebas hidrostáticas y funcionales, los planos as-built (la instalación tal como quedó construida), la garantía de instalación por escrito y la condición inicial que sirve de base para el mantenimiento NFPA 25. Es la documentación que su operación, su aseguradora y Protección Civil requieren.' },
+  { q: '¿La instalación incluye garantía?', a: 'Sí. Ofrecemos garantía por escrito del montaje, adicional a la garantía de fábrica del equipo que, como distribuidores autorizados, respaldamos. Además, al ser un solo proveedor de diseño, equipo, instalación y mantenimiento, la responsabilidad es única: no hay zonas grises entre proveedores.' },
+  { q: '¿Trabajan en toda la República?', a: 'Sí. Realizamos instalaciones en los 32 estados de la República desde la Ciudad de México, coordinando logística, personal y pruebas en sitio. Para cada proyecto definimos un cronograma de obra claro y un responsable técnico.' },
 ];
 ---
 <Base
-  title="Diseño e Ingeniería de Sistemas Contra Incendio | Cálculo Hidráulico NFPA | AQUEON México"
-  description="Diseño e ingeniería de sistemas contra incendio conforme a NFPA 15, NFPA 11 y NFPA 24: cálculo hidráulico, planos isométricos, especificaciones y documentación para aseguradoras. Ingenieros certificados. Memoria de cálculo verificable con AQUEON México."
+  title="Instalación Profesional de Sistemas Contra Incendio | Montaje y Pruebas NFPA 24 | AQUEON México"
+  description="Instalación profesional de monitores y sistemas contra incendio: montaje certificado, integración hidráulica, pruebas hidrostáticas NFPA 24, puesta en marcha y planos as-built. Técnicos con experiencia industrial y garantía por escrito con AQUEON México."
 >
   <!-- Hero -->
   <section class="l3-hero">
@@ -211,16 +201,16 @@ const faqs = [
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
         <a href="/servicios">Servicios</a>
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        <span>Diseño e Ingeniería</span>
+        <span>Instalación Profesional</span>
       </nav>
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Servicios · Diseño e Ingeniería</span>
-          <h1>Diseño e Ingeniería de Sistemas Contra Incendio</h1>
+          <span class="section-tag">Servicios · Instalación</span>
+          <h1>Instalación Profesional de Sistemas Contra Incendio</h1>
         </div>
         <div class="section-header__body">
-          <p>Donde empieza todo sistema serio: el <strong>cálculo hidráulico</strong> y la especificación técnica.</p>
-          <p>Ingenieros certificados, diseño conforme a <strong>NFPA 15, 11 y 24</strong> y memoria de cálculo verificable.</p>
+          <p>El mejor diseño falla si el <strong>montaje y las pruebas</strong> no se hacen bien.</p>
+          <p>Técnicos con experiencia industrial, <strong>pruebas hidrostáticas NFPA 24</strong> y entrega documentada con planos as-built.</p>
         </div>
       </div>
     </div>
@@ -246,22 +236,22 @@ const faqs = [
       <div class="l3-intro-grid">
         <div class="l3-intro-text">
           <span class="section-tag">El servicio</span>
-          <h2>Un Sistema Vale lo que Vale su Ingeniería</h2>
+          <h2>Una Instalación es Tan Buena como sus Pruebas</h2>
           <p>
-            Un monitor certificado, una buena bomba y la mejor tubería no sirven de nada si el sistema no fue
-            <strong>calculado correctamente</strong>. La diferencia entre una instalación que protege y una que falla en la
-            emergencia casi nunca está en el equipo: está en si alguien hizo el <strong>cálculo hidráulico</strong> que
-            garantiza el caudal y la presión donde y cuando se necesitan.
+            Un sistema contra incendio bien diseñado y con el mejor equipo puede fallar por una sola junta mal apretada o
+            una red que nunca se probó. La instalación no es la parte "fácil" del proyecto: es donde el diseño se vuelve
+            realidad o se pierde. La diferencia está en el <strong>rigor del montaje</strong> y, sobre todo, en las
+            <strong>pruebas de aceptación</strong> que verifican que todo funciona antes de que llegue la emergencia.
           </p>
           <p>
-            En AQUEON el diseño no es un trámite previo a la venta: es un servicio de ingeniería con entregables propios.
-            Partimos del <strong>análisis de riesgo</strong>, calculamos conforme a <strong>NFPA 15, 11 y 24</strong>,
-            seleccionamos equipo certificado FM Approved / UL Listed y entregamos una <strong>memoria de cálculo
-            verificable</strong>, planos y especificaciones. Diseñamos a la medida: sin sobredimensionar ni quedarnos cortos.
+            En AQUEON instalamos con <strong>técnicos de experiencia industrial</strong>, integramos el sistema con su red
+            hidráulica y de control, ejecutamos <strong>prueba hidrostática, lavado y pruebas funcionales</strong> conforme a
+            NFPA 24, y entregamos el sistema con planos as-built, reporte de pruebas y garantía por escrito. Un solo
+            proveedor del diseño a la puesta en marcha: responsabilidad única, sin zonas grises.
           </p>
           <p>
-            En esta página verá las fases de la ingeniería, la anatomía de un cálculo hidráulico, los entregables del
-            servicio y las normas que aplicamos en cada proyecto.
+            En esta página verá las fases de la instalación, el protocolo de pruebas de aceptación, lo que incluye el
+            servicio y los tipos de montaje e integración que realizamos.
           </p>
         </div>
         <ul class="l3-benefits">
@@ -279,11 +269,11 @@ const faqs = [
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Metodología</span>
-          <h2>Las Cuatro Fases de la Ingeniería</h2>
+          <h2>Las Cuatro Fases de la Instalación</h2>
         </div>
         <div class="section-header__body">
-          <p>Del <strong>análisis de riesgo</strong> a la <strong>documentación</strong>, cada fase tiene su entregable.</p>
-          <p>Un proceso ordenado que convierte un riesgo en un sistema verificable.</p>
+          <p>De la <strong>recepción del equipo</strong> a la <strong>puesta en marcha</strong>, cada fase con su entregable.</p>
+          <p>Un proceso controlado que termina en un sistema probado y documentado.</p>
         </div>
       </div>
       <div class="pg-chain-grid">
@@ -311,60 +301,60 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 2: Anatomía del cálculo -->
+  <!-- DIFERENCIADOR 2: Protocolo de pruebas -->
   <section class="pg-scen">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Ingeniería a fondo</span>
-          <h2>Anatomía de un Cálculo Hidráulico</h2>
+          <span class="section-tag">Control de calidad</span>
+          <h2>Protocolo de Pruebas de Aceptación</h2>
         </div>
         <div class="section-header__body">
-          <p>Esto es lo que hay detrás de una <strong>memoria de cálculo</strong>: no una cotización, sino ingeniería.</p>
-          <p>Cada parámetro se calcula y se verifica contra la norma aplicable.</p>
+          <p>Ningún sistema se entrega sin <strong>probarse</strong>: esto es lo que verificamos antes de operar.</p>
+          <p>Cada prueba con su criterio y su norma, documentada en el reporte de entrega.</p>
         </div>
       </div>
       <div class="pg-scen-wrap">
         <table class="pg-scen-table">
           <thead>
             <tr>
-              <th scope="col">Parámetro</th>
-              <th scope="col">Qué es</th>
-              <th scope="col">Qué lo define</th>
-              <th scope="col">Norma</th>
+              <th scope="col">Prueba</th>
+              <th scope="col">En qué consiste</th>
+              <th scope="col">Qué verifica</th>
+              <th scope="col">Norma / criterio</th>
             </tr>
           </thead>
           <tbody>
-            {calculo.map((e) => (
+            {pruebas.map((e) => (
               <tr>
                 <th scope="row"><span class="pg-scen-name"><i class={e.icon} aria-hidden="true"></i> {e.nombre}</span></th>
                 <td>{e.descripcion}</td>
-                <td>{e.define}</td>
+                <td>{e.verifica}</td>
                 <td class="pg-scen-sol">{e.norma}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> Cada proyecto se calcula para su punto hidráulicamente más desfavorable; los valores se confirman en la memoria de cálculo.</p>
+      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> Los valores y tiempos de prueba se ajustan al diseño del proyecto y a la presión de operación de la red.</p>
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 3: Entregables -->
+  <!-- DIFERENCIADOR 3: Qué incluye -->
   <section class="pg-sol">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Entregables</span>
-          <h2>Lo que Recibe al Final del Diseño</h2>
+          <span class="section-tag">Alcance</span>
+          <h2>Qué Incluye la Instalación</h2>
         </div>
         <div class="section-header__body">
-          <p>Un <strong>paquete de ingeniería</strong> completo, verificable y listo para construcción y auditoría.</p>
-          <p>Documentación que sirve a su obra, a su aseguradora y a la autoridad.</p>
+          <p>Más que montaje: <strong>pruebas, documentación y garantía</strong> en un solo alcance.</p>
+          <p>Cada entregable enlaza con el servicio o equipo correspondiente.</p>
         </div>
       </div>
       <div class="pg-sol-grid">
-        {entregables.map((s) => (
+        {incluye.map((s) => (
           <article class="pg-sol-card">
             <span class="pg-sol-icon" aria-hidden="true"><i class={s.icon}></i></span>
             <h3>{s.titulo}</h3>
@@ -376,28 +366,28 @@ const faqs = [
     </div>
   </section>
 
-  <!-- pg-dens: Normativas aplicadas -->
+  <!-- pg-dens: Tipos de montaje -->
   <section class="pg-dens">
     <div class="container">
       <div class="pg-dens-grid">
         <div class="pg-dens-text">
-          <span class="section-tag">Marco de diseño</span>
-          <h2>Normas que Aplicamos en Cada Proyecto</h2>
+          <span class="section-tag">Integración</span>
+          <h2>Tipos de Montaje e Integración</h2>
           <p>
-            No usamos una sola norma: el diseño combina el cuerpo normativo <strong>NFPA</strong> según el riesgo, el agente
-            y la infraestructura del proyecto. Esta es la base con la que trabajamos; la combinación exacta se define en el
-            análisis de riesgo inicial.
+            Cada proyecto exige un <strong>tipo de montaje</strong> distinto, con sus propias consideraciones técnicas: del
+            monitor bridado a la integración de un patín completo o un sistema vehicular. Definimos el montaje a partir del
+            diseño y de la infraestructura existente, cuidando el anclaje frente a la carga de reacción del chorro.
           </p>
-          <a href="/servicios#consultoria-normativa" class="btn btn-outline"><i class="fas fa-file-contract" aria-hidden="true"></i> Ver consultoría normativa</a>
+          <a href="/productos" class="btn btn-outline"><i class="fas fa-layer-group" aria-hidden="true"></i> Ver catálogo de equipo</a>
         </div>
         <div class="pg-dens-wrap">
           <table class="pg-dens-table">
             <thead>
-              <tr><th scope="col">Norma</th><th scope="col">Qué rige</th><th scope="col">Cuándo aplica</th></tr>
+              <tr><th scope="col">Tipo de montaje</th><th scope="col">Aplicación</th><th scope="col">Consideración clave</th></tr>
             </thead>
             <tbody>
-              {normativasTabla.map(([n, q, c]) => (
-                <tr><th scope="row">{n}</th><td>{q}</td><td>{c}</td></tr>
+              {montajes.map(([t, a, c]) => (
+                <tr><th scope="row">{t}</th><td>{a}</td><td>{c}</td></tr>
               ))}
             </tbody>
           </table>
@@ -432,21 +422,20 @@ const faqs = [
       <div class="l3-aqueon-inner">
         <div class="l3-aqueon-text">
           <span class="section-tag">Por qué AQUEON</span>
-          <h2>Ingeniería que Respalda Cada Equipo que Vendemos</h2>
+          <h2>Del Diseño a la Puesta en Marcha, un Solo Responsable</h2>
           <p>
-            En <strong>AQUEON</strong> la ingeniería de diseño es la columna de todo lo que hacemos. Nuestros
-            <strong>ingenieros certificados</strong> calculan, especifican y documentan conforme a NFPA, seleccionando equipo
-            FM Approved y UL Listed de Elkhart Brass, Akron Brass y Task Force Tips. Entregamos memoria de cálculo verificable
-            y acompañamos el proyecto de la mesa de diseño a la puesta en marcha.
+            En <strong>AQUEON</strong> la instalación es la continuación natural de nuestra ingeniería. Instalamos con
+            <strong>técnicos de experiencia industrial</strong>, integramos con su red existente y probamos cada sistema
+            conforme a NFPA 24 antes de entregarlo. Al ser un solo proveedor de diseño, equipo certificado, instalación y
+            mantenimiento, la <strong>responsabilidad es única</strong>: no hay zonas grises entre proveedores.
           </p>
           <p>
-            Diseñamos para <strong>PEMEX, CFE, refinerías, plantas, parques industriales, aeropuertos y gobierno</strong>,
-            con documentación completa para aseguradoras y Protección Civil, y cobertura en los 32 estados de la República
-            desde la Ciudad de México.
+            Instalamos para <strong>refinerías, plantas, parques industriales, aeropuertos, minería y gobierno</strong>, con
+            documentación de entrega completa y cobertura en los 32 estados de la República desde la Ciudad de México.
           </p>
           <div class="l3-aqueon-actions">
-            <a href="/nosotros" class="btn btn-outline-light"><i class="fas fa-building-shield" aria-hidden="true"></i> Conozca AQUEON</a>
-            <a href="/productos" class="btn btn-outline-light"><i class="fas fa-layer-group" aria-hidden="true"></i> Ver catálogo de equipo</a>
+            <a href="/diseno-ingenieria" class="btn btn-outline-light"><i class="fas fa-compass-drafting" aria-hidden="true"></i> Ver diseño e ingeniería</a>
+            <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Todos los servicios</a>
           </div>
         </div>
         <div class="l3-normativas pg-norm">
@@ -461,7 +450,7 @@ const faqs = [
     </div>
   </section>
 
-  <FaqContactSplit titulo="Dudas sobre Diseño e Ingeniería" contexto="el servicio de diseño e ingeniería y cálculo hidráulico" faqs={faqs} />
+  <FaqContactSplit titulo="Dudas sobre Instalación Profesional" contexto="el servicio de instalación de sistemas contra incendio" faqs={faqs} />
 
   <!-- Otros servicios -->
   <section class="l3-otras">
@@ -477,9 +466,9 @@ const faqs = [
         </div>
       </div>
       <div class="l3-otras-grid">
-        <a href="/instalacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Instalación Profesional</span><span class="l3-otra-sub">Montaje certificado · pruebas</span></a>
+        <a href="/diseno-ingenieria" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-compass-drafting" aria-hidden="true"></i></span><span class="l3-otra-name">Diseño e Ingeniería</span><span class="l3-otra-sub">Cálculo hidráulico · planos</span></a>
         <a href="/servicios#mantenimiento-preventivo" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span><span class="l3-otra-name">Mantenimiento Preventivo</span><span class="l3-otra-sub">NFPA 25 · disponibilidad</span></a>
-        <a href="/servicios#consultoria-normativa" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></span><span class="l3-otra-name">Consultoría Normativa</span><span class="l3-otra-sub">Auditorías · aseguradoras</span></a>
+        <a href="/servicios#capacitacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-chalkboard-user" aria-hidden="true"></i></span><span class="l3-otra-name">Capacitación</span><span class="l3-otra-sub">Brigadas y operadores</span></a>
         <a href="/servicios" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todos los servicios</span><span class="l3-otra-sub">Ciclo de vida completo</span></a>
       </div>
     </div>
@@ -490,8 +479,8 @@ const faqs = [
     <div class="container">
       <div class="l3-cta-inner">
         <div>
-          <h2>¿Listo para diseñar su sistema con ingeniería real?</h2>
-          <p>Cotización técnica del servicio en menos de 24 horas. Visita y análisis de riesgo sin costo ni compromiso.</p>
+          <h2>¿Listo para instalar su sistema con garantía?</h2>
+          <p>Cotización técnica del servicio en menos de 24 horas. Visita de obra y cronograma claro sin costo ni compromiso.</p>
         </div>
         <div class="l3-cta-actions">
           <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
@@ -542,13 +531,13 @@ const faqs = [
   .pg-block-label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: var(--space-xs); }
   .pg-block-label i { color: var(--red); }
 
-  /* DIF 2 — Anatomía (pg-scen) */
+  /* DIF 2 — Pruebas (pg-scen) */
   .pg-scen { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-scen-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
   .pg-scen-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 48rem; }
   .pg-scen-table th, .pg-scen-table td { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
   .pg-scen-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 24%; }
+  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 22%; }
   .pg-scen-table tbody td { background: var(--surface-2); color: var(--text-body); }
   .pg-scen-name { display: inline-flex; align-items: center; gap: 0.5rem; }
   .pg-scen-name i { color: var(--red-hover); }
@@ -557,7 +546,7 @@ const faqs = [
   .pg-note { margin: var(--space-md) 0 0; font-size: var(--text-xs); color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
   .pg-note i { color: var(--red); }
 
-  /* DIF 3 — Entregables (pg-sol) */
+  /* DIF 3 — Incluye (pg-sol) */
   .pg-sol { background: var(--bg-0); padding: var(--section-pad) 0; }
   .pg-sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
   .pg-sol-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; }
@@ -569,7 +558,7 @@ const faqs = [
   .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
   .pg-sol-link:hover i { transform: translateX(3px); }
 
-  /* pg-dens — Normativas */
+  /* pg-dens — Montajes */
   .pg-dens { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-dens-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 4%, 3.5rem); align-items: center; }
   .pg-dens-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
@@ -578,7 +567,7 @@ const faqs = [
   .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 32rem; }
   .pg-dens-table th, .pg-dens-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
   .pg-dens-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-dens-table tbody th { background: var(--surface); color: var(--red-hover); font-weight: 700; width: 18%; }
+  .pg-dens-table tbody th { background: var(--surface); color: var(--red-hover); font-weight: 700; width: 24%; }
   .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-body); }
   .pg-dens-table tr:last-child th, .pg-dens-table tr:last-child td { border-bottom: none; }
 
