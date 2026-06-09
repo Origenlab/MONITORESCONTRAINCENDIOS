@@ -6,6 +6,7 @@ const l3Industrias: Record<string, string> = {
   'petroleo-gas': '/petroleo-gas',
   'petroquimica': '/petroquimica',
   'energia': '/generacion-de-energia',
+  'manufactura': '/manufactura',
 };
 const industriaUrl = (id?: string) => (id && l3Industrias[id]) ? l3Industrias[id] : `/industrias#${id}`;
 ---

@@ -240,7 +240,7 @@ No hay dos instalaciones iguales. Cada tipo de nave logística o industrial trae
 - **Documente todo para auditorías** de Protección Civil, STPS y de la aseguradora.
 - **Trabaje con un especialista** con experiencia comprobada en parques industriales y centros de distribución.
 
-Puede revisar nuestro catálogo de [productos](/productos), conocer nuestras soluciones para [Manufactura](/industrias#manufactura) y explorar nuestros [servicios](/servicios) de ingeniería, instalación y mantenimiento.
+Puede revisar nuestro catálogo de [productos](/productos), conocer nuestras soluciones para [Manufactura](/manufactura) y explorar nuestros [servicios](/servicios) de ingeniería, instalación y mantenimiento.
 
 ## AQUEON: especialistas en monitores contra incendios industriales
 
