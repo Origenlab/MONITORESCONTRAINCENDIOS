@@ -5,6 +5,7 @@ import { servicios, planes } from '../../data/servicios';
 const l3Servicios: Record<string, string> = {
   'diseno-ingenieria': '/diseno-ingenieria',
   'instalacion': '/instalacion',
+  'mantenimiento-preventivo': '/mantenimiento-preventivo',
 };
 const servicioUrl = (id: string) => l3Servicios[id] ?? `/servicios#${id}`;
 ---

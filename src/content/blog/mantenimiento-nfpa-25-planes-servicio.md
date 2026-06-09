@@ -62,7 +62,7 @@ Para lograrlo, la norma organiza tres actividades que la industria abrevia como 
 - **Prueba (Testing):** la operación real del equipo para confirmar que hace lo que debe. Aquí se gira el monitor, se abre la válvula, se mide el flujo. La prueba no opina; demuestra.
 - **Mantenimiento (Maintenance):** las acciones que conservan o restituyen la condición —lubricación, reemplazo de empaques, limpieza, ajuste, recubrimientos—. Es la parte que ensucia las manos.
 
-La fortaleza de NFPA 25 es que asigna a cada componente una frecuencia mínima para cada una de estas tres actividades. Esas frecuencias no son un capricho: salen del análisis estadístico de cuándo y cómo fallan los equipos. Por eso un programa "a ojo" siempre se queda corto: tiende a inspeccionar de más lo visible y de menos lo crítico. Vale la pena conocer también nuestros [servicios de mantenimiento preventivo](/servicios#mantenimiento-preventivo) para ver cómo aterrizamos esto en cada sitio.
+La fortaleza de NFPA 25 es que asigna a cada componente una frecuencia mínima para cada una de estas tres actividades. Esas frecuencias no son un capricho: salen del análisis estadístico de cuándo y cómo fallan los equipos. Por eso un programa "a ojo" siempre se queda corto: tiende a inspeccionar de más lo visible y de menos lo crítico. Vale la pena conocer también nuestros [servicios de mantenimiento preventivo](/mantenimiento-preventivo) para ver cómo aterrizamos esto en cada sitio.
 
 ## El Calendario ITM: Inspección, Prueba y Mantenimiento por Frecuencia
 

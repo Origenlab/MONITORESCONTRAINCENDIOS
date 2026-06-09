@@ -3,195 +3,208 @@ import Base from '../layouts/Base.astro';
 import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 
 const stats = [
-  { numero: 'NFPA 24', label: 'Instalación de redes contra incendio' },
-  { numero: '200 PSI', label: 'Prueba hidrostática de aceptación' },
-  { numero: 'Certificados', label: 'Técnicos con experiencia industrial' },
-  { numero: 'As-built', label: 'Planos y expediente de entrega' },
+  { numero: 'NFPA 25', label: 'Inspección, prueba y mantenimiento' },
+  { numero: 'ITM', label: 'Programa documentado por frecuencia' },
+  { numero: 'OEM', label: 'Refacciones originales de fábrica' },
+  { numero: '32', label: 'Estados con cobertura de servicio' },
 ];
 
 const beneficios = [
-  'Técnicos certificados con experiencia en proyectos industriales',
-  'Pruebas hidrostáticas y de flujo incluidas en el alcance',
-  'Integración con su red hidráulica y sistemas existentes',
-  'Documentación completa de entrega y planos as-built',
-  'Anclaje y alineación conforme a las cargas de reacción',
-  'Garantía de instalación por escrito',
+  'Programa anual de inspección, prueba y mantenimiento (ITM)',
+  'Reportes de condición y bitácora por equipo',
+  'Detección temprana de deficiencias antes de la emergencia',
+  'Refacciones originales y técnicos con experiencia industrial',
+  'Expediente listo para auditorías y aseguradoras',
+  'Disponibilidad garantizada de su sistema cuando lo necesite',
 ];
 
-// DIFERENCIADOR 1 — Fases de la instalación (pg-chain)
+// DIFERENCIADOR 1 — Cómo opera el programa (pg-chain)
 const fases = [
   {
-    id: 'recepcion',
+    id: 'inventario',
     eslabon: 'Fase 01',
-    titulo: 'Recepción y Replanteo',
+    titulo: 'Inventario y Línea Base',
     icon: 'fas fa-clipboard-list',
-    descripcion: 'Verificamos el equipo contra la especificación, revisamos el sitio y replanteamos la instalación sobre los planos de ingeniería.',
-    incluye: ['Verificación de equipo', 'Revisión de sitio', 'Replanteo en obra', 'Plan de seguridad'],
-    entrega: 'Acta de inicio',
+    descripcion: 'Levantamos cada equipo del sistema, registramos su condición actual y establecemos la línea base contra la cual se medirá.',
+    incluye: ['Inventario de equipo', 'Condición inicial', 'Identificación (TAG)', 'Historial existente'],
+    entrega: 'Censo de activos',
   },
   {
-    id: 'montaje',
+    id: 'calendario',
     eslabon: 'Fase 02',
-    titulo: 'Montaje e Integración',
-    icon: 'fas fa-screwdriver-wrench',
-    descripcion: 'Montamos monitores, tubería y accesorios, e integramos el sistema con su red hidráulica y de control existente.',
-    incluye: ['Montaje de equipo', 'Anclaje y soporte', 'Integración hidráulica', 'Conexión a control'],
-    entrega: 'Sistema montado',
+    titulo: 'Calendario ITM',
+    icon: 'fas fa-calendar-check',
+    descripcion: 'Definimos las frecuencias de inspección, prueba y mantenimiento por componente conforme a NFPA 25, en un calendario anual.',
+    incluye: ['Frecuencias NFPA 25', 'Plan anual', 'Asignación de recursos', 'Protocolos por equipo'],
+    entrega: 'Programa anual',
   },
   {
-    id: 'pruebas',
+    id: 'ejecucion',
     eslabon: 'Fase 03',
-    titulo: 'Pruebas Hidrostáticas',
-    icon: 'fas fa-gauge-high',
-    descripcion: 'Sometemos la red a prueba hidrostática y de flujo para verificar la estanqueidad, la presión y el desempeño antes de operar.',
-    incluye: ['Prueba hidrostática', 'Lavado (flushing)', 'Verificación de presión', 'Prueba de flujo'],
-    entrega: 'Reporte de pruebas',
+    titulo: 'Ejecución Documentada',
+    icon: 'fas fa-screwdriver-wrench',
+    descripcion: 'Ejecutamos las actividades programadas, registramos resultados y reportamos cualquier deficiencia con su nivel de criticidad.',
+    incluye: ['Inspección y prueba', 'Lubricación y ajuste', 'Registro de resultados', 'Reporte de deficiencias'],
+    entrega: 'Reporte de servicio',
   },
   {
-    id: 'puesta',
+    id: 'analisis',
     eslabon: 'Fase 04',
-    titulo: 'Puesta en Marcha y Entrega',
-    icon: 'fas fa-circle-check',
-    descripcion: 'Arrancamos el sistema, capacitamos al personal de operación y entregamos el expediente técnico completo con planos as-built.',
-    incluye: ['Arranque del sistema', 'Capacitación de arranque', 'Planos as-built', 'Acta de entrega'],
-    entrega: 'Expediente de entrega',
+    titulo: 'Análisis y Mejora',
+    icon: 'fas fa-chart-line',
+    descripcion: 'Analizamos la condición del sistema en el tiempo, anticipamos refacciones y recomendamos acciones correctivas o de mejora.',
+    incluye: ['Análisis de tendencia', 'Plan de refacciones', 'Dictamen de condición', 'Recomendaciones'],
+    entrega: 'Dictamen anual',
   },
 ];
 
-// DIFERENCIADOR 2 — Protocolo de pruebas de aceptación (pg-scen)
-const pruebas = [
+// DIFERENCIADOR 2 — Matriz de frecuencias NFPA 25 (pg-scen)
+const frecuencias = [
   {
-    icon: 'fas fa-gauge-high',
-    nombre: 'Prueba hidrostática',
-    descripcion: 'Presurización de la red por encima de la presión de operación durante un tiempo definido.',
-    verifica: 'Estanqueidad y resistencia de juntas, bridas y tubería.',
-    norma: 'NFPA 24 (200 PSI / 2 h)',
-  },
-  {
-    icon: 'fas fa-water',
-    nombre: 'Lavado (flushing)',
-    descripcion: 'Circulación de agua a alta velocidad para arrastrar residuos de obra de la tubería.',
-    verifica: 'Limpieza interna antes de la puesta en marcha.',
-    norma: 'NFPA 24',
-  },
-  {
-    icon: 'fas fa-anchor',
-    nombre: 'Anclaje y alineación',
-    descripcion: 'Verificación del soporte y la fijación frente a las cargas de reacción del chorro.',
-    verifica: 'Estabilidad del monitor en operación a plena presión.',
-    norma: 'Especificación del fabricante',
+    icon: 'fas fa-eye',
+    nombre: 'Inspección visual del monitor',
+    descripcion: 'Estado físico, corrosión, fugas y señalización del monitor y sus conexiones.',
+    frecuencia: 'Trimestral',
+    norma: 'NFPA 25',
   },
   {
     icon: 'fas fa-arrows-rotate',
-    nombre: 'Prueba funcional',
-    descripcion: 'Operación del monitor en todo su rango de giro, elevación y patrón de descarga.',
-    verifica: 'Funcionamiento mecánico y, en remotos, el control.',
-    norma: 'NFPA 25 (base operativa)',
+    nombre: 'Operación en todo su rango',
+    descripcion: 'Giro, elevación y patrón de descarga; en remotos, prueba de control.',
+    frecuencia: 'Anual',
+    norma: 'NFPA 25',
   },
   {
-    icon: 'fas fa-arrow-up-9-1',
-    nombre: 'Verificación de presión y caudal',
-    descripcion: 'Medición de presión y caudal en el punto de descarga contra el diseño.',
-    verifica: 'Que el sistema entregue lo que dice la memoria de cálculo.',
-    norma: 'NFPA 15 / 24',
+    icon: 'fas fa-oil-can',
+    nombre: 'Lubricación y ajuste',
+    descripcion: 'Lubricación de mecanismos y verificación de pares de apriete.',
+    frecuencia: 'Anual',
+    norma: 'NFPA 25 / OEM',
+  },
+  {
+    icon: 'fas fa-faucet',
+    nombre: 'Inspección de válvulas de control',
+    descripcion: 'Posición, accesibilidad, sello y candadeo de las válvulas.',
+    frecuencia: 'Mensual / Trimestral',
+    norma: 'NFPA 25',
+  },
+  {
+    icon: 'fas fa-pump-medical',
+    nombre: 'Prueba de bomba contra incendio',
+    descripcion: 'Arranque sin flujo y prueba de flujo contra la curva de la bomba.',
+    frecuencia: 'Semanal / Anual',
+    norma: 'NFPA 25 / 20',
+  },
+  {
+    icon: 'fas fa-gauge-high',
+    nombre: 'Prueba de flujo del sistema',
+    descripcion: 'Verificación de caudal y presión disponibles contra el diseño.',
+    frecuencia: 'Anual',
+    norma: 'NFPA 25',
+  },
+  {
+    icon: 'fas fa-clock-rotate-left',
+    nombre: 'Prueba hidrostática de mangueras',
+    descripcion: 'Presurización de mangueras de servicio para verificar integridad.',
+    frecuencia: 'Cada 5 años',
+    norma: 'NFPA 1962',
   },
 ];
 
-// DIFERENCIADOR 3 — Qué incluye la instalación (pg-sol)
-const incluye = [
+// DIFERENCIADOR 3 — Qué recibe (pg-sol)
+const recibe = [
   {
-    icon: 'fas fa-file-signature',
-    titulo: 'Acta de entrega',
-    texto: 'Documento formal de recepción del sistema con el alcance ejecutado y las condiciones de operación.',
+    icon: 'fas fa-calendar-days',
+    titulo: 'Programa anual ITM',
+    texto: 'Calendario de inspección, prueba y mantenimiento por equipo y frecuencia conforme a NFPA 25.',
     producto: 'Solicitar este servicio',
     url: '/contacto',
   },
   {
     icon: 'fas fa-clipboard-check',
-    titulo: 'Reporte de pruebas',
-    texto: 'Registro de la prueba hidrostática, lavado y pruebas funcionales con sus resultados.',
+    titulo: 'Reporte de inspección',
+    texto: 'Registro de cada visita con resultados, mediciones y evidencia fotográfica.',
     producto: 'Solicitar este servicio',
     url: '/contacto',
   },
   {
-    icon: 'fas fa-ruler-combined',
-    titulo: 'Planos as-built',
-    texto: 'Planos actualizados con la instalación tal como quedó construida, para operación y mantenimiento.',
-    producto: 'Ver diseño e ingeniería',
-    url: '/diseno-ingenieria',
+    icon: 'fas fa-book',
+    titulo: 'Bitácora por equipo',
+    texto: 'Historial de mantenimiento de cada monitor y componente, trazable en el tiempo.',
+    producto: 'Solicitar este servicio',
+    url: '/contacto',
   },
   {
-    icon: 'fas fa-shield-halved',
-    titulo: 'Garantía de instalación',
-    texto: 'Garantía por escrito del montaje, además de la garantía de fábrica del equipo.',
+    icon: 'fas fa-triangle-exclamation',
+    titulo: 'Alertas de deficiencias',
+    texto: 'Notificación de hallazgos con su criticidad y la acción correctiva recomendada.',
+    producto: 'Ver mantenimiento correctivo',
+    url: '/servicios#mantenimiento-correctivo',
+  },
+  {
+    icon: 'fas fa-box-open',
+    titulo: 'Plan de refacciones',
+    texto: 'Previsión de refacciones originales para evitar paros por falta de partes.',
     producto: 'Ver catálogo de equipo',
     url: '/productos',
   },
   {
-    icon: 'fas fa-chalkboard-user',
-    titulo: 'Capacitación de arranque',
-    texto: 'Inducción al personal de operación sobre el uso seguro y correcto del sistema instalado.',
-    producto: 'Ver capacitación',
-    url: '/servicios#capacitacion',
-  },
-  {
-    icon: 'fas fa-clipboard-list',
-    titulo: 'Base para mantenimiento',
-    texto: 'Condición inicial documentada que sirve de referencia para el programa NFPA 25.',
-    producto: 'Ver mantenimiento',
-    url: '/mantenimiento-preventivo',
+    icon: 'fas fa-file-shield',
+    titulo: 'Expediente para auditoría',
+    texto: 'Documentación de cumplimiento NFPA 25 lista para aseguradoras y Protección Civil.',
+    producto: 'Ver consultoría normativa',
+    url: '/servicios#consultoria-normativa',
   },
 ];
 
-// pg-dens — Tipos de montaje e integración
-const montajes = [
-  ['Brida', 'Monitor fijo conectado a tubería bridada', 'Par de apriete y empaque correctos'],
-  ['Pedestal', 'Monitor elevado sobre columna o estructura', 'Anclaje a base de concreto / estructura'],
-  ['Skid / paquete', 'Sistema premontado en patín', 'Integración de bomba, válvulas y monitor'],
-  ['Vehicular (deck gun)', 'Monitor sobre unidad de bomberos', 'Refuerzo y conexión a la bomba del vehículo'],
-  ['Integración a red existente', 'Conexión a red contra incendio en operación', 'Trabajo en caliente y libranzas'],
+// pg-dens — Sin programa vs con programa
+const comparativa = [
+  ['Disponibilidad del sistema', 'Incierta: se descubre la falla en la emergencia', 'Verificada y documentada todo el año'],
+  ['Cumplimiento normativo', 'En riesgo ante auditoría o aseguradora', 'Expediente NFPA 25 al día'],
+  ['Costo de fallas', 'Reparaciones de emergencia y paros', 'Deficiencias detectadas a tiempo'],
+  ['Vida útil del equipo', 'Reducida por desgaste no atendido', 'Extendida por mantenimiento programado'],
 ];
 
 const normativas = [
-  { n: 'NFPA 24', d: 'Instalación de redes privadas contra incendio' },
+  { n: 'NFPA 25', d: 'Inspección, prueba y mantenimiento (ITM)' },
+  { n: 'NFPA 20', d: 'Prueba de bombas contra incendio' },
   { n: 'NFPA 15', d: 'Sistemas fijos de agua pulverizada' },
-  { n: 'NFPA 13', d: 'Rociadores y criterios de instalación' },
-  { n: 'NFPA 25', d: 'Base de la inspección y prueba posterior' },
-  { n: 'Prueba hidrostática', d: 'Aceptación de estanqueidad y presión' },
-  { n: 'NOM-002-STPS', d: 'Condiciones de seguridad en obra' },
+  { n: 'NFPA 11', d: 'Sistemas de espuma' },
+  { n: 'NFPA 1962', d: 'Cuidado y prueba de mangueras' },
+  { n: 'NOM-002-STPS', d: 'Condiciones de seguridad — prevención de incendios' },
 ];
 
 const errores = [
-  'Instalar sin un diseño ni una memoria de cálculo previos',
-  'Omitir la prueba hidrostática y el lavado de la red',
-  'Anclar el monitor sin considerar la carga de reacción del chorro',
-  'No documentar planos as-built ni el reporte de pruebas',
-  'Dejar la puesta en marcha sin capacitación de operación',
-  'Integrar a una red existente sin libranza ni trabajo seguro',
+  'Suponer que un sistema instalado funciona sin verificarlo',
+  'Mantener sin un calendario por frecuencia conforme a NFPA 25',
+  'No documentar inspecciones, pruebas ni deficiencias',
+  'Usar refacciones genéricas en equipo certificado',
+  'Descubrir la falla de la bomba durante la emergencia',
+  'Llegar a la auditoría sin expediente de mantenimiento',
 ];
 
 const recomendaciones = [
-  'Parta del diseño y los planos de ingeniería aprobados',
-  'Exija prueba hidrostática y lavado documentados',
-  'Verifique anclaje y alineación contra la carga de reacción',
-  'Reciba planos as-built y el expediente de pruebas',
-  'Incluya la capacitación de arranque en el alcance',
-  'Establezca desde la entrega el programa NFPA 25',
+  'Establezca un programa ITM por frecuencia conforme a NFPA 25',
+  'Documente cada inspección, prueba y deficiencia',
+  'Pruebe la bomba contra incendio con la periodicidad debida',
+  'Use refacciones originales en equipo certificado',
+  'Anticipe refacciones con un plan basado en condición',
+  'Mantenga el expediente al día para auditoría y aseguradora',
 ];
 
 const faqs = [
-  { q: '¿Qué incluye el servicio de instalación profesional?', a: 'Incluye la recepción y verificación del equipo, el replanteo en sitio, el montaje e integración con su red hidráulica y de control, las pruebas hidrostáticas y de flujo, el lavado de la red, la puesta en marcha, la capacitación de arranque y la entrega del expediente técnico con planos as-built, reporte de pruebas y garantía por escrito. Es un servicio llave en mano, no solo "atornillar el equipo".' },
-  { q: '¿Por qué es indispensable la prueba hidrostática?', a: 'La prueba hidrostática presuriza la red por encima de la presión de operación —típicamente a 200 PSI durante 2 horas conforme a NFPA 24— para verificar que no haya fugas en juntas, bridas y tubería antes de poner el sistema en servicio. Detectar una fuga en la prueba es trivial; descubrirla durante una emergencia, catastrófico. Por eso ninguna instalación seria se entrega sin ella, documentada.' },
-  { q: '¿Sus técnicos están certificados?', a: 'Sí. Nuestro personal de instalación tiene experiencia comprobada en proyectos industriales y trabaja conforme a NFPA 24 y a las especificaciones del fabricante, con los protocolos de seguridad de la NOM-002-STPS. En instalaciones que lo requieren, coordinamos libranzas y trabajo seguro con el área de seguridad del cliente.' },
-  { q: '¿Pueden integrar el equipo a mi red contra incendio existente?', a: 'Sí. Una parte importante de nuestro trabajo es la integración: conectar el nuevo monitor o sistema a la red hidráulica y de control en operación, con la libranza y el trabajo en caliente necesarios, minimizando el tiempo fuera de servicio. La integración parte del diseño para garantizar que la red existente soporte la nueva demanda.' },
-  { q: '¿Qué documentación entregan al terminar?', a: 'Entregamos el acta de entrega, el reporte de pruebas hidrostáticas y funcionales, los planos as-built (la instalación tal como quedó construida), la garantía de instalación por escrito y la condición inicial que sirve de base para el mantenimiento NFPA 25. Es la documentación que su operación, su aseguradora y Protección Civil requieren.' },
-  { q: '¿La instalación incluye garantía?', a: 'Sí. Ofrecemos garantía por escrito del montaje, adicional a la garantía de fábrica del equipo que, como distribuidores autorizados, respaldamos. Además, al ser un solo proveedor de diseño, equipo, instalación y mantenimiento, la responsabilidad es única: no hay zonas grises entre proveedores.' },
-  { q: '¿Trabajan en toda la República?', a: 'Sí. Realizamos instalaciones en los 32 estados de la República desde la Ciudad de México, coordinando logística, personal y pruebas en sitio. Para cada proyecto definimos un cronograma de obra claro y un responsable técnico.' },
+  { q: '¿Qué es la NFPA 25 y por qué rige el mantenimiento?', a: 'La NFPA 25 es la norma de Inspección, Prueba y Mantenimiento (ITM) de sistemas de protección contra incendios basados en agua. Define qué se revisa, cómo se prueba y con qué frecuencia cada componente —del monitor a la bomba y las válvulas— para garantizar que el sistema funcione el día de la emergencia. Un programa de mantenimiento serio no es "revisar de vez en cuando": es ejecutar y documentar las actividades de la NFPA 25 en su calendario correspondiente.' },
+  { q: '¿Con qué frecuencia se debe dar mantenimiento a un monitor?', a: 'Depende de la actividad. La NFPA 25 establece, por ejemplo, inspección visual trimestral, operación del monitor en todo su rango de forma anual, y lubricación y ajuste anuales; las válvulas de control se inspeccionan mensual o trimestralmente, y la bomba contra incendio se prueba semanalmente (arranque) y anualmente (flujo). En nuestro servicio integramos todas estas frecuencias en un solo calendario por equipo.' },
+  { q: '¿Qué pasa si no doy mantenimiento preventivo?', a: 'El riesgo principal es descubrir la falla en el peor momento: durante una emergencia. Sin un programa, la disponibilidad del sistema es incierta, el equipo se desgasta sin atención, el costo se traslada a reparaciones de emergencia y paros, y el incumplimiento queda expuesto ante una auditoría o la aseguradora. El mantenimiento preventivo convierte un riesgo invisible en una condición verificada y documentada.' },
+  { q: '¿Qué documentación entregan en cada visita?', a: 'Entregamos un reporte de inspección con los resultados y mediciones de cada actividad, evidencia fotográfica, la bitácora actualizada del equipo y un reporte de deficiencias con su criticidad y la acción recomendada. De forma anual, integramos un dictamen de condición del sistema. Todo conforma el expediente que su operación, aseguradora y Protección Civil requieren.' },
+  { q: '¿Usan refacciones originales?', a: 'Sí. Como distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, usamos refacciones originales de fábrica (OEM). En equipo certificado FM Approved / UL Listed, una refacción genérica puede invalidar la certificación y comprometer el desempeño; por eso no las usamos. Además, prevemos las refacciones con un plan basado en la condición para evitar paros por falta de partes.' },
+  { q: '¿El programa me sirve para mi aseguradora y para auditorías?', a: 'Sí. El expediente de cumplimiento NFPA 25 —programa, reportes, bitácoras y dictamen— es precisamente lo que las aseguradoras y la autoridad solicitan para verificar que el sistema se mantiene operativo. Un buen historial de mantenimiento no solo reduce el riesgo: respalda su póliza y facilita las auditorías.' },
+  { q: '¿Atienden cualquier marca o solo equipo AQUEON?', a: 'Atendemos su sistema completo. Aunque somos especialistas en las marcas que distribuimos, nuestro programa NFPA 25 cubre monitores, válvulas, bombas y red de otras marcas, integrando todo en un solo calendario y un solo responsable, con cobertura en los 32 estados de la República.' },
 ];
 ---
 <Base
-  title="Instalación Profesional de Sistemas Contra Incendio | Montaje y Pruebas NFPA 24 | AQUEON México"
-  description="Instalación profesional de monitores y sistemas contra incendio: montaje certificado, integración hidráulica, pruebas hidrostáticas NFPA 24, puesta en marcha y planos as-built. Técnicos con experiencia industrial y garantía por escrito con AQUEON México."
+  title="Mantenimiento Preventivo de Sistemas Contra Incendio | Programa NFPA 25 | AQUEON México"
+  description="Mantenimiento preventivo de monitores y sistemas contra incendio bajo NFPA 25: programa anual de inspección, prueba y mantenimiento (ITM), reportes de condición, refacciones originales y expediente para auditorías. Disponibilidad garantizada con AQUEON México."
 >
   <!-- Hero -->
   <section class="l3-hero">
@@ -201,16 +214,16 @@ const faqs = [
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
         <a href="/servicios">Servicios</a>
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        <span>Instalación Profesional</span>
+        <span>Mantenimiento Preventivo</span>
       </nav>
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Servicios · Instalación</span>
-          <h1>Instalación Profesional de Sistemas Contra Incendio</h1>
+          <span class="section-tag">Servicios · Mantenimiento Preventivo</span>
+          <h1>Mantenimiento Preventivo de Sistemas Contra Incendio</h1>
         </div>
         <div class="section-header__body">
-          <p>El mejor diseño falla si el <strong>montaje y las pruebas</strong> no se hacen bien.</p>
-          <p>Técnicos con experiencia industrial, <strong>pruebas hidrostáticas NFPA 24</strong> y entrega documentada con planos as-built.</p>
+          <p>Un sistema solo sirve si funciona <strong>el día de la emergencia</strong>. Eso se garantiza, no se supone.</p>
+          <p>Programa de inspección, prueba y mantenimiento conforme a <strong>NFPA 25</strong>, documentado y trazable.</p>
         </div>
       </div>
     </div>
@@ -236,22 +249,22 @@ const faqs = [
       <div class="l3-intro-grid">
         <div class="l3-intro-text">
           <span class="section-tag">El servicio</span>
-          <h2>Una Instalación es Tan Buena como sus Pruebas</h2>
+          <h2>La Disponibilidad no se Supone: se Verifica</h2>
           <p>
-            Un sistema contra incendio bien diseñado y con el mejor equipo puede fallar por una sola junta mal apretada o
-            una red que nunca se probó. La instalación no es la parte "fácil" del proyecto: es donde el diseño se vuelve
-            realidad o se pierde. La diferencia está en el <strong>rigor del montaje</strong> y, sobre todo, en las
-            <strong>pruebas de aceptación</strong> que verifican que todo funciona antes de que llegue la emergencia.
+            Un sistema contra incendio pasa el 99.9% de su vida sin usarse. El problema es que nadie sabe si funcionará en
+            ese 0.1% que importa —la emergencia— a menos que se <strong>inspeccione y se pruebe con método</strong>. Una
+            válvula cerrada por error, una bomba que no arranca o un monitor agarrotado por falta de lubricación convierten
+            una inversión en protección en una falsa sensación de seguridad.
           </p>
           <p>
-            En AQUEON instalamos con <strong>técnicos de experiencia industrial</strong>, integramos el sistema con su red
-            hidráulica y de control, ejecutamos <strong>prueba hidrostática, lavado y pruebas funcionales</strong> conforme a
-            NFPA 24, y entregamos el sistema con planos as-built, reporte de pruebas y garantía por escrito. Un solo
-            proveedor del diseño a la puesta en marcha: responsabilidad única, sin zonas grises.
+            El mantenimiento preventivo de AQUEON sigue la <strong>NFPA 25</strong>, la norma de inspección, prueba y
+            mantenimiento (ITM). No "revisamos de vez en cuando": ejecutamos un <strong>programa por frecuencia</strong>,
+            documentamos cada actividad, detectamos deficiencias antes de que sean fallas y entregamos el expediente que su
+            aseguradora y la autoridad exigen. Con refacciones originales y un solo responsable.
           </p>
           <p>
-            En esta página verá las fases de la instalación, el protocolo de pruebas de aceptación, lo que incluye el
-            servicio y los tipos de montaje e integración que realizamos.
+            En esta página verá cómo opera el programa, la matriz de frecuencias de la NFPA 25, lo que recibe en cada visita
+            y la diferencia entre operar con programa y sin él.
           </p>
         </div>
         <ul class="l3-benefits">
@@ -263,17 +276,17 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 1: Fases -->
+  <!-- DIFERENCIADOR 1: Cómo opera el programa -->
   <section class="pg-chain">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Metodología</span>
-          <h2>Las Cuatro Fases de la Instalación</h2>
+          <h2>Cómo Opera un Programa NFPA 25</h2>
         </div>
         <div class="section-header__body">
-          <p>De la <strong>recepción del equipo</strong> a la <strong>puesta en marcha</strong>, cada fase con su entregable.</p>
-          <p>Un proceso controlado que termina en un sistema probado y documentado.</p>
+          <p>Del <strong>inventario</strong> al <strong>dictamen anual</strong>, un ciclo que mejora con el tiempo.</p>
+          <p>Cada fase con su entregable, para que el mantenimiento sea trazable.</p>
         </div>
       </div>
       <div class="pg-chain-grid">
@@ -301,60 +314,60 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 2: Protocolo de pruebas -->
+  <!-- DIFERENCIADOR 2: Matriz de frecuencias -->
   <section class="pg-scen">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Control de calidad</span>
-          <h2>Protocolo de Pruebas de Aceptación</h2>
+          <span class="section-tag">El corazón del servicio</span>
+          <h2>Matriz de Frecuencias NFPA 25</h2>
         </div>
         <div class="section-header__body">
-          <p>Ningún sistema se entrega sin <strong>probarse</strong>: esto es lo que verificamos antes de operar.</p>
-          <p>Cada prueba con su criterio y su norma, documentada en el reporte de entrega.</p>
+          <p>No todo se revisa igual ni con la misma <strong>periodicidad</strong>: esto es lo que exige la norma.</p>
+          <p>Cada actividad en su frecuencia, integrada en un solo calendario.</p>
         </div>
       </div>
       <div class="pg-scen-wrap">
         <table class="pg-scen-table">
           <thead>
             <tr>
-              <th scope="col">Prueba</th>
+              <th scope="col">Actividad</th>
               <th scope="col">En qué consiste</th>
-              <th scope="col">Qué verifica</th>
-              <th scope="col">Norma / criterio</th>
+              <th scope="col">Frecuencia</th>
+              <th scope="col">Norma</th>
             </tr>
           </thead>
           <tbody>
-            {pruebas.map((e) => (
+            {frecuencias.map((e) => (
               <tr>
                 <th scope="row"><span class="pg-scen-name"><i class={e.icon} aria-hidden="true"></i> {e.nombre}</span></th>
                 <td>{e.descripcion}</td>
-                <td>{e.verifica}</td>
-                <td class="pg-scen-sol">{e.norma}</td>
+                <td class="pg-scen-sol">{e.frecuencia}</td>
+                <td>{e.norma}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> Los valores y tiempos de prueba se ajustan al diseño del proyecto y a la presión de operación de la red.</p>
+      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> Las frecuencias son las que establece la NFPA 25; el programa final se ajusta al tipo de sistema y a las condiciones del sitio.</p>
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 3: Qué incluye -->
+  <!-- DIFERENCIADOR 3: Qué recibe -->
   <section class="pg-sol">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Alcance</span>
-          <h2>Qué Incluye la Instalación</h2>
+          <span class="section-tag">Entregables</span>
+          <h2>Qué Recibe con el Programa</h2>
         </div>
         <div class="section-header__body">
-          <p>Más que montaje: <strong>pruebas, documentación y garantía</strong> en un solo alcance.</p>
+          <p>Documentación que demuestra que su sistema está <strong>operativo y al día</strong>.</p>
           <p>Cada entregable enlaza con el servicio o equipo correspondiente.</p>
         </div>
       </div>
       <div class="pg-sol-grid">
-        {incluye.map((s) => (
+        {recibe.map((s) => (
           <article class="pg-sol-card">
             <span class="pg-sol-icon" aria-hidden="true"><i class={s.icon}></i></span>
             <h3>{s.titulo}</h3>
@@ -366,28 +379,28 @@ const faqs = [
     </div>
   </section>
 
-  <!-- pg-dens: Tipos de montaje -->
+  <!-- pg-dens: Sin vs con programa -->
   <section class="pg-dens">
     <div class="container">
       <div class="pg-dens-grid">
         <div class="pg-dens-text">
-          <span class="section-tag">Integración</span>
-          <h2>Tipos de Montaje e Integración</h2>
+          <span class="section-tag">El valor real</span>
+          <h2>Con Programa vs Sin Programa</h2>
           <p>
-            Cada proyecto exige un <strong>tipo de montaje</strong> distinto, con sus propias consideraciones técnicas: del
-            monitor bridado a la integración de un patín completo o un sistema vehicular. Definimos el montaje a partir del
-            diseño y de la infraestructura existente, cuidando el anclaje frente a la carga de reacción del chorro.
+            La diferencia entre tener un programa NFPA 25 y no tenerlo no se ve en el día a día: se ve el día de la
+            emergencia y el día de la auditoría. El mantenimiento preventivo convierte un <strong>riesgo invisible</strong>
+            en una condición verificada, documentada y respaldada.
           </p>
-          <a href="/productos" class="btn btn-outline"><i class="fas fa-layer-group" aria-hidden="true"></i> Ver catálogo de equipo</a>
+          <a href="/servicios#planes" class="btn btn-outline"><i class="fas fa-layer-group" aria-hidden="true"></i> Ver planes de servicio</a>
         </div>
         <div class="pg-dens-wrap">
           <table class="pg-dens-table">
             <thead>
-              <tr><th scope="col">Tipo de montaje</th><th scope="col">Aplicación</th><th scope="col">Consideración clave</th></tr>
+              <tr><th scope="col">Aspecto</th><th scope="col">Sin programa</th><th scope="col">Con programa NFPA 25</th></tr>
             </thead>
             <tbody>
-              {montajes.map(([t, a, c]) => (
-                <tr><th scope="row">{t}</th><td>{a}</td><td>{c}</td></tr>
+              {comparativa.map(([a, s, c]) => (
+                <tr><th scope="row">{a}</th><td>{s}</td><td class="pg-dens-ok">{c}</td></tr>
               ))}
             </tbody>
           </table>
@@ -422,19 +435,19 @@ const faqs = [
       <div class="l3-aqueon-inner">
         <div class="l3-aqueon-text">
           <span class="section-tag">Por qué AQUEON</span>
-          <h2>Del Diseño a la Puesta en Marcha, un Solo Responsable</h2>
+          <h2>Su Sistema, Operativo el Día que Importa</h2>
           <p>
-            En <strong>AQUEON</strong> la instalación es la continuación natural de nuestra ingeniería. Instalamos con
-            <strong>técnicos de experiencia industrial</strong>, integramos con su red existente y probamos cada sistema
-            conforme a NFPA 24 antes de entregarlo. Al ser un solo proveedor de diseño, equipo certificado, instalación y
-            mantenimiento, la <strong>responsabilidad es única</strong>: no hay zonas grises entre proveedores.
+            En <strong>AQUEON</strong> el mantenimiento no es un servicio de relleno: es lo que garantiza que toda la
+            inversión en diseño, equipo e instalación realmente proteja. Ejecutamos programas <strong>NFPA 25</strong> con
+            técnicos de experiencia industrial y <strong>refacciones originales</strong>, documentamos cada actividad y
+            anticipamos deficiencias antes de que se vuelvan fallas. Un solo responsable de todo el ciclo de vida.
           </p>
           <p>
-            Instalamos para <strong>refinerías, plantas, parques industriales, aeropuertos, minería y gobierno</strong>, con
-            documentación de entrega completa y cobertura en los 32 estados de la República desde la Ciudad de México.
+            Mantenemos sistemas en <strong>refinerías, plantas, parques industriales, aeropuertos, minería y gobierno</strong>,
+            con expediente de cumplimiento completo y cobertura en los 32 estados de la República desde la Ciudad de México.
           </p>
           <div class="l3-aqueon-actions">
-            <a href="/diseno-ingenieria" class="btn btn-outline-light"><i class="fas fa-compass-drafting" aria-hidden="true"></i> Ver diseño e ingeniería</a>
+            <a href="/servicios#mantenimiento-correctivo" class="btn btn-outline-light"><i class="fas fa-wrench" aria-hidden="true"></i> Mantenimiento correctivo</a>
             <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Todos los servicios</a>
           </div>
         </div>
@@ -450,7 +463,7 @@ const faqs = [
     </div>
   </section>
 
-  <FaqContactSplit titulo="Dudas sobre Instalación Profesional" contexto="el servicio de instalación de sistemas contra incendio" faqs={faqs} />
+  <FaqContactSplit titulo="Dudas sobre Mantenimiento Preventivo" contexto="el servicio de mantenimiento preventivo NFPA 25" faqs={faqs} />
 
   <!-- Otros servicios -->
   <section class="l3-otras">
@@ -466,9 +479,9 @@ const faqs = [
         </div>
       </div>
       <div class="l3-otras-grid">
-        <a href="/diseno-ingenieria" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-compass-drafting" aria-hidden="true"></i></span><span class="l3-otra-name">Diseño e Ingeniería</span><span class="l3-otra-sub">Cálculo hidráulico · planos</span></a>
-        <a href="/mantenimiento-preventivo" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span><span class="l3-otra-name">Mantenimiento Preventivo</span><span class="l3-otra-sub">NFPA 25 · disponibilidad</span></a>
-        <a href="/servicios#capacitacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-chalkboard-user" aria-hidden="true"></i></span><span class="l3-otra-name">Capacitación</span><span class="l3-otra-sub">Brigadas y operadores</span></a>
+        <a href="/instalacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Instalación Profesional</span><span class="l3-otra-sub">Montaje certificado · pruebas</span></a>
+        <a href="/servicios#mantenimiento-correctivo" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Mantenimiento Correctivo</span><span class="l3-otra-sub">Respuesta 24/7</span></a>
+        <a href="/servicios#consultoria-normativa" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></span><span class="l3-otra-name">Consultoría Normativa</span><span class="l3-otra-sub">Auditorías · aseguradoras</span></a>
         <a href="/servicios" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todos los servicios</span><span class="l3-otra-sub">Ciclo de vida completo</span></a>
       </div>
     </div>
@@ -479,8 +492,8 @@ const faqs = [
     <div class="container">
       <div class="l3-cta-inner">
         <div>
-          <h2>¿Listo para instalar su sistema con garantía?</h2>
-          <p>Cotización técnica del servicio en menos de 24 horas. Visita de obra y cronograma claro sin costo ni compromiso.</p>
+          <h2>¿Listo para garantizar la disponibilidad de su sistema?</h2>
+          <p>Cotización del programa en menos de 24 horas. Visita de evaluación y línea base sin costo ni compromiso.</p>
         </div>
         <div class="l3-cta-actions">
           <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
@@ -531,13 +544,13 @@ const faqs = [
   .pg-block-label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: var(--space-xs); }
   .pg-block-label i { color: var(--red); }
 
-  /* DIF 2 — Pruebas (pg-scen) */
+  /* DIF 2 — Frecuencias (pg-scen) */
   .pg-scen { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-scen-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
   .pg-scen-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 48rem; }
   .pg-scen-table th, .pg-scen-table td { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
   .pg-scen-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 22%; }
+  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 24%; }
   .pg-scen-table tbody td { background: var(--surface-2); color: var(--text-body); }
   .pg-scen-name { display: inline-flex; align-items: center; gap: 0.5rem; }
   .pg-scen-name i { color: var(--red-hover); }
@@ -546,7 +559,7 @@ const faqs = [
   .pg-note { margin: var(--space-md) 0 0; font-size: var(--text-xs); color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
   .pg-note i { color: var(--red); }
 
-  /* DIF 3 — Incluye (pg-sol) */
+  /* DIF 3 — Recibe (pg-sol) */
   .pg-sol { background: var(--bg-0); padding: var(--section-pad) 0; }
   .pg-sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
   .pg-sol-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; }
@@ -558,7 +571,7 @@ const faqs = [
   .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
   .pg-sol-link:hover i { transform: translateX(3px); }
 
-  /* pg-dens — Montajes */
+  /* pg-dens — Comparativa */
   .pg-dens { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-dens-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 4%, 3.5rem); align-items: center; }
   .pg-dens-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
@@ -567,8 +580,9 @@ const faqs = [
   .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 32rem; }
   .pg-dens-table th, .pg-dens-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
   .pg-dens-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-dens-table tbody th { background: var(--surface); color: var(--red-hover); font-weight: 700; width: 24%; }
+  .pg-dens-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 26%; }
   .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-body); }
+  .pg-dens-table .pg-dens-ok { color: var(--text-strong); font-weight: 600; }
   .pg-dens-table tr:last-child th, .pg-dens-table tr:last-child td { border-bottom: none; }
 
   /* Guía errores/reco */
