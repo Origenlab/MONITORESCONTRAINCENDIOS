@@ -3,198 +3,202 @@ import Base from '../layouts/Base.astro';
 import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 
 const stats = [
-  { numero: '24/7', label: 'Servicio de emergencia' },
-  { numero: '< 24 h', label: 'Respuesta a la falla' },
-  { numero: 'OEM', label: 'Refacciones 100% originales' },
-  { numero: 'NFPA 25', label: 'Verificación posterior a la reparación' },
+  { numero: 'NOM-002', label: 'STPS — prevención de incendios' },
+  { numero: 'NFPA', label: 'Marco técnico internacional' },
+  { numero: 'FM Global', label: 'Requisitos de aseguradora' },
+  { numero: 'Gap', label: 'Análisis de brechas y dictamen' },
 ];
 
 const beneficios = [
-  'Atención de emergencias las 24 horas, los 365 días',
-  'Diagnóstico especializado de la causa raíz de la falla',
-  'Refacciones originales de fábrica, sin genéricos',
-  'Verificación funcional tras la reparación (NFPA 25)',
-  'Reporte de servicio y garantía de la reparación',
-  'Recomendación para evitar que la falla se repita',
+  'Diagnóstico de cumplimiento (gap analysis) por norma',
+  'Dictamen de cumplimiento con hallazgos y criticidad',
+  'Plan de acción priorizado para cerrar brechas',
+  'Expediente técnico listo para auditoría e inspección',
+  'Gestión y respaldo ante aseguradoras y Protección Civil',
+  'Actualización ante cambios normativos',
 ];
 
-// DIFERENCIADOR 1 — Flujo de respuesta de emergencia (pg-chain)
+// DIFERENCIADOR 1 — Fases de la consultoría (pg-chain)
 const fases = [
   {
-    id: 'reporte',
-    eslabon: 'Paso 01',
-    titulo: 'Recepción del Reporte',
-    icon: 'fas fa-headset',
-    descripcion: 'Recibimos el reporte de falla las 24 horas, clasificamos su criticidad y activamos al técnico según el nivel de servicio.',
-    incluye: ['Atención 24/7', 'Clasificación de criticidad', 'Activación de técnico', 'Confirmación de tiempo'],
-    entrega: 'Ticket de servicio',
-  },
-  {
     id: 'diagnostico',
-    eslabon: 'Paso 02',
-    titulo: 'Diagnóstico en Sitio',
-    icon: 'fas fa-magnifying-glass',
-    descripcion: 'Identificamos la causa raíz de la falla —no solo el síntoma— para reparar de fondo y evitar que se repita.',
-    incluye: ['Inspección de la falla', 'Causa raíz', 'Alcance de reparación', 'Refacciones requeridas'],
-    entrega: 'Diagnóstico de falla',
+    eslabon: 'Fase 01',
+    titulo: 'Diagnóstico (Gap Analysis)',
+    icon: 'fas fa-magnifying-glass-chart',
+    descripcion: 'Comparamos su instalación y documentación contra la normativa aplicable para identificar todas las brechas de cumplimiento.',
+    incluye: ['Levantamiento documental', 'Inspección en sitio', 'Brechas por norma', 'Nivel de criticidad'],
+    entrega: 'Análisis de brechas',
   },
   {
-    id: 'reparacion',
-    eslabon: 'Paso 03',
-    titulo: 'Reparación con OEM',
-    icon: 'fas fa-wrench',
-    descripcion: 'Reparamos o sustituimos con refacciones originales de fábrica para mantener la certificación y el desempeño del equipo.',
-    incluye: ['Refacciones OEM', 'Reparación o cambio', 'Ajuste y calibración', 'Minimizar el paro'],
-    entrega: 'Equipo reparado',
+    id: 'dictamen',
+    eslabon: 'Fase 02',
+    titulo: 'Dictamen de Cumplimiento',
+    icon: 'fas fa-file-contract',
+    descripcion: 'Emitimos un dictamen con el estado de cumplimiento, los hallazgos y su sustento normativo, claro y verificable.',
+    incluye: ['Estado de cumplimiento', 'Hallazgos sustentados', 'Referencia normativa', 'Evidencia'],
+    entrega: 'Dictamen técnico',
   },
   {
-    id: 'verificacion',
-    eslabon: 'Paso 04',
-    titulo: 'Verificación y Reanudación',
-    icon: 'fas fa-circle-check',
-    descripcion: 'Probamos el equipo conforme a NFPA 25, confirmamos su operación y entregamos el reporte con la garantía de la reparación.',
-    incluye: ['Prueba funcional', 'Verificación de desempeño', 'Reporte de servicio', 'Garantía de reparación'],
-    entrega: 'Sistema operativo',
-  },
-];
-
-// DIFERENCIADOR 2 — Matriz de diagnóstico (pg-scen)
-const diagnostico = [
-  {
-    icon: 'fas fa-droplet',
-    nombre: 'Fuga en el monitor o juntas',
-    descripcion: 'Goteo o pérdida de presión en conexiones, empaques o sellos.',
-    causa: 'Empaque desgastado, par de apriete o corrosión.',
-    accion: 'Cambio de sello / empaque OEM y reapriete',
+    id: 'plan',
+    eslabon: 'Fase 03',
+    titulo: 'Plan de Acción',
+    icon: 'fas fa-list-check',
+    descripcion: 'Definimos las acciones para cerrar cada brecha, priorizadas por riesgo y con responsables y tiempos.',
+    incluye: ['Acciones por brecha', 'Priorización por riesgo', 'Responsables', 'Cronograma'],
+    entrega: 'Plan priorizado',
   },
   {
-    icon: 'fas fa-lock',
-    nombre: 'Monitor agarrotado',
-    descripcion: 'Resistencia o bloqueo en el giro o la elevación del monitor.',
-    causa: 'Falta de lubricación, corrosión o suciedad interna.',
-    accion: 'Limpieza, lubricación y ajuste de mecanismo',
-  },
-  {
-    icon: 'fas fa-gauge-simple-high',
-    nombre: 'Baja presión o caudal',
-    descripcion: 'El sistema no entrega el desempeño esperado en la descarga.',
-    causa: 'Obstrucción, válvula parcial o falla de bomba.',
-    accion: 'Diagnóstico hidráulico y corrección del origen',
-  },
-  {
-    icon: 'fas fa-pump-medical',
-    nombre: 'La bomba no arranca',
-    descripcion: 'La bomba contra incendio no responde en la prueba o demanda.',
-    causa: 'Tablero, batería, controlador o falla mecánica.',
-    accion: 'Diagnóstico del controlador y de la bomba',
-  },
-  {
-    icon: 'fas fa-tower-broadcast',
-    nombre: 'Control remoto sin respuesta',
-    descripcion: 'El monitor remoto no obedece el joystick o el tablero.',
-    causa: 'Cableado, actuador o tarjeta de control.',
-    accion: 'Diagnóstico eléctrico y de control',
-  },
-  {
-    icon: 'fas fa-faucet',
-    nombre: 'Válvula con fuga o trabada',
-    descripcion: 'Válvula de control que no sella o no opera correctamente.',
-    causa: 'Asiento dañado, vástago o accionamiento.',
-    accion: 'Reparación o reemplazo de la válvula',
+    id: 'auditoria',
+    eslabon: 'Fase 04',
+    titulo: 'Acompañamiento en Auditoría',
+    icon: 'fas fa-people-arrows',
+    descripcion: 'Lo acompañamos ante la autoridad o la aseguradora con el expediente integrado y la defensa técnica del cumplimiento.',
+    incluye: ['Expediente integrado', 'Defensa técnica', 'Atención a observaciones', 'Seguimiento'],
+    entrega: 'Expediente de auditoría',
   },
 ];
 
-// DIFERENCIADOR 3 — Qué incluye (pg-sol)
-const incluye = [
+// DIFERENCIADOR 2 — Marco normativo y obligaciones (pg-scen)
+const marco = [
   {
-    icon: 'fas fa-stethoscope',
-    titulo: 'Diagnóstico de falla',
-    texto: 'Identificación de la causa raíz, no solo del síntoma, para una reparación de fondo.',
-    producto: 'Reportar una falla',
-    url: '/contacto',
-  },
-  {
-    icon: 'fas fa-file-lines',
-    titulo: 'Reporte de servicio',
-    texto: 'Documento con el diagnóstico, la reparación ejecutada y las refacciones utilizadas.',
-    producto: 'Solicitar este servicio',
-    url: '/contacto',
-  },
-  {
-    icon: 'fas fa-box-open',
-    titulo: 'Refacciones originales (OEM)',
-    texto: 'Partes originales de fábrica para mantener la certificación y el desempeño del equipo.',
-    producto: 'Ver catálogo de equipo',
-    url: '/productos',
-  },
-  {
-    icon: 'fas fa-shield-halved',
-    titulo: 'Garantía de la reparación',
-    texto: 'Respaldo por escrito de la reparación realizada y de las partes sustituidas.',
-    producto: 'Solicitar este servicio',
-    url: '/contacto',
+    icon: 'fas fa-helmet-safety',
+    nombre: 'NOM-002-STPS',
+    descripcion: 'Condiciones de seguridad para prevención y protección contra incendios.',
+    exige: 'Brigadas, equipo, simulacros y programa de seguridad.',
+    aplica: 'Todo centro de trabajo',
   },
   {
     icon: 'fas fa-clipboard-check',
-    titulo: 'Recomendación preventiva',
-    texto: 'Acciones para evitar que la falla se repita, integrables a su programa NFPA 25.',
+    nombre: 'NFPA 25',
+    descripcion: 'Inspección, prueba y mantenimiento de sistemas a base de agua.',
+    exige: 'Programa de ITM documentado por frecuencia.',
+    aplica: 'Instalaciones con red contra incendio',
+  },
+  {
+    icon: 'fas fa-compass-drafting',
+    nombre: 'NFPA 11 / 15 / 24',
+    descripcion: 'Diseño e instalación de espuma, agua pulverizada y redes.',
+    exige: 'Sistemas calculados y conformes a norma.',
+    aplica: 'Proyectos nuevos y modificaciones',
+  },
+  {
+    icon: 'fas fa-building-shield',
+    nombre: 'FM Global',
+    descripcion: 'Hojas de datos y criterios de la aseguradora.',
+    exige: 'Equipo aprobado y diseño conforme a Data Sheets.',
+    aplica: 'Industria y almacenamiento asegurados',
+  },
+  {
+    icon: 'fas fa-landmark',
+    nombre: 'Programa Interno de PC',
+    descripcion: 'Programa Interno de Protección Civil ante la autoridad.',
+    exige: 'Documentación, análisis de riesgo y simulacros.',
+    aplica: 'Inmuebles obligados por la ley',
+  },
+  {
+    icon: 'fas fa-file-shield',
+    nombre: 'Requisitos de aseguradora',
+    descripcion: 'Condiciones de la póliza en materia de protección.',
+    exige: 'Evidencia de mantenimiento y cumplimiento.',
+    aplica: 'Instalaciones aseguradas',
+  },
+];
+
+// DIFERENCIADOR 3 — Entregables (pg-sol)
+const entregables = [
+  {
+    icon: 'fas fa-file-contract',
+    titulo: 'Dictamen de cumplimiento',
+    texto: 'Documento técnico con el estado de cumplimiento y los hallazgos sustentados por norma.',
+    producto: 'Solicitar este servicio',
+    url: '/contacto',
+  },
+  {
+    icon: 'fas fa-table-list',
+    titulo: 'Gap analysis',
+    texto: 'Matriz de brechas entre su situación actual y la normativa aplicable, con criticidad.',
+    producto: 'Solicitar este servicio',
+    url: '/contacto',
+  },
+  {
+    icon: 'fas fa-list-check',
+    titulo: 'Plan de acción',
+    texto: 'Acciones priorizadas por riesgo con responsables y tiempos para cerrar las brechas.',
+    producto: 'Solicitar este servicio',
+    url: '/contacto',
+  },
+  {
+    icon: 'fas fa-folder-open',
+    titulo: 'Expediente para auditoría',
+    texto: 'Documentación integrada y ordenada para enfrentar una inspección o auditoría.',
     producto: 'Ver mantenimiento preventivo',
     url: '/mantenimiento-preventivo',
   },
   {
-    icon: 'fas fa-headset',
-    titulo: 'Soporte 24/7',
-    texto: 'Línea de emergencia disponible todo el año para fallas que no pueden esperar.',
-    producto: 'Contactar a AQUEON',
-    url: '/contacto',
+    icon: 'fas fa-building-shield',
+    titulo: 'Gestión con aseguradora',
+    texto: 'Respaldo técnico para satisfacer los requisitos de su póliza y mejorar condiciones.',
+    producto: 'Ver industrias',
+    url: '/industrias',
+  },
+  {
+    icon: 'fas fa-rotate',
+    titulo: 'Actualización normativa',
+    texto: 'Seguimiento de cambios en normas y su impacto en su instalación.',
+    producto: 'Ver diseño e ingeniería',
+    url: '/diseno-ingenieria',
   },
 ];
 
-// pg-dens — Niveles de respuesta (SLA)
-const sla = [
-  ['AQUEON Basic', 'Soporte en horario de oficina', 'Atención según disponibilidad'],
-  ['AQUEON Plus', 'Respuesta prioritaria en 24 horas', 'Cobertura ampliada'],
-  ['AQUEON Premium', 'Emergencia 24/7 (4 h de respuesta)', 'Técnico dedicado y refacciones en consignación'],
+// pg-dens — Hallazgos comunes en auditoría
+const hallazgos = [
+  ['Sin programa NFPA 25 documentado', 'Sistema sin verificación; riesgo en auditoría', 'Implementar programa ITM'],
+  ['Equipo sin certificación verificable', 'Rechazo de aseguradora y autoridad', 'Sustituir por equipo FM/UL'],
+  ['Falta de memoria de cálculo', 'Diseño no sustentado técnicamente', 'Elaborar ingeniería de respaldo'],
+  ['Brigada sin capacitación / DC-3', 'Incumplimiento de NOM-002-STPS', 'Capacitar y certificar'],
+  ['Expediente incompleto', 'Observaciones y sanciones en inspección', 'Integrar expediente técnico'],
 ];
 
 const normativas = [
-  { n: 'NFPA 25', d: 'Verificación funcional posterior a la reparación' },
-  { n: 'NFPA 20', d: 'Bombas contra incendio' },
-  { n: 'Refacciones OEM', d: 'Partes originales del fabricante' },
-  { n: 'Soporte 24/7', d: 'Atención de emergencia todo el año' },
-  { n: 'NOM-002-STPS', d: 'Condiciones de seguridad en el servicio' },
+  { n: 'NOM-002-STPS', d: 'Prevención y protección contra incendios' },
+  { n: 'NFPA 25', d: 'Inspección, prueba y mantenimiento' },
+  { n: 'NFPA 11 / 15 / 24', d: 'Espuma, agua pulverizada y redes' },
+  { n: 'FM Global', d: 'Criterios de aseguradora' },
+  { n: 'Protección Civil', d: 'Programa Interno y normatividad local' },
+  { n: 'NOM-100/101/102/103/104', d: 'Extintores y equipo (según aplique)' },
 ];
 
 const errores = [
-  'Reparar el síntoma sin atender la causa raíz de la falla',
-  'Usar refacciones genéricas en equipo certificado',
-  'No verificar el equipo conforme a NFPA 25 tras reparar',
-  'Carecer de una línea de emergencia para fallas críticas',
-  'No documentar la reparación ni las partes sustituidas',
-  'Ignorar la recomendación para evitar la recurrencia',
+  'Esperar a la auditoría para revisar el cumplimiento',
+  'Tratar la norma como trámite y no como gestión de riesgo',
+  'Desconocer qué normas aplican a su instalación',
+  'No documentar mantenimiento, diseño ni capacitación',
+  'Ignorar los requisitos específicos de la aseguradora',
+  'No actualizar el cumplimiento ante cambios normativos',
 ];
 
 const recomendaciones = [
-  'Atienda la causa raíz, no solo el síntoma visible',
-  'Exija refacciones originales de fábrica (OEM)',
-  'Verifique el equipo conforme a NFPA 25 tras la reparación',
-  'Defina un nivel de servicio con tiempo de respuesta claro',
-  'Documente cada reparación y mantenga la trazabilidad',
-  'Integre la recomendación preventiva a su programa NFPA 25',
+  'Realice un gap analysis antes de cualquier auditoría',
+  'Trate el cumplimiento como gestión continua del riesgo',
+  'Identifique con claridad las normas aplicables a su giro',
+  'Documente diseño, mantenimiento y capacitación',
+  'Atienda los requisitos de su aseguradora desde el inicio',
+  'Actualice el expediente ante cada cambio normativo',
 ];
 
 const faqs = [
-  { q: '¿Qué tan rápido responden a una emergencia?', a: 'Depende del nivel de servicio contratado. Atendemos reportes las 24 horas y, en el nivel Premium, ofrecemos respuesta de emergencia con técnico en sitio en 4 horas; en el nivel Plus, respuesta prioritaria en 24 horas. Para cualquier cliente, respondemos el reporte de inmediato, clasificamos la criticidad y activamos la atención correspondiente. Mantenemos cobertura en los 32 estados de la República.' },
-  { q: '¿Por qué insisten en refacciones originales (OEM)?', a: 'En equipo certificado FM Approved / UL Listed, una refacción genérica puede comprometer el desempeño hidráulico y, peor aún, invalidar la certificación del equipo. Como distribuidores autorizados de Elkhart Brass, Akron Brass y Task Force Tips, usamos exclusivamente refacciones originales de fábrica, garantizando que el equipo reparado conserve su desempeño y su respaldo.' },
-  { q: '¿Diagnostican la causa raíz o solo reparan el síntoma?', a: 'Diagnosticamos la causa raíz. Reparar solo el síntoma —cambiar un sello sin entender por qué falló, por ejemplo— casi garantiza que la falla regrese. Nuestro técnico identifica el origen real (corrosión, falta de lubricación, una válvula parcial, un problema de bomba) para reparar de fondo y dejar una recomendación que evite la recurrencia.' },
-  { q: '¿Verifican el equipo después de repararlo?', a: 'Sí. Tras la reparación probamos el equipo conforme a NFPA 25 —operación en todo su rango, presión y caudal, y en remotos el control— para confirmar que quedó operativo, no solo "arreglado". Entregamos un reporte de servicio con el diagnóstico, la reparación, las refacciones y la verificación, además de la garantía de la reparación.' },
-  { q: '¿El correctivo reemplaza al mantenimiento preventivo?', a: 'No: lo complementa. El mantenimiento preventivo (NFPA 25) busca evitar las fallas detectándolas a tiempo; el correctivo atiende la falla cuando ocurre. Lo ideal es tener un programa preventivo sólido y un correctivo de respaldo para lo imprevisto. De hecho, cada correctivo nos deja una recomendación que integramos a su programa preventivo para reducir futuras fallas.' },
-  { q: '¿Atienden equipo de cualquier marca?', a: 'Sí. Aunque somos especialistas en las marcas que distribuimos, nuestro servicio correctivo atiende monitores, válvulas, bombas y red de otras marcas. Diagnosticamos y reparamos su sistema completo, con un solo responsable y refacciones originales cuando aplica.' },
+  { q: '¿Qué normas aplican a la protección contra incendios en mi instalación?', a: 'Depende de su giro y su riesgo, pero el marco típico combina la NOM-002-STPS (prevención de incendios y brigadas, obligatoria para todo centro de trabajo), el cuerpo normativo NFPA (NFPA 25 para mantenimiento, NFPA 11/15/24 para diseño e instalación), los criterios de FM Global cuando hay aseguradora, y el Programa Interno de Protección Civil ante la autoridad. Parte de nuestra consultoría es precisamente identificar con claridad qué le aplica y por qué.' },
+  { q: '¿Qué es un gap analysis de cumplimiento?', a: 'Es un análisis de brechas: comparamos el estado real de su instalación y su documentación contra lo que exige cada norma aplicable, e identificamos todo lo que falta o no cumple, clasificado por criticidad. El resultado es un mapa claro de dónde está usted y qué le separa del cumplimiento total, que se traduce en un plan de acción priorizado. Es la base de cualquier proceso serio de cumplimiento.' },
+  { q: '¿Me ayudan a prepararme para una auditoría o inspección?', a: 'Sí. Integramos el expediente técnico —diseño, memorias de cálculo, mantenimiento NFPA 25, capacitación, certificaciones del equipo— y lo acompañamos ante la autoridad o la aseguradora con la defensa técnica del cumplimiento. La diferencia entre aprobar y reprobar una auditoría suele estar en la documentación y en saber sustentarla; en eso lo respaldamos.' },
+  { q: '¿La consultoría me sirve para mejorar las condiciones de mi póliza?', a: 'Frecuentemente sí. Las aseguradoras evalúan el riesgo a partir del cumplimiento y la documentación. Un expediente sólido —equipo aprobado, diseño sustentado, mantenimiento al día— no solo reduce el riesgo real: respalda su póliza y puede mejorar las condiciones de cobertura. Gestionamos ese respaldo técnico con su aseguradora.' },
+  { q: '¿Qué entregables recibo de la consultoría?', a: 'Recibe un dictamen de cumplimiento, la matriz de gap analysis con la criticidad de cada brecha, un plan de acción priorizado con responsables y tiempos, y el expediente técnico integrado para auditoría. Si lo requiere, damos seguimiento al cierre de las brechas con los demás servicios —diseño, instalación, mantenimiento y capacitación— como un solo proveedor.' },
+  { q: '¿Cada cuánto debo revisar mi cumplimiento?', a: 'El cumplimiento no es un estado fijo: las normas se actualizan, la instalación cambia y los requisitos de la aseguradora evolucionan. Recomendamos una revisión anual y, especialmente, ante cualquier modificación del sistema, cambio de actividad o renovación de póliza. Podemos integrar la actualización normativa a su programa anual.' },
+  { q: '¿Solo dictaminan o también cierran las brechas?', a: 'Ambas cosas. A diferencia de un consultor que solo entrega un dictamen y se retira, en AQUEON podemos cerrar las brechas que identificamos: rediseñar, suministrar equipo certificado, instalar, dar mantenimiento y capacitar. Un solo responsable del diagnóstico a la solución, lo que hace el cumplimiento mucho más ágil y verificable.' },
 ];
 ---
 <Base
-  title="Mantenimiento Correctivo de Sistemas Contra Incendio | Emergencia 24/7 | AQUEON México"
-  description="Mantenimiento correctivo de monitores y sistemas contra incendio: respuesta de emergencia 24/7, diagnóstico de causa raíz, refacciones originales OEM y verificación NFPA 25. Reporte de servicio y garantía de la reparación con AQUEON México."
+  title="Consultoría Normativa Contra Incendios | NOM-002-STPS, NFPA y FM Global | AQUEON México"
+  description="Consultoría normativa en protección contra incendios: diagnóstico de cumplimiento (gap analysis), dictamen, plan de acción y acompañamiento en auditorías conforme a NOM-002-STPS, NFPA y FM Global. Expediente listo para autoridad y aseguradoras con AQUEON México."
 >
   <!-- Hero -->
   <section class="l3-hero">
@@ -204,16 +208,16 @@ const faqs = [
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
         <a href="/servicios">Servicios</a>
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        <span>Mantenimiento Correctivo</span>
+        <span>Consultoría Normativa</span>
       </nav>
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Servicios · Mantenimiento Correctivo</span>
-          <h1>Mantenimiento Correctivo de Sistemas Contra Incendio</h1>
+          <span class="section-tag">Servicios · Consultoría Normativa</span>
+          <h1>Consultoría Normativa Contra Incendios</h1>
         </div>
         <div class="section-header__body">
-          <p>Cuando algo falla, el reloj corre. <strong>Respuesta de emergencia 24/7</strong> con diagnóstico de causa raíz.</p>
-          <p>Reparación con <strong>refacciones originales</strong> y verificación conforme a NFPA 25, documentada y con garantía.</p>
+          <p>El cumplimiento no se improvisa en la auditoría: se <strong>construye y se documenta</strong> antes.</p>
+          <p>Diagnóstico de brechas, dictamen y plan de acción conforme a <strong>NOM-002-STPS, NFPA y FM Global</strong>.</p>
         </div>
       </div>
     </div>
@@ -239,22 +243,23 @@ const faqs = [
       <div class="l3-intro-grid">
         <div class="l3-intro-text">
           <span class="section-tag">El servicio</span>
-          <h2>Una Falla no Avisa: la Respuesta sí Importa</h2>
+          <h2>Cumplir no es un Trámite: es Gestionar el Riesgo</h2>
           <p>
-            Por bien diseñado y mantenido que esté un sistema, los imprevistos ocurren: una válvula que se traba, una bomba
-            que no arranca, una fuga que aparece. En protección contra incendios, un equipo fuera de servicio es un riesgo
-            que no se puede dejar esperar. Lo que marca la diferencia es la <strong>velocidad de respuesta</strong> y, sobre
-            todo, que la reparación sea <strong>de fondo</strong> y no un parche que volverá a fallar.
+            En protección contra incendios, el cumplimiento normativo no es papeleo: es la evidencia de que el riesgo está
+            realmente bajo control. Una <strong>auditoría reprobada</strong>, una <strong>póliza en disputa</strong> o una
+            <strong>sanción de la autoridad</strong> casi nunca se deben a falta de equipo, sino a un cumplimiento que nadie
+            verificó ni documentó a tiempo. Lo que no se sustenta, no existe ante la autoridad ni ante la aseguradora.
           </p>
           <p>
-            El mantenimiento correctivo de AQUEON combina <strong>atención 24/7</strong>, diagnóstico de
-            <strong>causa raíz</strong> y reparación con <strong>refacciones originales de fábrica</strong>, seguida de una
-            verificación conforme a NFPA 25 que confirma que el equipo quedó operativo. Entregamos reporte de servicio,
-            garantía de la reparación y una recomendación para que la falla no se repita.
+            La consultoría normativa de AQUEON parte de un <strong>diagnóstico de brechas (gap analysis)</strong> contra las
+            normas que realmente le aplican —NOM-002-STPS, NFPA, FM Global, Protección Civil—, emite un
+            <strong>dictamen de cumplimiento</strong> y un <strong>plan de acción priorizado</strong>, y lo acompaña en la
+            auditoría. Y, a diferencia de un consultor que solo dictamina, podemos cerrar las brechas: somos un solo
+            proveedor del diagnóstico a la solución.
           </p>
           <p>
-            En esta página verá el flujo de respuesta de emergencia, la matriz de diagnóstico de fallas comunes, lo que
-            incluye el servicio y los niveles de respuesta disponibles.
+            En esta página verá las fases de la consultoría, el marco normativo y sus obligaciones, los entregables y los
+            hallazgos más comunes en una auditoría.
           </p>
         </div>
         <ul class="l3-benefits">
@@ -266,17 +271,17 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 1: Flujo de respuesta -->
+  <!-- DIFERENCIADOR 1: Fases -->
   <section class="pg-chain">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Metodología</span>
-          <h2>Flujo de Respuesta de Emergencia</h2>
+          <h2>Las Fases de la Consultoría</h2>
         </div>
         <div class="section-header__body">
-          <p>Del <strong>reporte</strong> a la <strong>reanudación</strong>, un proceso claro contra el reloj.</p>
-          <p>Cada paso con su entregable, para que la reparación sea trazable.</p>
+          <p>Del <strong>gap analysis</strong> al <strong>acompañamiento en auditoría</strong>, un proceso ordenado.</p>
+          <p>Cada fase con su entregable, para que el cumplimiento sea demostrable.</p>
         </div>
       </div>
       <div class="pg-chain-grid">
@@ -304,60 +309,60 @@ const faqs = [
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 2: Matriz de diagnóstico -->
+  <!-- DIFERENCIADOR 2: Marco normativo -->
   <section class="pg-scen">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Diagnóstico</span>
-          <h2>Matriz de Fallas Comunes</h2>
+          <span class="section-tag">El mapa de cumplimiento</span>
+          <h2>Marco Normativo y Obligaciones</h2>
         </div>
         <div class="section-header__body">
-          <p>Del síntoma a la <strong>causa raíz</strong> y a la acción: así diagnosticamos.</p>
-          <p>Una guía de las fallas más frecuentes y cómo las resolvemos.</p>
+          <p>Saber <strong>qué exige cada norma</strong> y a quién aplica es el primer paso para cumplir.</p>
+          <p>Este es el marco con el que evaluamos su instalación.</p>
         </div>
       </div>
       <div class="pg-scen-wrap">
         <table class="pg-scen-table">
           <thead>
             <tr>
-              <th scope="col">Síntoma</th>
-              <th scope="col">Qué se observa</th>
-              <th scope="col">Causa probable</th>
-              <th scope="col">Acción AQUEON</th>
+              <th scope="col">Norma / referencia</th>
+              <th scope="col">De qué trata</th>
+              <th scope="col">Qué exige</th>
+              <th scope="col">A quién aplica</th>
             </tr>
           </thead>
           <tbody>
-            {diagnostico.map((e) => (
+            {marco.map((e) => (
               <tr>
                 <th scope="row"><span class="pg-scen-name"><i class={e.icon} aria-hidden="true"></i> {e.nombre}</span></th>
                 <td>{e.descripcion}</td>
-                <td>{e.causa}</td>
-                <td class="pg-scen-sol">{e.accion}</td>
+                <td class="pg-scen-sol">{e.exige}</td>
+                <td>{e.aplica}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> El diagnóstico definitivo se realiza en sitio; esta matriz orienta las fallas más frecuentes en monitores y su red.</p>
+      <p class="pg-note"><i class="fas fa-circle-info" aria-hidden="true"></i> El marco aplicable se confirma en el diagnóstico según el giro, el riesgo y la jurisdicción de su instalación.</p>
     </div>
   </section>
 
-  <!-- DIFERENCIADOR 3: Qué incluye -->
+  <!-- DIFERENCIADOR 3: Entregables -->
   <section class="pg-sol">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Alcance</span>
-          <h2>Qué Incluye el Servicio</h2>
+          <span class="section-tag">Entregables</span>
+          <h2>Qué Recibe de la Consultoría</h2>
         </div>
         <div class="section-header__body">
-          <p>Más que reparar: <strong>diagnosticar, documentar y prevenir</strong> la recurrencia.</p>
-          <p>Cada elemento enlaza con el servicio o equipo correspondiente.</p>
+          <p>Documentos que <strong>sustentan su cumplimiento</strong> ante la autoridad y la aseguradora.</p>
+          <p>Cada entregable enlaza con el servicio que cierra la brecha.</p>
         </div>
       </div>
       <div class="pg-sol-grid">
-        {incluye.map((s) => (
+        {entregables.map((s) => (
           <article class="pg-sol-card">
             <span class="pg-sol-icon" aria-hidden="true"><i class={s.icon}></i></span>
             <h3>{s.titulo}</h3>
@@ -369,28 +374,28 @@ const faqs = [
     </div>
   </section>
 
-  <!-- pg-dens: Niveles de respuesta -->
+  <!-- pg-dens: Hallazgos comunes -->
   <section class="pg-dens">
     <div class="container">
       <div class="pg-dens-grid">
         <div class="pg-dens-text">
-          <span class="section-tag">Niveles de servicio</span>
-          <h2>Tiempos de Respuesta por Nivel</h2>
+          <span class="section-tag">Lo que encontramos</span>
+          <h2>Hallazgos Comunes en Auditoría</h2>
           <p>
-            La rapidez con la que atendemos una emergencia depende del <strong>nivel de servicio</strong> contratado. Para
-            instalaciones críticas, el nivel Premium ofrece atención 24/7 con técnico en sitio en 4 horas y refacciones en
-            consignación. Defina el nivel según la criticidad de su operación.
+            La mayoría de los incumplimientos se repiten de una instalación a otra. Conocerlos por adelantado permite
+            cerrarlos antes de que la autoridad o la aseguradora los señalen. Estos son los <strong>hallazgos más
+            frecuentes</strong>, su riesgo y la acción que recomendamos.
           </p>
-          <a href="/servicios#planes" class="btn btn-outline"><i class="fas fa-layer-group" aria-hidden="true"></i> Ver planes de servicio</a>
+          <a href="/contacto" class="btn btn-outline"><i class="fas fa-file-contract" aria-hidden="true"></i> Solicitar diagnóstico</a>
         </div>
         <div class="pg-dens-wrap">
           <table class="pg-dens-table">
             <thead>
-              <tr><th scope="col">Nivel</th><th scope="col">Tiempo de respuesta</th><th scope="col">Cobertura</th></tr>
+              <tr><th scope="col">Brecha frecuente</th><th scope="col">Riesgo</th><th scope="col">Acción</th></tr>
             </thead>
             <tbody>
-              {sla.map(([n, t, c]) => (
-                <tr><th scope="row">{n}</th><td class="pg-dens-ok">{t}</td><td>{c}</td></tr>
+              {hallazgos.map(([b, r, a]) => (
+                <tr><th scope="row">{b}</th><td>{r}</td><td class="pg-dens-ok">{a}</td></tr>
               ))}
             </tbody>
           </table>
@@ -425,19 +430,20 @@ const faqs = [
       <div class="l3-aqueon-inner">
         <div class="l3-aqueon-text">
           <span class="section-tag">Por qué AQUEON</span>
-          <h2>Cuando Falla, Estamos del Otro Lado del Teléfono</h2>
+          <h2>El Único que Dictamina y También Resuelve</h2>
           <p>
-            En <strong>AQUEON</strong> entendemos que una falla en un sistema contra incendio no admite esperas. Atendemos
-            emergencias <strong>24/7</strong>, diagnosticamos la causa raíz y reparamos con <strong>refacciones originales</strong>,
-            verificando el equipo conforme a NFPA 25 antes de reanudar. Y como somos un solo proveedor de diseño, equipo,
-            instalación y mantenimiento, conocemos su sistema y respondemos sin zonas grises.
+            En <strong>AQUEON</strong> la consultoría normativa no termina en un dictamen: es la puerta de entrada a la
+            solución. Identificamos las brechas con un <strong>gap analysis</strong> riguroso, las priorizamos por riesgo y,
+            como somos un solo proveedor de <strong>diseño, equipo, instalación, mantenimiento y capacitación</strong>,
+            podemos cerrarlas nosotros mismos. Un solo responsable del diagnóstico al cumplimiento verificado.
           </p>
           <p>
-            Damos servicio correctivo a <strong>refinerías, plantas, parques industriales, aeropuertos, minería y gobierno</strong>,
-            con reporte y garantía de cada reparación y cobertura en los 32 estados de la República desde la Ciudad de México.
+            Asesoramos a <strong>refinerías, plantas, parques industriales, aeropuertos, minería y gobierno</strong> ante la
+            autoridad y las aseguradoras, con expediente completo y cobertura en los 32 estados de la República desde la
+            Ciudad de México.
           </p>
           <div class="l3-aqueon-actions">
-            <a href="/mantenimiento-preventivo" class="btn btn-outline-light"><i class="fas fa-clipboard-check" aria-hidden="true"></i> Mantenimiento preventivo</a>
+            <a href="/diseno-ingenieria" class="btn btn-outline-light"><i class="fas fa-compass-drafting" aria-hidden="true"></i> Diseño e ingeniería</a>
             <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Todos los servicios</a>
           </div>
         </div>
@@ -453,7 +459,7 @@ const faqs = [
     </div>
   </section>
 
-  <FaqContactSplit titulo="Dudas sobre Mantenimiento Correctivo" contexto="el servicio de mantenimiento correctivo y emergencias 24/7" faqs={faqs} />
+  <FaqContactSplit titulo="Dudas sobre Consultoría Normativa" contexto="el servicio de consultoría normativa y cumplimiento" faqs={faqs} />
 
   <!-- Otros servicios -->
   <section class="l3-otras">
@@ -469,9 +475,9 @@ const faqs = [
         </div>
       </div>
       <div class="l3-otras-grid">
+        <a href="/diseno-ingenieria" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-compass-drafting" aria-hidden="true"></i></span><span class="l3-otra-name">Diseño e Ingeniería</span><span class="l3-otra-sub">Cálculo hidráulico · planos</span></a>
         <a href="/mantenimiento-preventivo" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span><span class="l3-otra-name">Mantenimiento Preventivo</span><span class="l3-otra-sub">NFPA 25 · disponibilidad</span></a>
-        <a href="/instalacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Instalación Profesional</span><span class="l3-otra-sub">Montaje certificado · pruebas</span></a>
-        <a href="/consultoria-normativa" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></span><span class="l3-otra-name">Consultoría Normativa</span><span class="l3-otra-sub">Auditorías · aseguradoras</span></a>
+        <a href="/capacitacion" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-chalkboard-user" aria-hidden="true"></i></span><span class="l3-otra-name">Capacitación</span><span class="l3-otra-sub">Brigadas · DC-3</span></a>
         <a href="/servicios" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todos los servicios</span><span class="l3-otra-sub">Ciclo de vida completo</span></a>
       </div>
     </div>
@@ -482,11 +488,11 @@ const faqs = [
     <div class="container">
       <div class="l3-cta-inner">
         <div>
-          <h2>¿Tiene una falla que no puede esperar?</h2>
-          <p>Atención de emergencia 24/7. Reporte su falla y active el diagnóstico y la reparación con refacciones originales.</p>
+          <h2>¿Listo para saber dónde está parado ante la norma?</h2>
+          <p>Cotización del diagnóstico en menos de 24 horas. Gap analysis y dictamen de cumplimiento sin sorpresas.</p>
         </div>
         <div class="l3-cta-actions">
-          <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-headset" aria-hidden="true"></i> Reportar una Falla</a>
+          <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
           <a href="tel:+525512345678" class="btn btn-outline-light btn-lg"><i class="fas fa-phone" aria-hidden="true"></i> +52 55 1234 5678</a>
         </div>
       </div>
@@ -522,7 +528,7 @@ const faqs = [
   .l3-benefits li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
   .l3-benefits i { flex-shrink: 0; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.6rem; }
 
-  /* DIF 1 — Flujo (pg-chain) */
+  /* DIF 1 — Fases (pg-chain) */
   .pg-chain { background: var(--bg-0); padding: var(--section-pad) 0; }
   .pg-chain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
   .pg-chain-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-sm); scroll-margin-top: 110px; }
@@ -534,13 +540,13 @@ const faqs = [
   .pg-block-label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: var(--space-xs); }
   .pg-block-label i { color: var(--red); }
 
-  /* DIF 2 — Diagnóstico (pg-scen) */
+  /* DIF 2 — Marco (pg-scen) */
   .pg-scen { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-scen-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
-  .pg-scen-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 48rem; }
+  .pg-scen-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 50rem; }
   .pg-scen-table th, .pg-scen-table td { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; vertical-align: top; }
   .pg-scen-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 22%; }
+  .pg-scen-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 20%; }
   .pg-scen-table tbody td { background: var(--surface-2); color: var(--text-body); }
   .pg-scen-name { display: inline-flex; align-items: center; gap: 0.5rem; }
   .pg-scen-name i { color: var(--red-hover); }
@@ -549,7 +555,7 @@ const faqs = [
   .pg-note { margin: var(--space-md) 0 0; font-size: var(--text-xs); color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
   .pg-note i { color: var(--red); }
 
-  /* DIF 3 — Incluye (pg-sol) */
+  /* DIF 3 — Entregables (pg-sol) */
   .pg-sol { background: var(--bg-0); padding: var(--section-pad) 0; }
   .pg-sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
   .pg-sol-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; flex-direction: column; }
@@ -561,18 +567,18 @@ const faqs = [
   .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
   .pg-sol-link:hover i { transform: translateX(3px); }
 
-  /* pg-dens — SLA */
+  /* pg-dens — Hallazgos */
   .pg-dens { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .pg-dens-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 4%, 3.5rem); align-items: center; }
   .pg-dens-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
   .pg-dens-text p { color: var(--text-body); margin-bottom: var(--space-lg); }
   .pg-dens-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
-  .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 32rem; }
+  .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 34rem; }
   .pg-dens-table th, .pg-dens-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
   .pg-dens-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
-  .pg-dens-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 26%; }
+  .pg-dens-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 34%; }
   .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-body); }
-  .pg-dens-table .pg-dens-ok { color: var(--red-hover); font-weight: 600; }
+  .pg-dens-table .pg-dens-ok { color: var(--text-strong); font-weight: 600; }
   .pg-dens-table tr:last-child th, .pg-dens-table tr:last-child td { border-bottom: none; }
 
   /* Guía errores/reco */
@@ -598,7 +604,7 @@ const faqs = [
   .l3-normativas h3 { font-size: var(--text-md); margin-bottom: var(--space-md); }
   .pg-norm-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
   .pg-norm-list li { display: flex; align-items: baseline; gap: 0.7rem; font-size: var(--text-sm); }
-  .pg-norm-tag { flex-shrink: 0; min-width: 6.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-xs); color: #ffb4b4; background: var(--red-soft); border: 1px solid var(--border-red); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); text-align: center; }
+  .pg-norm-tag { flex-shrink: 0; min-width: 7.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: var(--text-xs); color: #ffb4b4; background: var(--red-soft); border: 1px solid var(--border-red); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); text-align: center; }
   .pg-norm-desc { color: var(--text-body); line-height: 1.4; }
 
   /* Otros servicios */
