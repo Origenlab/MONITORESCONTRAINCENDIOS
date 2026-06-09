@@ -1,5 +1,11 @@
 ---
 import { servicios, planes } from '../../data/servicios';
+
+// Servicios con página L3 dedicada
+const l3Servicios: Record<string, string> = {
+  'diseno-ingenieria': '/diseno-ingenieria',
+};
+const servicioUrl = (id: string) => l3Servicios[id] ?? `/servicios#${id}`;
 ---
 <section id="servicios" class="services-section">
     <div class="container">
@@ -32,7 +38,7 @@ import { servicios, planes } from '../../data/servicios';
                                 <li><i class="fas fa-check" aria-hidden="true"></i> {feature}</li>
                             ))}
                         </ul>
-                        <a href={`/servicios#${servicio.id}`} class="btn btn-primary">Más Información</a>
+                        <a href={servicioUrl(servicio.id)} class="btn btn-primary">Más Información</a>
                     </div>
                 </article>
             ))}

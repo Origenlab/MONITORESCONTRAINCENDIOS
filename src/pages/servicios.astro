@@ -2,6 +2,11 @@
 import Base from '../layouts/Base.astro';
 import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 import { servicios, planes, proceso } from '../data/servicios';
+
+// Servicios con página L3 dedicada (interlinking)
+const l3Servicios: Record<string, string> = {
+  'diseno-ingenieria': '/diseno-ingenieria',
+};
 ---
 <Base
   title="Servicios Integrales Contra Incendios | Diseño, Instalación y Mantenimiento | AQUEON México"
@@ -113,9 +118,16 @@ import { servicios, planes, proceso } from '../data/servicios';
               </div>
             </div>
 
-            <a href="/#cotizar" class="btn btn-secondary svc-block-btn">
-              <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar este servicio
-            </a>
+            <div class="svc-block-actions">
+              {l3Servicios[s.id] && (
+                <a href={l3Servicios[s.id]} class="btn btn-primary svc-block-btn">
+                  <i class="fas fa-arrow-right-long" aria-hidden="true"></i> Ver servicio en detalle
+                </a>
+              )}
+              <a href="/#cotizar" class:list={['btn', 'svc-block-btn', l3Servicios[s.id] ? 'btn-outline' : 'btn-secondary']}>
+                <i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar este servicio
+              </a>
+            </div>
           </div>
         </article>
       ))}
@@ -379,6 +391,7 @@ import { servicios, planes, proceso } from '../data/servicios';
     border-color: var(--border-red);
   }
   .svc-block-btn { align-self: flex-start; }
+  .svc-block-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
 
   /* Planes */
   .svc-planes {
