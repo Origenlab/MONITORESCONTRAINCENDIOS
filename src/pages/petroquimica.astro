@@ -108,6 +108,14 @@ const unidades = [
   },
 ];
 
+// EXTRA — Densidades de aplicación de espuma (pg-dens)
+const densidades = [
+  ['Derrame de hidrocarburo no polar (AFFF)', 'NFPA 11', '0.10 gpm/ft²'],
+  ['Solvente polar / alcohol (AR-AFFF)', 'NFPA 11', 'Según fabricante (mayor)'],
+  ['Enfriamiento de tanque de proceso', 'NFPA 15', '0.10 – 0.25 gpm/ft²'],
+  ['Tiempo de descarga de espuma', 'NFPA 11', '30 – 65 min según riesgo'],
+];
+
 const normativas = [
   { n: 'NFPA 30', d: 'Almacenamiento de líquidos inflamables y combustibles' },
   { n: 'NFPA 11', d: 'Espuma — incluye criterios para solventes polares (AR)' },
@@ -334,6 +342,37 @@ const faqs = [
     </div>
   </section>
 
+  <!-- EXTRA: Densidades de aplicación -->
+  <section class="pg-dens">
+    <div class="container">
+      <div class="pg-dens-grid">
+        <div class="pg-dens-text">
+          <span class="section-tag">Criterio de diseño</span>
+          <h2>Densidades de Aplicación de Espuma</h2>
+          <p>
+            El dimensionamiento de la protección de un riesgo de hidrocarburo parte de la <strong>densidad de aplicación</strong>
+            que exige la norma y, sobre todo, de la <strong>química del producto</strong>: un solvente polar demanda espuma
+            resistente al alcohol y, normalmente, una densidad mayor. Estos son valores de referencia; el diseño final lo
+            determina la memoria de cálculo a partir de las hojas de datos de seguridad (SDS).
+          </p>
+          <a href="/servicios#diseno-ingenieria" class="btn btn-outline"><i class="fas fa-compass-drafting" aria-hidden="true"></i> Ver servicio de ingeniería</a>
+        </div>
+        <div class="pg-dens-wrap">
+          <table class="pg-dens-table">
+            <thead>
+              <tr><th scope="col">Aplicación</th><th scope="col">Norma</th><th scope="col">Densidad de referencia</th></tr>
+            </thead>
+            <tbody>
+              {densidades.map(([a, n, d]) => (
+                <tr><th scope="row">{a}</th><td>{n}</td><td>{d}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Errores y recomendaciones -->
   <section class="l3-guia">
     <div class="container">
@@ -499,8 +538,22 @@ const faqs = [
   .pg-sol-link i { font-size: 0.75rem; transition: transform var(--transition-fast); }
   .pg-sol-link:hover i { transform: translateX(3px); }
 
+  /* EXTRA — Densidades (pg-dens) */
+  .pg-dens { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .pg-dens-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 4%, 3.5rem); align-items: center; }
+  .pg-dens-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
+  .pg-dens-text p { color: var(--text-body); margin-bottom: var(--space-lg); }
+  .pg-dens-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+  .pg-dens-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 30rem; }
+  .pg-dens-table th, .pg-dens-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
+  .pg-dens-table thead th { background: var(--bg-2); color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
+  .pg-dens-table tbody th { background: var(--surface); color: var(--text-strong); font-weight: 600; width: 50%; }
+  .pg-dens-table tbody td { background: var(--surface-2); color: var(--text-body); }
+  .pg-dens-table tbody td:last-child { color: var(--red-hover); font-weight: 600; }
+  .pg-dens-table tr:last-child th, .pg-dens-table tr:last-child td { border-bottom: none; }
+
   /* Guía errores/reco */
-  .l3-guia { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-guia { background: var(--bg-0); padding: var(--section-pad) 0; }
   .l3-guia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.5rem, 3%, 2.5rem); }
   .l3-guia-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); }
   .l3-guia-card h3 { display: flex; align-items: center; gap: 0.6rem; font-size: var(--text-md); margin-bottom: var(--space-md); }
@@ -512,7 +565,7 @@ const faqs = [
   .l3-guia-reco li i { color: var(--success); margin-top: 0.2rem; }
 
   /* AQUEON + normativas */
-  .l3-aqueon { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-aqueon { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .l3-aqueon-inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: clamp(2rem, 4%, 4rem); align-items: start; }
   .l3-aqueon-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
   .l3-aqueon-text p { color: var(--text-body); margin-bottom: var(--space-md); }
@@ -544,6 +597,6 @@ const faqs = [
 
   /* Responsive */
   @media (max-width: 900px) {
-    .l3-intro-grid, .l3-aqueon-inner { grid-template-columns: 1fr; }
+    .l3-intro-grid, .l3-aqueon-inner, .pg-dens-grid { grid-template-columns: 1fr; }
   }
 </style>
