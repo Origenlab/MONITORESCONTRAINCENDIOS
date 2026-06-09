@@ -1,6 +1,6 @@
 ---
 title: "Monitores Contra Incendios para la Industria Minera en México: Especificación Técnica y Cumplimiento NOM-023-STPS"
-description: "Guía técnica de monitores contra incendios para operaciones mineras en México: minas superficiales y subterráneas, NOM-023-STPS, NFPA 122, riesgos de combustible y polvo, materiales y certificaciones FM/UL. AQUEON."
+description: "Monitores contra incendios para minería en México: minas superficiales y subterráneas, NOM-023-STPS, NFPA 122 y riesgos de combustible y polvo. AQUEON."
 pubDate: 2026-05-06
 category: "Minería"
 image: "/images/monitores-contra-incendios-mineria-mexico.webp"

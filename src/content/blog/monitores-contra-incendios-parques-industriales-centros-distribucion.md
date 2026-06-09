@@ -1,6 +1,6 @@
 ---
 title: "Monitores Contra Incendios para Parques Industriales y Centros de Distribución"
-description: "Cómo proteger naves industriales, almacenes y CEDIS con monitores FM Approved: cumplimiento FM Global, NFPA 15 y requisitos de aseguradoras. Guía de AQUEON México."
+description: "Monitores contra incendios para parques industriales y centros de distribución: cobertura de gran superficie, patios y FM Global / NFPA 13. AQUEON."
 pubDate: 2026-05-09
 category: "Manufactura e Industrial"
 image: "/images/monitores-contra-incendios-industria-manufactura.webp"

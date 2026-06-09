@@ -1,6 +1,6 @@
 ---
 title: "Auditoría y Modernización de Sistemas de Monitores Contra Incendios en México: Cómo Saber si su Protección Responde"
-description: "Guía para auditar, diagnosticar y modernizar sistemas de monitores contra incendios existentes en instalaciones industriales en México: criterios NFPA 25, señales de deterioro, proceso de modernización y documentación para aseguradoras. AQUEON."
+description: "Cómo auditar, diagnosticar y modernizar sistemas de monitores contra incendios en la industria: criterios NFPA 25, señales de deterioro y documentación. AQUEON."
 pubDate: 2026-06-03
 category: "Mantenimiento y Servicio"
 image: "/images/auditoria-diagnostico-sistemas-monitores-contra-incendios.webp"

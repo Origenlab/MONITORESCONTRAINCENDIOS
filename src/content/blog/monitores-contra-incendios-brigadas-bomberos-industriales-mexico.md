@@ -1,6 +1,6 @@
 ---
 title: "Monitores Contra Incendios para Brigadas y Cuerpos de Bomberos Industriales en México: Equipamiento, Capacitación y Cumplimiento"
-description: "Guía completa de monitores contra incendios para brigadas industriales y cuerpos de bomberos en México: portátiles, acoplados a unidad, capacitación NFPA 1001/1002, certificación y procedimientos de despliegue. AQUEON."
+description: "Monitores contra incendios para brigadas industriales y bomberos en México: portátiles y vehiculares, capacitación, certificación y despliegue. AQUEON."
 pubDate: 2026-05-20
 category: "Bomberos y Brigadas"
 image: "/images/monitores-contra-incendios-brigadas-bomberos-industriales.webp"

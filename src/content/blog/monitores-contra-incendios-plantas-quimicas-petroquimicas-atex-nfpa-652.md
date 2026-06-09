@@ -1,6 +1,6 @@
 ---
 title: "Monitores Contra Incendios para Plantas Químicas y Petroquímicas: Materiales Anticorrosivos, ATEX y Cumplimiento NFPA 652"
-description: "Guía técnica de monitores contra incendios para la industria química y petroquímica en México: acero 316L, certificación ATEX/IECEx, NFPA 30/652, NOM-002-STPS y sistemas de espuma para ambientes agresivos. AQUEON."
+description: "Monitores contra incendios para la industria química y petroquímica: acero 316L, ATEX/IECEx, NFPA 30/652 y espuma para ambientes agresivos. AQUEON."
 pubDate: 2026-04-22
 category: "Petroquímica y Química"
 image: "/images/monitores-contra-incendios-planta-quimica-petroquimica-atex.webp"

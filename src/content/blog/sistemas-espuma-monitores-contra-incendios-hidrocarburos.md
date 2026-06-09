@@ -1,6 +1,6 @@
 ---
 title: "Sistemas de Espuma con Monitores Contra Incendios: Protección de Hidrocarburos en la Industria"
-description: "Espuma con monitores contra incendios para hidrocarburos: AFFF, AR-AFFF, dosificación 3/6%, NFPA 11 y certificación FM/UL, explicado por especialistas de AQUEON México."
+description: "Sistemas de espuma para monitores contra incendios de hidrocarburos: AFFF, AR-AFFF, cámaras y proporcionadores NFPA 11 para tanques y derrames. AQUEON."
 pubDate: 2026-05-22
 category: "Sistemas de Espuma"
 image: "/images/monitores-contra-incendios-planta-petroquimica.webp"
