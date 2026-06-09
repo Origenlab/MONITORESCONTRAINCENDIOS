@@ -1,137 +1,134 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const modelos = [
+const productos = [
   {
-    id: 'mp-750',
-    modelo: 'MP-750',
-    nombre: 'Monitor Portátil MP-750',
-    badge: 'Más Vendido',
+    id: 'bm-200',
+    modelo: 'BM-200',
+    nombre: 'Boquilla Multipatrón BM-200',
+    badge: 'Más Versátil',
     badgePremium: true,
-    icon: 'fas fa-fire-extinguisher',
-    imagen: '/images/monitores-contra-incendios-cuerpo-bomberos-emergencias.webp',
-    resumen: 'Monitor portátil ligero de aluminio con base plegable: el equilibrio ideal entre caudal, peso y rapidez de despliegue para brigadas industriales.',
-    descripcion: 'El MP-750 es el caballo de batalla de la respuesta rápida. Con 18 kg de aluminio de alta resistencia y base plegable, un solo operador lo transporta, lo ancla y lo pone en operación en menos de un minuto. Entrega de 250 a 750 GPM con un sistema antivuelco que lo mantiene estable bajo presión, ideal para brigadas de emergencia y primera respuesta en planta.',
+    icon: 'fas fa-shower',
+    imagen: '/images/diseno-ingenieria-sistemas-monitores-contra-incendios.webp',
+    resumen: 'Boquilla ajustable de bronce con patrón desde chorro sólido hasta niebla, compatible con monitores de 2.5" a 4".',
+    descripcion: 'La boquilla es el componente que convierte el caudal en una herramienta de combate. La BM-200 permite al operador pasar de un chorro sólido de largo alcance —para atacar el foco a distancia— a un patrón de niebla que absorbe calor y protege al personal, todo girando un anillo. Construida en bronce para máxima durabilidad, es la opción universal para la mayoría de los monitores industriales.',
     specs: [
-      ['Caudal nominal', '250 – 750 GPM'],
-      ['Peso del equipo', '18 kg'],
-      ['Material de construcción', 'Aluminio de alta resistencia'],
-      ['Despliegue', 'Por un solo operador · base plegable'],
-      ['Estabilidad', 'Sistema antivuelco bajo presión'],
-      ['Conexión de entrada', 'Storz / NH 2.5"'],
-      ['Certificación', 'NFPA Compliant · UL Listed'],
+      ['Caudal de operación', '200 – 1,000 GPM'],
+      ['Ajuste de patrón', '0° (chorro) a 120° (niebla)'],
+      ['Compatibilidad', 'Monitores de 2.5" a 4"'],
+      ['Material de construcción', 'Bronce marino'],
+      ['Tipo', 'Multipatrón ajustable'],
+      ['Certificación', 'UL Listed'],
     ],
-    aplicaciones: ['Brigadas de emergencia', 'Primera respuesta', 'Refuerzo táctico', 'Mantenimiento programado'],
+    aplicaciones: ['Ataque directo', 'Cortina de protección', 'Enfriamiento', 'Uso general industrial'],
   },
   {
-    id: 'mt-500',
-    modelo: 'MT-500',
-    nombre: 'Monitor Táctico MT-500',
-    badge: 'Ultraligero',
+    id: 'ce-500',
+    modelo: 'CE-500',
+    nombre: 'Cámara de Espuma CE-500',
+    badge: 'Hidrocarburos',
     badgePremium: false,
-    icon: 'fas fa-feather-pointed',
-    imagen: '/images/monitores-contra-incendios-industria-minera.webp',
-    resumen: 'El monitor más ligero del mercado, diseñado para acceso a áreas confinadas y de difícil acceso donde cada kilogramo cuenta.',
-    descripcion: 'Cuando la emergencia ocurre en un sótano, una mina o una zona de difícil acceso, el peso lo es todo. El MT-500 pesa apenas 12 kg en aluminio aeronáutico y se transporta como una mochila. Aunque compacto, entrega de 200 a 500 GPM y llega con kit completo de accesorios para operar de inmediato. Es la elección para brigadas que necesitan movilidad extrema sin sacrificar capacidad.',
+    icon: 'fas fa-flask',
+    imagen: '/images/monitores-contra-incendios-refineria-petroleo-gas.webp',
+    resumen: 'Cámara de inyección de espuma para monitores y tanques, con dosificación exacta al 3% o 6% según el riesgo de hidrocarburos.',
+    descripcion: 'Sin espuma, el agua no extingue un incendio de hidrocarburos. La CE-500 es el componente que introduce y mezcla el concentrado espumante en la corriente de agua a la proporción exacta —3% o 6%— para generar la manta que sella los vapores. Fabricada en acero inoxidable y conforme a NFPA 11, es esencial en la protección de tanques de almacenamiento, racks de carga y áreas de proceso.',
     specs: [
-      ['Caudal nominal', '200 – 500 GPM'],
-      ['Peso del equipo', '12 kg (el más ligero)'],
-      ['Material de construcción', 'Aluminio aeronáutico'],
-      ['Incluye', 'Kit completo de accesorios'],
-      ['Transporte', 'Tipo mochila · acceso confinado'],
-      ['Conexión de entrada', 'Storz / NH 2.5"'],
-      ['Certificación', 'NFPA Compliant'],
+      ['Concentración', '3% o 6% (seleccionable)'],
+      ['Función', 'Inyección y mezcla de espumante'],
+      ['Compatibilidad', 'Monitores y cámaras de tanque'],
+      ['Material de construcción', 'Acero inoxidable'],
+      ['Agentes', 'AFFF · AR-AFFF · F3'],
+      ['Certificación', 'NFPA 11'],
     ],
-    aplicaciones: ['Áreas confinadas', 'Minería subterránea', 'Acceso difícil', 'Equipos de rescate'],
+    aplicaciones: ['Tanques de combustible', 'Racks de carga', 'Hidrocarburos', 'Áreas de proceso'],
   },
   {
-    id: 'mrt-1200',
-    modelo: 'MRT-1200',
-    nombre: 'Monitor Trailer MRT-1200',
-    badge: 'Profesional',
+    id: 'kc-pro',
+    modelo: 'KC-PRO',
+    nombre: 'Kit de Conexiones KC-PRO',
+    badge: 'Instalación',
     badgePremium: false,
-    icon: 'fas fa-trailer',
-    imagen: '/images/monitores-contra-incendios-aviacion-aeropuertos.webp',
-    resumen: 'Monitor montado sobre remolque con posicionamiento hidráulico: máxima movilidad y alto caudal para emergencias industriales mayores.',
-    descripcion: 'El MRT-1200 combina la potencia de un monitor fijo con la movilidad de un equipo rodante. Montado sobre remolque con sistema de posicionamiento hidráulico y elevación 360°, se traslada con vehículo a cualquier punto de la instalación y se despliega en minutos. Sus 500 a 1,200 GPM lo hacen ideal para grandes superficies, aeropuertos (ARFF) y escenarios donde se requiere reubicar la protección con rapidez.',
+    icon: 'fas fa-link',
+    imagen: '/images/instalacion-monitores-contra-incendios-industriales.webp',
+    resumen: 'Kit completo de bridas, codos, reducciones y juntas de expansión de alta presión para integrar el monitor a la red hidráulica.',
+    descripcion: 'Un monitor solo es tan confiable como su conexión a la red. El KC-PRO reúne en un solo paquete las bridas, codos, reducciones y juntas de expansión de alta presión necesarias para integrar el equipo a la tubería existente, absorber dilataciones y garantizar estanqueidad. Disponible en acero y bronce, simplifica la instalación y asegura el cumplimiento de NFPA 24.',
     specs: [
-      ['Caudal nominal', '500 – 1,200 GPM'],
-      ['Montaje', 'Remolque incluido'],
-      ['Posicionamiento', 'Hidráulico · elevación 360°'],
-      ['Movilidad', 'Traslado con vehículo'],
-      ['Material de construcción', 'Acero con recubrimiento epóxico'],
-      ['Compatibilidad', 'Agua y espuma'],
-      ['Certificación', 'FM Approved'],
+      ['Diámetros', '2.5" a 6"'],
+      ['Presión de trabajo', 'Hasta 300 PSI'],
+      ['Incluye', 'Bridas · codos · reducciones · juntas'],
+      ['Material de construcción', 'Acero / bronce'],
+      ['Función', 'Integración a red hidráulica'],
+      ['Referencia normativa', 'NFPA 24'],
     ],
-    aplicaciones: ['Aeropuertos (ARFF)', 'Grandes superficies', 'Eventos de emergencia', 'Cobertura móvil'],
+    aplicaciones: ['Instalación de monitores', 'Adecuación de red', 'Juntas de expansión', 'Mantenimiento'],
   },
 ];
 
 const stats = [
-  { numero: '12 kg', label: 'El modelo más ligero' },
-  { numero: '< 1 min', label: 'Despliegue por un operador' },
-  { numero: '200–1,200', label: 'GPM de caudal disponible' },
-  { numero: 'NFPA · UL', label: 'Equipos certificados' },
+  { numero: '200–1,000', label: 'GPM en boquillas' },
+  { numero: '3% / 6%', label: 'Dosificación de espuma' },
+  { numero: '300 PSI', label: 'Conexiones de alta presión' },
+  { numero: 'UL · NFPA', label: 'Componentes certificados' },
+];
+
+const anatomia = [
+  { icon: 'fas fa-arrow-right-to-bracket', titulo: 'Entrada y conexión', texto: 'Bridas, codos y juntas (KC-PRO) integran el monitor a la red privada y absorben dilataciones.' },
+  { icon: 'fas fa-flask', titulo: 'Proporcionamiento', texto: 'La cámara de espuma (CE-500) inyecta y mezcla el concentrado a la proporción exacta para hidrocarburos.' },
+  { icon: 'fas fa-shower', titulo: 'Boquilla de descarga', texto: 'La boquilla (BM-200) define el patrón —chorro o niebla— y el alcance del agua o la espuma.' },
+  { icon: 'fas fa-fire', titulo: 'Aplicación sobre el riesgo', texto: 'El conjunto entrega el agente en la densidad y forma que exige la norma y el escenario.' },
 ];
 
 const beneficios = [
-  'Despliegue inmediato por una sola persona, sin equipo pesado',
-  'Movilidad total: lleve la protección al punto del incendio',
-  'Refuerzo de la red fija en cualquier zona de la planta',
-  'Esenciales para brigadas y programas de respuesta a emergencias',
-  'Compatibilidad con agua y, en modelos seleccionados, espuma',
-  'Almacenamiento compacto y mantenimiento sencillo',
-];
-
-const despliegue = [
-  { paso: '01', icon: 'fas fa-truck-ramp-box', titulo: 'Transporte', texto: 'El equipo se traslada a mano, tipo mochila o sobre remolque según el modelo y la distancia.' },
-  { paso: '02', icon: 'fas fa-anchor', titulo: 'Anclaje', texto: 'Base plegable, picas de anclaje o estabilizadores hidráulicos fijan el monitor contra el retroceso.' },
-  { paso: '03', icon: 'fas fa-plug', titulo: 'Conexión', texto: 'Acople rápido Storz/NH a la línea de manguera o hidrante más cercano.' },
-  { paso: '04', icon: 'fas fa-bullseye', titulo: 'Operación', texto: 'El operador orienta el chorro y regula patrón y alcance desde una posición segura.' },
+  'Optimizan la eficiencia del monitor y el aprovechamiento del agua',
+  'Habilitan la protección de hidrocarburos mediante espuma',
+  'Aseguran una integración hermética y normada a la red',
+  'Permiten adaptar un mismo monitor a distintos escenarios',
+  'Reducen tiempos de instalación y mantenimiento',
+  'Componentes certificados para auditorías y aseguradoras',
 ];
 
 const errores = [
-  'Elegir un equipo por peso sin verificar el caudal que exige el escenario',
-  'Omitir el sistema de anclaje y subestimar el retroceso bajo presión',
-  'No capacitar a la brigada en despliegue y operación',
-  'Seleccionar conexiones incompatibles con la red existente',
-  'Olvidar el mantenimiento y la verificación periódica del equipo',
-  'No considerar compatibilidad con espuma cuando hay hidrocarburos',
+  'Comprar el monitor y descuidar la boquilla, que define el patrón real',
+  'Omitir el sistema de espuma en riesgos de hidrocarburos',
+  'Usar conexiones sin junta de expansión y provocar fugas por dilatación',
+  'Seleccionar materiales incompatibles con el ambiente o el agente',
+  'No verificar la proporción de espuma (3% vs 6%) según el combustible',
+  'Improvisar adaptadores en lugar de un kit normado de conexiones',
 ];
 
 const recomendaciones = [
-  'Defina el escenario: distancia, caudal y tipo de riesgo antes de comprar',
-  'Equilibre peso y capacidad según quién operará el equipo',
-  'Capacite a su brigada con simulacros reales de despliegue',
-  'Verifique compatibilidad de conexiones con su red contra incendios',
-  'Programe inspección y mantenimiento conforme a NFPA 25',
-  'Solicite asesoría para combinar equipos fijos y portátiles',
+  'Especifique la boquilla junto con el monitor, no como accesorio aparte',
+  'Defina el agente espumante y la proporción según el tipo de hidrocarburo',
+  'Use kits de conexión normados con juntas de expansión',
+  'Verifique compatibilidad de diámetros y presiones con su red',
+  'Incluya los accesorios en el plan de mantenimiento NFPA 25',
+  'Solicite un diseño integral monitor + accesorios a ingeniería',
 ];
 
 const seleccion = [
-  ['Brigada de primera respuesta', 'MP-750', '250–750 GPM, ligero y rápido'],
-  ['Acceso confinado / minería', 'MT-500', '12 kg, máxima portabilidad'],
-  ['Grandes áreas / aeropuertos', 'MRT-1200', 'Remolque, alto caudal y movilidad'],
-  ['Refuerzo de red fija', 'MP-750', 'Despliegue versátil en planta'],
-  ['Hidrocarburos (con espuma)', 'MRT-1200', 'Compatible con solución espumante'],
+  ['Ataque y enfriamiento general', 'BM-200', 'Patrón ajustable chorro/niebla'],
+  ['Tanques e hidrocarburos', 'CE-500', 'Inyección de espuma 3%/6%'],
+  ['Integración a la red', 'KC-PRO', 'Bridas, codos y juntas normadas'],
+  ['Adaptar un monitor existente', 'BM-200 + KC-PRO', 'Nueva boquilla y conexión'],
+  ['Cumplimiento de aseguradora', 'Todos certificados', 'UL / NFPA documentado'],
 ];
 
 const faqs = [
-  { q: '¿Qué es un monitor portátil contra incendios?', a: 'Es un cañón de agua o espuma diseñado para trasladarse y desplegarse con rapidez, a diferencia del monitor fijo que está montado de forma permanente. Permite a una brigada llevar gran caudal al punto exacto del incendio, anclarlo y operarlo desde una posición segura, lo que lo hace esencial en programas de respuesta a emergencias.' },
-  { q: '¿Cuál es la diferencia entre el MP-750, el MT-500 y el MRT-1200?', a: 'El MP-750 (18 kg, 250–750 GPM) es el equilibrio ideal para brigadas; el MT-500 (12 kg, 200–500 GPM) es el más ligero, para acceso confinado y difícil; y el MRT-1200 va sobre remolque con posicionamiento hidráulico (500–1,200 GPM) para grandes superficies y aeropuertos. La elección depende del caudal requerido y de cómo y dónde se desplegará.' },
-  { q: '¿Cuánto pesa un monitor portátil y cuántas personas lo operan?', a: 'Nuestros modelos manuales pesan entre 12 y 18 kg y están diseñados para que un solo operador los transporte y los ponga en operación. El MRT-1200, al ir sobre remolque, se traslada con vehículo pero también lo opera una persona una vez posicionado.' },
-  { q: '¿Los monitores portátiles resisten el retroceso del chorro?', a: 'Sí, siempre que se anclen correctamente. Incorporan base plegable con picas, sistemas antivuelco o estabilizadores hidráulicos según el modelo. El anclaje adecuado es crítico: un monitor no asegurado puede desplazarse peligrosamente bajo presión. La capacitación de la brigada es parte esencial de la seguridad.' },
-  { q: '¿Se pueden usar con espuma?', a: 'El MRT-1200 admite descarga de solución espumante para incendios de hidrocarburos. Para los modelos manuales, la compatibilidad depende de la configuración; nuestros ingenieros la definen según el tipo de riesgo y el concentrado (AFFF, AR-AFFF) que requiera su instalación.' },
-  { q: '¿Qué caudal necesito en un monitor portátil?', a: 'Depende del escenario: una brigada de primera respuesta suele requerir de 250 a 750 GPM, mientras que la protección de grandes áreas puede exigir más de 1,000 GPM. El caudal también está limitado por la presión y el diámetro de la línea que alimenta el equipo. Lo dimensionamos con cálculo hidráulico, sin costo.' },
-  { q: '¿Sustituyen los monitores portátiles a los fijos?', a: 'No: se complementan. El monitor fijo da cobertura permanente de áreas críticas, y el portátil aporta flexibilidad para atacar focos donde no hay protección fija o para reforzar la respuesta. Un programa sólido combina ambos. Conozca también nuestros monitores fijos para el sistema completo.' },
-  { q: '¿AQUEON capacita a la brigada en el uso del equipo?', a: 'Sí. Nuestro servicio de capacitación especializada entrena a operadores y brigadas en despliegue, anclaje, operación segura y mantenimiento básico, con certificados de competencia y simulacros de emergencia incluidos.' },
-  { q: '¿Qué normativa aplica a los equipos portátiles?', a: 'Cumplen estándares NFPA aplicables a equipo de combate y, según el modelo, certificación UL Listed o FM Approved. El programa de inspección y mantenimiento se rige por NFPA 25, y la operación se enmarca en la NOM-002-STPS de seguridad laboral.' },
-  { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Mantenemos stock en México para entrega ágil y, si lo requiere, agendamos una demostración del equipo sin costo.' },
+  { q: '¿Por qué la boquilla es tan importante en un monitor?', a: 'Porque es el componente que convierte el caudal en una herramienta útil. La misma cantidad de agua puede aplicarse como chorro sólido de largo alcance o como niebla que absorbe calor; la boquilla determina ese patrón, el alcance y la eficiencia. Un monitor excelente con una boquilla inadecuada desperdicia agua y reduce su capacidad de combate.' },
+  { q: '¿Qué es una boquilla multipatrón?', a: 'Es una boquilla que permite ajustar la forma del chorro —de sólido a niebla— girando un anillo, sin cambiar de equipo. La BM-200 ofrece de 0° a 120°, lo que da al operador flexibilidad para atacar el foco a distancia o crear una cortina de protección, según evolucione el incendio.' },
+  { q: '¿Para qué sirve una cámara de espuma?', a: 'La cámara de espuma inyecta y mezcla el concentrado espumante en la corriente de agua a la proporción correcta (3% o 6%). El resultado es una solución que, al descargarse, forma una manta que sella los vapores del combustible. Es indispensable en incendios de hidrocarburos, donde el agua sola no extingue. Conozca también nuestros sistemas de espuma con monitores.' },
+  { q: '¿Cuál es la diferencia entre espuma al 3% y al 6%?', a: 'Indica cuántas partes de concentrado se mezclan por cada 100 partes de solución. Un concentrado al 3% requiere la mitad de producto que uno al 6% para el mismo volumen de solución, lo que reduce el almacenamiento. La elección depende del combustible, el tipo de concentrado y el diseño del sistema bajo NFPA 11.' },
+  { q: '¿Qué incluye un kit de conexiones para monitores?', a: 'El KC-PRO reúne bridas, codos, reducciones y juntas de expansión de alta presión necesarias para integrar el monitor a la red hidráulica. Las juntas de expansión son clave: absorben la dilatación térmica de la tubería y evitan fugas o esfuerzos sobre el equipo, garantizando una instalación hermética conforme a NFPA 24.' },
+  { q: '¿Los accesorios son compatibles con cualquier monitor?', a: 'La mayoría de boquillas y conexiones se fabrican en diámetros estándar (2.5" a 6") compatibles con monitores fijos y portátiles. Aun así, conviene validar la compatibilidad de rosca/brida, presión y agente con el equipo específico. Nuestros ingenieros verifican la compatibilidad como parte del diseño.' },
+  { q: '¿Qué material conviene para las boquillas y conexiones?', a: 'El bronce ofrece excelente durabilidad y resistencia a la corrosión a costo competitivo; el acero inoxidable es preferible en ambientes salinos o con químicos agresivos. La cámara de espuma suele ser de acero inoxidable por el contacto con concentrados. La selección depende del ambiente y del agente.' },
+  { q: '¿Los accesorios requieren mantenimiento?', a: 'Sí. Boquillas, cámaras de espuma y conexiones forman parte del sistema y se inspeccionan bajo NFPA 25: se verifica el libre movimiento de las boquillas, la integridad de las juntas y la calidad de la espuma. Nuestro servicio de mantenimiento preventivo los incluye con reportes documentados.' },
+  { q: '¿AQUEON diseña el conjunto completo monitor + accesorios?', a: 'Sí. No vendemos accesorios sueltos: diseñamos el sistema integral —monitor, boquilla, proporcionamiento de espuma y conexiones— conforme a NFPA y a los requisitos de PEMEX y aseguradoras, con la documentación técnica completa.' },
+  { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Mantenemos stock de accesorios en México para entrega ágil y, si lo requiere, levantamos en sitio la adecuación necesaria sin costo.' },
 ];
 ---
 <Base
-  title="Monitores Portátiles Contra Incendios | Despliegue Rápido para Brigadas | AQUEON México"
-  description="Monitores portátiles contra incendios para brigadas industriales: MP-750, MT-500 ultraligero y MRT-1200 sobre remolque. De 200 a 1,200 GPM, certificados NFPA y UL. Venta, capacitación e ingeniería en México con AQUEON."
+  title="Boquillas y Accesorios para Monitores Contra Incendios | Espuma y Conexiones | AQUEON México"
+  description="Boquillas multipatrón, cámaras de espuma y kits de conexión para monitores contra incendios: BM-200, CE-500 y KC-PRO. Certificados UL y NFPA 11. Diseño integral de sistemas de protección en México con AQUEON."
 >
   <!-- Hero -->
   <section class="l3-hero">
@@ -141,16 +138,16 @@ const faqs = [
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
         <a href="/productos">Productos</a>
         <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        <span>Monitores Portátiles</span>
+        <span>Boquillas y Accesorios</span>
       </nav>
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Catálogo · Monitores Portátiles</span>
-          <h1>Monitores Portátiles Contra Incendios</h1>
+          <span class="section-tag">Catálogo · Boquillas y Accesorios</span>
+          <h1>Boquillas y Accesorios para Monitores</h1>
         </div>
         <div class="section-header__body">
-          <p>Movilidad y <strong>respuesta rápida</strong>: lleve gran caudal al punto exacto del incendio en menos de un minuto.</p>
-          <p>Equipos <strong>certificados NFPA y UL</strong>, de 200 a 1,200 GPM, con capacitación y respaldo de AQUEON.</p>
+          <p>Los componentes que <strong>completan el sistema</strong>: definen el patrón, habilitan la espuma e integran el monitor a su red.</p>
+          <p>Boquillas, cámaras de espuma y conexiones <strong>certificadas UL y NFPA 11</strong>, con diseño integral de AQUEON.</p>
         </div>
       </div>
     </div>
@@ -175,24 +172,24 @@ const faqs = [
     <div class="container">
       <div class="l3-intro-grid">
         <div class="l3-intro-text">
-          <span class="section-tag">¿Qué es un monitor portátil?</span>
-          <h2>La Protección que Llega Donde se Necesita</h2>
+          <span class="section-tag">¿Por qué importan los accesorios?</span>
+          <h2>El Detalle que Decide el Desempeño</h2>
           <p>
-            Un <strong>monitor portátil contra incendios</strong> es un cañón de agua o espuma diseñado para trasladarse y
-            desplegarse con rapidez. Mientras el monitor fijo cubre de forma permanente un área crítica, el portátil aporta
-            algo que ningún sistema fijo puede dar: la capacidad de llevar gran caudal al punto exacto del incendio, sin
-            importar dónde ocurra.
+            Un monitor contra incendios no trabaja solo. Entre el caudal que llega de la red y el agua o la espuma que cae
+            sobre el fuego hay una cadena de componentes —<strong>conexiones, proporcionamiento y boquilla</strong>— que
+            determinan si el sistema cumple o falla. Es frecuente ver instalaciones con un monitor excelente y una boquilla
+            inadecuada que desperdicia caudal o un sistema sin espuma en un riesgo de hidrocarburos.
           </p>
           <p>
-            En la práctica, un buen programa de protección combina ambos. La <a href="/monitores-fijos">red de monitores
-            fijos</a> protege tanques y áreas de proceso las 24 horas; los equipos portátiles permiten a la brigada atacar
-            focos secundarios, reforzar la respuesta o cubrir zonas sin protección fija. Por eso son esenciales en
-            refinerías, parques industriales, minería y cuerpos de bomberos.
+            Los accesorios son, en realidad, parte del corazón del sistema. La <strong>boquilla</strong> define el patrón y
+            el alcance; la <strong>cámara de espuma</strong> habilita la protección de
+            <a href="/industrias#petroleo-gas">hidrocarburos</a>; y el <strong>kit de conexiones</strong> garantiza una
+            integración hermética y normada a la red. Especificarlos bien es tan importante como elegir el monitor.
           </p>
           <p>
-            Elegir el equipo correcto no se reduce al peso. Implica equilibrar caudal, portabilidad y método de anclaje,
-            verificar la compatibilidad de conexiones con su red, y capacitar a quien lo operará. En esta página encontrará
-            los tres modelos portátiles de AQUEON, sus especificaciones y la guía para seleccionar con criterio.
+            En AQUEON no vendemos accesorios sueltos: diseñamos el conjunto completo, del <a href="/monitores-fijos">monitor</a>
+            a la boquilla, conforme a NFPA y a los requisitos de las aseguradoras. En esta página encontrará los tres
+            componentes principales, sus especificaciones y la guía para seleccionarlos con criterio de ingeniería.
           </p>
         </div>
         <ul class="l3-benefits">
@@ -204,50 +201,50 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Cómo se despliega (diferenciador de esta L3) -->
+  <!-- Anatomía del sistema (diferenciador de esta L3) -->
   <section class="l3-proceso">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Despliegue en Campo</span>
-          <h2>De la Bodega al Fuego en Cuatro Pasos</h2>
+          <span class="section-tag">Anatomía del Sistema</span>
+          <h2>Del Caudal al Fuego: Cómo Encaja Cada Componente</h2>
         </div>
         <div class="section-header__body">
-          <p>La ventaja del equipo portátil está en la <strong>rapidez</strong>: bien entrenada, una brigada lo opera en menos de un minuto.</p>
-          <p>Cada paso requiere <strong>técnica y capacitación</strong>, parte del servicio que entregamos.</p>
+          <p>Cada accesorio cumple una función en la <strong>cadena de descarga</strong>. Juntos definen el desempeño real.</p>
+          <p>Diseñarlos como conjunto —no por separado— es lo que <strong>garantiza el cumplimiento</strong>.</p>
         </div>
       </div>
       <div class="l3-proceso-grid">
-        {despliegue.map((p) => (
+        {anatomia.map((t, idx) => (
           <div class="l3-step">
-            <span class="l3-step-num">{p.paso}</span>
-            <span class="l3-step-icon" aria-hidden="true"><i class={p.icon}></i></span>
-            <h3>{p.titulo}</h3>
-            <p>{p.texto}</p>
+            <span class="l3-step-num">{String(idx + 1).padStart(2, '0')}</span>
+            <span class="l3-step-icon" aria-hidden="true"><i class={t.icon}></i></span>
+            <h3>{t.titulo}</h3>
+            <p>{t.texto}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Modelos -->
+  <!-- Productos -->
   <section class="l3-modelos">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Nuestros Modelos</span>
-          <h2>Tres Equipos para Cada Tipo de Despliegue</h2>
+          <span class="section-tag">Nuestros Componentes</span>
+          <h2>Tres Piezas Clave del Sistema</h2>
         </div>
         <div class="section-header__body">
-          <p>Del ultraligero de acceso confinado al monitor sobre remolque de alto caudal, cada modelo resuelve un <strong>escenario distinto</strong>.</p>
-          <p>Todos con <strong>certificación, garantía de fábrica</strong> y capacitación de brigada.</p>
+          <p>De la boquilla multipatrón a la cámara de espuma y el kit de conexiones, cada uno <strong>resuelve una función</strong>.</p>
+          <p>Todos <strong>certificados</strong> y diseñados para integrarse a su monitor.</p>
         </div>
       </div>
 
-      {modelos.map((m, i) => (
+      {productos.map((m, i) => (
         <article id={m.id} class:list={['l3-model', i % 2 === 1 && 'l3-model--rev']}>
           <div class="l3-model-media">
-            <img src={m.imagen} alt={`${m.nombre} — monitor portátil contra incendios AQUEON`} loading="lazy" />
+            <img src={m.imagen} alt={`${m.nombre} — accesorio para monitores contra incendios AQUEON`} loading="lazy" />
             <span class:list={['l3-model-badge', m.badgePremium && 'is-premium']}><i class={m.icon} aria-hidden="true"></i> {m.badge}</span>
           </div>
           <div class="l3-model-content">
@@ -273,7 +270,7 @@ const faqs = [
 
             <div class="l3-model-actions">
               <a href="/contacto" class="btn btn-primary"><i class="fas fa-file-invoice" aria-hidden="true"></i> Cotizar el {m.modelo}</a>
-              <a href={`https://wa.me/5215512345678?text=Hola%20AQUEON%2C%20me%20interesa%20el%20monitor%20port%C3%A1til%20${m.modelo}`} class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+              <a href={`https://wa.me/5215512345678?text=Hola%20AQUEON%2C%20me%20interesa%20el%20accesorio%20${m.modelo}`} class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
             </div>
           </div>
         </article>
@@ -281,61 +278,23 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Tabla comparativa -->
+  <!-- Tabla de selección -->
   <section class="l3-compare">
     <div class="container">
       <div class="section-header split">
         <div class="section-header__head">
-          <span class="section-tag">Comparativa</span>
-          <h2>MP-750 vs MT-500 vs MRT-1200</h2>
-        </div>
-        <div class="section-header__body">
-          <p>El equilibrio entre <strong>caudal, peso y movilidad</strong> define cuál es el equipo idóneo.</p>
-          <p>¿No sabe cuál especificar? Nuestros ingenieros lo orientan <strong>sin costo</strong>.</p>
-        </div>
-      </div>
-      <div class="l3-compare-wrap">
-        <table class="l3-compare-table">
-          <thead>
-            <tr>
-              <th scope="col">Característica</th>
-              <th scope="col">MP-750</th>
-              <th scope="col">MT-500</th>
-              <th scope="col">MRT-1200</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Caudal (GPM)</th><td>250 – 750</td><td>200 – 500</td><td>500 – 1,200</td></tr>
-            <tr><th scope="row">Peso / montaje</th><td>18 kg</td><td>12 kg</td><td>Remolque</td></tr>
-            <tr><th scope="row">Material</th><td>Aluminio</td><td>Aluminio aeronáutico</td><td>Acero epóxico</td></tr>
-            <tr><th scope="row">Despliegue</th><td>1 operador</td><td>Tipo mochila</td><td>Hidráulico</td></tr>
-            <tr><th scope="row">Movilidad</th><td>Alta</td><td>Máxima</td><td>Con vehículo</td></tr>
-            <tr><th scope="row">Espuma</th><td>Opcional</td><td>—</td><td>Sí</td></tr>
-            <tr><th scope="row">Certificación</th><td>NFPA · UL</td><td>NFPA</td><td>FM Approved</td></tr>
-            <tr><th scope="row">Ideal para</th><td>Brigadas</td><td>Acceso difícil</td><td>Grandes áreas</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tabla de selección por escenario (diferenciador) -->
-  <section class="l3-apps-section">
-    <div class="container">
-      <div class="section-header split">
-        <div class="section-header__head">
           <span class="section-tag">Guía de Selección</span>
-          <h2>¿Qué Modelo Necesita su Operación?</h2>
+          <h2>¿Qué Accesorio Necesita su Sistema?</h2>
         </div>
         <div class="section-header__body">
-          <p>Una referencia rápida según el <strong>escenario de uso</strong> más frecuente en planta.</p>
-          <p>La recomendación final siempre parte de un <strong>análisis de riesgo</strong>.</p>
+          <p>Una referencia rápida según la <strong>función a resolver</strong> en su instalación.</p>
+          <p>Lo ideal es un <strong>diseño integral</strong>: monitor y accesorios como un solo conjunto.</p>
         </div>
       </div>
       <div class="l3-compare-wrap">
         <table class="l3-compare-table">
           <thead>
-            <tr><th scope="col">Escenario de uso</th><th scope="col">Modelo recomendado</th><th scope="col">Por qué</th></tr>
+            <tr><th scope="col">Necesidad</th><th scope="col">Componente</th><th scope="col">Por qué</th></tr>
           </thead>
           <tbody>
             {seleccion.map(([esc, mod, por]) => (
@@ -352,7 +311,7 @@ const faqs = [
     <div class="container">
       <div class="l3-guia-grid">
         <div class="l3-guia-card l3-guia-errores">
-          <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Errores comunes al seleccionar</h3>
+          <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Errores comunes al especificar</h3>
           <ul>
             {errores.map((e) => <li><i class="fas fa-xmark" aria-hidden="true"></i> {e}</li>)}
           </ul>
@@ -373,31 +332,32 @@ const faqs = [
       <div class="l3-aqueon-inner">
         <div class="l3-aqueon-text">
           <span class="section-tag">Por qué AQUEON</span>
-          <h2>Equipos Portátiles con Capacitación de Brigada</h2>
+          <h2>Diseño Integral, No Accesorios Sueltos</h2>
           <p>
-            En <strong>AQUEON</strong> entendemos que un monitor portátil solo protege si la brigada sabe usarlo. Por eso no
-            solo distribuimos equipos certificados de Elkhart Brass, Akron Brass y Task Force Tips: entregamos
-            <strong>capacitación especializada</strong> con simulacros reales, definimos el anclaje y las conexiones
-            compatibles con su red, y damos mantenimiento conforme a NFPA 25, con cobertura en toda la República desde la
-            Ciudad de México.
+            En <strong>AQUEON</strong> entendemos los accesorios como lo que son: parte del corazón del sistema. Por eso
+            diseñamos el conjunto completo —monitor, boquilla, proporcionamiento de espuma y conexiones— como una unidad
+            coherente, distribuyendo componentes certificados de Elkhart Brass, Akron Brass, Task Force Tips, Williams Fire
+            y Angus Fire. Entregamos ingeniería, instalación, mantenimiento NFPA 25 y documentación completa, con cobertura
+            nacional desde la Ciudad de México.
           </p>
           <p>
-            Atendemos a <strong>brigadas industriales, cuerpos de bomberos, minería, parques industriales y proyectos
-            PEMEX</strong>, con stock en México para entrega ágil y documentación completa. Somos uno de los principales
-            especialistas en monitores contra incendios en México.
+            Atendemos proyectos de <strong>PEMEX, CFE, refinerías, petroquímica, parques industriales y corporativos</strong>,
+            asegurando la compatibilidad y el cumplimiento de cada componente. Somos uno de los principales especialistas en
+            monitores contra incendios industriales en México.
           </p>
           <div class="l3-aqueon-actions">
-            <a href="/servicios#capacitacion" class="btn btn-outline-light"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Capacitación de brigadas</a>
-            <a href="/nosotros" class="btn btn-outline-light"><i class="fas fa-building-shield" aria-hidden="true"></i> Conozca AQUEON</a>
+            <a href="/servicios" class="btn btn-outline-light"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Servicios de ingeniería</a>
+            <a href="/contacto" class="btn btn-outline-light"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar asesoría</a>
           </div>
         </div>
         <div class="l3-normativas">
           <h3>Normativas aplicables</h3>
           <div class="l3-chips">
-            <span class="l3-chip l3-chip--norm">NFPA Compliant</span>
-            <span class="l3-chip l3-chip--norm">NFPA 25</span>
-            <span class="l3-chip l3-chip--norm">NOM-002-STPS</span>
             <span class="l3-chip l3-chip--norm">UL Listed</span>
+            <span class="l3-chip l3-chip--norm">NFPA 11</span>
+            <span class="l3-chip l3-chip--norm">NFPA 15</span>
+            <span class="l3-chip l3-chip--norm">NFPA 24</span>
+            <span class="l3-chip l3-chip--norm">NFPA 25</span>
             <span class="l3-chip l3-chip--norm">FM Approved</span>
           </div>
         </div>
@@ -411,11 +371,11 @@ const faqs = [
       <div class="section-header split">
         <div class="section-header__head">
           <span class="section-tag">Preguntas Frecuentes</span>
-          <h2>Dudas sobre Monitores Portátiles</h2>
+          <h2>Dudas sobre Boquillas y Accesorios</h2>
         </div>
         <div class="section-header__body">
-          <p>Respuestas técnicas para <strong>jefes de brigada, seguridad industrial e ingenieros</strong>.</p>
-          <p>¿No encuentra su pregunta? Escríbanos y un especialista le responde en <strong>menos de 24 horas</strong>.</p>
+          <p>Respuestas técnicas para <strong>ingenieros de proyecto, mantenimiento y compras</strong>.</p>
+          <p>¿No encuentra su pregunta? Un especialista le responde en <strong>menos de 24 horas</strong>.</p>
         </div>
       </div>
       <div class="l3-faq-list">
@@ -438,14 +398,14 @@ const faqs = [
           <h2>Otras Categorías de Producto</h2>
         </div>
         <div class="section-header__body">
-          <p>Combine equipos portátiles con la <strong>red fija y los accesorios</strong> para un sistema completo.</p>
-          <p>Una sola fuente para toda su protección contra incendios.</p>
+          <p>Los accesorios completan cualquier <strong>monitor fijo, portátil o automático</strong> de la línea AQUEON.</p>
+          <p>Una sola fuente para todo su sistema de protección contra incendios.</p>
         </div>
       </div>
       <div class="l3-otras-grid">
         <a href="/monitores-fijos" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-fire-extinguisher" aria-hidden="true"></i></span><span class="l3-otra-name">Monitores Fijos</span><span class="l3-otra-sub">Protección permanente 24/7</span></a>
+        <a href="/monitores-portatiles" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-truck-loading" aria-hidden="true"></i></span><span class="l3-otra-name">Monitores Portátiles</span><span class="l3-otra-sub">Despliegue rápido para brigadas</span></a>
         <a href="/monitores-automaticos" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-robot" aria-hidden="true"></i></span><span class="l3-otra-name">Monitores Automáticos</span><span class="l3-otra-sub">Detección IA · IR · oscilantes</span></a>
-        <a href="/boquillas" class="l3-otra"><span class="l3-otra-icon"><i class="fas fa-shower" aria-hidden="true"></i></span><span class="l3-otra-name">Boquillas y Accesorios</span><span class="l3-otra-sub">Cámaras de espuma · kits</span></a>
         <a href="/productos" class="l3-otra l3-otra--all"><span class="l3-otra-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="l3-otra-name">Ver todo el catálogo</span><span class="l3-otra-sub">12 equipos certificados</span></a>
       </div>
     </div>
@@ -456,8 +416,8 @@ const faqs = [
     <div class="container">
       <div class="l3-cta-inner">
         <div>
-          <h2>¿Listo para equipar a su brigada?</h2>
-          <p>Cotización técnica en menos de 24 horas. Asesoría de selección y capacitación incluida, sin costo ni compromiso.</p>
+          <h2>¿Listo para completar su sistema?</h2>
+          <p>Cotización técnica en menos de 24 horas. Diseño integral de monitor y accesorios, con asesoría sin costo ni compromiso.</p>
         </div>
         <div class="l3-cta-actions">
           <a href="/contacto" class="btn btn-primary btn-lg"><i class="fas fa-file-invoice" aria-hidden="true"></i> Solicitar Cotización</a>
@@ -469,7 +429,6 @@ const faqs = [
 </Base>
 
 <style>
-  /* Hero */
   .l3-hero { background: var(--bg-0); padding: calc(var(--section-pad) * 0.7) 0 calc(var(--section-pad) * 0.5); }
   .l3-breadcrumb { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted); flex-wrap: wrap; }
   .l3-breadcrumb a { color: var(--text-muted); text-decoration: none; }
@@ -479,7 +438,6 @@ const faqs = [
   .l3-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: var(--text-4xl); line-height: 1.08; letter-spacing: -0.02em; color: var(--text-strong); margin: var(--space-md) 0 0; }
   .l3-hero .section-header__body p { font-size: var(--text-base); }
 
-  /* Banda */
   .l3-band { background: var(--grad-red); padding: clamp(1.75rem, 3.5vw, 2.75rem) 0; }
   .l3-band-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-lg); text-align: center; }
   .l3-band-item { display: flex; flex-direction: column; gap: 0.25rem; position: relative; }
@@ -487,7 +445,6 @@ const faqs = [
   .l3-band-num { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: var(--text-2xl); color: #fff; line-height: 1; }
   .l3-band-txt { font-size: var(--text-sm); color: rgba(255,255,255,.9); }
 
-  /* Intro */
   .l3-intro { background: var(--bg-1); padding: var(--section-pad) 0; border-bottom: 1px solid var(--border-subtle); }
   .l3-intro-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: clamp(2rem, 4%, 4rem); align-items: start; }
   .l3-intro-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
@@ -497,7 +454,6 @@ const faqs = [
   .l3-benefits li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: var(--text-sm); color: var(--text-body); line-height: 1.5; }
   .l3-benefits i { flex-shrink: 0; margin-top: 0.15rem; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.6rem; }
 
-  /* Proceso de despliegue */
   .l3-proceso { background: var(--bg-0); padding: var(--section-pad) 0; }
   .l3-proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--space-lg); }
   .l3-step { position: relative; background: var(--surface); border: 1px solid var(--border-subtle); border-top: 3px solid var(--red); border-radius: var(--radius-lg); padding: var(--space-xl) var(--space-lg) var(--space-lg); }
@@ -506,7 +462,6 @@ const faqs = [
   .l3-step h3 { font-size: var(--text-md); margin-bottom: var(--space-sm); }
   .l3-step p { color: var(--text-body); font-size: var(--text-sm); line-height: 1.6; margin: 0; }
 
-  /* Modelos */
   .l3-modelos { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .l3-model { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4%, 3.5rem); align-items: center; padding: clamp(2rem, 4vw, 3.5rem) 0; border-bottom: 1px solid var(--border-subtle); scroll-margin-top: 110px; }
   .l3-model:last-of-type { border-bottom: none; }
@@ -533,7 +488,6 @@ const faqs = [
   .l3-model-apps { margin-bottom: var(--space-lg); }
   .l3-model-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
 
-  /* Comparativa / tablas grandes */
   .l3-compare { background: var(--bg-0); padding: var(--section-pad) 0; }
   .l3-compare-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
   .l3-compare-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 40rem; }
@@ -544,11 +498,7 @@ const faqs = [
   .l3-compare-table tbody td { background: var(--surface-2); color: var(--text-strong); }
   .l3-compare-table tr:last-child th, .l3-compare-table tr:last-child td { border-bottom: none; }
 
-  /* Selección por escenario reusa estilos compare dentro de apps-section */
-  .l3-apps-section { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
-
-  /* Guía errores/reco */
-  .l3-guia { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-guia { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .l3-guia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.5rem, 3%, 2.5rem); }
   .l3-guia-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); }
   .l3-guia-card h3 { display: flex; align-items: center; gap: 0.6rem; font-size: var(--text-md); margin-bottom: var(--space-md); }
@@ -559,8 +509,7 @@ const faqs = [
   .l3-guia-errores li i { color: #ff7a7a; margin-top: 0.2rem; }
   .l3-guia-reco li i { color: var(--success); margin-top: 0.2rem; }
 
-  /* AQUEON */
-  .l3-aqueon { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-aqueon { background: var(--bg-0); padding: var(--section-pad) 0; }
   .l3-aqueon-inner { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr); gap: clamp(2rem, 4%, 4rem); align-items: center; }
   .l3-aqueon-text h2 { font-size: var(--text-3xl); margin: var(--space-sm) 0 var(--space-md); }
   .l3-aqueon-text p { color: var(--text-body); margin-bottom: var(--space-md); }
@@ -569,8 +518,7 @@ const faqs = [
   .l3-normativas { background: var(--surface); border: 1px solid var(--border-subtle); border-top: 3px solid var(--red); border-radius: var(--radius-lg); padding: var(--space-xl); }
   .l3-normativas h3 { font-size: var(--text-md); margin-bottom: var(--space-md); }
 
-  /* FAQ */
-  .l3-faq { background: var(--bg-0); padding: var(--section-pad) 0; }
+  .l3-faq { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
   .l3-faq-list { max-width: min(100%, 52rem); }
   .l3-faq-item { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); margin-bottom: var(--space-md); overflow: hidden; }
   .l3-faq-item[open] { border-color: var(--border-red); }
@@ -583,8 +531,7 @@ const faqs = [
   .l3-faq-answer p { margin: 0; color: var(--text-body); font-size: var(--text-sm); line-height: 1.75; }
   .l3-faq-answer :global(a) { color: var(--red-hover); text-decoration: underline; }
 
-  /* Otras categorías */
-  .l3-otras { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .l3-otras { background: var(--bg-0); padding: var(--section-pad) 0; }
   .l3-otras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: clamp(1rem, 2%, 1.5rem); }
   .l3-otra { display: flex; flex-direction: column; gap: 0.2rem; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); text-decoration: none; }
   .l3-otra:hover { border-color: var(--border-red); box-shadow: var(--glow-red); }
@@ -593,14 +540,12 @@ const faqs = [
   .l3-otra-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text-strong); font-size: var(--text-md); }
   .l3-otra-sub { font-size: var(--text-xs); color: var(--text-muted); }
 
-  /* CTA */
   .l3-cta { background: radial-gradient(ellipse 70% 120% at 50% -20%, rgba(255,80,80,.3), transparent 60%), linear-gradient(135deg, var(--red-dark) 0%, var(--red-darker) 60%, #450a0a 100%); padding: var(--section-pad) 0; }
   .l3-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-xl); flex-wrap: wrap; }
   .l3-cta-inner h2 { color: #fff; font-size: var(--text-2xl); margin-bottom: 0.5rem; }
   .l3-cta-inner > div:first-child p { color: rgba(255,255,255,.9); margin: 0; max-width: 46ch; }
   .l3-cta-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
 
-  /* Responsive */
   @media (max-width: 900px) {
     .l3-intro-grid, .l3-model, .l3-aqueon-inner { grid-template-columns: 1fr; }
     .l3-model--rev .l3-model-media { order: 0; }
