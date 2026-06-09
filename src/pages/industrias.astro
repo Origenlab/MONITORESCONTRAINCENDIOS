@@ -95,9 +95,14 @@ const bandStats = [
             {dest.normativas.map((n) => <span class="ind-chip ind-chip--norm">{n}</span>)}
           </div>
 
-          <a href="/#cotizar" class="btn btn-primary btn-lg">
-            <i class="fas fa-file-invoice" aria-hidden="true"></i> Cotizar para Petróleo y Gas
-          </a>
+          <div class="ind-featured-actions">
+            <a href="/petroleo-gas" class="btn btn-primary btn-lg">
+              <i class="fas fa-oil-well" aria-hidden="true"></i> Ver soluciones para Petróleo y Gas
+            </a>
+            <a href="/#cotizar" class="btn btn-outline btn-lg">
+              <i class="fas fa-file-invoice" aria-hidden="true"></i> Cotizar
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -177,6 +182,8 @@ const bandStats = [
     margin: var(--space-md) 0 0;
   }
   .ind-hero .section-header__body p { font-size: var(--text-base); }
+
+  .ind-featured-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
 
   /* Banda de cifras */
   .ind-band {

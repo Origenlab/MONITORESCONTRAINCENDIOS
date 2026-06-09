@@ -6,7 +6,7 @@ category: "Sector Petróleo y Gas"
 image: "/images/monitores-contra-incendios-refineria-petroleo-gas.webp"
 ---
 
-*Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Petróleo y Gas](/industrias#petroleo-gas) · Lectura: 22 minutos*
+*Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Petróleo y Gas](/petroleo-gas) · Lectura: 22 minutos*
 
 Hay una imagen que se queda grabada en cualquiera que haya trabajado de cerca con la industria petrolera: la de un tanque de techo flotante ardiendo de noche, con la columna de humo negro tapando las estrellas y el calor radiante que se siente a cientos de metros, golpeando la piel como si uno estuviera frente a la puerta de un horno. Quien la ha visto en persona —en una terminal, en una refinería, en un simulacro que se salió de control— no vuelve a hablar de protección contra incendios con ligereza. Y quien no la ha visto, conviene que la imagine antes de firmar la especificación de un sistema.
 
@@ -192,7 +192,7 @@ En **AQUEON** llevamos años acompañando a la industria petrolera mexicana en l
 
 Distribuimos **monitores y sistemas de espuma certificados FM Approved y UL Listed**, aptos para las especificaciones de PEMEX, y resolvemos la **ingeniería ATEX/IECEx** de las zonas clasificadas Clase I División 1 y 2 que tantas plantas pasan por alto. Entregamos memoria de cálculo hidráulico defendible, planos y documentación lista para licitación, auditoría o revisión de aseguradora. Y no terminamos en la entrega: damos **soporte técnico, mantenimiento conforme a NFPA 25, capacitación a brigadas** y respuesta de emergencia.
 
-Operamos con **cobertura nacional desde la Ciudad de México**, con capacidad de atender ambos litorales y los principales complejos del país. Eso nos ha posicionado como **uno de los principales especialistas en protección contra incendios para el sector petrolero en México**. Conozca nuestra línea de [productos](/productos), el alcance de nuestros [servicios](/servicios) o nuestra experiencia en el sector [Petróleo y Gas](/industrias#petroleo-gas). Y si quiere hablar de su instalación con un ingeniero —no con un vendedor—, escríbanos por [contacto](/contacto).
+Operamos con **cobertura nacional desde la Ciudad de México**, con capacidad de atender ambos litorales y los principales complejos del país. Eso nos ha posicionado como **uno de los principales especialistas en protección contra incendios para el sector petrolero en México**. Conozca nuestra línea de [productos](/productos), el alcance de nuestros [servicios](/servicios) o nuestra experiencia en el sector [Petróleo y Gas](/petroleo-gas). Y si quiere hablar de su instalación con un ingeniero —no con un vendedor—, escríbanos por [contacto](/contacto).
 
 > **Dato clave:** un buen socio en protección contra incendios se nota menos en el día de la venta y más en el día de la auditoría —y, ojalá nunca, en el día del incendio—.
 

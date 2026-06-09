@@ -207,7 +207,7 @@ Los **monitores para terminales de almacenamiento** y los sistemas de espuma aso
 - **Refinerías y plantas de proceso:** unidades de destilación, bombas de producto y áreas de proceso protegidas con **monitores para refinerías** integrados a la red de la planta.
 - **Plantas de almacenamiento y distribución de combustibles:** terminales de Pemex Logística, almacenes privados y centros de distribución de gasolina, diésel y turbosina.
 
-Para conocer el alcance completo de nuestras soluciones en este sector, visite la sección [Petróleo y Gas](/industrias#petroleo-gas).
+Para conocer el alcance completo de nuestras soluciones en este sector, visite la sección [Petróleo y Gas](/petroleo-gas).
 
 ### Ventajas competitivas de un sistema bien especificado
 
