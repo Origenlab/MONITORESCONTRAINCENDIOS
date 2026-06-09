@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import FaqContactSplit from '../components/sections/FaqContactSplit.astro';
 
 const modelos = [
   {
@@ -374,29 +375,7 @@ const faqs = [
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="l3-faq">
-    <div class="container">
-      <div class="section-header split">
-        <div class="section-header__head">
-          <span class="section-tag">Preguntas Frecuentes</span>
-          <h2>Dudas sobre Monitores Automáticos</h2>
-        </div>
-        <div class="section-header__body">
-          <p>Respuestas técnicas para <strong>ingenieros de instrumentación, seguridad de procesos y proyecto</strong>.</p>
-          <p>¿No encuentra su pregunta? Un especialista le responde en <strong>menos de 24 horas</strong>.</p>
-        </div>
-      </div>
-      <div class="l3-faq-list">
-        {faqs.map((f, i) => (
-          <details class="l3-faq-item" open={i === 0}>
-            <summary><span>{f.q}</span><i class="fas fa-plus l3-faq-icon" aria-hidden="true"></i></summary>
-            <div class="l3-faq-answer"><p set:html={f.a} /></div>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+  <FaqContactSplit titulo="Dudas sobre Monitores Automáticos" contexto="monitores automáticos" faqs={faqs} />
 
   <!-- Otras categorías -->
   <section class="l3-otras">

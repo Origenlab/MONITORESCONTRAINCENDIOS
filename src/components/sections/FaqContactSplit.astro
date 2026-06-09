@@ -1,0 +1,167 @@
+---
+// Módulo FAQ + formulario WhatsApp a dos columnas (para páginas L3 de producto)
+interface Faq { q: string; a: string; }
+interface Props {
+  titulo: string;
+  parrafos?: string[];
+  faqs: Faq[];
+  contexto?: string; // p. ej. "monitores fijos industriales"
+}
+const {
+  titulo,
+  parrafos = [
+    'Respuestas técnicas a las consultas más comunes de <strong>gerentes de seguridad e ingenieros de proyecto</strong>.',
+    '¿No encuentra su pregunta? Escríbanos y un especialista le responde en <strong>menos de 24 horas</strong>.',
+  ],
+  faqs,
+  contexto = 'monitores contra incendios',
+} = Astro.props;
+
+const whatsappNumber = '5215512345678';
+---
+<section id="preguntas" class="fcs">
+  <div class="container">
+    <div class="section-header split">
+      <div class="section-header__head">
+        <span class="section-tag">Preguntas Frecuentes</span>
+        <h2>{titulo}</h2>
+      </div>
+      <div class="section-header__body">
+        {parrafos.map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+
+    <div class="fcs-grid">
+      <!-- Columna 1: FAQ -->
+      <div class="fcs-faq">
+        {faqs.map((f, i) => (
+          <details class="fcs-item" open={i === 0}>
+            <summary><span set:html={f.q} /><i class="fas fa-plus fcs-icon" aria-hidden="true"></i></summary>
+            <div class="fcs-answer"><p set:html={f.a} /></div>
+          </details>
+        ))}
+      </div>
+
+      <!-- Columna 2: Formulario WhatsApp -->
+      <div class="fcs-form-card">
+        <div class="fcs-form-head">
+          <div class="fcs-form-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+          <div>
+            <h3>Hable con un Especialista</h3>
+            <p>Asesoría técnica directa por WhatsApp.</p>
+          </div>
+        </div>
+
+        <form class="fcs-form" data-wa-form data-contexto={contexto}>
+          <div class="form-group">
+            <label>Nombre completo <span class="req">*</span></label>
+            <input type="text" name="nombre" placeholder="Ej: Juan Pérez García" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" name="empresa" placeholder="Ej: Petrolera Nacional S.A." autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label>Teléfono <span class="req">*</span></label>
+            <input type="tel" name="telefono" placeholder="Ej: 55 1234 5678" required autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label>¿Qué necesita? <span class="req">*</span></label>
+            <select name="interes" required>
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option>Cotización de equipo</option>
+              <option>Asesoría de selección</option>
+              <option>Diseño e ingeniería</option>
+              <option>Instalación</option>
+              <option>Mantenimiento / servicio</option>
+              <option>Ficha técnica</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Detalle de su proyecto</label>
+            <textarea name="mensaje" rows="3" placeholder="Área a proteger, caudal estimado, tipo de riesgo…"></textarea>
+          </div>
+          <button type="submit" class="fcs-submit">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp
+          </button>
+          <p class="fcs-note"><i class="fas fa-shield-halved" aria-hidden="true"></i> Respuesta en menos de 24 h · Sin compromiso</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ whatsappNumber }}>
+  document.querySelectorAll('[data-wa-form]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = new FormData(form);
+      const g = (k) => (f.get(k) || '').toString().trim();
+      const ctx = form.getAttribute('data-contexto') || '';
+      let t = `Hola AQUEON, solicito información sobre ${ctx}.`;
+      t += `\nNombre: ${g('nombre')}`;
+      if (g('empresa')) t += `\nEmpresa: ${g('empresa')}`;
+      if (g('telefono')) t += `\nTeléfono: ${g('telefono')}`;
+      if (g('interes')) t += `\nNecesita: ${g('interes')}`;
+      if (g('mensaje')) t += `\nDetalle: ${g('mensaje')}`;
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t)}`, '_blank', 'noopener');
+    });
+  });
+</script>
+
+<style>
+  .fcs { background: var(--bg-1); padding: var(--section-pad) 0; border-top: 1px solid var(--border-subtle); }
+  .fcs-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(1.5rem, 3%, 3rem);
+    align-items: start;
+  }
+
+  /* FAQ */
+  .fcs-faq { display: flex; flex-direction: column; gap: var(--space-md); }
+  .fcs-item { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; }
+  .fcs-item[open] { border-color: var(--border-red); }
+  .fcs-item summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding: clamp(0.9rem, 2vw, 1.25rem); cursor: pointer; list-style: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: var(--text-base); color: var(--text-strong); }
+  .fcs-item summary::-webkit-details-marker { display: none; }
+  .fcs-icon { flex-shrink: 0; width: 1.8rem; height: 1.8rem; display: flex; align-items: center; justify-content: center; background: var(--red-soft); border: 1px solid var(--border-red); border-radius: 50%; color: var(--red-hover); font-size: 0.75rem; }
+  .fcs-item[open] .fcs-icon { background: var(--grad-red); color: #fff; border-color: transparent; }
+  .fcs-item[open] .fcs-icon::before { content: "\f068"; }
+  .fcs-answer { padding: 0 clamp(0.9rem, 2vw, 1.25rem) clamp(0.9rem, 2vw, 1.25rem); }
+  .fcs-answer p { margin: 0; color: var(--text-body); font-size: var(--text-sm); line-height: 1.75; }
+  .fcs-answer :global(a) { color: var(--red-hover); text-decoration: underline; }
+
+  /* Formulario */
+  .fcs-form-card {
+    position: sticky;
+    top: 120px;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--whatsapp);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-lg);
+  }
+  .fcs-form-head { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border-subtle); }
+  .fcs-form-icon { flex-shrink: 0; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; background: var(--whatsapp); border-radius: var(--radius-md); color: #fff; font-size: 1.5rem; }
+  .fcs-form-head h3 { font-family: var(--font-heading); font-size: var(--text-md); color: var(--text-strong); margin: 0 0 0.15rem; }
+  .fcs-form-head p { margin: 0; color: var(--text-muted); font-size: var(--text-sm); }
+  .fcs-form .form-group { margin-bottom: var(--space-md); }
+  .fcs-form .req { color: var(--red-hover); }
+
+  .fcs-submit {
+    width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    font-family: var(--font-heading); font-weight: 600; font-size: var(--text-base);
+    color: #fff; background: var(--whatsapp); border: none; border-radius: var(--radius-md);
+    padding: 0.95rem 1.5rem; min-height: 48px; cursor: pointer;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  }
+  .fcs-submit:hover { background: #1ebe5b; box-shadow: 0 8px 24px rgba(37,211,102,.3); transform: translateY(-2px); }
+  .fcs-note { margin: var(--space-md) 0 0; text-align: center; color: var(--text-muted); font-size: var(--text-xs); }
+  .fcs-note i { color: var(--success); }
+
+  @media (max-width: 900px) {
+    .fcs-grid { grid-template-columns: 1fr; }
+    .fcs-form-card { position: static; }
+  }
+</style>
