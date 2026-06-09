@@ -8,10 +8,6 @@ const posts = (await getCollection('blog')).sort(
 );
 const destacado = posts[0];
 const resto = posts.slice(1);
-
-function formatearFecha(fecha: Date): string {
-  return fecha.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
-}
 ---
 <Base
   title="Blog Técnico | Guías de Monitores Contra Incendios | AQUEON México"
@@ -49,7 +45,6 @@ function formatearFecha(fecha: Date): string {
               <div class="blog-featured-body">
                 <div class="blog-card-meta">
                   <span class="blog-card-category">{destacado.data.category}</span>
-                  <time datetime={destacado.data.pubDate.toISOString()}>{formatearFecha(destacado.data.pubDate)}</time>
                 </div>
                 <h2><a href={`/blog/${destacado.id}`}>{destacado.data.title}</a></h2>
                 <p>{destacado.data.description}</p>
@@ -69,7 +64,6 @@ function formatearFecha(fecha: Date): string {
                 <div class="blog-card-content">
                   <div class="blog-card-meta">
                     <span class="blog-card-category">{post.data.category}</span>
-                    <time datetime={post.data.pubDate.toISOString()}>{formatearFecha(post.data.pubDate)}</time>
                   </div>
                   <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
                   <p>{post.data.description}</p>

@@ -19,10 +19,6 @@ const categorias = [...catMap.entries()].sort((a, b) => b[1] - a[1]);
 
 // Artículos recientes (excluye el actual)
 const recientes = all.filter((p) => p.id !== currentId).slice(0, 4);
-
-function fechaCorta(d: Date): string {
-  return d.toLocaleDateString('es-MX', { month: 'short', year: 'numeric', timeZone: 'UTC' });
-}
 ---
 <aside class="blog-sidebar">
   <!-- Categorías -->
@@ -49,7 +45,6 @@ function fechaCorta(d: Date): string {
             <span class="bs-recent-text">
               <span class="bs-recent-cat">{p.data.category}</span>
               <span class="bs-recent-title">{p.data.title}</span>
-              <span class="bs-recent-date">{fechaCorta(p.data.pubDate)}</span>
             </span>
           </a>
         </li>
@@ -149,7 +144,6 @@ function fechaCorta(d: Date): string {
     line-height: 1.3;
   }
   .bs-recent-item:hover .bs-recent-title { color: var(--text-strong); }
-  .bs-recent-date { font-size: var(--text-xs); color: var(--text-muted); }
 
   /* Links */
   .bs-links { list-style: none; padding: 0; margin: 0; }

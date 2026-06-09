@@ -13,13 +13,6 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-
-const fecha = post.data.pubDate.toLocaleDateString('es-MX', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  timeZone: 'UTC',
-});
 ---
 <Base
   title={`${post.data.title} | AQUEON México`}
@@ -39,9 +32,6 @@ const fecha = post.data.pubDate.toLocaleDateString('es-MX', {
         <span class="section-tag">{post.data.category}</span>
         <h1>{post.data.title}</h1>
         <p class="post-meta">
-          <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-          <time datetime={post.data.pubDate.toISOString()}>{fecha}</time>
-          <span class="post-meta-sep">·</span>
           <i class="fas fa-user-shield" aria-hidden="true"></i>
           Equipo de ingeniería AQUEON
         </p>
