@@ -123,11 +123,27 @@ const faqs = [
   { q: '¿AQUEON instala y da mantenimiento a los monitores fijos?', a: 'Sí. Ofrecemos el ciclo completo: diseño e ingeniería conforme a NFPA, instalación con técnicos certificados, pruebas hidrostáticas, puesta en marcha, capacitación y mantenimiento preventivo NFPA 25, con cobertura en toda la República Mexicana desde la Ciudad de México.' },
   { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Para proyectos que lo requieran agendamos una visita técnica sin costo para levantar el escenario de incendio y proponer el modelo y la configuración que le corresponden.' },
 ];
+
+const SITE = 'https://monitorescontraincendios.com';
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@graph': modelos.map((m) => ({
+    '@type': 'Product',
+    name: m.nombre,
+    description: m.resumen,
+    image: `${SITE}${m.imagen}`,
+    brand: { '@type': 'Brand', name: 'AQUEON México' },
+    category: 'Monitores fijos contra incendios',
+    url: `${SITE}/monitores-fijos#${m.id}`,
+    additionalProperty: m.specs.map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
+  })),
+};
 ---
 <Base
   title="Monitores Fijos Contra Incendios | Venta Industrial"
   description="Monitores fijos contra incendios en México: venta de monitores fijos industriales certificados FM/UL para refinerías, tanques y plantas. Solicita cotización."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">
