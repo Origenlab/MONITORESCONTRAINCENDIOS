@@ -195,11 +195,23 @@ const faqs = [
   { q: '¿Cada cuánto debo revisar mi cumplimiento?', a: 'El cumplimiento no es un estado fijo: las normas se actualizan, la instalación cambia y los requisitos de la aseguradora evolucionan. Recomendamos una revisión anual y, especialmente, ante cualquier modificación del sistema, cambio de actividad o renovación de póliza. Podemos integrar la actualización normativa a su programa anual.' },
   { q: '¿Solo dictaminan o también cierran las brechas?', a: 'Ambas cosas. A diferencia de un consultor que solo entrega un dictamen y se retira, en AQUEON podemos cerrar las brechas que identificamos: rediseñar, suministrar equipo certificado, instalar, dar mantenimiento y capacitar. Un solo responsable del diagnóstico a la solución, lo que hace el cumplimiento mucho más ágil y verificable.' },
 ];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Consultoría Normativa Contra Incendios',
+  serviceType: 'Consultoría de cumplimiento contra incendios',
+  description: 'Diagnóstico de cumplimiento (gap analysis) frente a NOM-002-STPS y NFPA, dictamen y plan de acción para auditorías.',
+  provider: { '@type': 'Organization', name: 'AQUEON México', url: 'https://monitorescontraincendios.com' },
+  areaServed: { '@type': 'Country', name: 'México' },
+  url: 'https://monitorescontraincendios.com/consultoria-normativa',
+};
 ---
 <Base
   title="Consultoría en Protección Contra Incendios | NFPA y NOM"
   description="Consultoría en protección contra incendios en México: diagnóstico de cumplimiento NOM-002-STPS y NFPA, gap analysis y acompañamiento en auditorías. Cotiza."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">

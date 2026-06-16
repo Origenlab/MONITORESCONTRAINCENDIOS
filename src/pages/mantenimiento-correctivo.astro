@@ -191,11 +191,23 @@ const faqs = [
   { q: '¿El correctivo reemplaza al mantenimiento preventivo?', a: 'No: lo complementa. El mantenimiento preventivo (NFPA 25) busca evitar las fallas detectándolas a tiempo; el correctivo atiende la falla cuando ocurre. Lo ideal es tener un programa preventivo sólido y un correctivo de respaldo para lo imprevisto. De hecho, cada correctivo nos deja una recomendación que integramos a su programa preventivo para reducir futuras fallas.' },
   { q: '¿Atienden equipo de cualquier marca?', a: 'Sí. Aunque somos especialistas en las marcas que distribuimos, nuestro servicio correctivo atiende monitores, válvulas, bombas y red de otras marcas. Diagnosticamos y reparamos su sistema completo, con un solo responsable y refacciones originales cuando aplica.' },
 ];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Mantenimiento Correctivo Contra Incendios',
+  serviceType: 'Reparación de protección contra incendios',
+  description: 'Diagnóstico y reparación de monitores contra incendios con refacciones originales y soporte de emergencia 24/7.',
+  provider: { '@type': 'Organization', name: 'AQUEON México', url: 'https://monitorescontraincendios.com' },
+  areaServed: { '@type': 'Country', name: 'México' },
+  url: 'https://monitorescontraincendios.com/mantenimiento-correctivo',
+};
 ---
 <Base
   title="Mantenimiento Correctivo Contra Incendios | 24/7"
   description="Mantenimiento correctivo contra incendios en México: diagnóstico y reparación de monitores con soporte 24/7 y refacciones OEM. Reporta una falla hoy."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">

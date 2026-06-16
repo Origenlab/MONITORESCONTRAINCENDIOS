@@ -198,11 +198,23 @@ const faqs = [
   { q: '¿El diseño me sirve para mi aseguradora?', a: 'Sí. La memoria de cálculo, los planos y la especificación de equipo certificado son precisamente lo que las aseguradoras y FM Global requieren para evaluar el riesgo y otorgar o mantener la cobertura. Integramos el expediente para que su área de seguros y la autoridad cuenten con la documentación que exigen.' },
   { q: '¿En cuánto tiempo entregan un diseño?', a: 'Depende del alcance, pero entregamos cotización técnica del servicio en menos de 24 horas y un cronograma claro de ingeniería según la complejidad. Para proyectos que lo requieran agendamos una visita técnica sin costo para el levantamiento y el escenario de incendio.' },
 ];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Diseño e Ingeniería de Sistemas Contra Incendios',
+  serviceType: 'Ingeniería de protección contra incendios',
+  description: 'Cálculo hidráulico, planos y memoria de cálculo de sistemas de monitores contra incendios conforme a NFPA 15, 11 y 24.',
+  provider: { '@type': 'Organization', name: 'AQUEON México', url: 'https://monitorescontraincendios.com' },
+  areaServed: { '@type': 'Country', name: 'México' },
+  url: 'https://monitorescontraincendios.com/diseno-ingenieria',
+};
 ---
 <Base
   title="Diseño de Sistemas Contra Incendios | Ingeniería NFPA"
   description="Diseño de sistemas contra incendios en México: ingeniería y cálculo hidráulico de monitores bajo NFPA 15/11, planos y memoria de cálculo. Solicita cotización."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">

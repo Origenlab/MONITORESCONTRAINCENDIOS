@@ -201,11 +201,23 @@ const faqs = [
   { q: '¿El programa me sirve para mi aseguradora y para auditorías?', a: 'Sí. El expediente de cumplimiento NFPA 25 —programa, reportes, bitácoras y dictamen— es precisamente lo que las aseguradoras y la autoridad solicitan para verificar que el sistema se mantiene operativo. Un buen historial de mantenimiento no solo reduce el riesgo: respalda su póliza y facilita las auditorías.' },
   { q: '¿Atienden cualquier marca o solo equipo AQUEON?', a: 'Atendemos su sistema completo. Aunque somos especialistas en las marcas que distribuimos, nuestro programa NFPA 25 cubre monitores, válvulas, bombas y red de otras marcas, integrando todo en un solo calendario y un solo responsable, con cobertura en los 32 estados de la República.' },
 ];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Mantenimiento Preventivo Contra Incendios',
+  serviceType: 'Mantenimiento de protección contra incendios',
+  description: 'Programa de inspección, prueba y mantenimiento (ITM) de monitores contra incendios conforme a NFPA 25.',
+  provider: { '@type': 'Organization', name: 'AQUEON México', url: 'https://monitorescontraincendios.com' },
+  areaServed: { '@type': 'Country', name: 'México' },
+  url: 'https://monitorescontraincendios.com/mantenimiento-preventivo',
+};
 ---
 <Base
   title="Mantenimiento Preventivo Contra Incendios | NFPA 25"
   description="Mantenimiento preventivo contra incendios en México: inspección y pruebas de monitores conforme a NFPA 25 con reportes auditables. Solicita tu programa."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">

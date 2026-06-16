@@ -191,11 +191,23 @@ const faqs = [
   { q: '¿Con qué frecuencia se debe capacitar a la brigada?', a: 'La capacitación no es un evento único. Recomendamos reforzarla periódicamente y, especialmente, cada vez que cambia el equipo, el personal o el riesgo de la instalación. Una brigada capacitada hace años y nunca reentrenada pierde competencia. Podemos integrar la capacitación recurrente a su programa anual junto con el mantenimiento.' },
   { q: '¿Quién imparte los cursos?', a: 'Instructores con experiencia industrial de campo, que conocen el equipo y los escenarios reales de la industria, no solo la teoría. Esa experiencia es la que permite que la capacitación sea relevante y aplicable a la operación específica de cada cliente, con cobertura en los 32 estados de la República.' },
 ];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Capacitación Contra Incendios',
+  serviceType: 'Capacitación en protección contra incendios',
+  description: 'Formación de brigadas y operadores en uso de monitores contra incendios, con práctica real y constancia DC-3 (NOM-002-STPS).',
+  provider: { '@type': 'Organization', name: 'AQUEON México', url: 'https://monitorescontraincendios.com' },
+  areaServed: { '@type': 'Country', name: 'México' },
+  url: 'https://monitorescontraincendios.com/capacitacion',
+};
 ---
 <Base
   title="Capacitación Contra Incendios | Brigadas y DC-3"
   description="Capacitación contra incendios en México: formación de brigadas en uso de monitores con constancia DC-3 y prácticas conforme a NOM-002-STPS. Solicita info."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">

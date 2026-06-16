@@ -188,11 +188,23 @@ const faqs = [
   { q: '¿La instalación incluye garantía?', a: 'Sí. Ofrecemos garantía por escrito del montaje, adicional a la garantía de fábrica del equipo que, como distribuidores autorizados, respaldamos. Además, al ser un solo proveedor de diseño, equipo, instalación y mantenimiento, la responsabilidad es única: no hay zonas grises entre proveedores.' },
   { q: '¿Trabajan en toda la República?', a: 'Sí. Realizamos instalaciones en los 32 estados de la República desde la Ciudad de México, coordinando logística, personal y pruebas en sitio. Para cada proyecto definimos un cronograma de obra claro y un responsable técnico.' },
 ];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Instalación de Sistemas Contra Incendios',
+  serviceType: 'Instalación de protección contra incendios',
+  description: 'Montaje, integración hidráulica y pruebas hidrostáticas de monitores contra incendios conforme a NFPA 24 y 25.',
+  provider: { '@type': 'Organization', name: 'AQUEON México', url: 'https://monitorescontraincendios.com' },
+  areaServed: { '@type': 'Country', name: 'México' },
+  url: 'https://monitorescontraincendios.com/instalacion',
+};
 ---
 <Base
   title="Instalación de Sistemas Contra Incendios | Pruebas NFPA"
   description="Instalación de sistemas contra incendios en México: montaje, pruebas hidrostáticas y puesta en marcha de monitores bajo NFPA 24/25. Solicita cotización."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">
