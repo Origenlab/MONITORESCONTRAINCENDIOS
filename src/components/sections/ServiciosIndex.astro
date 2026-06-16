@@ -68,7 +68,7 @@ const servicioUrl = (id: string) => l3Servicios[id] ?? `/servicios#${id}`;
                     <div class={`plan-card${plan.featured ? ' featured' : ''}${plan.premium ? ' premium' : ''}`}>
                         {plan.featured && <div class="plan-badge">Recomendado</div>}
                         <div class="plan-header">
-                            <h4>{plan.nombre}</h4>
+                            <h3>{plan.nombre}</h3>
                             <p>{plan.subtitulo}</p>
                         </div>
                         <ul class="plan-features">

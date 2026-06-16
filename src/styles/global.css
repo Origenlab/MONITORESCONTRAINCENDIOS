@@ -1157,7 +1157,7 @@ body.nav-open { overflow: hidden; }
     padding: var(--space-lg);
 }
 
-.feature-card h3 {
+.feature-card h2 {
     font-size: var(--text-md);
     margin-bottom: var(--space-sm);
     line-height: 1.35;
@@ -1999,7 +1999,7 @@ body.nav-open { overflow: hidden; }
     border-bottom: 1px solid var(--border-subtle);
 }
 
-.plan-header h4 {
+.plan-header h3 {
     font-size: var(--text-xl);
     margin-bottom: var(--space-xs);
 }
@@ -2627,7 +2627,7 @@ body.nav-open { overflow: hidden; }
 
 .testimonial-meta { min-width: 0; }
 
-.testimonial-meta h4 {
+.testimonial-meta h3 {
     font-size: var(--text-base);
     margin-bottom: 0.1rem;
 }
@@ -3416,16 +3416,16 @@ body.nav-open { overflow: hidden; }
     box-shadow: 0 0 18px rgba(224, 36, 36, 0.4);
 }
 
-.footer-links h4,
-.footer-contact h4 {
+.footer-links h3,
+.footer-contact h3 {
     font-size: var(--text-base);
     margin-bottom: var(--space-lg);
     position: relative;
     padding-bottom: var(--space-sm);
 }
 
-.footer-links h4::after,
-.footer-contact h4::after {
+.footer-links h3::after,
+.footer-contact h3::after {
     content: "";
     position: absolute;
     left: 0;
