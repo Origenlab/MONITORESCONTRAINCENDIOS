@@ -37,7 +37,7 @@ export const proceso: PasoProceso[] = [
     numero: '01',
     icon: 'fas fa-magnifying-glass-chart',
     titulo: 'Diagnóstico y Análisis de Riesgo',
-    descripcion: 'Evaluamos su instalación, identificamos riesgos y determinamos el sistema óptimo según su actividad y la normativa vigente.',
+    descripcion: 'Visitamos la instalación, identificamos los riesgos y definimos qué sistema exige su actividad y la norma que le aplica.',
   },
   {
     numero: '02',
@@ -70,7 +70,7 @@ export const servicios: Servicio[] = [
     titulo: 'Diseño e Ingeniería',
     subtitulo: 'Cálculo hidráulico y especificación técnica',
     descripcion:
-      'Diseño profesional de sistemas contra incendio conforme a NFPA 15, NFPA 11 y NFPA 24. Nuestros ingenieros certificados desarrollan soluciones a la medida de cada proyecto.',
+      'Antes de comprar un solo equipo, calculamos el caudal, la presión y la reserva de agua que su instalación necesita. El resultado es un sistema dimensionado con criterio de ingeniería —no de catálogo— y la documentación que respalda cada decisión, conforme a NFPA 15, 11 y 24.',
     features: [
       'Cálculos hidráulicos profesionales',
       'Planos y especificaciones técnicas',
@@ -90,7 +90,7 @@ export const servicios: Servicio[] = [
     titulo: 'Instalación Profesional',
     subtitulo: 'Montaje certificado e integración hidráulica',
     descripcion:
-      'Montaje e instalación por técnicos certificados con amplia experiencia en proyectos industriales. Integración completa con su red hidráulica y sistemas existentes.',
+      'Una instalación vale lo que valen sus pruebas. Montamos el equipo, lo integramos a su red hidráulica y ejecutamos las pruebas hidrostáticas que dejan constancia de que el sistema arranca como debe.',
     features: [
       'Técnicos certificados NFPA',
       'Pruebas hidrostáticas incluidas',
@@ -110,7 +110,7 @@ export const servicios: Servicio[] = [
     titulo: 'Capacitación Especializada',
     subtitulo: 'Brigadas y operadores certificados',
     descripcion:
-      'Entrenamiento completo a brigadas y operadores en uso correcto de equipos, mantenimiento básico y protocolos de emergencia. Certificados de competencia incluidos.',
+      'El mejor monitor no apaga nada si la brigada no sabe operarlo bajo presión. Formamos a su gente en operación, mantenimiento básico y protocolo de emergencia, con práctica real y constancia DC-3.',
     features: [
       'Capacitación teórico-práctica',
       'Certificados de competencia',
@@ -130,7 +130,7 @@ export const servicios: Servicio[] = [
     titulo: 'Mantenimiento Preventivo',
     subtitulo: 'Disponibilidad garantizada bajo NFPA 25',
     descripcion:
-      'Programas de mantenimiento conforme NFPA 25 para garantizar la disponibilidad de sus equipos cuando más los necesite. Inspecciones programadas y reportes detallados.',
+      'La disponibilidad no se supone: se verifica. Con un programa NFPA 25 —inspección, prueba y mantenimiento documentados— su sistema responde el día del incendio y usted tiene el expediente para demostrarlo.',
     features: [
       'Inspecciones programadas',
       'Reportes de condición',
@@ -150,7 +150,7 @@ export const servicios: Servicio[] = [
     titulo: 'Mantenimiento Correctivo',
     subtitulo: 'Respuesta de emergencia 24/7',
     descripcion:
-      'Reparación de fallas con respuesta rápida. Técnicos disponibles 24/7 para emergencias. Stock de refacciones originales para minimizar tiempos de paro.',
+      'Una falla no avisa. Cuando ocurre, diagnosticamos la causa raíz, reparamos con refacción original y dejamos el equipo operando —con soporte 24/7 para que el sistema no quede descubierto más tiempo del necesario.',
     features: [
       'Respuesta en menos de 24 horas',
       'Refacciones 100% originales',
@@ -170,7 +170,7 @@ export const servicios: Servicio[] = [
     titulo: 'Consultoría Normativa',
     subtitulo: 'Cumplimiento y auditorías',
     descripcion:
-      'Asesoría especializada en cumplimiento de NOM-002-STPS, normas NFPA y requisitos de aseguradoras. Preparación para auditorías e inspecciones.',
+      'Le decimos dónde está parado antes de que se lo diga un inspector. Diagnosticamos el cumplimiento frente a NOM-002-STPS, NFPA y los requisitos de su aseguradora, señalamos las brechas y entregamos el plan para cerrarlas.',
     features: [
       'Auditorías de cumplimiento',
       'Preparación para inspecciones',
