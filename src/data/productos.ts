@@ -33,8 +33,8 @@ export const categorias: CategoriaProductos[] = [
     descripcion:
       'Los monitores fijos son la columna vertebral de cualquier sistema de protección contra incendios industrial. Diseñados para instalación permanente, ofrecen cobertura constante y confiable en áreas críticas como tanques de almacenamiento, áreas de proceso y muelles de carga.',
     parrafos: [
-      'Los monitores fijos son la <strong>columna vertebral</strong> de cualquier sistema de protección contra incendios industrial.',
-      'Diseñados para <strong>instalación permanente</strong>, ofrecen cobertura constante en tanques de almacenamiento, áreas de proceso y muelles de carga.',
+      'El equipo que está <strong>siempre listo</strong>: montado de forma permanente sobre la red, cubre el área crítica sin depender de que una brigada llegue a tiempo.',
+      'De <strong>500 a 4,000 GPM</strong>, en bronce o acero inoxidable 316L, con opción de control remoto para zonas clasificadas.',
     ],
     productos: [
       {
@@ -94,8 +94,8 @@ export const categorias: CategoriaProductos[] = [
     descripcion:
       'Los monitores portátiles ofrecen flexibilidad y movilidad para respuesta rápida ante emergencias. Diseñados para ser desplegados rápidamente por brigadas de emergencia, estos equipos son esenciales para cualquier programa de protección contra incendios.',
     parrafos: [
-      'Ofrecen <strong>flexibilidad y movilidad</strong> para una respuesta rápida ante emergencias.',
-      'Se despliegan en minutos por <strong>brigadas de emergencia</strong>, esenciales en cualquier programa de protección contra incendios.',
+      'Cuando el riesgo se mueve o no hay cobertura fija, la brigada lleva el <strong>gran caudal al punto exacto</strong> del incendio en menos de un minuto.',
+      'Aluminio ligero, despliegue de uno o dos operadores y de <strong>200 a 1,200 GPM</strong> con el respaldo de una o dos mangueras.',
     ],
     productos: [
       {
@@ -109,7 +109,7 @@ export const categorias: CategoriaProductos[] = [
         specs: [
           { icon: 'fas fa-tint', text: 'Capacidad: 250-750 GPM' },
           { icon: 'fas fa-weight-hanging', text: 'Peso: Solo 18 kg' },
-          { icon: 'fas fa-certificate', text: 'Certificación: NFPA Compliant' },
+          { icon: 'fas fa-certificate', text: 'Certificación: Cumple NFPA' },
           { icon: 'fas fa-user', text: 'Operación: 1 persona' },
         ],
         fichaTecnica: true,
@@ -154,8 +154,8 @@ export const categorias: CategoriaProductos[] = [
     descripcion:
       'La última generación de monitores contra incendios incorpora tecnología de detección automática y sistemas inteligentes de posicionamiento. Estos equipos pueden detectar y responder a incendios sin intervención humana, proporcionando protección las 24 horas del día.',
     parrafos: [
-      'La última generación incorpora <strong>detección automática</strong> y sistemas inteligentes de posicionamiento.',
-      'Detectan y responden a incendios <strong>sin intervención humana</strong>, con protección las 24 horas del día.',
+      'Detectan el fuego y <strong>responden solos</strong>, de día o de madrugada, sin exponer a nadie.',
+      'Detección por <strong>infrarrojo o inteligencia artificial</strong>, respuesta en segundos e integración con el sistema de control de la planta.',
     ],
     productos: [
       {
@@ -214,8 +214,8 @@ export const categorias: CategoriaProductos[] = [
     descripcion:
       'Complementamos nuestra línea de monitores con una amplia gama de boquillas y accesorios de alta calidad. Cada componente está diseñado para maximizar la eficiencia de su sistema de protección contra incendios.',
     parrafos: [
-      'Amplia gama de <strong>boquillas y accesorios</strong> de alta calidad que complementan la línea de monitores.',
-      'Cada componente está diseñado para <strong>maximizar la eficiencia</strong> de su sistema de protección contra incendios.',
+      'La pieza que <strong>decide el desempeño</strong>: define el patrón del chorro, habilita la espuma y conecta el monitor a su red.',
+      'Boquillas de <strong>chorro liso, niebla y aspirantes de espuma</strong>, además de cámaras y kits de conexión certificados.',
     ],
     productos: [
       {
