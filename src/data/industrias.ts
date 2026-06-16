@@ -46,7 +46,7 @@ export const industriaDestacada: IndustriaFeatured = {
   badge: 'Industria Principal',
   titulo: 'Petróleo y Gas',
   descripcion:
-    'Proveemos soluciones completas para la industria petrolera mexicana: refinerías, terminales de almacenamiento, plataformas offshore y plantas de procesamiento de gas natural. Nuestros equipos cumplen con los estándares más exigentes de PEMEX y aseguradoras internacionales.',
+    'Aquí un error de diseño no es una opción: hidrocarburos a presión, zonas clasificadas y tanques que, si arden, no se controlan con una manguera. Protegemos refinerías, terminales, plataformas offshore y plantas de gas con equipo FM Approved, sistemas ATEX y espuma AFFF, bajo los requisitos de PEMEX.',
   stats: [
     { numero: '50+', texto: 'Instalaciones Petroleras' },
     { numero: '100%', texto: 'Cumplimiento PEMEX' },
@@ -73,7 +73,7 @@ export const industrias: IndustriaCard[] = [
     titulo: 'Petroquímica y Química',
     subtitulo: 'Ambientes corrosivos y áreas clasificadas',
     descripcion:
-      'Equipos especializados para plantas químicas y petroquímicas con materiales anticorrosivos y certificaciones para ambientes agresivos. Protección de reactores, tanques de proceso y áreas con vapores inflamables.',
+      'El reto no es solo el fuego, también el ambiente que se come el acero. Especificamos equipo en 316L para vapores corrosivos y áreas clasificadas, con espuma para hidrocarburos, en reactores, tanques de proceso y zonas con atmósfera inflamable.',
     features: [
       'Materiales resistentes a químicos (acero 316L)',
       'Certificación para áreas clasificadas Clase I',
@@ -93,7 +93,7 @@ export const industrias: IndustriaCard[] = [
     titulo: 'Manufactura e Industrial',
     subtitulo: 'Naves, almacenes y centros de distribución',
     descripcion:
-      'Soluciones para parques industriales, plantas automotrices, almacenes y centros de distribución. Diseño conforme a los requisitos de aseguradoras y protección de grandes superficies de almacenamiento.',
+      'Aquí quien fija el estándar suele ser la aseguradora. Cubrimos grandes superficies —naves de gran altura, almacenes y centros de distribución— con diseño conforme a FM Global y NFPA 15, y monitores de cobertura amplia para patios y exteriores.',
     features: [
       'Protección de naves industriales de gran altura',
       'Cumplimiento FM Global para aseguradoras',
@@ -113,7 +113,7 @@ export const industrias: IndustriaCard[] = [
     titulo: 'Bomberos y Gobierno',
     subtitulo: 'Brigadas, protección civil y licitaciones',
     descripcion:
-      'Equipos para cuerpos de bomberos y protección civil. Asesoría especializada en procesos de licitación pública, documentación técnica y cumplimiento normativo para dependencias gubernamentales.',
+      'En el sector público se compite con dos cosas: equipo confiable y un expediente impecable. Suministramos monitores vehiculares y portátiles para brigadas y cuerpos de bomberos, y acompañamos la licitación con fichas técnicas y la documentación que el proceso exige.',
     features: [
       'Monitores vehiculares (Deck Guns)',
       'Equipos portátiles de despliegue rápido para brigadas',
@@ -133,7 +133,7 @@ export const industrias: IndustriaCard[] = [
     titulo: 'Aviación',
     subtitulo: 'Sistemas ARFF certificados',
     descripcion:
-      'Sistemas ARFF (Aircraft Rescue and Fire Fighting) para aeropuertos, hangares y talleres MRO certificados para la industria aeronáutica, con altos caudales y respuesta inmediata.',
+      'Un incendio de combustible de aviación se mide en segundos. Instalamos sistemas ARFF de alto caudal para plataforma, hangares y talleres MRO, con espuma para Jet A y cumplimiento NFPA 403, ICAO y DGAC.',
     features: [
       'Sistemas ARFF de alto caudal certificados',
       'Monitores para protección de hangares',
@@ -153,7 +153,7 @@ export const industrias: IndustriaCard[] = [
     titulo: 'Minería',
     subtitulo: 'Ambientes extremos y operación continua',
     descripcion:
-      'Equipos robustos diseñados para ambientes extremos y operación continua en minas a cielo abierto y subterráneas, con resistencia a polvo, vibración y condiciones severas.',
+      'Cuando la ayuda externa está a horas de distancia, el equipo tiene que aguantar solo. Monitores robustos para mina a cielo abierto y subterránea, resistentes a polvo y vibración, protegiendo estaciones de combustible, bandas y talleres bajo NOM-023-STPS.',
     features: [
       'Diseño para ambientes extremos y abrasivos',
       'Resistencia a polvo y vibración',
@@ -173,7 +173,7 @@ export const industrias: IndustriaCard[] = [
     titulo: 'Generación de Energía',
     subtitulo: 'Termoeléctricas, subestaciones y turbinas',
     descripcion:
-      'Soluciones para plantas de generación eléctrica, subestaciones, turbinas de gas y centrales termoeléctricas con máxima confiabilidad y cumplimiento de los requisitos de CFE.',
+      'Un transformador o una turbina ardiendo puede dejar a oscuras a una región, y apagar la planta no es una opción. Protegemos termoeléctricas, subestaciones y turbinas de gas con diseño conforme a NFPA 850/851 y los requisitos de CFE.',
     features: [
       'Protección de turbinas de gas y vapor',
       'Sistemas para subestaciones eléctricas',
