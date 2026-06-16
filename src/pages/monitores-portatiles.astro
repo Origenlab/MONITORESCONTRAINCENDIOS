@@ -129,11 +129,27 @@ const faqs = [
   { q: '¿Qué normativa aplica a los equipos portátiles?', a: 'Cumplen estándares NFPA aplicables a equipo de combate y, según el modelo, certificación UL Listed o FM Approved. El programa de inspección y mantenimiento se rige por NFPA 25, y la operación se enmarca en la NOM-002-STPS de seguridad laboral.' },
   { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Mantenemos stock en México para entrega ágil y, si lo requiere, agendamos una demostración del equipo sin costo.' },
 ];
+
+const SITE = 'https://monitorescontraincendios.com';
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@graph': modelos.map((m) => ({
+    '@type': 'Product',
+    name: m.nombre,
+    description: m.resumen,
+    image: `${SITE}${m.imagen}`,
+    brand: { '@type': 'Brand', name: 'AQUEON México' },
+    category: 'Monitores portátiles contra incendios',
+    url: `${SITE}/monitores-portatiles#${m.id}`,
+    additionalProperty: m.specs.map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
+  })),
+};
 ---
 <Base
   title="Monitores Portátiles Contra Incendios | Para Brigadas"
   description="Monitores portátiles contra incendios en México: venta de equipos de despliegue rápido para brigadas industriales, certificados FM/UL. Solicita cotización."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">

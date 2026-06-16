@@ -126,11 +126,27 @@ const faqs = [
   { q: '¿AQUEON diseña el conjunto completo monitor + accesorios?', a: 'Sí. No vendemos accesorios sueltos: diseñamos el sistema integral —monitor, boquilla, proporcionamiento de espuma y conexiones— conforme a NFPA y a los requisitos de PEMEX y aseguradoras, con la documentación técnica completa.' },
   { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Mantenemos stock de accesorios en México para entrega ágil y, si lo requiere, levantamos en sitio la adecuación necesaria sin costo.' },
 ];
+
+const SITE = 'https://monitorescontraincendios.com';
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@graph': productos.map((m) => ({
+    '@type': 'Product',
+    name: m.nombre,
+    description: m.resumen,
+    image: `${SITE}${m.imagen}`,
+    brand: { '@type': 'Brand', name: 'AQUEON México' },
+    category: 'Boquillas y accesorios contra incendios',
+    url: `${SITE}/boquillas#${m.id}`,
+    additionalProperty: m.specs.map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
+  })),
+};
 ---
 <Base
   title="Boquillas Contra Incendios | Venta para Monitores"
   description="Boquillas contra incendios en México: venta de boquillas de chorro liso, niebla y espuma para monitores industriales certificados. Selección por escenario."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">

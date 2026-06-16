@@ -130,11 +130,27 @@ const faqs = [
   { q: '¿En qué industrias se usan los monitores automáticos?', a: 'Principalmente en refinerías, petroquímica, terminales de almacenamiento, generación de energía y cualquier instalación con áreas desatendidas o de muy alto riesgo. También en bandas transportadoras, patios de tanques y subestaciones, donde la respuesta debe ser inmediata y continua.' },
   { q: '¿En cuánto tiempo entregan una cotización?', a: 'Respondemos cotizaciones técnicas en menos de 24 horas hábiles. Para sistemas automáticos solemos proponer una visita técnica para definir el estudio de cobertura de detección y la integración con el sistema de control, sin costo.' },
 ];
+
+const SITE = 'https://monitorescontraincendios.com';
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@graph': modelos.map((m) => ({
+    '@type': 'Product',
+    name: m.nombre,
+    description: m.resumen,
+    image: `${SITE}${m.imagen}`,
+    brand: { '@type': 'Brand', name: 'AQUEON México' },
+    category: 'Monitores automáticos contra incendios',
+    url: `${SITE}/monitores-automaticos#${m.id}`,
+    additionalProperty: m.specs.map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
+  })),
+};
 ---
 <Base
   title="Monitores Automáticos Contra Incendios | Detección con IA"
   description="Monitores automáticos contra incendios en México: venta de monitores con detección por infrarrojo e IA para áreas desatendidas. Certificados FM. Cotiza ya."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <!-- Hero -->
   <section class="l3-hero">
     <div class="container">
