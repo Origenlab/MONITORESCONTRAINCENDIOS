@@ -67,9 +67,12 @@ const navCategorias = [
     <div class="container">
       <div class="catalog-intro">
         <span class="catalog-count">{totalProductos} productos certificados</span>
+        <h2 class="catalog-intro-title">Catálogo de monitores contra incendios por categoría</h2>
         <p>
-          Todos nuestros equipos cuentan con respaldo de fábrica, documentación técnica oficial
-          para auditorías y soporte de ingenieros certificados NFPA en toda la República Mexicana.
+          Línea completa de monitores contra incendios —también conocidos como <strong>cañones de agua</strong> o monitores de agua— en <strong>bronce, acero inoxidable y aluminio</strong>: fijos, portátiles, automáticos y boquillas. Todos con respaldo de fábrica, documentación técnica oficial para auditorías y soporte de ingenieros certificados NFPA en toda la República Mexicana.
+        </p>
+        <p class="catalog-intro-price">
+          ¿Busca una cifra de referencia? Revise nuestra <a href="/blog/cuanto-cuesta-sistema-monitores-contra-incendios-industrial-mexico">guía de precios 2026</a> o solicite una <a href="/contacto">cotización a la medida</a> en menos de 24 horas.
         </p>
       </div>
 
@@ -158,12 +161,31 @@ const navCategorias = [
   /* Intro del catálogo */
   .catalog-intro {
     display: flex;
-    align-items: center;
-    gap: clamp(1rem, 2vw, 2rem);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(0.8rem, 1.6vw, 1.4rem);
     flex-wrap: wrap;
     padding-bottom: var(--space-xl);
     margin-bottom: var(--space-3xl);
     border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .catalog-intro-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--text-2xl);
+    line-height: 1.2;
+    color: var(--text-strong);
+    margin: 0;
+  }
+
+  .catalog-intro-price {
+    font-size: var(--text-sm) !important;
+    color: var(--text-muted) !important;
+  }
+
+  .catalog-intro-price a {
+    color: var(--red-hover);
+    font-weight: 600;
   }
 
   .catalog-count {
