@@ -309,4 +309,4 @@ Si su empresa opera en el Valle de México —en Tlalnepantla, Naucalpan, Vallej
 
 ### Solicite hoy su evaluación y cotización
 
-En **AQUEON** evaluamos el riesgo de su instalación y le diseñamos la solución óptima de monitores contra incendios certificados, con ingeniería, suministro, instalación y mantenimiento de clase mundial. Somos especialistas en monitores contra incendios industriales en CDMX y en toda la República desde 2009. **Pídanos su cotización en nuestra página de [contacto](/contacto) y reciba una propuesta en menos de 24 horas.**
+En **AQUEON** evaluamos el riesgo de su instalación y diseñamos su sistema de monitores contra incendios certificados, con ingeniería, suministro, instalación y mantenimiento bajo norma. Somos especialistas en monitores contra incendios industriales en CDMX y en toda la República desde 2009. **Pídanos su cotización en nuestra página de [contacto](/contacto) y reciba una propuesta en menos de 24 horas.**

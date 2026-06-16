@@ -244,7 +244,7 @@ Puede revisar nuestro catálogo de [productos](/productos), conocer nuestras sol
 
 ## AQUEON: especialistas en monitores contra incendios industriales
 
-En **AQUEON México** somos uno de los principales especialistas en **monitores contra incendios industriales** del país, con el foco puesto en manufactura, parques industriales y centros de distribución. Lo que ofrecemos no es solo equipo: combinamos la distribución de marcas de clase mundial con ingeniería de cobertura propia y soporte técnico de principio a fin del proyecto.
+En **AQUEON México** somos uno de los principales especialistas en **monitores contra incendios industriales** del país, con el foco puesto en manufactura, parques industriales y centros de distribución. Lo que ofrecemos no es solo equipo: combinamos la distribución de marcas de referencia mundial con ingeniería de cobertura propia y soporte técnico de principio a fin del proyecto.
 
 - **Distribución de monitores certificados FM Approved y UL Listed** de las marcas líderes mundiales: **Elkhart Brass**, **Akron Brass** y **Task Force Tips (TFT)**. Equipos fijos, oscilantes, automáticos con detección y portátiles, en caudales desde 250 hasta 4,000 GPM.
 - **Ingeniería de cobertura conforme a NFPA 15 y a los requisitos de FM Global**, con memoria de cálculo hidráulico, modelado de alcance y traslape, y verificación de la demanda contra la fuente de agua disponible.

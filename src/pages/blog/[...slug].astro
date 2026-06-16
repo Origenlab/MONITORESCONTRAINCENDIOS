@@ -13,12 +13,48 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const SITE = 'https://monitorescontraincendios.com';
+const postUrl = `${SITE}/blog/${post.id}`;
+const postImg = post.data.image ? `${SITE}${post.data.image}` : `${SITE}/apple-touch-icon.png`;
+const pubISO = new Date(post.data.pubDate).toISOString();
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description: post.data.description,
+      image: postImg,
+      datePublished: pubISO,
+      dateModified: pubISO,
+      inLanguage: 'es-MX',
+      articleSection: post.data.category,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+      author: { '@type': 'Organization', name: 'AQUEON México', url: SITE },
+      publisher: {
+        '@type': 'Organization',
+        name: 'AQUEON México',
+        logo: { '@type': 'ImageObject', url: `${SITE}/apple-touch-icon.png` },
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE}/blog` },
+        { '@type': 'ListItem', position: 3, name: post.data.category, item: postUrl },
+      ],
+    },
+  ],
+};
 ---
 <Base
   title={`${post.data.title} | Monitores Contra Incendios`}
   description={post.data.description}
   ogImage={post.data.image}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <article class="post">
     <header class="post-header">
       <div class="container">
