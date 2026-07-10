@@ -3,7 +3,7 @@ title: "Monitores Contra Incendios para Plantas Químicas y Petroquímicas: Mate
 description: "Monitores contra incendios para la industria química y petroquímica: acero 316L, ATEX/IECEx, NFPA 30/652 y espuma para ambientes agresivos. AQUEON."
 pubDate: 2026-04-22
 category: "Petroquímica y Química"
-image: "/images/monitores-contra-incendios-planta-quimica-petroquimica-atex.webp"
+image: "/images/monitores-contra-incendios-planta-petroquimica.webp"
 ---
 
 *Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Petroquímica y Química](/industrias#petroquimica) · Lectura: 20 minutos*

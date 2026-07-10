@@ -3,7 +3,7 @@ title: "Monitores Contra Incendios para Brigadas y Cuerpos de Bomberos Industria
 description: "Monitores contra incendios para brigadas industriales y bomberos en México: portátiles y vehiculares, capacitación, certificación y despliegue. AQUEON."
 pubDate: 2026-05-20
 category: "Bomberos y Brigadas"
-image: "/images/monitores-contra-incendios-brigadas-bomberos-industriales.webp"
+image: "/images/monitores-contra-incendios-cuerpo-bomberos-emergencias.webp"
 ---
 
 *Publicado por el equipo de ingeniería de **AQUEON México** · Sector [Bomberos y Brigadas](/bomberos) · Lectura: 18 minutos*

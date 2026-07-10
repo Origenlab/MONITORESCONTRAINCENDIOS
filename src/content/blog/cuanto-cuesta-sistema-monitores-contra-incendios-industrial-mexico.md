@@ -3,7 +3,7 @@ title: "¿Cuánto Cuesta un Sistema de Monitores Contra Incendios Industrial en 
 description: "Precios de monitores contra incendios industriales en México 2026: rangos por tipo de equipo, factores de costo y qué incluye una cotización profesional."
 pubDate: 2026-04-29
 category: "Presupuesto y Costos"
-image: "/images/cotizacion-sistema-monitores-contra-incendios-industrial.webp"
+image: "/images/almacen-monitores-contra-incendios-industriales-mexico.webp"
 ---
 
 *Publicado por el equipo de ingeniería de **AQUEON México** · Presupuesto y Costos · Lectura: 16 minutos*

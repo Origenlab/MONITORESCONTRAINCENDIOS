@@ -21,7 +21,20 @@ const {
 
 const site = 'https://monitorescontraincendios.com';
 const canonical = new URL(Astro.url.pathname, site).href;
-const ogImageAbs = new URL(ogImage, site).href;
+
+// OG: Facebook/LinkedIn/WhatsApp no soportan webp/avif de forma confiable →
+// servir espejo JPEG 1200×630 pre-generado en /images/og/ (basename.jpg).
+let ogPath = ogImage;
+if (/\.(avif|webp)$/i.test(ogPath)) {
+  const base = (ogPath.split('/').pop() ?? '').replace(/\.(avif|webp)$/i, '');
+  ogPath = `/images/og/${base}.jpg`;
+}
+const ogImageAbs = new URL(ogPath, site).href;
+const ogImageType = ogPath.toLowerCase().endsWith('.png')
+  ? 'image/png'
+  : ogPath.toLowerCase().endsWith('.svg')
+    ? 'image/svg+xml'
+    : 'image/jpeg';
 
 // BreadcrumbList automático por ruta (L3): mapa slug → { padre, nombre }
 const l3Breadcrumbs: Record<string, { parentName: string; parentUrl: string; name: string }> = {
@@ -61,7 +74,12 @@ const organizationSchema = {
   name: 'AQUEON',
   alternateName: 'AQUEON México',
   url: site,
-  logo: `${site}/apple-touch-icon.png`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${site}/apple-touch-icon.png`,
+    width: 180,
+    height: 180,
+  },
   description:
     'Proveedor líder de monitores contra incendios industriales en México. Equipos certificados FM Approved y UL Listed.',
   address: {
@@ -141,6 +159,8 @@ const localBusinessSchema = {
     <meta property="og:image" content={ogImageAbs} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content={ogImageType} />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content="es_MX" />
     <meta property="og:site_name" content="AQUEON México" />
 
