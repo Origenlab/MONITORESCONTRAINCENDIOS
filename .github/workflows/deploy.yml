@@ -32,4 +32,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=monitorescontraincendios --branch=main --commit-dirty=true
+          # OJO: el production branch del proyecto Pages es "production" (creado por
+          # el deploy manual de package.json). Con --branch=main el CI solo generaba
+          # previews y el dominio quedaba congelado. --branch=production = produccion.
+          command: pages deploy dist --project-name=monitorescontraincendios --branch=production --commit-dirty=true
