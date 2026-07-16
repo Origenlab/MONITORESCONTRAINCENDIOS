@@ -1,0 +1,6 @@
+# Canónico de host: www → non-www (301, preserva ruta y query) 2026-07-10
+https://www.monitorescontraincendios.com/* https://monitorescontraincendios.com/:splat 301
+
+# Alias de sitemap: @astrojs/sitemap genera sitemap-index.xml (robots.txt ya apunta ahí);
+# /sitemap.xml es la ruta que muchos crawlers piden por defecto → 301 al índice real.
+/sitemap.xml /sitemap-index.xml 301

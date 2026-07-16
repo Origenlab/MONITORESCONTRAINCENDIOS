@@ -54,3 +54,40 @@ Remapeados a imágenes REALES existentes del mismo tema (sin crear contenido):
 - www → 301 apex ✓ · Dominio = deploy de producción actualizado ✓
 
 Commits: `35cef97` (fixes SEO) · `ab5ba90` (fix deploy CI a producción).
+
+---
+
+## Sesión 2 (2026-07-10) — regla de datos afinada + _redirects
+
+Aplica la regla afinada "cero contenido fabricado ≠ borrar NAP real": mantener NAP real y consistente on-page; remover SOLO lo fabricado (sameAs adivinados, ratings/reseñas inventadas, conteos falsos); OMITIR el NAP cuando es claramente placeholder/scaffold. Ediciones quirúrgicas, sin refactor. **No se reconstruyó dist** (build ARM64 no disponible en la VM): el fix vive en el source y toma efecto en el próximo build del CI. Validación estática: parseo/eval de los JSON-LD editados + grep.
+
+### 7. Schema con datos PLACEHOLDER/FABRICADOS removidos (`src/layouts/Base.astro`)
+La sesión 1 dejó el NAP como "fuera de alcance". Bajo la regla afinada sí entra, porque los datos son demostrablemente placeholder/fabricados (verificado on-page):
+- **`sameAs` (LinkedIn/Facebook) → REMOVIDO**: los perfiles sociales están enlazados como `href="#"` en `Footer.astro` y `TopBar.astro` (no hay perfil real); las URLs del schema (`/company/aqueon-mexico`, `/aqueonmexico`) eran handles adivinados. Fabricado → fuera del `Organization`.
+- **Teléfono `+52-55-1234-5678` → REMOVIDO** de `Organization.contactPoint` y `LocalBusiness.telephone`: número secuencial placeholder (aparece idéntico 24× on-page, es scaffold, no un teléfono real).
+- **Dirección "Av. Paseo de la Reforma 505, Piso 15 / Torre Mayor" → REMOVIDA** de ambos schemas: dirección scaffold (edificio genérico + CP 06500), pareada con el teléfono falso.
+- **Conservado (real/consistente on-page, NO fabricado)**: `Organization` name/alternateName/url/logo(ImageObject 180×180)/description; `LocalBusiness` name/url/image/priceRange/email (`contacto@aqueon.com.mx`, uniforme 17× on-page)/openingHours (Lun-Vie 8-18, coincide con contacto.astro)/areaServed (México).
+- Validado: ambos objetos evalúan y serializan a JSON sin error; ninguna clave fabricada queda (`address`/`contactPoint`/`sameAs`/`telephone`).
+
+### 8. `public/_redirects` CREADO (no existía)
+La sesión 1 lo omitió ("301 ya activo en Cloudflare"). Se crea igual por portabilidad y como fuente de verdad en repo (convención de portafolio: EVENTECH/EQUIPOSCONTRAINCENDIO/MANEXT lo tienen):
+- 1ª línea: `https://www.monitorescontraincendios.com/* https://monitorescontraincendios.com/:splat 301` (www→apex, preserva ruta+query).
+- 2ª regla: `/sitemap.xml /sitemap-index.xml 301` (alias; @astrojs/sitemap genera `sitemap-index.xml`, robots.txt ya apunta ahí, pero `/sitemap.xml` es la ruta que piden muchos crawlers).
+
+### Verificaciones (dist PRE-edición como baseline)
+- `validate-dist.py dist monitorescontraincendios.com` → **LIMPIO**: canonical malos 0, og avif/webp 0, og dim!=1200×630 0, BreadcrumbList>1 **0**, aggregateRating **0**, Product 12 (catálogo intencional). Nota: la herramienta no chequea sameAs/NAP placeholder — ese hallazgo es de la regla afinada, verificado por grep.
+- **BreadcrumbList sin duplicado (confirmado)**: 37 en dist, 0 archivos con >1. La única BreadcrumbList inline vive en `blog/[...slug].astro`; Base.astro emite breadcrumb sólo para slugs L3 (mapa `l3Breadcrumbs`), que NO incluye rutas de blog → nunca coinciden en la misma página. El "Breadcrumb=2" del recon = 2 *emisores* (Base + blog), no 2 en una misma página.
+- **Product NO se convierte a Service**: los 4 `productSchema` son `@graph` de modelos físicos (brand `AQUEON México`, sin `offers`, sin ratings); los 6 `serviceSchema` son servicios distintos (provider name+url, sin offers). Catálogo intencional, no duplicación Service+Product. Sin acción (correcto).
+- **og:image:width/height** ya presentes en Base.astro (1200/630) junto con type/alt. Sin acción.
+- Logo `apple-touch-icon.png` = 180×180 real (verificado con PIL), coincide con el ImageObject del schema.
+- 17 JPEG OG en `public/images/og/`, todos 1200×630 (verificado); fallback `monitores-contra-incendios-refineria-petroleo-gas.jpg` presente.
+
+### PROPUESTOS (no aplicados — requieren datos reales del cliente o build)
+- **NAP placeholder ON-PAGE** (teléfono `+52 55 1234 5678` en 24 CTAs + legales; dirección Reforma 505 en `contacto.astro`, `aviso-de-privacidad.astro`, `terminos-y-condiciones.astro`; enlaces sociales `href="#"` en Footer/TopBar): es CONTENIDO, no schema, y no se puede fabricar el dato real. Reponer teléfono/dirección/perfiles reales cuando el cliente los entregue, y entonces restaurar `contactPoint`/`address`/`sameAs` en el schema.
+- **geo meta** (`geo.position 19.432608;-99.133209`, centroide CDMX): coordenada a nivel ciudad, no es rating/reseña/social fabricado; se deja. Removible si se decide no afirmar ubicación precisa sin dirección real (decisión de contenido).
+- **dist desactualizado**: el source quedó corregido pero `dist/` sigue mostrando el schema viejo (con NAP/sameAs) porque no se puede build en esta VM (falta `@rollup/rollup-linux-arm64-gnu`). El fix se materializa en el próximo build del CI (Cloudflare Pages). No declarar "verde" hasta que la Action reconstruya.
+
+### Archivos tocados en Sesión 2
+- `src/layouts/Base.astro` (Organization + LocalBusiness: removido sameAs/contactPoint/address/telephone placeholder; conservado NAP real: email/horario/áreaServida).
+- `public/_redirects` (NUEVO: www→apex 301 + alias sitemap).
+- `CHANGELOG-SEO-2026-07-10.md` (esta sección).

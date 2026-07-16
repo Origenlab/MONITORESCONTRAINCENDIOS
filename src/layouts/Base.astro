@@ -68,6 +68,11 @@ const breadcrumbSchema = bc && {
   ],
 };
 
+// NAP / redes OMITIDOS: el teléfono (+52-55-1234-5678, secuencial), la dirección
+// (Reforma 505 / Torre Mayor, scaffold) y los perfiles sociales (enlazados como
+// href="#" en Footer/TopBar, no verificados) son PLACEHOLDER/fabricados → fuera del
+// schema (regla cero contenido fabricado). Reponer address/contactPoint/sameAs cuando
+// el cliente entregue NAP y perfiles reales.
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -82,42 +87,19 @@ const organizationSchema = {
   },
   description:
     'Proveedor líder de monitores contra incendios industriales en México. Equipos certificados FM Approved y UL Listed.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Av. Paseo de la Reforma 505, Piso 15',
-    addressLocality: 'Ciudad de México',
-    addressRegion: 'CDMX',
-    postalCode: '06500',
-    addressCountry: 'MX',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+52-55-1234-5678',
-    contactType: 'sales',
-    availableLanguage: ['Spanish', 'English'],
-  },
-  sameAs: [
-    'https://www.linkedin.com/company/aqueon-mexico',
-    'https://www.facebook.com/aqueonmexico',
-  ],
 };
 
+// telephone + address OMITIDOS por placeholder/scaffold (ver nota arriba). Se conservan
+// datos reales/consistentes on-page: email (contacto@aqueon.com.mx, uniforme en el sitio),
+// horario (Lun-Vie 8-18), áreaServida y priceRange. Reponer telephone/address con NAP real.
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'AQUEON México',
+  url: site,
   image: ogImageAbs,
   priceRange: '$$$',
-  telephone: '+52-55-1234-5678',
   email: 'contacto@aqueon.com.mx',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Av. Paseo de la Reforma 505, Piso 15',
-    addressLocality: 'Ciudad de México',
-    addressRegion: 'CDMX',
-    postalCode: '06500',
-    addressCountry: 'MX',
-  },
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
